@@ -1,3 +1,4 @@
+import { HomeComponent } from './_modules/home/pages/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -5,6 +6,7 @@ const routes: Routes = [
 {
   path: '',
   loadChildren: () => import('./_modules/home/home.module').then(m => m.HomeModule)
+
 },
 {
   path: 'admin',
