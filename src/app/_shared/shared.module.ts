@@ -5,11 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { InputTextComponent } from './components/input-text/input-text.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    InputTextComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     ReactiveFormsModule
 
   ], exports:[
-    NavbarComponent
+    NavbarComponent,
+    InputTextComponent
   ]
 })
 export class SharedModule { }

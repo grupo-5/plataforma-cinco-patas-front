@@ -1,6 +1,8 @@
 
 <app-navbar></app-navbar>
-
-<button  class="btn btn-primary" routerLink='/admin'>Admin</button>
+<div class="container">
+    <app-input-text placeholderInput="Caso precise colocamos algo aqui" titulo="Nome" formGroup="formGroup" controlName="placeholderInput"></app-input-text>
+    <button  class="btn btn-primary" routerLink='/admin'>Admin</button>
+</div>
 
 <router-outlet></router-outlet>
