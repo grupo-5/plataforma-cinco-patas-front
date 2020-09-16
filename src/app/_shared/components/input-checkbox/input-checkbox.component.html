@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup">
+    <div class="form-group">
+        <div><label class="form" for="titulo">{{titulo}}</label></div>
+        <div class="form-check" *ngFor="let opcao of texto_opcoes">
+            <input class="form-check-input" type="checkbox" [value]="opcao" [id]="idCheckBox"
+                [formControlName]="controlName" >
+            <label class="form-check-label" for="idCheckBox"> {{opcao}} </label>
+        </div>
+        <div><label class="text-danger fonte-erros" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'required')">Campo
+            Obrigatório</label></div>
+    </div>
+</div>

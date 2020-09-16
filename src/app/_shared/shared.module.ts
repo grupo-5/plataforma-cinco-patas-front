@@ -6,12 +6,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
+import { InputCheckboxComponent } from './components/input-checkbox/input-checkbox.component';
+import { InputRadioComponent } from './components/input-radio/input-radio.component';
+import { CardDepoimentoComponent } from './components/card-depoimento/card-depoimento.component';
+
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    InputTextComponent
+    InputTextComponent,
+    InputCheckboxComponent,
+    InputRadioComponent,
+    CardDepoimentoComponent,
+ 
+  
   ],
   imports: [
     CommonModule,
@@ -20,7 +29,12 @@ import { InputTextComponent } from './components/input-text/input-text.component
 
   ], exports:[
     NavbarComponent,
-    InputTextComponent
+    InputTextComponent,
+    InputCheckboxComponent,
+    InputRadioComponent,
+    CardDepoimentoComponent,
+
+
   ]
 })
 export class SharedModule { }
