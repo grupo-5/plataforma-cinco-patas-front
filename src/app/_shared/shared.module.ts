@@ -5,11 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    CardTotalizadorComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     ReactiveFormsModule
 
   ], exports:[
-    NavbarComponent
+    NavbarComponent,
+    CardTotalizadorComponent
   ]
 })
 export class SharedModule { }
