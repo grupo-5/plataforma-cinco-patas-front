@@ -5,11 +5,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { ButtonGComponent } from './components/button-g/button-g.component';
+import { ButtonBComponent } from './components/button-b/button-b.component';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    ButtonGComponent,
+    ButtonBComponent,
+    ModalInfoComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +23,10 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     ReactiveFormsModule
 
   ], exports:[
-    NavbarComponent
+    NavbarComponent,
+    ButtonGComponent,
+    ButtonBComponent,
+    ModalInfoComponent
   ]
 })
 export class SharedModule { }
