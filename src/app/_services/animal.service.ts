@@ -1,4 +1,4 @@
-import { Animal } from './../_models/animal';
+import { Animal } from '../_models/animal.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
