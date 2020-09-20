@@ -1,8 +1,12 @@
+import { ChartsModule } from 'ng2-charts';
+import { GraficoRosquinhaComponent } from './components/grafico-rosquinha/grafico-rosquinha.component';
+import { CardListaComponent } from './components/card-lista/card-lista.component';
+import { CardIncentivoComponent } from './components/card-incentivo/card-incentivo.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChartsModule } from 'ng2-charts';
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
@@ -12,6 +16,7 @@ import { CardDepoimentoComponent } from './components/card-depoimento/card-depoi
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barras.component';
 
+import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 
 
 @NgModule({
@@ -22,8 +27,13 @@ import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barr
     InputRadioComponent,
     CardDepoimentoComponent,
     SidebarComponent,
-    GraficoBarrasComponent
+    GraficoBarrasComponent,
   
+    CardTotalizadorComponent,
+    FooterComponent,
+    CardIncentivoComponent,
+    CardListaComponent,
+    GraficoRosquinhaComponent
   ],
   imports: [
     CommonModule,
@@ -38,8 +48,12 @@ import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barr
     InputRadioComponent,
     CardDepoimentoComponent,
     SidebarComponent,
-    GraficoBarrasComponent
-
+    GraficoBarrasComponent,
+    CardTotalizadorComponent,
+    FooterComponent,
+    CardIncentivoComponent,
+    CardListaComponent,
+    GraficoRosquinhaComponent
   ]
 })
 export class SharedModule { }

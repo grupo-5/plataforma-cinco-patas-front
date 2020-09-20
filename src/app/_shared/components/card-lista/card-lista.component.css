@@ -1,0 +1,13 @@
+.list-item {
+    display: flex;
+    align-items: center;
+    color: #A6ACBE;
+}
+.bullet {
+    font-size: 1.8em;
+}
+
+.list-number span {
+    color: black;
+    font-weight: bold;
+}

@@ -1,0 +1,14 @@
+.navbar-default {
+    background-color: #000000;
+    color: FFF;
+    text-transform: uppercase;
+}
+
+.logo {
+    width: 46px;
+}
+
+.navbar-default li:hover{
+    background-color: #000;
+
+}
