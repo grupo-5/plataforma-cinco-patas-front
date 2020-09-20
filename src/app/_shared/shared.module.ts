@@ -5,11 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { InputComboboxComponent } from './components/input-combobox/input-combobox.component';
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    InputComboboxComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     ReactiveFormsModule
 
   ], exports:[
-    NavbarComponent
+    NavbarComponent,
+    InputComboboxComponent
   ]
 })
 export class SharedModule { }
