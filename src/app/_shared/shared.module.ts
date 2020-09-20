@@ -1,3 +1,8 @@
+import { ChartsModule } from 'ng2-charts';
+import { GraficoRosquinhaComponent } from './components/grafico-rosquinha/grafico-rosquinha.component';
+import { CardListaComponent } from './components/card-lista/card-lista.component';
+import { CardIncentivoComponent } from './components/card-incentivo/card-incentivo.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +16,24 @@ import { CardTotalizadorComponent } from './components/card-totalizador/card-tot
 @NgModule({
   declarations: [
     NavbarComponent,
-    CardTotalizadorComponent
+    CardTotalizadorComponent,
+    FooterComponent,
+    CardIncentivoComponent,
+    CardListaComponent,
+    GraficoRosquinhaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    ChartsModule
   ], exports:[
     NavbarComponent,
-    CardTotalizadorComponent
+    CardTotalizadorComponent,
+    FooterComponent,
+    CardIncentivoComponent,
+    CardListaComponent,
+    GraficoRosquinhaComponent
   ]
 })
 export class SharedModule { }
