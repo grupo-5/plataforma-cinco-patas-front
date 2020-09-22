@@ -18,6 +18,9 @@ import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barr
 
 import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 import { InputComboboxComponent } from './components/input-combobox/input-combobox.component';
+import { CardSobreNosComponent } from './components/card-sobre-nos/card-sobre-nos.component';
+import { HeaderComCarrosselComponent } from './components/header-com-carrossel/header-com-carrossel.component';
+import { CardTimelineComponent } from './components/card-timeline/card-timeline.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { InputComboboxComponent } from './components/input-combobox/input-combob
     CardIncentivoComponent,
     CardListaComponent,
     GraficoRosquinhaComponent,
-    InputComboboxComponent
+    InputComboboxComponent,
+    CardSobreNosComponent,
+    HeaderComCarrosselComponent,
+    CardTimelineComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +62,10 @@ import { InputComboboxComponent } from './components/input-combobox/input-combob
     CardIncentivoComponent,
     CardListaComponent,
     GraficoRosquinhaComponent,
-    InputComboboxComponent
+    InputComboboxComponent,
+    CardSobreNosComponent,
+    HeaderComCarrosselComponent,
+    CardTimelineComponent
   ]
 })
 export class SharedModule { }

@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "-": "0.0.1",
     "@angular/animations": "~10.0.6",
     "@angular/common": "~10.0.6",
     "@angular/compiler": "~10.0.6",
@@ -23,6 +24,7 @@
     "chart.js": "^2.9.3",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.4.1",
+    "popper": "^1.0.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
