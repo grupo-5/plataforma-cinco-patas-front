@@ -8,8 +8,10 @@ import { MultiDataSet, Label } from 'ng2-charts';
   styleUrls: ['./grafico-rosquinha.component.css']
 })
 export class GraficoRosquinhaComponent implements OnInit {
-
-  public doughnutChartLabels = false;
+  
+  public labels: string[] = ['Joao', 'Maria', 'Robrto', 'oi'];
+  public donutChartLegend = false;
+  public doughnutChartLabels: Label[] = [this.labels[0], this.labels[1], this.labels[2], this.labels[3]];
   public doughnutChartData: MultiDataSet = [
     [25, 25, 25, 25]
   ];
