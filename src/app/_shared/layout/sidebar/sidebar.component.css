@@ -7,7 +7,7 @@
   float: right;
 }
 
-a{
+a {
   color: #334D6E;
   text-decoration: none;
 }
@@ -17,10 +17,10 @@ a:hover {
   color: #189CA1;
 }
 
-.color-icon-gray{
-  /* color: #b1b6bd; */
+.color-icon-gray {
+  color: #777070;
   /* fill: #da2a7c; */
- 
+
 }
 
 .color-name-user {
@@ -42,7 +42,7 @@ a:hover {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  height: 91.1vh;
+  height: 89.1vh;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -51,6 +51,7 @@ a:hover {
   background-color: #f8f6f6;
 
 }
+
 
 .overlay {
   display: none;
