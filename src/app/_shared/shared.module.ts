@@ -22,6 +22,10 @@ import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barr
 import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 import { InputComboboxComponent } from './components/input-combobox/input-combobox.component';
 import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
+import { CardGraficoComponent } from './components/card-grafico/card-grafico.component';
+import { ImagemPaginacaoComponent } from './components/imagem-paginacao/imagem-paginacao.component';
+import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,7 +43,10 @@ import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    TestesTathiComponent
+    TestesTathiComponent,
+    CardGraficoComponent,
+    ImagemPaginacaoComponent,
+    FormTextareaComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +55,8 @@ import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
     ChartsModule,
     MatSidenavModule,
     MatListModule,
-    MatToolbarModule 
+    MatToolbarModule, 
+    NgbModule
 
   ], exports:[
     NavbarComponent,
@@ -64,7 +72,10 @@ import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    TestesTathiComponent
+    TestesTathiComponent,
+    CardGraficoComponent,
+    ImagemPaginacaoComponent,
+    FormTextareaComponent
   ]
 })
 export class SharedModule { }
