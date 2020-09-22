@@ -21,6 +21,7 @@ import { InputComboboxComponent } from './components/input-combobox/input-combob
 import { CardGraficoComponent } from './components/card-grafico/card-grafico.component';
 import { ImagemPaginacaoComponent } from './components/imagem-paginacao/imagem-paginacao.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FormTextareaComponent } from './components/form-textarea/form-textarea.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    NgbModule
 
   ], exports:[
     NavbarComponent,

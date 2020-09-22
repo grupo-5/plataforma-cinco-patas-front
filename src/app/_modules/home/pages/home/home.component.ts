@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  listaAnimais=[
+  {name:'auaua', imgUrl:'./assets/images/pessoa.jpg'},
+  {name:'uauaua', imgUrl:'./assets/images/logo.png'}
+];
 
   constructor() { }
 
