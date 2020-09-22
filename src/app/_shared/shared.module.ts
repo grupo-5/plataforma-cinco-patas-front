@@ -19,6 +19,8 @@ import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barr
 import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 import { InputComboboxComponent } from './components/input-combobox/input-combobox.component';
 import { CardGraficoComponent } from './components/card-grafico/card-grafico.component';
+import { ImagemPaginacaoComponent } from './components/imagem-paginacao/imagem-paginacao.component';
+import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { CardGraficoComponent } from './components/card-grafico/card-grafico.com
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    CardGraficoComponent
+    CardGraficoComponent,
+    ImagemPaginacaoComponent,
+    FormTextareaComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +62,9 @@ import { CardGraficoComponent } from './components/card-grafico/card-grafico.com
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    CardGraficoComponent
+    CardGraficoComponent,
+    ImagemPaginacaoComponent,
+    FormTextareaComponent
   ]
 })
 export class SharedModule { }
