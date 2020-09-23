@@ -1,4 +1,6 @@
-<div class="form-group">
-    <label for="my-textarea">{{titulo}}</label>
-    <textarea id="my-textarea" class="form-control" name="" rows="3"></textarea>
+<div [formGroup]="formGroup">
+    <div class="form-group">
+        <label for="my-textarea">{{titulo}}</label>
+        <textarea [id]="idTextarea" class="form-control" name="" rows="3" [formControlName]="controlName"></textarea>
+    </div>
 </div>

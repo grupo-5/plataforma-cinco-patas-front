@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestesTathiComponent implements OnInit {
 
+  // Depoimentos
   caminhoImg: string;
   nome: string;
   depoi: string;
 
+  // Gráfico barras
   resgatados: Array<number>;
   adotados: Array<number>;
   meuBarChartData: Array<any>;

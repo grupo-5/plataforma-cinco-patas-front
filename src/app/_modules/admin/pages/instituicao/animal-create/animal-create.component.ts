@@ -20,6 +20,8 @@ export class AnimalCreateComponent implements OnInit {
   personalidades: Array<String>;
   portes: Array<String>;
   localizacoes: Array<String>;
+  cidades: Array<String>;
+  informacoes: string;
 
   constructor(
     public animalService: AnimalService,
@@ -43,10 +45,12 @@ export class AnimalCreateComponent implements OnInit {
 
     this.generos = ['Masculino', 'Feminino'];
     this.especies = ['Gato', 'Cachorro'];
+    this.portes = ['P','M','G'];
     this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
     this.cuidados_vets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
-    this.portes = ['P','M','G'];
     this.localizacoes = ['Ong','Com o dono'];
+    this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
+
   }
 
 
@@ -79,11 +83,12 @@ export class AnimalCreateComponent implements OnInit {
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
-      localizacao: [animal.localizacao, [Validators.required]],
       personalidade: [animal.personalidade, [Validators.required]],
       cuidados_vet: [animal.cuidados_vet, [Validators.required]],
+      localizacao: [animal.localizacao, [Validators.required]],
+      cidade:[animal.cidade,[Validators.required]],
+      info_extras: [animal.info_extras],
       // email: [animal.email, [Validators.required, Validators.email]],
-      //info_extras: [animal.info_extras],
     });
   }
 
@@ -92,13 +97,14 @@ export class AnimalCreateComponent implements OnInit {
       id: null,
       nome: null,
       dataNasci: null,
+      especie: null,
+      porte: null,
+      sexo: null,
       personalidade: null,
       cuidados_vet: null,
-      porte: null,
-      especie: null,
-      sexo: null,
       localizacao: null,
-      // info_extras: null,
+      cidade: null,
+      info_extras: null,
     } as Animal;
   }
 

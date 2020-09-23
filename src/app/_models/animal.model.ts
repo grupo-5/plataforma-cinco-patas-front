@@ -7,7 +7,8 @@ export interface Animal {
     porte: string;
     localizacao: string;
     personalidade: string;
+    cidade: string;
     cuidados_vet: Array<string>;
-    // info_extras: string;
+    info_extras: string;
     //endereco: string;
 }
