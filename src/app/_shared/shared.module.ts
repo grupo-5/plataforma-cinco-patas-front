@@ -34,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     ButtonGComponent,
     ButtonBComponent,
+    ModalInfoComponent,
     InputTextComponent,
     InputCheckboxComponent,
     InputRadioComponent,
