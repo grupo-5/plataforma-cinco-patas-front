@@ -1,6 +1,7 @@
 <div class="list-item" *ngFor="let element of listElement, let i = index">
   <span class="bullet mr-1" [style.color]="bulletColor[i]">&#8226;</span>
   {{element}}
+  <!--lembrar que aqui vai ter que ter uma variável que pegue dados do banco-->
   <div class="list-number ml-auto"><span>20 </span>(32%)</div>
 </div>
 
