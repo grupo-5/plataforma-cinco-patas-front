@@ -1,0 +1,27 @@
+<div class="card mb-3 mt-5">
+    <div class="row no-gutters">
+        <div class="col-sm-2">
+            <img [src]="caminhoImgCard" class="card-img mt-2" alt="Caixa com depoimento do usuário">
+            <!-- <img src="../../../../assets/images/pessoa.jpg" class="card-img mt-2" alt="Caixa com depoimento do usuário"> -->
+        </div>
+        <div class="col-sm-10">
+            <div class="card-body">
+                <div class="row ml-1">
+                    <h5 class="card-title">{{nome}}</h5>
+                    <div class="alinhar">
+                        <a routerLink='/'>
+                            <i [class]="nomeIcon1"  class="mr-2"></i>
+                        </a> 
+                        <!-- <fa-icon [icon]="nomeIcon"></fa-icon> -->
+                        <!-- <fa-icon [icon]="['fas','user-circle']"></fa-icon> -->                  
+                              
+                        <a routerLink="/">
+                            <i [class]="nomeIcon2"  class="mr-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="card-text">{{depoimento}}</p>
+            </div>
+        </div>
+    </div>
+</div>

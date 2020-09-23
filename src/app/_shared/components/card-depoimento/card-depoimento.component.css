@@ -1,0 +1,18 @@
+.card-img {
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.card{
+    border-radius: 30px;
+    /* max-width: 70%; */
+}
+
+.alinhar {
+    position:absolute;
+    right:10px;
+}
+
+.alinhar svg {
+    margin-right: 8px;
+}

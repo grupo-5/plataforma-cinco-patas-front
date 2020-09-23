@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+.fonte-erros-inputs {
+    font-size: 0.8rem !important;
+}
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,51 @@
+<div class="container mt-4" *ngIf="formCadastro">
+    <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+       <div class="row">
+           <div class="col-8">
+                <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome" [formGroup]="formCadastro"
+                    controlName="nome"></app-input-text>
+           </div>
+           <div class="col-4">
+                <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento" [formGroup]="formCadastro"
+                    controlName="dataNasci"></app-input-text>
+           </div>
+       </div>
+        <!-- <app-input-text tipo="email" idInput="imputEmail" placeholderInput="usuario@gmail.com" titulo="Email"
+            [formGroup]="formCadastro" controlName="email"></app-input-text> -->
+        <div class="row">
+            <div class="col-md-6">
+                <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
+                    [formGroup]="formCadastro" controlName="especie"></app-input-radio>
+            </div>
+            <div class="col-md-6">
+                <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos" [formGroup]="formCadastro"
+                    controlName="sexo"></app-input-radio>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
+                    [formGroup]="formCadastro" controlName="porte"></app-input-radio>
+            </div>
+            <div class="col-md-6">
+                <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra" [texto_opcoes]="generos" [formGroup]="formCadastro"
+                    controlName="localizacao"></app-input-radio>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
+                    [texto_opcoes]="cuidados_vets" [formGroup]="formCadastro" controlName="cuidados_vet">
+                </app-input-checkbox>
+            </div>
+            <div class="col-md-6">
+                <app-input-checkbox idCheckBox="idPersonalidade" titulo="Personalidade" [texto_opcoes]="personalidades"
+                    [formGroup]="formCadastro" controlName="personalidade"></app-input-checkbox>
+            </div>
+        </div>
+
+        <button class="btn btn-secondary mr-3" type="reset">Limpar</button>
+        <button class="btn btn-primary " type="submit">Salvar</button>
+    </form>
+    <!-- <button  class="btn btn-primary" routerLink='/admin'>Admin</button> -->
+</div>

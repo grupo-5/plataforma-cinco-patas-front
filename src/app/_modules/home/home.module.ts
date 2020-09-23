@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeRoutingModule } from './home-routing.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { HomeRoutingModule } from './home-routing.module';
+import { AdminModule } from './../admin/admin.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from './../../_shared/shared.module';
 import { SobreNosComponent } from './pages/sobre-nos/sobre-nos.component';
-
-
-
 
 
 @NgModule({
@@ -15,7 +14,10 @@ import { SobreNosComponent } from './pages/sobre-nos/sobre-nos.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AdminModule
     
   ]
 })

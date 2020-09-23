@@ -1,0 +1,14 @@
+<div [formGroup]="formGroup">
+    <div class="form-group">
+        <label for="inputName">{{titulo}}</label>
+        <input class="form-control" [type]="tipo" [id]="idInput" [placeholder]="placeholderInput" [name]="controlName" [formControlName]="controlName">
+        <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'required')">Campo obrigatório</label>
+        <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'email')">Email inválido</label>
+        <!-- <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'minLength')">
+            Campo precisa ter no mínimo {{validacao.lengthValidar(formControl, 'minlength')}} caracteres
+        </label>
+        <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'maxLength')">
+            Campo pode ter no máximo {{validacao.lengthValidar(formControl, 'maxLength')}} caracteres 
+        </label>-->
+    </div>
+</div>
