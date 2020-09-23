@@ -1,0 +1,33 @@
+.card {
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.19)
+}
+
+.name {
+    color: #A6ACBE;
+}
+
+.img {
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 100%;
+}
+
+.red {
+    background-color: rgba(153, 51, 70, 0.1);
+}
+
+.green {
+    background-color: rgba(51, 153, 63, 0.1);
+}
+
+.purple {
+    background-color: rgba(102, 51, 153, 0.1);
+}
+
+.yellow {
+    background-color: rgba(153, 141, 51, 0.1);
+}
+
+.blue {
+    background-color: rgba(51, 63, 153, 0.1);
+}
