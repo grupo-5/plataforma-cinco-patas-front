@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
 
@@ -9,12 +9,9 @@ import { MultiDataSet, Label } from 'ng2-charts';
 })
 export class GraficoRosquinhaComponent implements OnInit {
   
-  public labels: string[] = ['Joao', 'Maria', 'Robrto', 'oi'];
   public donutChartLegend = false;
-  public doughnutChartLabels: Label[] = [this.labels[0], this.labels[1], this.labels[2], this.labels[3]];
-  public doughnutChartData: MultiDataSet = [
-    [25, 25, 25, 25]
-  ];
+  @Input() public doughnutChartLabels: Label[];
+  @Input() public doughnutChartData: MultiDataSet = [];
   public doughnutChartType: ChartType = 'doughnut';
   public donutColors=[
     {

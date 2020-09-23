@@ -1,20 +1,6 @@
-<div class="list-item">
-  <span class="bullet mr-1" style="color:#189CA1;">&#8226;</span>
-  Adotados
+<div class="list-item" *ngFor="let element of listElement, let i = index">
+  <span class="bullet mr-1" [style.color]="bulletColor[i]">&#8226;</span>
+  {{element}}
   <div class="list-number ml-auto"><span>20 </span>(32%)</div>
 </div>
-<div class="list-item">
-  <span class="bullet mr-1" style="color:#FFB800;">&#8226;</span>
-  Tutelados
-  <div class="list-number ml-auto"><span>20 </span>(32%)</div>
-</div>
-<div class="list-item">
-  <span class="bullet mr-1" style="color:#FF4C61;">&#8226;</span>
-  Aguardando Adoção
-  <div class="list-number ml-auto"><span>20 </span>(32%)</div>
-</div>
-<div class="list-item">
-  <span class="bullet mr-1" style="color:#77CE32;">&#8226;</span>
-  Disponíveis
-  <div class="list-number ml-auto"><span>20 </span>(32%)</div>
-</div>
+
