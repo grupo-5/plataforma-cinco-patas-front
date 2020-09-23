@@ -1,6 +1,14 @@
 
 <app-navbar></app-navbar>
+<div class="container">
+    <button  class="btn btn-primary" routerLink='/admin'>Admin</button>
+</div>
+
+
+<button  class="btn btn-primary" routerLink='/admin'>Admin</button>
+<app-input-combobox></app-input-combobox>
 
 <router-outlet></router-outlet>
 
-<app-footer></app-footer>
+
+<app-imagem-paginacao [list]="listaAnimais"></app-imagem-paginacao>
