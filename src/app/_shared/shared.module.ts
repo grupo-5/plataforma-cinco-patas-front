@@ -25,6 +25,10 @@ import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
 import { CardGraficoComponent } from './components/card-grafico/card-grafico.component';
 import { ImagemPaginacaoComponent } from './components/imagem-paginacao/imagem-paginacao.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
+import { HeaderComCarrosselComponent } from './components/header-com-carrossel/header-com-carrossel.component';
+import { CardSobreNosComponent } from './components/card-sobre-nos/card-sobre-nos.component';
+import { CardTimelineComponent } from './components/card-timeline/card-timeline.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -46,7 +50,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TestesTathiComponent,
     CardGraficoComponent,
     ImagemPaginacaoComponent,
-    FormTextareaComponent
+    FormTextareaComponent,
+    HeaderComCarrosselComponent,
+    CardSobreNosComponent,
+    CardTimelineComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +82,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TestesTathiComponent,
     CardGraficoComponent,
     ImagemPaginacaoComponent,
-    FormTextareaComponent
+    FormTextareaComponent,
+    HeaderComCarrosselComponent,
+    CardSobreNosComponent,
+    CardTimelineComponent
   ]
 })
 export class SharedModule { }

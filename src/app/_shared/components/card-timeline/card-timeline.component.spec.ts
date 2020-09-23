@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputComboboxComponent } from './input-combobox.component';
+import { CardTimelineComponent } from './card-timeline.component';
 
-describe('InputComboboxComponent', () => {
-  let component: InputComboboxComponent;
-  let fixture: ComponentFixture<InputComboboxComponent>;
+describe('CardTimelineComponent', () => {
+  let component: CardTimelineComponent;
+  let fixture: ComponentFixture<CardTimelineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputComboboxComponent ]
+      declarations: [ CardTimelineComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InputComboboxComponent);
+    fixture = TestBed.createComponent(CardTimelineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +22,5 @@ describe('InputComboboxComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-}); 
+});
+ 
