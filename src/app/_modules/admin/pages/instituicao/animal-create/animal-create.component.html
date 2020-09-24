@@ -1,62 +1,66 @@
-<div class="container mt-4" *ngIf="formCadastro">
-    <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
-       <div class="row">
-           <div class="col-8">
-                <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome" [formGroup]="formCadastro"
-                    controlName="nome"></app-input-text>
-           </div>
-           <div class="col-4">
-                <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento" [formGroup]="formCadastro"
-                    controlName="dataNasci"></app-input-text>
-           </div>
-       </div>
-        <!-- <app-input-text tipo="email" idInput="imputEmail" placeholderInput="usuario@gmail.com" titulo="Email"
-            [formGroup]="formCadastro" controlName="email"></app-input-text> -->
-        <div class="row">
-            <div class="col-md-6">
-                <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
-                    [formGroup]="formCadastro" controlName="especie"></app-input-radio>
-            </div>
-            <div class="col-md-6">
-                <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos" [formGroup]="formCadastro"
-                    controlName="sexo"></app-input-radio>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
-                    [formGroup]="formCadastro" controlName="porte"></app-input-radio>
-            </div>
-            <div class="col-md-6">
-                <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra" [texto_opcoes]="localizacoes" [formGroup]="formCadastro"
-                    controlName="localizacao"></app-input-radio>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
-                    [texto_opcoes]="cuidados_vets" [formGroup]="formCadastro" controlName="cuidados_vet">
-                </app-input-checkbox>
-            </div>
-            <div class="col-md-6">
-                <app-input-checkbox idCheckBox="idPersonalidade" titulo="Personalidade" [texto_opcoes]="personalidades"
-                    [formGroup]="formCadastro" controlName="personalidade"></app-input-checkbox>
-            </div>
-        </div>
+        <div class="col-md-9 ">
+            <div class=" mt-5 mr-5" *ngIf="formCadastro">
+                <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome"
+                                [formGroup]="formCadastro" controlName="nome"></app-input-text>
+                        </div>
+                        <div class="col-md-4">
+                            <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento"
+                                [formGroup]="formCadastro" controlName="dataNasci"></app-input-text>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
+                                [formGroup]="formCadastro" controlName="especie"></app-input-radio>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos"
+                                [formGroup]="formCadastro" controlName="sexo"></app-input-radio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
+                                [formGroup]="formCadastro" controlName="porte"></app-input-radio>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra"
+                                [texto_opcoes]="localizacoes" [formGroup]="formCadastro" controlName="localizacao">
+                            </app-input-radio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
+                                [texto_opcoes]="cuidados_vets" [formGroup]="formCadastro" controlName="cuidados_vet">
+                            </app-input-checkbox>
+                        </div>
+                        <div class="col-md-6">
+                            <app-input-checkbox idCheckBox="idPersonalidade" titulo="Personalidade"
+                                [texto_opcoes]="personalidades" [formGroup]="formCadastro" controlName="personalidade">
+                            </app-input-checkbox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro"
+                                controlName="info_extras"></app-form-textarea>
+                        </div>
+                    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <app-input-combobox titulo="Cidade" [lista]="cidades" [formGroup]="formCadastro" controlName="cidade"></app-input-combobox>
+                    <button class="btn btn-secondary mr-3" type="reset">Limpar</button>
+                    <button class="btn btn-primary float-right" type="submit">Avançar</button>
+                </form>
+                <!-- <button  class="btn btn-primary" routerLink='/admin'>Admin</button> -->
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro" controlName="info_extras"></app-form-textarea>
-            </div>
-        </div>
-
-        <button class="btn btn-secondary mr-3" type="reset">Limpar</button>
-        <button class="btn btn-primary " type="submit">Salvar</button>
-    </form>
-    <!-- <button  class="btn btn-primary" routerLink='/admin'>Admin</button> -->
+    </div>
 </div>

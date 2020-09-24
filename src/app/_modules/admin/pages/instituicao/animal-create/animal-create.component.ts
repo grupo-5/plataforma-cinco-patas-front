@@ -22,6 +22,7 @@ export class AnimalCreateComponent implements OnInit {
   localizacoes: Array<String>;
   cidades: Array<String>;
   informacoes: string;
+  
 
   constructor(
     public animalService: AnimalService,
@@ -30,18 +31,14 @@ export class AnimalCreateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-
-  // get f() {
-  //   return this.formCadastro.controls;
-  // }
-
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.animalService.visualizar(this.id).subscribe((animal: Animal) => this.criarFormulario(animal));
-    } else {
+    } 
+    else {
       this.criarFormulario(this.criarAnimalEmBranco());
-    }
+   }
 
     this.generos = ['Masculino', 'Feminino'];
     this.especies = ['Gato', 'Cachorro'];
@@ -50,7 +47,6 @@ export class AnimalCreateComponent implements OnInit {
     this.cuidados_vets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
     this.localizacoes = ['Ong','Com o dono'];
     this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
-
   }
 
 
@@ -66,8 +62,9 @@ export class AnimalCreateComponent implements OnInit {
       animal.id = this.id;
       console.log("editar *** " + animal.nome)
       this.editar(animal);
-    } else {
-      console.log("salvar *** " + animal.cuidados_vet)
+    }
+     else {
+      console.log("salvar *** " + animal.nome)
       this.salvar(animal);
     }
   }
@@ -93,22 +90,8 @@ export class AnimalCreateComponent implements OnInit {
   }
 
   private criarAnimalEmBranco(): Animal {
-    return {
-      id: null,
-      nome: null,
-      dataNasci: null,
-      especie: null,
-      porte: null,
-      sexo: null,
-      personalidade: null,
-      cuidados_vet: null,
-      localizacao: null,
-      cidade: null,
-      info_extras: null,
-    } as Animal;
+    return {} as Animal;
   }
-
-
 
   private editar(animal: Animal): void {
     this.animalService.editar(animal).subscribe();
