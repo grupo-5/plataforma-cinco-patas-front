@@ -1,12 +1,18 @@
 <div class="card">
+  <div class="card-header">
+    {{titulo}}
+  </div>
   <div class="card-body">
     <div class="row">
       <div class="col-12">
-        <app-grafico-rosquinha></app-grafico-rosquinha>
+        <app-grafico-rosquinha [doughnutChartLabels]="myDoughnutLabels" [doughnutChartData]="myDoughnutData">
+        </app-grafico-rosquinha>
       </div>
     </div>
     <div class="row">
-      <div class="col-12">----Aguardando tabela ------</div>
+      <div class="col-12">
+        <app-card-lista [listElement]="myListElements" [numberAnimals]="myDoughnutData" [percentage]="myPercentage"></app-card-lista>
+      </div>
     </div>
   </div>
 </div>

@@ -16,10 +16,13 @@ export class AnimalCreateComponent implements OnInit {
   formCadastro: FormGroup;
   generos: Array<String>;
   especies: Array<String>;
-  cuidados_vets: Array<String>;
+  cuidadosVets: Array<String>;
   personalidades: Array<String>;
   portes: Array<String>;
   localizacoes: Array<String>;
+  cidades: Array<String>;
+  informacoes: string;
+  
 
   constructor(
     public animalService: AnimalService,
@@ -28,25 +31,22 @@ export class AnimalCreateComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
-
-  // get f() {
-  //   return this.formCadastro.controls;
-  // }
-
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.animalService.visualizar(this.id).subscribe((animal: Animal) => this.criarFormulario(animal));
-    } else {
+    } 
+    else {
       this.criarFormulario(this.criarAnimalEmBranco());
-    }
+   }
 
-    this.generos = ['Masculino', 'Feminino'];
+    this.generos = ['Macho', 'Fêmea'];
     this.especies = ['Gato', 'Cachorro'];
-    this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
-    this.cuidados_vets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
     this.portes = ['P','M','G'];
+    this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
+    this.cuidadosVets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
     this.localizacoes = ['Ong','Com o dono'];
+    this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
   }
 
 
@@ -62,8 +62,9 @@ export class AnimalCreateComponent implements OnInit {
       animal.id = this.id;
       console.log("editar *** " + animal.nome)
       this.editar(animal);
-    } else {
-      console.log("salvar *** " + animal.cuidados_vet)
+    }
+     else {
+      console.log("salvar *** " + animal.nome)
       this.salvar(animal);
     }
   }
@@ -79,30 +80,17 @@ export class AnimalCreateComponent implements OnInit {
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
-      localizacao: [animal.localizacao, [Validators.required]],
       personalidade: [animal.personalidade, [Validators.required]],
-      cuidados_vet: [animal.cuidados_vet, [Validators.required]],
+      cuidadosVet: [animal.cuidadosVet, [Validators.required]],
+      localizacao: [animal.localizacao, [Validators.required]],
+      infoExtras: [animal.infoExtras],
       // email: [animal.email, [Validators.required, Validators.email]],
-      //info_extras: [animal.info_extras],
     });
   }
 
   private criarAnimalEmBranco(): Animal {
-    return {
-      id: null,
-      nome: null,
-      dataNasci: null,
-      personalidade: null,
-      cuidados_vet: null,
-      porte: null,
-      especie: null,
-      sexo: null,
-      localizacao: null,
-      // info_extras: null,
-    } as Animal;
+    return {} as Animal;
   }
-
-
 
   private editar(animal: Animal): void {
     this.animalService.editar(animal).subscribe();

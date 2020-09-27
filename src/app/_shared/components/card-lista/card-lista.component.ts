@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardListaComponent implements OnInit {
 
   @Input() listElement: string[]; 
+  @Input() numberAnimals: Array<any>;
+  @Input() percentage: Array<any>;
   bulletColor: string[] = ["#189CA1", "#FFB800", "#FF4C61", "#77CE32"];
 
   constructor() { }

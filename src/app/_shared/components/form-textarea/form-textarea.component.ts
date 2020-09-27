@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormTextareaComponent implements OnInit {
   @Input() titulo :string;
+  @Input() idTextarea: string;
   @Input() formGroup: FormGroup; 
   @Input() controlName: string;
 

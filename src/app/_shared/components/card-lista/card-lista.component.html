@@ -1,7 +1,19 @@
-<div class="list-item" *ngFor="let element of listElement, let i = index">
-  <span class="bullet mr-1" [style.color]="bulletColor[i]">&#8226;</span>
-  {{element}}
-  <!--lembrar que aqui vai ter que ter uma variável que pegue dados do banco-->
-  <div class="list-number ml-auto"><span>20 </span>(32%)</div>
-</div>
+<div class="row">
+  <div class="col-9">
+    <div class="list-item" *ngFor="let element of listElement, let i = index">
+      <span class="bullet mr-1" [style.color]="bulletColor[i]">&#8226;</span>
+      {{element}}
+    </div>
+  </div>
+  <div class="col-1 pr-0">
+    <div class="list-number ml-auto" *ngFor="let animal of numberAnimals ">
+      <span>{{animal}} </span>
+    </div>
+  </div>
+  <div class="col-2 pl-0">
+    <div class="list-number ml-auto" *ngFor="let perc of percentage ">
+      <label class="m-0">({{perc}}%)</label>
+    </div>
+  </div>
 
+</div>

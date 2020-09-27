@@ -1,3 +1,6 @@
+import { AnimalCreateComponent } from './../_modules/admin/pages/instituicao/animal-create/animal-create.component';
+import { DashboardComponent } from './../_modules/admin/pages/instituicao/dashboard.component';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -63,7 +66,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSidenavModule,
     MatListModule,
     MatToolbarModule, 
-    NgbModule
+    NgbModule,
+    RouterModule
 
   ], exports:[
     NavbarComponent,
@@ -85,7 +89,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormTextareaComponent,
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
-    CardTimelineComponent
+    CardTimelineComponent,
   ]
 })
 export class SharedModule { }
