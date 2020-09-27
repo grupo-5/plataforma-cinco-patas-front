@@ -36,6 +36,7 @@ import { CardTimelineComponent } from './components/card-timeline/card-timeline.
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-de-imagens.component';
 
+import { ListagemComponent } from './components/listagem/listagem.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-
     CardSobreNosComponent,
     CardTimelineComponent,
     FormTextareaComponent,
-    UploadDeImagensComponent
+    UploadDeImagensComponent,
+    ListagemComponent,
   ],
   imports: [
     CommonModule,
@@ -99,7 +101,7 @@ import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
     CardTimelineComponent,
-    FormTextareaComponent
+    ListagemComponent
   ]
 })
 export class SharedModule { }
