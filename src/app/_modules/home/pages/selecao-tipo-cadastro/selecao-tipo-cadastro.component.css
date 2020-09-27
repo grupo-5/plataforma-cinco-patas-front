@@ -1,0 +1,23 @@
+h1 {
+    color: var(--main-orange-color);
+    font-size: 15px;
+}
+
+.button-duble {
+    color: #fff;
+    border-radius: 14px;
+    background-color: var(--main-second-color);
+}
+
+@media only screen and (min-width: 800px) {
+    .img {
+        height: 100vh;
+    }
+}
+
+.img {
+    background-image: url(../../../../../assets/images/login.png);
+    height: calc(100vh - 139px);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
