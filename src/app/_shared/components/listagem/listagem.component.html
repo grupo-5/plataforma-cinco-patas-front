@@ -1,0 +1,35 @@
+<form>
+  <div class="form-group form-inline float-left">
+    <img id="lupa" class="ml-2" src="assets/icons/search.svg" alt=""><input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search"/>
+  </div>
+</form>
+
+<div class="dropdown dropleft mr-2 float-right">
+  <button class="btn btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <img src="assets/icons/filter.svg" alt="">
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a *ngFor="let item of dropFilter" class="dropdown-item" href="#">{{item}}</a>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of listarHeaders()" scope="col">{{header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let objeto of objetosFiltrados | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <td *ngFor="let elemento of listarElementos(objeto)">{{elemento}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="collectionSize">
+  </ngb-pagination>
+</div>

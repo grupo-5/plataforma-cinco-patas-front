@@ -30,7 +30,7 @@ import { CardSobreNosComponent } from './components/card-sobre-nos/card-sobre-no
 import { CardTimelineComponent } from './components/card-timeline/card-timeline.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ListagemComponent } from './components/listagem/listagem.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormTextareaComponent,
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
-    CardTimelineComponent
+    CardTimelineComponent,
+    ListagemComponent,
   ],
   imports: [
     CommonModule,
@@ -85,7 +86,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormTextareaComponent,
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
-    CardTimelineComponent
+    CardTimelineComponent,
+    ListagemComponent
   ]
 })
 export class SharedModule { }
