@@ -16,7 +16,7 @@ export class AnimalCreateComponent implements OnInit {
   formCadastro: FormGroup;
   generos: Array<String>;
   especies: Array<String>;
-  cuidados_vets: Array<String>;
+  cuidadosVets: Array<String>;
   personalidades: Array<String>;
   portes: Array<String>;
   localizacoes: Array<String>;
@@ -40,11 +40,11 @@ export class AnimalCreateComponent implements OnInit {
       this.criarFormulario(this.criarAnimalEmBranco());
    }
 
-    this.generos = ['Masculino', 'Feminino'];
+    this.generos = ['Macho', 'Fêmea'];
     this.especies = ['Gato', 'Cachorro'];
     this.portes = ['P','M','G'];
     this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
-    this.cuidados_vets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
+    this.cuidadosVets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
     this.localizacoes = ['Ong','Com o dono'];
     this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
   }
@@ -81,10 +81,9 @@ export class AnimalCreateComponent implements OnInit {
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
       personalidade: [animal.personalidade, [Validators.required]],
-      cuidados_vet: [animal.cuidados_vet, [Validators.required]],
+      cuidadosVet: [animal.cuidadosVet, [Validators.required]],
       localizacao: [animal.localizacao, [Validators.required]],
-      cidade:[animal.cidade,[Validators.required]],
-      info_extras: [animal.info_extras],
+      infoExtras: [animal.infoExtras],
       // email: [animal.email, [Validators.required, Validators.email]],
     });
   }

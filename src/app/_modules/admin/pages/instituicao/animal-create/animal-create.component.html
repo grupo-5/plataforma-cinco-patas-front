@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-md-9 ">
-            <div class=" mt-5 mr-5" *ngIf="formCadastro">
+        <div class="col-md-9 pt-5 pr-5 mb-5">
+            <h1 class="text-center pt-5">Cadastro Animal</h1>
+            <div class=" mt-4 mr-5" *ngIf="formCadastro">
                 <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
                     <div class="row">
                         <div class="col-md-8">
@@ -40,7 +41,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
-                                [texto_opcoes]="cuidados_vets" [formGroup]="formCadastro" controlName="cuidados_vet">
+                                [texto_opcoes]="cuidadosVets" [formGroup]="formCadastro" controlName="cuidadosVet">
                             </app-input-checkbox>
                         </div>
                         <div class="col-md-6">
@@ -52,14 +53,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro"
-                                controlName="info_extras"></app-form-textarea>
+                                controlName="infoExtras"></app-form-textarea>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary mr-3" type="reset">Limpar</button>
-                    <button class="btn btn-primary float-right" type="submit">Avançar</button>
+                    <!-- <button class="btn btn-secondary mr-3" type="reset">Limpar</button> -->
+                    <button class="btn btn-primary float-right" routerLink='/cadastro-animal-2' type="submit">Avançar</button>
                 </form>
-                <!-- <button  class="btn btn-primary" routerLink='/admin'>Admin</button> -->
             </div>
         </div>
     </div>
