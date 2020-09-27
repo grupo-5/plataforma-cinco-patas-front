@@ -16,7 +16,7 @@ export class GraficoBarrasComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
-  public barChartColor: Color[] = [{ backgroundColor: '#6F52ED'}, {backgroundColor: '#FF7A00'}];
+  public barChartColor: Color[] = [{ backgroundColor: '#189CA1' }, { backgroundColor: '#83DB12'}];
   @Input() public barChartData: ChartDataSets[];
 
   constructor() { }

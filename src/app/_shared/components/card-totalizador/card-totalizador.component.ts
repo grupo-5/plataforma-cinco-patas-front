@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-totalizador',
@@ -8,13 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class CardTotalizadorComponent implements OnInit {
 
   constructor() { }
-   // @Input() options: {}
+  @Input() options : any;
 
-   options = 
-    { name: 'Animais', value: 13, route: '/link',imageUrl:'../../../../assets/images/logo.png' , color:'red'}
-   
-
-  ;
+  //  options = 
+  //    { name: 'Animais', value: 13, route: '/link', imageUrl: '../../../../assets/images/logo.png', color: 'red', icon: 'fa fa-paw mr-2'};
 
 
   ngOnInit(): void {

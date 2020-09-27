@@ -1,33 +1,33 @@
-.card {
-    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.19)
-}
+/* .card {
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+} */
 
 .name {
-    color: #A6ACBE;
+  color: #A6ACBE;
 }
 
-.img {
-    box-sizing: border-box;
-    padding: 5px;
-    border-radius: 100%;
+.red>i {
+  color: red;
+  font-size: 20px;
 }
 
-.red {
-    background-color: rgba(153, 51, 70, 0.1);
+.green>i {
+  background-color: rgba(120, 206, 50, 0.219);
+  border-radius: 50px;
+  padding: 20px;
+  color: #77CE32;
+  font-size: 20px;
 }
 
-.green {
-    background-color: rgba(51, 153, 63, 0.1);
+.blue>i {
+  background-color: #189ca132;
+  border-radius: 50px;
+  padding: 20px;
+  color: #189CA1;
+  font-size: 20px;
 }
 
-.purple {
-    background-color: rgba(102, 51, 153, 0.1);
-}
-
-.yellow {
-    background-color: rgba(153, 141, 51, 0.1);
-}
-
-.blue {
-    background-color: rgba(51, 63, 153, 0.1);
+.display-5 {
+  font-size: 2.5rem;
 }
