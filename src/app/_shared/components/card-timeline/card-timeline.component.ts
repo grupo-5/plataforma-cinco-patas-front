@@ -11,6 +11,7 @@ export class CardTimelineComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
  

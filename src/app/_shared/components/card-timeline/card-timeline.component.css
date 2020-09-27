@@ -1,0 +1,46 @@
+.dot1 {
+    height: 25px;
+    width: 25px;
+    background-color: #77CE32;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot2 {
+    height: 25px;
+    width: 25px;
+    background-color: #979797;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot3 {
+    height: 25px;
+    width: 25px;
+    background-color: #979797;
+    border-radius: 50%;
+    display: inline-block;
+    justify-content: space-around;
+  }
+  .div2{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card{
+    flex-direction: row;
+  }
+  body{
+      flex-direction: row;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: top;
+      padding: 10px;
+      justify-content: space-around;
+      width: 20%;
+      border: none;
+      height: 10%;
+  }
+  hr{
+    background-color: black;
+  }

@@ -6,11 +6,12 @@ import { SharedModule } from './../../_shared/shared.module';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AnimalCreateComponent } from './pages/instituicao/animal-create/animal-create.component';
+import { CadastroDepoimentosComponent } from './pages/pessoa/cadastro-depoimentos/cadastro-depoimentos.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AnimalCreateComponent],
+  declarations: [AdminComponent, AnimalCreateComponent, CadastroDepoimentosComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -18,7 +19,8 @@ import { AnimalCreateComponent } from './pages/instituicao/animal-create/animal-
     FormsModule,
     ReactiveFormsModule,
   ], exports: [
-    AnimalCreateComponent
+    AnimalCreateComponent,
+    CadastroDepoimentosComponent
   ]
 })
 export class AdminModule { }
