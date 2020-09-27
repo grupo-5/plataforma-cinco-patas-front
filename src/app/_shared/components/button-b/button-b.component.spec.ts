@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComCarrosselComponent } from './header-com-carrossel.component';
+import { ButtonBComponent } from './button-b.component';
 
-describe('HeaderComCarrosselComponent', () => {
-  let component: HeaderComCarrosselComponent;
-  let fixture: ComponentFixture<HeaderComCarrosselComponent>;
+describe('ButtonBComponent', () => {
+  let component: ButtonBComponent;
+  let fixture: ComponentFixture<ButtonBComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComCarrosselComponent ]
+      declarations: [ ButtonBComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComCarrosselComponent);
+    fixture = TestBed.createComponent(ButtonBComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,4 +23,4 @@ describe('HeaderComCarrosselComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
+ 

@@ -5,17 +5,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { ChartsModule } from 'ng2-charts';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
 import { FooterComponent } from './layout/footer/footer.component';
 import { GraficoRosquinhaComponent } from './components/grafico-rosquinha/grafico-rosquinha.component';
 import { CardListaComponent } from './components/card-lista/card-lista.component';
 import { CardIncentivoComponent } from './components/card-incentivo/card-incentivo.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { ButtonGComponent } from './components/button-g/button-g.component';
+import { ButtonBComponent } from './components/button-b/button-b.component';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
 import { InputCheckboxComponent } from './components/input-checkbox/input-checkbox.component';
 import { InputRadioComponent } from './components/input-radio/input-radio.component';
@@ -38,6 +39,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     NavbarComponent,
+    ButtonGComponent,
+    ButtonBComponent,
+    ModalInfoComponent,
     InputTextComponent,
     InputCheckboxComponent,
     InputRadioComponent,
@@ -53,10 +57,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TestesTathiComponent,
     CardGraficoComponent,
     ImagemPaginacaoComponent,
-    FormTextareaComponent,
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
-    CardTimelineComponent
+    CardTimelineComponent,
+    FormTextareaComponent
   ],
   imports: [
     CommonModule,
@@ -71,6 +75,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
   ], exports:[
     NavbarComponent,
+    ButtonGComponent,
+    ButtonBComponent,
+    ModalInfoComponent,
     InputTextComponent,
     InputCheckboxComponent,
     InputRadioComponent,
@@ -90,6 +97,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
     CardTimelineComponent,
+    FormTextareaComponent
   ]
 })
 export class SharedModule { }

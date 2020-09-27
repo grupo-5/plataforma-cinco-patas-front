@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardTimelineComponent } from './card-timeline.component';
+import { ModalInfoComponent } from './modal-info.component';
 
-describe('CardTimelineComponent', () => {
-  let component: CardTimelineComponent;
-  let fixture: ComponentFixture<CardTimelineComponent>;
+describe('ModalInfoComponent', () => {
+  let component: ModalInfoComponent;
+  let fixture: ComponentFixture<ModalInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardTimelineComponent ]
+      declarations: [ ModalInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardTimelineComponent);
+    fixture = TestBed.createComponent(ModalInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,4 +23,4 @@ describe('CardTimelineComponent', () => {
     expect(component).toBeTruthy();
   });
 });
- 
+
