@@ -10,12 +10,12 @@ export class NavbarComponent implements OnInit {
   // @Input() options: {}
 
   options = [
-    { name: 'home', route: '/admin', type: 'link' },
-    { name: 'Sobre Nos', route: '/admin', type: 'link' },
+    { name: 'home', route: '/home-page', type: 'link' },
+    { name: 'Sobre Nos', route: '/sobre-nos', type: 'link' },
     { name: 'Quero Ajudar', route: '/admin', type: 'link' },
-    { name: 'Depoimentos', route: '/admin', type: 'link' },
-    { name: 'Ongs Parceiras', route: '/admin', type: 'link' },
-    { name: 'Login', route: '/admin', type: 'button' },
+    { name: 'Depoimentos', route: '/depoimentos', type: 'link' },
+    { name: 'Ongs Parceiras', route: '/ong-parceiras', type: 'link' },
+    { name: 'Login', route: '/instituicao', type: 'button' },
 
   ];
 

@@ -1,0 +1,7 @@
+<form>
+    <img [src]="imgURL" height="200" *ngIf="imgURL" class="img-thumbnail">
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Example file input</label>
+      <input type="file" #file  class="form-control-file" id="uploadFile" accept='image/*' (change)="preview(file.files)">
+    </div>
+  </form>

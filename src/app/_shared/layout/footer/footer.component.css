@@ -1,3 +1,6 @@
-#sticky-footer {
-  flex-shrink: none;
+
+footer{
+  background-color:#232323;
+  bottom:0;
+  color: #FFF;
 }

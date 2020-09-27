@@ -34,6 +34,7 @@ import { CardSobreNosComponent } from './components/card-sobre-nos/card-sobre-no
 import { CardTimelineComponent } from './components/card-timeline/card-timeline.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-de-imagens.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
     CardTimelineComponent,
-    FormTextareaComponent
+    FormTextareaComponent,
+    UploadDeImagensComponent
   ],
   imports: [
     CommonModule,

@@ -1,69 +1,71 @@
-<nav
-  class="navbar navbar-expand-sm navbar-dark bg-dark navbar-default justify-content-between"
->
-  <a class="navbar-brand" href="#"
-    ><img src="../../../../assets/images/logo.png" class="logo"
-  /></a>
-  <button
-    class="navbar-toggler d-lg-none"
-    type="button"
-    data-toggle="collapse"
-    data-target="#collapsibleNavId"
-    aria-controls="collapsibleNavId"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
+
+
+  <nav
+    class="navbar navbar-expand-sm navbar-dark  navbar-default justify-content-between " 
   >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavId">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active" *ngFor="let op of options">
-        <ng-container *ngIf="op.type == 'link'">
-          <a class="nav-link" [href]="op.route"
-            >{{ op.name }} <span class="sr-only">(current)</span></a
-          >
-        </ng-container>
-
-        <ng-container *ngIf="op.type == 'image'">
-          <img [src]="op.url" />
-        </ng-container>
-
-        <ng-container *ngIf="op.type == 'image-text'">
-          <span>{{ op.name }}</span>
-          <img [src]="op.url" />
-        </ng-container>
-
-        <ng-container *ngIf="op.type == 'dropdown'">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="dropdownId"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            >Dropdown</a
-          >
-          <div class="dropdown-menu" aria-labelledby="dropdownId">
-            <a class="dropdown-item" href="#">Action 1</a>
-            <a class="dropdown-item" href="#">Action 2</a>
-          </div>
-        </ng-container>
-
-    </li>
-           
-    </ul>
-  </div>
-  <ng-container *ngFor="let op of options">
-
-    <!--aguardando componente de botao-->
-    <form class="form-inline">
-  <button
-    *ngIf="op.type == 'button'"
-    class="btn btn-success my-2 my-sm-0"
-    type="submit"
-  >
-    {{op.name}}
-  </button>
-    </form>
-</ng-container>
-</nav>
+    <a class="navbar-brand" href="#"
+      ><img src="../../../../assets/images/logo.png" class="logo"
+    /></a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active" *ngFor="let op of options">
+          <ng-container *ngIf="op.type == 'link'">
+            <a class="nav-link" [href]="op.route"
+              >{{ op.name }} <span class="sr-only">(current)</span></a
+            >
+          </ng-container>
+  
+          <ng-container *ngIf="op.type == 'image'">
+            <img [src]="op.url" />
+          </ng-container>
+  
+          <ng-container *ngIf="op.type == 'image-text'">
+            <span>{{ op.name }}</span>
+            <img [src]="op.url" />
+          </ng-container>
+  
+          <ng-container *ngIf="op.type == 'dropdown'">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Dropdown</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Action 1</a>
+              <a class="dropdown-item" href="#">Action 2</a>
+            </div>
+          </ng-container>
+  
+      </li>
+             
+      </ul>
+    </div>
+    <ng-container *ngFor="let op of options">
+  
+      <!--aguardando componente de botao-->
+      <form class="form-inline">
+    <button
+      *ngIf="op.type == 'button'"
+      class="btn btn-success my-2 my-sm-0 btn-default"
+      type="submit"
+    >
+      {{op.name}}
+    </button>
+      </form>
+  </ng-container>
+  </nav>
