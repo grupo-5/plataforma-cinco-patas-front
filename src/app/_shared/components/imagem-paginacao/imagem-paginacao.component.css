@@ -1,4 +1,30 @@
 .imagem-animal{
-    width: 120px;
-    height: 120px;
+    box-sizing: border-box;
+    width: 275px;
+    height: 275px;
+    margin: 10px;
+    object-fit: cover;
 }
+
+.container-image{
+    width: 100vw;
+    height: 400px;
+}
+
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+    background-color:white !important;
+    color:#000;
+    outline: none!important;
+    border:none!important;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: var(--main-color) !important;
+    border-radius: 10px;
+    color:#000!important;
+    border: none!important;
+    font-weight: bold;
+    outline: none!important;
+}
+
+

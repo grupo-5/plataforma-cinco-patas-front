@@ -1,21 +1,24 @@
-<div
-  *ngFor="
-    let item of list
-      | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
-  "
->
-  <div>
-    {{ item.name }}
-    <img class="img-thumbnail imagem-animal" [src]="item.imgUrl" alt="" />
+<div class="d-flex justify-content-center flex-wrap">
+  <div
+    *ngFor="
+      let item of list
+        | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+    "
+  >
+    <div>
+      {{ item.name }}
+      <img class="img-thumbnail imagem-animal" [src]="item.imgUrl" alt="" />
+    </div>
   </div>
 </div>
-
-<ngb-pagination
-  [collectionSize]="list.length"
-  [(page)]="page"
-  [pageSize]="pageSize"
-  [maxSize]="3"
-  [rotate]="true"
-  [ellipses]="false"
-  [boundaryLinks]="true"
-></ngb-pagination>
+<div class="d-flex justify-content-center py-4">
+  <ngb-pagination
+    [collectionSize]="list.length"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [maxSize]="5"
+    [rotate]="true"
+    [ellipses]="false"
+    [boundaryLinks]="true"
+  ></ngb-pagination>
+</div>

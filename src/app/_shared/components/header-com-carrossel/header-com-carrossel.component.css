@@ -1,9 +1,14 @@
-h4{
+h4 {
     color: black;
     font-weight: bold;
 }
-p{
+
+p {
     color: black;
     font-weight: bold;
 }
- 
+
+img {
+    height: 500px;
+    object-fit: cover;
+}

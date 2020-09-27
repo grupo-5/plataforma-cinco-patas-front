@@ -47,3 +47,4 @@ export class UploadDeImagensComponent implements OnInit {
     }
   
 }
+}
