@@ -16,4 +16,6 @@ export interface Animal {
     enderecoEstado: string;
     enderecoComplemento: string;
     nomeTitular: string;
+    telefone: string;
+    celular: string;
 }

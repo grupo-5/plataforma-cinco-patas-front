@@ -39,6 +39,8 @@ export class AnimalCreateP2Component implements OnInit {
       enderecoNumero: [animal.enderecoNumero, [Validators.required]],
       enderecoComplemento: [animal.enderecoComplemento, [Validators.required]],
       enderecoCep: [animal.enderecoCep, [Validators.required]],
+      telefone: [animal.telefone],
+      celular: [animal.celular, [Validators.required]],
     });
   }
 

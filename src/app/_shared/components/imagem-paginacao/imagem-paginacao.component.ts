@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ImagemPaginacaoComponent implements OnInit {
   @Input() list: [];
   page = 1;
-  pageSize =20
+  pageSize =15
 
   constructor() {}
 

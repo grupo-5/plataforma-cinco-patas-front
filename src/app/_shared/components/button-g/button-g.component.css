@@ -1,8 +1,5 @@
 button {
-    height: 60px; 
-    width: 140px; 
-    border-radius: 4px; 
-    background: #83DB12;
+    background-color: var(--main-color);
     border: none;
 }
 button:hover {

@@ -1,7 +1,7 @@
 .imagem-animal{
     box-sizing: border-box;
-    width: 275px;
-    height: 275px;
+    width: 200px;
+    height: 200px;
     margin: 10px;
     object-fit: cover;
 }

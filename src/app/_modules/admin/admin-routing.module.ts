@@ -1,3 +1,4 @@
+import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
 import { AnimalCreateComponent } from './pages/instituicao/animal-create/animal-create.component';
 import { AnimalCreateP2Component } from './pages/instituicao/animal-create-p2/animal-create-p2.component';
 
@@ -14,7 +15,8 @@ const routes: Routes = [
             { path: 'instituicao', component: DashboardComponent},
             { path: 'cadastro-animal-1', component: AnimalCreateComponent},
             { path: 'cadastro-animal-2', component: AnimalCreateP2Component},
-            { path: 'pessoas', component: AnimalCreateComponent},
+            { path: 'pessoas', component: ListagemAnimaisComponent},
+            { path: 'animais', component: ListagemAnimaisComponent},
                  ],
     },
 ];
