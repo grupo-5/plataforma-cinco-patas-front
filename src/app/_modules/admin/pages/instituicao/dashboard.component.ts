@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
 
   //Card totalizador
   myTotalizadorAnimais = { name: 'Animais', value: 80, route: '/link', color: 'green', icon: 'fa fa-paw mr-2' };
-  myTotalizadorCapacidade = { name: 'Pessoas', value: 100, route: '/link', color: 'blue', icon: 'fa fa-users' };
+  myTotalizadorCapacidade = { name: 'Pessoas', value: 10, route: '/link', color: 'blue', icon: 'fa fa-users' };
 
   //Card grafico
   labels: Array<any>;
@@ -30,8 +30,6 @@ export class DashboardComponent implements OnInit {
   adotados: Array<number>;
   myBarChartData: Array<any>;
   myBarChartLabels: Array<any>;
-  myOptions: { name: 'Animais', value: 13, route: '/link', imageUrl: '../../../../assets/images/logo.png', color: 'red' };
-
 
   constructor() { }
 
@@ -40,12 +38,12 @@ export class DashboardComponent implements OnInit {
     // this.myOptions =
     //   { name: 'Animais', value: 13, route: '/link', imageUrl: '../../../../assets/images/logo.png', color: 'red' };
 
-    this.labels = ['Adotados', 'Tutelados', 'Aguardando Adoção', 'Disponíveis'];
+    this.labels = ['Adotados', 'Tutelados', 'Disponíveis', 'Aguardando Adoção'];
     this.data = [20, 25, 30, 35];
-    this.labels2 = ['Tutelado - Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
+    this.labels2 = ['Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
     this.data2 = [30, 55, 35, 50];
-    this.elements =['Adotados', 'Tutelados', 'Aguardando Adoção', 'Disponíveis'];
-    this.elements2 =['Tutelado - Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
+    this.elements = ['Adotados', 'Tutelados', 'Disponíveis', 'Aguardando Adoção'];
+    this.elements2 =['Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
     this.calcPercentageAnimais(this.data);
     this.calcPercentageCapacity(this.data2);
 

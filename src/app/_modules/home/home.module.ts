@@ -9,10 +9,11 @@ import { SharedModule } from './../../_shared/shared.module';
 import { SobreNosComponent } from './pages/sobre-nos/sobre-nos.component';
 import { SelecaoTipoCadastroComponent } from './pages/selecao-tipo-cadastro/selecao-tipo-cadastro.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-instituicoes.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, SobreNosComponent, SelecaoTipoCadastroComponent, InicioComponent],
+  declarations: [HomeComponent, SobreNosComponent, SelecaoTipoCadastroComponent, InicioComponent, ListaInstituicoesComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
