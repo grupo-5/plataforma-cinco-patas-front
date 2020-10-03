@@ -6,7 +6,7 @@
             <label class="form-check-label" for="idRadio">{{opcao}}</label>
         </div>
         <div>
-            <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'required')">Campo obrigatório</label>
+            <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.fieldHasError(formControl, 'required')">Campo obrigatório</label>
         </div>
     </div>
 </div>
