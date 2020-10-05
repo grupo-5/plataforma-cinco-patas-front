@@ -1,9 +1,9 @@
 <div class="timeline-container mt-5 mb-3">
   <ng-container *ngFor="let item of listaPassos; let i = index">
-    <hr size="5" *ngIf="i > 0" />
+    <hr  *ngIf="i > 0" />
     <div class="div2">
       <span class="dot" [class.active]="item === active"></span>
-      <p>{{ item }}</p>
+      <p class="mt-2" [class.active]="item === active">{{ item }}</p>
     </div>
   </ng-container>
 </div>

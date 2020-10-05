@@ -14,14 +14,13 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     'Dados Pessoais',
     'Endereco',
     'Match',
-    'Algo Mais',
-    'Mais Alguma coisa',
+   
   ];
   disabled: boolean = false;
   constructor(private route: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.criarFormulario()
+    this.criarFormulario();
   }
   criarFormulario = () => {
     this.formCadastroAdotanteEndereco = this.fb.group({
@@ -34,7 +33,11 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     });
   };
 
+  editarFormulario = (adotante) => {};
+  salvarFomrulario = (adotante) => {};
+
   trocarRota = (evento) => {
-    this.route.navigate(['cadastro-adotante-endereco']);
+    console.log()
+    evento.target.innerText=='Voltar'?this.route.navigate(['cadastro-adotante']):this.route.navigate(['cadastro-adotante-match']);
   };
 }

@@ -1,99 +1,115 @@
 <div class="row">
-    <app-header-com-carrossel></app-header-com-carrossel>
+  <app-header-com-carrossel></app-header-com-carrossel>
+</div>
+
+<div class="row">
+  <div class="col-10 mx-auto">
+    <app-card-timeline
+      [listaPassos]="listaPassos"
+      [active]="'Endereco'"
+    ></app-card-timeline>
   </div>
-  
-  <div class="row">
-    <div class="col-10 mx-auto">
-      <app-card-timeline
-        [listaPassos]="listaPassos"
-        [active]="'Dados Pessoais'"
-      ></app-card-timeline>
+</div>
+<div class="row">
+  <form [formGroup]="formCadastroAdotanteEndereco" class="col-10 mx-auto">
+    <div class="row">
+      <div class="col-3">
+        <app-input-text
+          titulo="CEP"
+          tipo="text"
+          idInput="name"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="name"
+        ></app-input-text>
+      </div>
+      <div class="col-9">
+        <app-input-text
+          titulo="Logradouro"
+          tipo="text"
+          idInput="cpf"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="cpf"
+        ></app-input-text>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <form [formGroup]="formCadastroAdotanteEndereco" class="col-10 mx-auto">
-      <div class="row">
-        <div class="col-12">
-          <app-input-text
-            titulo="Nome"
-            tipo="text"
-            idInput="name"
-            placeholderInput="preencha o nome"
-            [formGroup]="formCadastroAdotanteEndereco"
-            controlName="name"
-          ></app-input-text>
-        </div>
+
+    <div class="row">
+      <div class="col-9">
+        <app-input-text
+          titulo="Complemento"
+          tipo="text"
+          idInput="cpf"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="cpf"
+        ></app-input-text>
       </div>
-  
-      <div class="row">
-        <div class="col-6">
-          <app-input-text
-            titulo="CPF"
-            tipo="text"
-            idInput="cpf"
-            placeholderInput="preencha o nome"
-            [formGroup]="formCadastroAdotanteEndereco"
-            controlName="cpf"
-          ></app-input-text>
-        </div>
-  
-        <div class="col-6">
-          <app-input-text
-            titulo="RG"
-            tipo="text"
-            idInput="rg"
-            placeholderInput="preencha o nome"
-            [formGroup]="formCadastroAdotanteEndereco"
-            controlName="rg"
-          ></app-input-text>
-        </div>
+
+      <div class="col-3">
+        <app-input-text
+          titulo="Numero"
+          tipo="text"
+          idInput="rg"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="rg"
+        ></app-input-text>
       </div>
-  
-      <div class="row">
-        <div class="col-12">
-          <app-input-text
-            titulo="E-mail"
-            tipo="text"
-            idInput="email"
-            placeholderInput="preencha o nome"
-            [formGroup]="formCadastroAdotanteEndereco"
-            controlName="email"
-          ></app-input-text>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="col-6">
-          <app-input-text
-            titulo="Telefone"
-            tipo="text"
-            idInput="telefone"
-            placeholderInput="preencha o nome"
-            [formGroup]="formCadastroAdotanteEndereco"
-            controlName="telefone"
-          ></app-input-text>
-        </div>
-  
-        <div class="col-6">
-          <app-input-radio
-            titulo="Sexo"
-            [texto_opcoes]="listSexo"
-            nomeRadio="sexo"
-            controlName="sexo"
-            [formGroup]="formCadastroAdotanteEndereco"
-          >
-          </app-input-radio>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="row mb-5">
-    <div class="col-10 mx-auto text-right">
-      <app-button-g
-        nomeBotao="Avancar"
-        (onClick)="trocarRota($event)"
-        [disabled]="disabled"
-      ></app-button-g>
     </div>
+
+    <div class="row">
+      <div class="col-6">
+        <app-input-text
+          titulo="Estado"
+          tipo="text"
+          idInput="email"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="email"
+        ></app-input-text>
+      </div>
+      <div class="col-6">
+        <app-input-text
+          titulo="Cidade"
+          tipo="text"
+          idInput="email"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="email"
+        ></app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <app-input-text
+          titulo="Bairro"
+          tipo="text"
+          idInput="telefone"
+          placeholderInput="preencha o nome"
+          [formGroup]="formCadastroAdotanteEndereco"
+          controlName="telefone"
+        ></app-input-text>
+      </div>
+
+
+    </div>
+  </form>
+</div>
+<div class="row mb-5 mt-5">
+  <div class="col-10 mx-auto d-flex justify-content-between">
+    <app-button-g
+      nomeBotao="Voltar"
+      (onClick)="trocarRota($event)"
+      [disabled]="disabled"
+    ></app-button-g>
+
+    <app-button-g
+      nomeBotao="Avancar"
+      (onClick)="trocarRota($event)"
+      [disabled]="disabled"
+    ></app-button-g>
   </div>
-  
+</div>
