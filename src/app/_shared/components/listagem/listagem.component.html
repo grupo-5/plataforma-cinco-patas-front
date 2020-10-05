@@ -13,7 +13,7 @@
 
   <select id="filtrar" class="custom-select" [(ngModel)]="selectedBrand" (change)="valueSelected()">
     <option>Todos</option>
-    <option *ngFor="let item of dropFilter">{{item}}</option>
+    <option *ngFor="let item of selectHeaders()">{{item}}</option>
   </select>
 </div>
 
@@ -25,7 +25,14 @@
   </thead>
   <tbody>
     <tr *ngFor="let objeto of objetosFiltrados | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <td *ngFor="let elemento of listarElementos(objeto)">{{elemento}}</td>
+      <td *ngFor="let elemento of listarElementos(objeto)">
+          <span 
+          [ngClass]="{
+          'badge badge-pill badge-primary': selectHeaders().includes(elemento)
+          }"
+          [style.background]="selectItems[elemento]">{{elemento}}
+        </span>
+      </td>
     </tr>
   </tbody>
 </table>

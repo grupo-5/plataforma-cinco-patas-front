@@ -10,8 +10,12 @@ export class ListagemComponent implements OnInit {
   // Rota do botao adicionar
   @Input() public rLink: string;
 
-  // Categorias que ficarao no select
-  @Input() public dropFilter: string[] = ["Tutor", "Adotante", "Responsavel"];
+  // Categorias que ficarao no select e suas cores
+  @Input() public selectItems: any = {
+    "Tutor": "blue", 
+    "Adotante": "yellow", 
+    "Responsavel": "green"
+  };
 
   // Array de objetos que serao mostrados na listagem (qualquer objeto de qualquer tamanho)
   @Input() public objetosListados: any[] = [
@@ -53,6 +57,10 @@ export class ListagemComponent implements OnInit {
       this.objetosFiltrados = this.objetosListados;
     }
     this.selectFilteredObj = this.objetosFiltrados;
+  }
+
+  selectHeaders() {
+    return Object.keys(this.selectItems);
   }
 
   listarHeaders() {
