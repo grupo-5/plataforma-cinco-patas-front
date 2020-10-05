@@ -15,22 +15,16 @@ import { Component, OnInit } from '@angular/core';
 export class CadastroAdotanteDadosComponent implements OnInit {
   formCadastroAdotante: FormGroup;
   listSexo = ['Feminino', 'Masculino', 'Nao declarar'];
-  listaPassos = [
-    'Dados Pessoais',
-    'Endereco',
-    'Match',
-    'Algo Mais',
-    'Mais Alguma coisa',
-  ];
-  disabled:boolean=false
+  listaPassos = ['Dados Pessoais', 'Endereco', 'Match'];
+  disabled: boolean = false;
 
-  constructor(private fb: FormBuilder, private route:Router) {}
+  constructor(private fb: FormBuilder, private route: Router) {}
 
   ngOnInit(): void {
-    this.criarFormulario();
+    this.criaFormulario();
   }
 
-  criarFormulario = () => {
+  criaFormulario = () => {
     this.formCadastroAdotante = this.fb.group({
       name: ['', Validators.required],
       cpf: ['', Validators.required],
@@ -41,7 +35,7 @@ export class CadastroAdotanteDadosComponent implements OnInit {
     });
   };
 
-  trocarRota = (evento) => {
-    this.route.navigate(['cadastro-adotante-endereco'])
+  trocaRota = (evento) => {
+    this.route.navigate(['cadastro-adotante-endereco']);
   };
 }

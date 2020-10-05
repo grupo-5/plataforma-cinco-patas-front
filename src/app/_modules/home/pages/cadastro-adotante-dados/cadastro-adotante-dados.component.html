@@ -1,6 +1,11 @@
 <div class="row">
   <app-header-com-carrossel></app-header-com-carrossel>
 </div>
+<div class="row mt-4">
+  <div class="col-10 mx-auto text-center">
+      <h1>Cadastro Adotante</h1>
+      </div>
+</div>
 
 <div class="row">
   <div class="col-10 mx-auto">
@@ -18,7 +23,7 @@
           titulo="Nome"
           tipo="text"
           idInput="name"
-          placeholderInput="preencha o nome"
+          placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="name"
         ></app-input-text>
@@ -31,7 +36,7 @@
           titulo="CPF"
           tipo="text"
           idInput="cpf"
-          placeholderInput="preencha o nome"
+          placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="cpf"
         ></app-input-text>
@@ -42,7 +47,7 @@
           titulo="RG"
           tipo="text"
           idInput="rg"
-          placeholderInput="preencha o nome"
+          placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="rg"
         ></app-input-text>
@@ -55,7 +60,7 @@
           titulo="E-mail"
           tipo="text"
           idInput="email"
-          placeholderInput="preencha o nome"
+          placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="email"
         ></app-input-text>
@@ -68,7 +73,7 @@
           titulo="Telefone"
           tipo="text"
           idInput="telefone"
-          placeholderInput="preencha o nome"
+          placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="telefone"
         ></app-input-text>
@@ -91,7 +96,7 @@
   <div class="col-10 mx-auto text-right">
     <app-button-g
       nomeBotao="Avancar"
-      (onClick)="trocarRota($event)"
+      (onClick)="trocaRota($event)"
       [disabled]="disabled"
     ></app-button-g>
   </div>

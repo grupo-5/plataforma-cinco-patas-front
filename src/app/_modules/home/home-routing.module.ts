@@ -1,3 +1,6 @@
+import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
+import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
+import { LoginComponent } from './pages/login/login.component';
 import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-endereco/cadastro-adotante-endereco.component';
 import { CadastroAdotanteDadosComponent } from './pages/cadastro-adotante-dados/cadastro-adotante-dados.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -19,12 +22,14 @@ const routes: Routes = [
         path: 'selecao-tipo-cadastro',
         component: SelecaoTipoCadastroComponent,
       },
-      { path: 'quero-ajudar', component: SelecaoTipoCadastroComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'quero-ajudar', component: QueroAjudarComponent },
       { path: 'depoimentos', component: SelecaoTipoCadastroComponent },
       { path: 'ongs-parceiras', component: SelecaoTipoCadastroComponent },
       { path: 'cadastro-instituicao', component: SobreNosComponent },
       { path: 'cadastro-adotante', component: CadastroAdotanteDadosComponent },
       { path: 'cadastro-adotante-endereco', component: CadastroAdotanteEnderecoComponent },
+      { path: 'cadastro-adotante-match', component: CadastroAdotanteMatchComponent },
     ],
   },
 ];

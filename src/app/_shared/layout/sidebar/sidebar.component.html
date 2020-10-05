@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<nav id="sidebar" class="p-4">
+<nav id="sidebar" class="px-3 " [class.user]="user==true">
     <div class="sidebar-header text-center">
         <h2 class="width-title">5 Patas Plataforma</h2>
     </div>
@@ -12,16 +12,16 @@
         </div>
 
         <li class="mb-3">
-            <a [routerLink]="['/instituicao']" ><i class="fa fa-home mr-2 color-icon-gray" aria-hidden="true"></i>Dashboard</a>
+            <a [routerLink]="['/instituicao']" ><i class="fa fa-home mr-2 color-icon-gray" aria-hidden="true"></i><span>Dashboard</span></a>
         </li>
         <li class=" mb-3">
-            <a [routerLink]="['/animais']"><i class="fa fa-paw mr-2 color-icon-gray" aria-hidden="true" ></i>Animais</a>
+            <a [routerLink]="['/animais']"><i class="fa fa-paw mr-2 color-icon-gray" aria-hidden="true" ></i><span>Animais</span></a>
         </li>
         <li class="mb-3">
-            <a [routerLink]="['/instituicao']"><i class="fa fa-users mr-2 color-icon-gray" aria-hidden="true"></i>Nossos Amigos</a>
+            <a [routerLink]="['/instituicao']"><i class="fa fa-users mr-2 color-icon-gray" aria-hidden="true"></i><span>Nossos Amigos</span></a>
         </li>
         <li class="mb-3">
-            <a routerLink="/pessoas"><i class="fa fa-university mr-2 color-icon-gray" aria-hidden="true"></i>Outras Ongs</a>
+            <a routerLink="/pessoas"><i class="fa fa-university mr-2 color-icon-gray" aria-hidden="true"></i><span>Outras Ongs</span></a>
         </li>
     </ul>
 </nav>

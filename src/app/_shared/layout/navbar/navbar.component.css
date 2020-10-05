@@ -2,6 +2,7 @@
     background-color: #232323;
     color: FFF;
     text-transform: uppercase;
+    z-index: 9999;
 
 }
 

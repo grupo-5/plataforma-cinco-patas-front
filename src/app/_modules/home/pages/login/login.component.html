@@ -1,0 +1,42 @@
+
+<div class="row mt-5">
+  <div class="col-12 col-md-6 p-0 mt-2">
+    <div class="img"></div>
+  </div>
+  <div class="col-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+    <div>
+      <form [formGroup]="formLogin" class="col-12 mx-auto">
+        <div class="row">
+          <div class="col-12">
+            <app-input-text
+              titulo="Usuario"
+              tipo="text"
+              idInput="name"
+              placeholderInput=""
+              [formGroup]="formLogin"
+              controlName="user"
+            ></app-input-text>
+            <app-input-text
+              titulo="Senha"
+              tipo="password"
+              idInput="name"
+              placeholderInput=""
+              [formGroup]="formLogin"
+              controlName="password"
+            ></app-input-text>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center">
+            <app-button-g
+              nomeBotao="Avancar"
+              (onClick)="trocaRota($event)"
+              [disabled]="disabled"
+            ></app-button-g>
+          </div>
+        </div>
+      </form>
+      <p class="text-center mt-2"><a routerLink="../selecao-tipo-cadastro">Novo aqui?  Cadastre-se</a></p>
+    </div>
+  </div>
+</div>

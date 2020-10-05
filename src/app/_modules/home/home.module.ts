@@ -11,10 +11,13 @@ import { SelecaoTipoCadastroComponent } from './pages/selecao-tipo-cadastro/sele
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { CadastroAdotanteDadosComponent } from './pages/cadastro-adotante-dados/cadastro-adotante-dados.component';
 import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-endereco/cadastro-adotante-endereco.component';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
+import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, SobreNosComponent, SelecaoTipoCadastroComponent, InicioComponent, CadastroAdotanteDadosComponent, CadastroAdotanteEnderecoComponent],
+  declarations: [HomeComponent, SobreNosComponent, SelecaoTipoCadastroComponent, InicioComponent, CadastroAdotanteDadosComponent, CadastroAdotanteEnderecoComponent, LoginComponent, CadastroAdotanteMatchComponent, QueroAjudarComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
