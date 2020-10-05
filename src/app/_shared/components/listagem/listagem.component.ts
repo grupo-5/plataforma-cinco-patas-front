@@ -7,8 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListagemComponent implements OnInit {
 
-  
-  @Input() public dropFilter: string[] = ["Tutores", "Adotantes", "Responsaveis"];
+  // Rota do botao adicionar
+  @Input() public rLink: string;
+
+  // Categorias que ficarao no select
+  @Input() public dropFilter: string[] = ["Tutor", "Adotante", "Responsavel"];
+
+  // Array de objetos que serao mostrados na listagem (qualquer objeto de qualquer tamanho)
   @Input() public objetosListados: any[] = [
     {
       "Nome": "João",
@@ -30,11 +35,25 @@ export class ListagemComponent implements OnInit {
     }
   ];
 
+  // variaveis para o filtro funcionar
   page = 1;
   pageSize = 4;
   collectionSize = this.objetosListados.length;
   _filterBy: string;
   objetosFiltrados: any[];
+  selectFilteredObj: any[];
+  selectKey: string = Object.keys(this.objetosListados[0])[1];
+
+  // implementacao do filtro do select
+  public selectedBrand: string;
+  public valueSelected() {
+    if(this.selectedBrand != "Todos") {
+      this.objetosFiltrados = this.objetosListados.filter(item => item[this.selectKey] === this.selectedBrand);
+    } else {
+      this.objetosFiltrados = this.objetosListados;
+    }
+    this.selectFilteredObj = this.objetosFiltrados;
+  }
 
   listarHeaders() {
     return Object.keys(this.objetosListados[0]);
@@ -46,8 +65,7 @@ export class ListagemComponent implements OnInit {
 
   set filter(value: string) {
     this._filterBy = value;
-
-    this.objetosFiltrados = this.objetosListados.filter((filtro: any) => filtro.Nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase())> -1);
+    this.objetosFiltrados = this.selectFilteredObj.filter((filtro: any) => filtro.Nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) == 0);
   }
 
   get filter() {
@@ -58,6 +76,7 @@ export class ListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.objetosFiltrados = this.objetosListados;
+    this.selectFilteredObj = this.objetosListados;
   }
 
 }

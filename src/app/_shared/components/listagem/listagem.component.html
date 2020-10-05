@@ -1,5 +1,5 @@
 <div class="text-right">
-  <app-button-g nomeBotao="Adicionar" routerLink="/cadastro-animal-1"></app-button-g>
+  <app-button-g nomeBotao="Adicionar" routerLink="{{rLink}}"></app-button-g>
 </div>
 <form>
   <div class="form-group form-inline float-left">
@@ -8,13 +8,13 @@
   
 </form>
 
-<div class="dropdown dropleft mr-2 float-right">
-  <button class="btn btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <img src="assets/icons/filter.svg" alt="">
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a *ngFor="let item of dropFilter" class="dropdown-item" href="#">{{item}}</a>
-  </div>
+<div class="float-right">
+  <label for="filtrar"><img src="assets/icons/filter.svg"></label>
+
+  <select id="filtrar" class="custom-select" [(ngModel)]="selectedBrand" (change)="valueSelected()">
+    <option>Todos</option>
+    <option *ngFor="let item of dropFilter">{{item}}</option>
+  </select>
 </div>
 
 <table class="table">
