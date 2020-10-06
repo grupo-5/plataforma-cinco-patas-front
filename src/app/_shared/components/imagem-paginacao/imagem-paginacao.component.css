@@ -27,4 +27,7 @@ ngb-pagination ::ng-deep ul > li.active > a {
     outline: none!important;
 }
 
+ngb-pagination ::ng-deep  .page-link:focus{
+    box-shadow: none;
+}
 

@@ -1,0 +1,103 @@
+<div class="row">
+  <app-header-com-carrossel></app-header-com-carrossel>
+</div>
+<div class="row mt-4">
+  <div class="col-10 mx-auto text-center">
+      <h1>Cadastro Adotante</h1>
+      </div>
+</div>
+
+<div class="row">
+  <div class="col-10 mx-auto">
+    <app-card-timeline
+      [listaPassos]="listaPassos"
+      [active]="'Dados Pessoais'"
+    ></app-card-timeline>
+  </div>
+</div>
+<div class="row">
+  <form [formGroup]="formCadastroAdotante" class="col-10 mx-auto">
+    <div class="row">
+      <div class="col-12">
+        <app-input-text
+          titulo="Nome"
+          tipo="text"
+          idInput="name"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="name"
+        ></app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <app-input-text
+          titulo="CPF"
+          tipo="text"
+          idInput="cpf"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="cpf"
+        ></app-input-text>
+      </div>
+
+      <div class="col-6">
+        <app-input-text
+          titulo="RG"
+          tipo="text"
+          idInput="rg"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="rg"
+        ></app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-input-text
+          titulo="E-mail"
+          tipo="text"
+          idInput="email"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="email"
+        ></app-input-text>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <app-input-text
+          titulo="Telefone"
+          tipo="text"
+          idInput="telefone"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="telefone"
+        ></app-input-text>
+      </div>
+
+      <div class="col-6">
+        <app-input-radio
+          titulo="Sexo"
+          [texto_opcoes]="listSexo"
+          nomeRadio="sexo"
+          controlName="sexo"
+          [formGroup]="formCadastroAdotante"
+        >
+        </app-input-radio>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row mb-5 mt-5">
+  <div class="col-10 mx-auto text-right">
+    <app-button-g
+      nomeBotao="Avancar"
+      (onClick)="trocaRota($event)"
+      [disabled]="disabled"
+    ></app-button-g>
+  </div>
+</div>

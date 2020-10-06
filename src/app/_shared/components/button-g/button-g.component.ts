@@ -1,15 +1,22 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-button-g',
   templateUrl: './button-g.component.html',
-  styleUrls: ['./button-g.component.css']
+  styleUrls: ['./button-g.component.css'],
 })
 export class ButtonGComponent implements OnInit {
   @Input() nomeBotao: string;
-  constructor() { }
+  @Input() disabled: boolean;
+  
+  @Output() onClick = new EventEmitter();
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+
+  buttonClicked(event) {
+    this.onClick.emit(event)
   }
-
 }

@@ -1,16 +1,9 @@
-<body class="card">
+<div class="timeline-container mt-5 mb-3">
+  <ng-container *ngFor="let item of listaPassos; let i = index">
+    <hr  *ngIf="i > 0" />
     <div class="div2">
-        <span class="dot1"></span>
-        <p>Texto 1</p>
+      <span class="dot" [class.active]="item === active"></span>
+      <p class="mt-2" [class.active]="item === active">{{ item }}</p>
     </div>
-    <hr size="5" width="10%" >
-    <div class="div2">
-        <span class="dot2"></span>
-        <p>Texto 2</p>
-    </div>
-    <hr size="5" width="10%"  >
-    <div class="div2">
-        <span class="dot3"></span>
-        <p>Texto 3</p>
-    </div>
-</body>
+  </ng-container>
+</div>

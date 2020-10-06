@@ -1,0 +1,47 @@
+<div class="row">
+  <app-header-com-carrossel></app-header-com-carrossel>
+</div>
+<div class="row mt-4">
+    <div class="col-10 mx-auto text-center">
+        <h1>Cadastro Adotante</h1>
+        </div>
+</div>
+<div class="row">
+  <div class="col-10 mx-auto">
+    <app-card-timeline
+      [listaPassos]="listaPassos"
+      [active]="'Match'"
+    ></app-card-timeline>
+  </div>
+</div>
+<div class="row">
+  <form [formGroup]="formCadastroAdotanteMatch" class="col-10 mx-auto">
+    <div class="row">
+      <div class="col-3">
+        <app-input-text
+          titulo="CEP"
+          tipo="text"
+          idInput="name"
+          placeholderInput="preencha "
+          [formGroup]="formCadastroAdotanteMatch"
+          controlName="name"
+        ></app-input-text>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="row mb-5 mt-5">
+  <div class="col-10 mx-auto d-flex justify-content-between">
+    <app-button-g
+      nomeBotao="Voltar"
+      (onClick)="trocaRota($event)"
+      [disabled]="disabled"
+    ></app-button-g>
+
+    <app-button-g
+      nomeBotao="Finalizar"
+      (onClick)="trocaRota($event)"
+      [disabled]="disabled"
+    ></app-button-g>
+  </div>
+</div>

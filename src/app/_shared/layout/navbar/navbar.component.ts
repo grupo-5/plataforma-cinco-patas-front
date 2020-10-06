@@ -7,12 +7,12 @@ import { Component, Input, OnInit, NgModule } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  // @Input() options: {}
+  // @Input() options: any
 
   options = [
-    { name: 'home', route: '/home-page', type: 'link' },
+    { name: 'home', route: '', type: 'link' },
     { name: 'Sobre Nos', route: '/sobre-nos', type: 'link' },
-    { name: 'Quero Ajudar', route: '/admin', type: 'link' },
+    { name: 'Quero Ajudar', route: '/quero-ajudar', type: 'link' },
     { name: 'Depoimentos', route: '/depoimentos', type: 'link' },
     { name: 'Instituições Parceiras', route: '/instituicoes-parceiras', type: 'link' },
     { name: 'Login', route: '/instituicao', type: 'button' },

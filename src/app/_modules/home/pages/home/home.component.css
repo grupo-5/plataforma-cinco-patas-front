@@ -1,3 +1,4 @@
 .content{
-    min-height: calc(100vh - 139px);
+    min-height: calc(100vh - 72px);
+    width: 97.5vw;
 }
