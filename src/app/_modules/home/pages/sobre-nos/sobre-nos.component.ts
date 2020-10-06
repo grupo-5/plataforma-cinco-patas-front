@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SobreNosComponent implements OnInit {
 
+  caminho: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.caminho = "./../../../../../assets/images/dog-2.jpg";
   }
 
 }

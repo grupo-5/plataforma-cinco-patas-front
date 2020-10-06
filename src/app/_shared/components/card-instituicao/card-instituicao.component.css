@@ -1,0 +1,12 @@
+.card {
+    width: 300px;
+    height: 300px;
+}
+
+.color {
+    color: var(--main-second-color);
+}
+
+.color-b {
+    color: var(--main-nav-color);
+}

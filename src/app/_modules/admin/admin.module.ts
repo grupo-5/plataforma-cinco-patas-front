@@ -13,12 +13,13 @@ import { AnimalCreateP2Component } from './pages/instituicao/animal-create-p2/an
 import { DashboardComponent } from './pages/instituicao/dashboard.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
+import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 
 
 
 @NgModule({
   
-  declarations: [AdminComponent, AnimalCreateComponent, DashboardComponent, AnimalCreateP2Component, CadastroDepoimentosComponent, ListagemAnimaisComponent, AnimalCreateP3Component],
+  declarations: [AdminComponent, AnimalCreateComponent, DashboardComponent, AnimalCreateP2Component, CadastroDepoimentosComponent, ListagemAnimaisComponent, AnimalCreateP3Component, DashboardPessoaComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -32,7 +33,8 @@ import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/an
     AnimalCreateP2Component,
     DashboardComponent,
     ListagemAnimaisComponent,
-    AnimalCreateP3Component
+    AnimalCreateP3Component,
+    DashboardPessoaComponent,
   ]
 })
 export class AdminModule { }
