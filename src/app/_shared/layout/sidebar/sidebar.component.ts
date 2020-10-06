@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  @Input() user=false;
+  @Input() user=true;
   @Input() nomeFuncionario: string;
 
   constructor() { }

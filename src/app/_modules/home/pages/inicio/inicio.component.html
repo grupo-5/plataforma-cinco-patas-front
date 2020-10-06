@@ -4,10 +4,30 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-12 m-0 px-0"><div class="search"></div></div>
-</div>
+<div class="row search d-flex justify-content-center">
+  <div class="col-12"><div class="row">
 
+    <!-- <div class="col-lg-2">
+      <app-input-combobox titulo="Especie"  [lista]="listaEspecie" controlName="especie" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
+    </div>
+    <div class="col-lg-2">
+      <app-input-combobox titulo="Porte"  [lista]="listaPorte" controlName="porte" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
+    </div>
+    <div class="col-lg-2">
+      <app-input-combobox titulo="Estado"  [lista]="listaEstado" controlName="Estado" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
+    </div>
+    <div class="col-lg-2">
+      <app-input-combobox titulo="Cidade"  [lista]="listaCidade" controlName="cidade" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
+    </div>
+     -->
+
+  </div>
+  <div class="row">
+    <app-button-g nomeBotao="Buscar"></app-button-g>
+
+
+  </div></div>
+</div>
 
 <div class="row">
   <div class="col-lg-12 p-0 m-0">
@@ -17,11 +37,10 @@
     </div>
   </div>
 </div>
-  <div class="row">
-      <div class="col-lg-12 m-0 px-0">
-          <div class="why-adopt">
-              <app-card-incentivo></app-card-incentivo>
-            </div>
-        </div>
+<div class="row">
+  <div class="col-lg-12 m-0 px-0">
+    <div class="why-adopt">
+      <app-card-incentivo></app-card-incentivo>
     </div>
-
+  </div>
+</div>
