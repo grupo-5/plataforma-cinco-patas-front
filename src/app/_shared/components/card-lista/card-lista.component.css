@@ -1,5 +1,5 @@
 .list-item {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     color: #A6ACBE;
 }
@@ -7,7 +7,7 @@
     font-size: 1.8em;
 }
 
-.list-number span {
+.list-number .span- {
     color: black;
     font-weight: bold;
 }
@@ -15,3 +15,13 @@
     color: #A6ACBE;
 }
 
+@media (max-width: 380px) {
+  .list-item, .list-number {
+    font-size: 0.77rem;
+  }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+  .list-item, .list-number {
+    font-size: 0.8rem;
+  }
+}

@@ -1,18 +1,18 @@
 <div class="row">
-  <div class="col-9">
+  <div class="col-7 pr-0">
     <div class="list-item" *ngFor="let element of listElement, let i = index">
-      <span class="bullet mr-1" [style.color]="bulletColor[i]">&#8226;</span>
-      {{element}}
+      <label class="mr-1" [style.color]="bulletColor[i]">&#8226;</label>
+      <label class="">{{element}} </label>
     </div>
   </div>
-  <div class="col-1 pr-0">
-    <div class="list-number ml-auto" *ngFor="let animal of numberAnimals ">
-      <span>{{animal}} </span>
+  <div class="col-2 pr-0 pl-0 text-right">
+    <div class="list-number" *ngFor="let animal of numberAnimals ">
+      <label class="span-">{{animal}} </label>
     </div>
   </div>
-  <div class="col-2 pl-0">
-    <div class="list-number ml-auto" *ngFor="let perc of percentage ">
-      <label class="m-0">({{perc}}%)</label>
+  <div class="col-3 pl-0 pr-0 text-center">
+    <div class="list-number" *ngFor="let perc of percentage ">
+      <label class="">({{perc}}%)</label>
     </div>
   </div>
 

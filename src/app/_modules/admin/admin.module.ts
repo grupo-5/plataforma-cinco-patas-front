@@ -15,6 +15,7 @@ import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/l
 import { OngCreateComponent } from './pages/instituicao/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/instituicao/ong-create-p2/ong-create-p2.component';
 import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios/listagem-usuarios.component';
+import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,11 @@ import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios
     AnimalCreateP2Component,
     CadastroDepoimentosComponent,
     ListagemAnimaisComponent,
+    AnimalCreateP3Component,
     OngCreateComponent,
     OngCreateP2Component,
+    ListagemUsuariosComponent,
   ],
-
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -44,6 +46,7 @@ import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios
     OngCreateComponent,
     OngCreateP2Component,
     ListagemUsuariosComponent,
+    AnimalCreateP3Component,
   ],
 })
 export class AdminModule {}

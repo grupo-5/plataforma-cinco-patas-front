@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     { name: 'Sobre Nos', route: '/sobre-nos', type: 'link' },
     { name: 'Quero Ajudar', route: '/admin', type: 'link' },
     { name: 'Depoimentos', route: '/depoimentos', type: 'link' },
-    { name: 'Ongs Parceiras', route: '/ong-parceiras', type: 'link' },
+    { name: 'Instituições Parceiras', route: '/instituicoes-parceiras', type: 'link' },
     { name: 'Login', route: '/instituicao', type: 'button' },
 
   ];

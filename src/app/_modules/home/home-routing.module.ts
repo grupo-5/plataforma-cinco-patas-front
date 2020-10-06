@@ -1,3 +1,4 @@
+import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-instituicoes.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { SelecaoTipoCadastroComponent } from './pages/selecao-tipo-cadastro/selecao-tipo-cadastro.component';
 import { NgModule } from '@angular/core';
@@ -11,19 +12,16 @@ const routes: Routes = [
     component: HomeComponent,
 
     children: [
-      { path: 'sobre-nos', component: SobreNosComponent },
-      {
-        path: 'selecao-tipo-cadastro',
-        component: SelecaoTipoCadastroComponent,
-      },
+      { path: 'selecao-tipo-cadastro', component: SelecaoTipoCadastroComponent },
       { path: 'quero-ajudar', component: SelecaoTipoCadastroComponent },
       { path: 'depoimentos', component: SelecaoTipoCadastroComponent },
       { path: 'lista-depoimentos', component: SelecaoTipoCadastroComponent },
       { path: 'ongs-parceiras', component: SelecaoTipoCadastroComponent },
       { path: 'cadastro-instituicao', component: SobreNosComponent },
       { path: 'cadastro-adotante', component: SobreNosComponent },
-      { path: 'home-page', component: InicioComponent },
-      
+      { path: 'home-page', component: InicioComponent },      
+      { path: 'sobre-nos', component: SobreNosComponent},
+      { path: 'instituicoes-parceiras', component: ListaInstituicoesComponent},
     ],
   },
 ];
