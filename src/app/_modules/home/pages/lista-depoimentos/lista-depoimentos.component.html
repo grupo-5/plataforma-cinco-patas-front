@@ -1,0 +1,30 @@
+<div class="row p-0 m-0">
+    <div class="col-lg-12 px-0 m-0">
+      <app-header-com-carrossel></app-header-com-carrossel>
+    </div>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col-lg-12 p-0 m-0">
+      <section class="results">
+        <h2 class="text-center pt-4">Depoimentos</h2>
+        <div id= "externa" >
+            <div id="interna">
+                <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" ></app-card-depoimento>
+                <br>
+                <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" ></app-card-depoimento>
+                <br>
+                <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" ></app-card-depoimento>
+            </div>
+        </div>
+      </section>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-lg-12 m-0 px-0">
+            <section class="why-adopt">
+                <app-card-incentivo></app-card-incentivo>
+              </section>
+          </div>
+      </div>

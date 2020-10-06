@@ -1,1 +1,24 @@
-<app-card-depoimento></app-card-depoimento>
+
+<div class="row">
+    <div class="col-lg-12 p-5 m-0">
+      <section class="results">
+        <h2 class="text-center pt-4">Depoimentos</h2>
+      </section>
+    </div>
+</div>
+<div class="row" id= "externa2">
+    <div class="col-md-6">
+        <app-form-textarea  [formGroup]="formDepoimento" controlName="depoimentos"></app-form-textarea>
+            <div class="text-right">
+                <app-button-g [nomeBotao]="nomeBotao" routerLink="/cadastro-animal-2"></app-button-g>
+            </div>
+    </div>
+</div>
+<div id= "externa" >
+    <div id="interna">
+        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
+        <br>
+        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
+    </div>
+</div>
+

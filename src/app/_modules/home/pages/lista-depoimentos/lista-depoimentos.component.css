@@ -1,14 +1,6 @@
-h2{
-    font-weight: bolder;
-}
 .search {
     min-height: 200px;
     background-color: var(--main-second-color);
-}
-.reajuste{
-    width: 900px;
-    height: 800px;
-
 }
 #externa {
     align-items: center;
@@ -26,15 +18,5 @@ h2{
     }
 #interna {
     width: 900px;
-    height: 500px;
+    height: 800px;
 }
-textarea{
-    width: 900px;
-    height: 200px;
-    border-radius: 30px;
-}
-app-form-textarea {
-    width: 900px;
-    height: 200px;
-}
-

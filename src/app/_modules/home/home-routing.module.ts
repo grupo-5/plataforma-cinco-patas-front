@@ -18,10 +18,12 @@ const routes: Routes = [
       },
       { path: 'quero-ajudar', component: SelecaoTipoCadastroComponent },
       { path: 'depoimentos', component: SelecaoTipoCadastroComponent },
+      { path: 'lista-depoimentos', component: SelecaoTipoCadastroComponent },
       { path: 'ongs-parceiras', component: SelecaoTipoCadastroComponent },
       { path: 'cadastro-instituicao', component: SobreNosComponent },
       { path: 'cadastro-adotante', component: SobreNosComponent },
       { path: 'home-page', component: InicioComponent },
+      
     ],
   },
 ];
