@@ -14,27 +14,36 @@ import { DashboardComponent } from './pages/instituicao/dashboard.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
 import { OngCreateComponent } from './pages/instituicao/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/instituicao/ong-create-p2/ong-create-p2.component';
-
-
+import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios/listagem-usuarios.component';
 
 @NgModule({
-  
-  declarations: [AdminComponent, AnimalCreateComponent, DashboardComponent, AnimalCreateP2Component, CadastroDepoimentosComponent, ListagemAnimaisComponent, OngCreateComponent, OngCreateP2Component],
+  declarations: [
+    AdminComponent,
+    AnimalCreateComponent,
+    DashboardComponent,
+    AnimalCreateP2Component,
+    CadastroDepoimentosComponent,
+    ListagemAnimaisComponent,
+    OngCreateComponent,
+    OngCreateP2Component,
+  ],
+
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    
-  ], exports: [
+  ],
+  exports: [
     AnimalCreateComponent,
     CadastroDepoimentosComponent,
     AnimalCreateP2Component,
     DashboardComponent,
     ListagemAnimaisComponent,
-    OngCreateComponent, 
-    OngCreateP2Component
-  ]
+    OngCreateComponent,
+    OngCreateP2Component,
+    ListagemUsuariosComponent,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}
