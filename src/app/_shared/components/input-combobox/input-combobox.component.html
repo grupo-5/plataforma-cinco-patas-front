@@ -5,7 +5,7 @@
         <option *ngFor="let l of lista">{{l}}</option>
       </select>
       <div><label class="text-danger fonte-erros-inputs"
-          *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'required')">Campo
+          *ngIf="validacaoInputsService.fieldHasError(formControl, 'required')">Campo
           Obrigatório</label></div>
   </div>
 </div>

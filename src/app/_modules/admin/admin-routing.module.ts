@@ -1,3 +1,4 @@
+import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
 import { AnimalCreateComponent } from './pages/instituicao/animal-create/animal-create.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
     {   path: '', component: AdminComponent,
         children :[
             { path: 'instituicao', component: DashboardComponent},
+            { path: 'pessoa', component: DashboardPessoaComponent},
             { path: 'cadastro-animal-1', component: AnimalCreateComponent},
             { path: 'cadastro-animal-2', component: AnimalCreateP2Component},
             { path: 'cadastro-ong-2', component: OngCreateP2Component},

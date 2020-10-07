@@ -6,7 +6,7 @@
                 [formControlName]="controlName" >
             <label class="form-check-label" for="idCheckBox"> {{opcao}} </label>
         </div>
-        <div><label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.hasErrorValidar(formControl, 'required')">Campo
+        <div><label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.fieldHasError(formControl, 'required')">Campo
             Obrigatório</label></div>
     </div>
 </div>

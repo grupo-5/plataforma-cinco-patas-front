@@ -1,0 +1,19 @@
+.box {
+  margin-top: 60px;
+}
+
+.dash {
+  background-color: var(--main-second-color);
+  max-width: 70px;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .dash {
+    display: none;
+  }
+
+  .btn-toggle {
+    display: block;
+  }
+}

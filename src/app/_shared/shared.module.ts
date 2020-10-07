@@ -37,6 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-de-imagens.component';
 
 import { ListagemComponent } from './components/listagem/listagem.component';
+import { CardInstituicaoComponent } from './components/card-instituicao/card-instituicao.component';
+import { CardAdotanteComponent } from './components/card-adotante/card-adotante.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { ListagemComponent } from './components/listagem/listagem.component';
     FormTextareaComponent,
     UploadDeImagensComponent,
     ListagemComponent,
+    CardInstituicaoComponent,
+    CardAdotanteComponent,
   ],
   imports: [
     CommonModule,
@@ -101,7 +105,9 @@ import { ListagemComponent } from './components/listagem/listagem.component';
     HeaderComCarrosselComponent,
     CardSobreNosComponent,
     CardTimelineComponent,
-    ListagemComponent
+    ListagemComponent,
+    CardInstituicaoComponent,
+    CardAdotanteComponent,
   ]
 })
 export class SharedModule { }

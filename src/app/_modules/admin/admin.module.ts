@@ -16,6 +16,7 @@ import { OngCreateComponent } from './pages/instituicao/ong-create/ong-create.co
 import { OngCreateP2Component } from './pages/instituicao/ong-create-p2/ong-create-p2.component';
 import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios/listagem-usuarios.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
+import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/an
     OngCreateComponent,
     OngCreateP2Component,
     ListagemUsuariosComponent,
+    DashboardPessoaComponent,
   ],
+
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -47,6 +50,7 @@ import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/an
     OngCreateP2Component,
     ListagemUsuariosComponent,
     AnimalCreateP3Component,
+    DashboardPessoaComponent,
   ],
 })
 export class AdminModule {}

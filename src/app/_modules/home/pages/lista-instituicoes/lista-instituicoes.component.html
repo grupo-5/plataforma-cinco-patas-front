@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
     <div class="row mt-5 ">
         <h1 class="mt-5 col-md-12 text-center">Instituições Parceiras</h1>
         <div class="col-md-12 mt-4">
@@ -17,8 +17,14 @@
                     <app-button-g nomeBotao="Pesquisar"></app-button-g>
                 </div>
             </form>
-
-
+        </div>
+    </div>
+    <div class="box">
+        <div class="row justify-content-center">
+            <div *ngFor="let l of lista" class="m-4">
+                <app-card-instituicao [cidadeOng]="l.nomeCidade" [caminhoImg]="l.caminho" [nomeOng]="l.nome">
+                </app-card-instituicao>
+            </div>
         </div>
     </div>
 </div>
