@@ -35,12 +35,19 @@ export class AnimalCreateP2Component implements OnInit {
   private criarFormulario(animal: Animal): void {
     this.formCadastro = this.fb.group({
       nomeTitular: [animal.nomeTitular, [Validators.required]],
-      enderecoLogradouro: [animal.enderecoLogradouro, [Validators.required]],
-      enderecoCidade: [animal.enderecoCidade, [Validators.required]],
-      enderecoEstado: [animal.enderecoEstado, [Validators.required]],
-      enderecoNumero: [animal.enderecoNumero, [Validators.required]],
-      enderecoComplemento: [animal.enderecoComplemento, [Validators.required]],
-      enderecoCep: [animal.enderecoCep, [Validators.required]],
+      // enderecoLogradouro: [animal.endereco.enderecoLogradouro, [Validators.required]],
+      // enderecoCidade: [animal.endereco.enderecoCidade, [Validators.required]],
+      // enderecoEstado: [animal.endereco.enderecoCidade.estado, [Validators.required]],
+      // enderecoNumero: [animal.endereco.enderecoNumero, [Validators.required]],
+      // enderecoComplemento: [animal.endereco.enderecoComplemento, [Validators.required]],
+      // enderecoCep: [animal.endereco.enderecoCep, [Validators.required]],
+      enderecoLogradouro: ['', [Validators.required]],
+      enderecoCidade: ['', [Validators.required]],
+      enderecoBairro: ['', [Validators.required]],
+      enderecoEstado: ['', [Validators.required]],
+      enderecoNumero: ['', [Validators.required]],
+      enderecoComplemento: ['', [Validators.required]],
+      enderecoCep: ['', [Validators.required]],
       contato: [animal.contato]
     });
   }

@@ -36,12 +36,17 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-7">
                             <app-input-text idInput="idComplemento" titulo="Complemento" placeholderInput=""
                                 [formGroup]="formCadastro" controlName="enderecoComplemento">
                             </app-input-text>
                         </div>
                         <div class="col-sm-3">
+                            <app-input-text idInput="idBairro" titulo="Bairro" placeholderInput=""
+                                [formGroup]="formCadastro" controlName="enderecoBairro">
+                            </app-input-text>
+                        </div>
+                        <div class="col-sm-2">
                             <app-input-text idInput="idNumero" titulo="Número" placeholderInput=""
                                 [formGroup]="formCadastro" controlName="enderecoNumero">
                             </app-input-text>
