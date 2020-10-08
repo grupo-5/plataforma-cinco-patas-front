@@ -2,12 +2,14 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-                <div class="row ">
-                    <!-- <app-card-timeline></app-card-timeline> -->
+                <div class="row">
+                    <div class="col-10 mx-auto mb-4">
+                        <app-card-timeline [listaPassos]="listaPassos" [active]="'Pedido'"></app-card-timeline>
+                    </div>
                 </div>
-               <div class="row justify-content-center">
-                <app-button-b [nomeBotao]="nomeBotao"></app-button-b>
-               </div>
+                <div class="row justify-content-center ">
+                    <app-button-b [nomeBotao]="nomeBotao" class="mt-5"></app-button-b>
+                </div>
             </div>
             <div class="col-6">
                 <img [src]="caminhoImg" class="card-img-top p-4" alt="Imagem de animal">

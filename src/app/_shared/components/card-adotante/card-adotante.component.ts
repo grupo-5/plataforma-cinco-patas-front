@@ -9,6 +9,7 @@ export class CardAdotanteComponent implements OnInit {
 
   @Input() caminhoImg: string;
   @Input() nomeBotao: string;
+  @Input() listaPassos = ['Pedido', 'Análise', 'Decisão'];
 
   constructor() { }
 

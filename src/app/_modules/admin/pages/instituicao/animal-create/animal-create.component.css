@@ -1,3 +1,15 @@
 h1 {
   font-weight: 500;
 }
+
+.box-marg {
+  padding-right: 40px;
+}
+
+
+@media (max-width: 540px) {
+  .box-marg {
+    padding-right: 0px;
+    padding-left: 15px;
+  }
+}

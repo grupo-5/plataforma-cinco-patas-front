@@ -1,19 +1,26 @@
 .box {
-  margin-top: 60px;
+  margin-top: 85px;
 }
 
 .dash {
   background-color: var(--main-second-color);
-  max-width: 70px;
+  max-width: 60px;
   min-height: 100vh;
+}
+
+.marg-l {
+  margin-left: 0 !important;
+  padding-left: 0;
 }
 
 @media (max-width: 768px) {
   .dash {
     display: none;
   }
-
-  .btn-toggle {
-    display: block;
+  .marg-l {
+    padding-left: 15px;
   }
+
 }
+
+

@@ -1,61 +1,59 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row box-marg">
+        <div class="col-sm-2 d-none d-sm-block d-md-block">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-md-9 pt-5 pr-5 mb-5">
+        <div class="col-sm-10 pt-5 mb-5">
             <h1 class="text-center pt-5">Cadastro Animal</h1>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <app-card-timeline [listaPassos]="listaPassos" [active]="'Endereco'"></app-card-timeline>
+                </div>
+            </div>
             <div class=" mt-4 mr-5" *ngIf="formCadastro">
                 <form [formGroup]="formCadastro">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-sm-8">
                             <app-input-text tipo="text" idInput="imputNomeTitular" placeholderInput=""
                                 titulo="Nome do titular do animal" [formGroup]="formCadastro" controlName="nomeTitular">
                             </app-input-text>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <app-input-text idInput="idTelefone" titulo="Telefone" placeholderInput=""
-                                [formGroup]="formCadastro" controlName="telefone">
-                            </app-input-text>
-                        </div>
-                        <div class="col-md-6">
-                            <app-input-text idInput="idNumero" titulo="Celular" placeholderInput=""
-                                [formGroup]="formCadastro" controlName="celular">
+                        <div class="col-sm-4">
+                            <app-input-text idInput="idContato" titulo="Contato" placeholderInput="" [formGroup]="formCadastro"
+                                controlName="contato">
                             </app-input-text>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
                             <app-input-text idInput="idCep" titulo="Cep" placeholderInput="" [formGroup]="formCadastro"
                                 controlName="enderecoCep">
                             </app-input-text>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-sm-8">
                             <app-input-text idInput="idLogradouro" titulo="Logradouro" placeholderInput=""
                                 [formGroup]="formCadastro" controlName="enderecoLogradouro"></app-input-text>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-sm-9">
                             <app-input-text idInput="idComplemento" titulo="Complemento" placeholderInput=""
                                 [formGroup]="formCadastro" controlName="enderecoComplemento">
                             </app-input-text>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-3">
                             <app-input-text idInput="idNumero" titulo="Número" placeholderInput=""
                                 [formGroup]="formCadastro" controlName="enderecoNumero">
                             </app-input-text>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-combobox idSelect="idCidade" titulo="Cidade" [formGroup]="formCadastro"
                                 controlName="enderecoCidade">
                             </app-input-combobox>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-combobox idSelect="idEstado" titulo="Estado" [formGroup]="formCadastro"
                                 controlName="enderecoEstado">
                             </app-input-combobox>
@@ -66,8 +64,9 @@
                 <!-- <button class="btn btn-primary float-right" routerLink='/cadastro-animal-3' type="submit">Avançar</button> -->
 
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-secondary mr-3" routerLink='/cadastro-animal-1'>Voltar</button>
-                    <app-button-g nomeBotao="Avançar" routerLink="/cadastro-animal-3"></app-button-g>
+                    <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+                    <app-button-g nomeBotao="Avançar" (onClick)="trocaRota($event)" [disabled]="disabled">
+                    </app-button-g>
                 </div>
 
             </div>

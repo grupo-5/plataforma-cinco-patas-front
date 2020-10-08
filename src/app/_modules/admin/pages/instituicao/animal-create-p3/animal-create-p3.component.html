@@ -1,15 +1,20 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row box-marg">
+        <div class="col-sm-2 d-none d-sm-block d-md-block">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-md-9 pt-5 pr-5 mb-5">
+        <div class="col-sm-10 pt-5 mb-5">
             <h1 class="text-center pt-5">Cadastro Animal</h1>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <app-card-timeline [listaPassos]="listaPassos" [active]="'Upload Foto'"></app-card-timeline>
+                </div>
+            </div>
             <div class=" mt-4 mr-5">
                 <!-- <app-upload-de-imagens></app-upload-de-imagens>               -->
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-secondary mr-3" routerLink='/cadastro-animal-2'>Voltar</button>
-                    <app-button-g nomeBotao="Salvar"></app-button-g>
+                    <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+                    <app-button-g nomeBotao="Salvar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
                 </div>
 
             </div>

@@ -22,7 +22,8 @@ export class AnimalCreateComponent implements OnInit {
   localizacoes: Array<String>;
   cidades: Array<String>;
   informacoes: string;
-  
+  listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
+  disabled: boolean = false;
 
   constructor(
     public animalService: AnimalService,
@@ -152,6 +153,12 @@ export class AnimalCreateComponent implements OnInit {
     //   }
     //   // Terceira parte seria o finally - poderia ter uma configuração para ser exibida independente de dar sucesso ou error.
     // );
+  }
+
+  trocaRota = (evento) => {
+    evento.target.innerText == 'Voltar'
+      ? this.router.navigate(['animais'])
+      : this.router.navigate(['cadastro-animal-2']);
   }
 
 }

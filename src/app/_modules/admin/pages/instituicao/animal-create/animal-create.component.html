@@ -1,57 +1,62 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
+    <div class="row box-marg ">
+        <div class="col-sm-2 d-none d-sm-block d-md-block">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-md-9 pt-5 pr-5 mb-5">
+        <div class="col-sm-10 pt-5 mb-5">
             <h1 class="text-center pt-5">Cadastro Animal</h1>
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    <app-card-timeline [listaPassos]="listaPassos" [active]="'Dados Pessoais'"></app-card-timeline>
+                </div>
+            </div>
             <div class=" mt-4 mr-5" *ngIf="formCadastro">
                 <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-sm-8">
                             <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome"
                                 [formGroup]="formCadastro" controlName="nome"></app-input-text>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
                             <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento"
                                 [formGroup]="formCadastro" controlName="dataNasci"></app-input-text>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
                                 [formGroup]="formCadastro" controlName="especie"></app-input-radio>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos"
                                 [formGroup]="formCadastro" controlName="sexo"></app-input-radio>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
                                 [formGroup]="formCadastro" controlName="porte"></app-input-radio>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra"
                                 [texto_opcoes]="localizacoes" [formGroup]="formCadastro" controlName="localizacao">
                             </app-input-radio>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
                                 [texto_opcoes]="cuidadosVets" [formGroup]="formCadastro" controlName="cuidadosVet">
                             </app-input-checkbox>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             <app-input-checkbox idCheckBox="idPersonalidade" titulo="Personalidade"
                                 [texto_opcoes]="personalidades" [formGroup]="formCadastro" controlName="personalidade">
                             </app-input-checkbox>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-sm-12">
                             <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro"
                                 controlName="infoExtras"></app-form-textarea>
                         </div>
@@ -60,9 +65,12 @@
                     <!-- <button class="btn btn-secondary mr-3" type="reset">Limpar</button> -->
                     
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-secondary mr-3" routerLink='/animais'>Voltar</button>
+                        <!-- <button class="btn btn-secondary mr-3" routerLink='/animais'>Voltar</button> -->
                         <!-- <app-button-g nomeBotao="Avançar" routerLink="/cadastro-animal-2"></app-button-g> -->
-                        <button class="btn btn-primary float-right"  type="submit">Avançar</button>
+                        <!-- <button class="btn btn-primary float-right"  >Avançar</button> -->
+
+                        <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+                        <app-button-g nomeBotao="Avançar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
                     </div>
                 </form>
             </div>

@@ -13,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class AnimalCreateP2Component implements OnInit {
   id: number;
   formCadastro: FormGroup;
+  disabled: boolean = false;
+  listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
 
   // Provavelmente ocorrerá mudanças nessa classe
   constructor(public animalService: AnimalService,
@@ -39,12 +41,17 @@ export class AnimalCreateP2Component implements OnInit {
       enderecoNumero: [animal.enderecoNumero, [Validators.required]],
       enderecoComplemento: [animal.enderecoComplemento, [Validators.required]],
       enderecoCep: [animal.enderecoCep, [Validators.required]],
-      telefone: [animal.telefone],
-      celular: [animal.celular, [Validators.required]],
+      contato: [animal.contato]
     });
   }
 
   private criarAnimalEmBranco(): Animal {
     return {} as Animal;
+  }
+
+  trocaRota = (evento) => {
+    evento.target.innerText == 'Voltar'
+      ? this.router.navigate(['cadastro-animal-1'])
+      : this.router.navigate(['cadastro-animal-3']);
   }
 }
