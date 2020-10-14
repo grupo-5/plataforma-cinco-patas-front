@@ -1,9 +1,10 @@
-import { Depoimento } from './../../../../../_models/depoimento.model';
+import { DepoimentoModel } from './../../../../../depoimento/model/depoimento-model';
+import { DepoimentoRepository } from './../../../../../depoimento/repository/depoimento-repository';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
-import { DepoimentoService } from './../../../../../_services/depoimento.service';
+
 
 
 @Component({
@@ -26,7 +27,7 @@ export class CadastroDepoimentosComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public depoimentoService: DepoimentoService) { }
+    public depoimentoService: DepoimentoRepository) { }
 
   ngOnInit(): void {
 
@@ -37,33 +38,33 @@ export class CadastroDepoimentosComponent implements OnInit {
 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.depoimentoService.visualizar(this.id).subscribe((depoimento: Depoimento) => this.criarFormulario(depoimento));
+      // this.depoimentoService.visualizar(this.id).subscribe((depoimento: DepoimentoModel) => this.criarFormulario(depoimento));
     } 
     else {
       this.criarFormulario(this.criarDepoimentoEmBranco());
    }
 
   }
-  private criarFormulario(depoimento: Depoimento): void {
+  private criarFormulario(depoimento: DepoimentoModel): void {
     this.formDepoimento = this.fb.group({
       texto: [depoimento.texto]
     });
   }
 
-  private criarDepoimentoEmBranco(): Depoimento {
-    return {} as Depoimento;
+  private criarDepoimentoEmBranco(): DepoimentoModel {
+    return {} as DepoimentoModel;
   }
 
   reiniciarForm(): void {
     this.formDepoimento.reset();
   }
 
-  private salvar(depoimento: Depoimento): void {
-    this.depoimentoService.salvar(depoimento).subscribe();
+  private salvar(depoimento: DepoimentoModel): void {
+    // this.depoimentoService.salvar(depoimento).subscribe();
   }
 
-  private editar(depoimento: Depoimento): void {
-    this.depoimentoService.editar(depoimento).subscribe();
+  private editar(depoimento: DepoimentoModel): void {
+    // this.depoimentoService.editar(depoimento).subscribe();
   }
 
   submit(): void {
@@ -73,7 +74,7 @@ export class CadastroDepoimentosComponent implements OnInit {
       return;
     }
 
-    const depoimento = this.formDepoimento.getRawValue() as Depoimento;  // retorna os campos que existem dentro do formGroup cadastro
+    const depoimento = this.formDepoimento.getRawValue() as DepoimentoModel;  // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       depoimento.id = this.id;
       console.log("editar *** " + depoimento.id)
