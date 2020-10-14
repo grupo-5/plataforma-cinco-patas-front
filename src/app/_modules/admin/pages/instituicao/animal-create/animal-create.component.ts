@@ -68,7 +68,7 @@ export class AnimalCreateComponent implements OnInit {
     }
     else {
       console.log("salvar *** " + animal.nome)
-      this.salvar();
+      //this.salvar();
     }
   }
 
