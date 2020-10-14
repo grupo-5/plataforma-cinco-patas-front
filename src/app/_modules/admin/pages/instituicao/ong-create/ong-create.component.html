@@ -9,7 +9,10 @@
             <br>
         </div>
         <div class="col-md-8 pt-5 pr-5 mb-5">
-            <h1 class="text-center pt-5">Cadastro ONG</h1>
+            <app-card-timeline class="deslocamento" [listaPassos]="listaPassos" [active]="'Dados'" ></app-card-timeline>
+            <br>
+            <br>
+            <h1 class="text-center ">Cadastro ONG</h1>
             <div class=" mt-4 mr-5" *ngIf="formCadastro">
                 <form [formGroup]="formCadastro">
                     <div class="row">

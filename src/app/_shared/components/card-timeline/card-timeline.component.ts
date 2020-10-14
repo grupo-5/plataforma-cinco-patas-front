@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardTimelineComponent implements OnInit {
   @Input() active = 'Dados Pessoais';
-  @Input() listaPassos: Array<String> 
+  @Input() listaPassos: Array<String>; 
   constructor() {}
 
   ngOnInit(): void {}

@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ong-create-p2.component.css']
 })
 export class OngCreateP2Component implements OnInit {
+  listaPassos = ['Dados', 'Endereço'];
+
   id: number;
   formCadastro: FormGroup;
 
