@@ -1,3 +1,4 @@
+import { EnderecoRepository } from './../../../../../endereco/repository/endereco-repository ';
 import { SharedDataService } from './../../../../../_services/shared-data.service';
 import { AnimalModel } from './../../../../../animal/model/animal-model';
 import { AnimalRepository } from './../../../../../animal/repository/animal-repository';
@@ -19,6 +20,8 @@ export class AnimalCreateP2Component implements OnInit {
   disabled: boolean = false;
   listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
   selectedMessage: any;
+  estados: any[] = [];
+  cidades: any[] = [];
 
   // Provavelmente ocorrerá mudanças nessa classe
   constructor(
@@ -26,10 +29,12 @@ export class AnimalCreateP2Component implements OnInit {
     public animalService: AnimalRepository,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private repository: EnderecoRepository
   ) {}
 
   ngOnInit(): void {
+    this.listarEstados();
     this.id = this.activatedRoute.snapshot.params['id'];
     this.sharedDataService.currentMessage.subscribe(
       (message) => (this.selectedMessage = message)
@@ -108,5 +113,22 @@ export class AnimalCreateP2Component implements OnInit {
     evento.target.innerText == 'Voltar'
       ? this.router.navigate(['cadastro-animal-1'])
       : this.router.navigate(['cadastro-animal-3']);
+  }
+
+  listarEstados() {
+    this.repository.getAllEstados().subscribe(resposta => {
+      this.estados.push(resposta.id);
+    });
+    console.log()
+  }
+
+  listarCidades() {
+    console.log("ciddeeeeee")
+    this.cidades = [];
+    let id: number = 5; //this.formCadastro.value.enderecoCidade;
+    console.log(id+"idddddddd \n")
+    this.repository.getAllCidadesByEstado(id).subscribe(resposta => {
+      this.cidades.push(resposta.id );
+    });
   }
 }

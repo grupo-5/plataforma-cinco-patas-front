@@ -57,14 +57,14 @@ export class EnderecoRepository {
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
-    putEndereco(param: EnderecoModel) {
-        return this.http
-            .put<void>(
-                `${environment.URLSERVIDOR}endereco/${param.id}`,
-                this.mapper.mapTo(param)
-            )
-            .pipe(map((x) => x.data));
-    }
+    // putEndereco(param: EnderecoModel) {
+    //     return this.http
+    //         .put<void>(
+    //             `${environment.URLSERVIDOR}endereco/${param.id}`,
+    //             this.mapper.mapTo(param)
+    //         )
+    //         .pipe(map((x) => x.data));
+    // }
 
     deleteEndereco(id: number): Observable<void> {
         return this.http

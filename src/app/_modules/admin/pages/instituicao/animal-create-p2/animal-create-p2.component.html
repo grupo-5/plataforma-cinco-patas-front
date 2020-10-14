@@ -55,22 +55,22 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <app-input-combobox idSelect="idCidade" titulo="Cidade" [formGroup]="formCadastro"
-                                controlName="enderecoCidade">
+                                controlName="enderecoCidade" [lista]="cidades" >
                             </app-input-combobox>
                         </div>
                         <div class="col-sm-6">
                             <app-input-combobox idSelect="idEstado" titulo="Estado" [formGroup]="formCadastro"
-                                controlName="enderecoEstado">
+                                controlName="enderecoEstado" (change)="listarCidades()" [lista]="estados">
                             </app-input-combobox>
                         </div>
                     </div>
 
                 </form>
-                <button class="btn btn-primary float-right" routerLink='/cadastro-animal-3' (click)="submit()">Avançar</button>
+                <!-- <button class="btn btn-primary float-right" routerLink='/cadastro-animal-3' (click)="submit()">Avançar</button> -->
 
                 <div class="d-flex justify-content-between">
                     <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
-                    <app-button-g nomeBotao="Avançar" (onClick)="trocaRota($event)" [disabled]="disabled">
+                    <app-button-g nomeBotao="Avançar" (click)="submit()" [disabled]="disabled">
                     </app-button-g>
                 </div>
 

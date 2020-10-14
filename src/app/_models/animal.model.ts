@@ -1,4 +1,4 @@
-import { Endereco } from './endereco.model';
+// import { Endereco } from './endereco.model';
 
 export interface Animal {
     id?: number;
@@ -13,7 +13,7 @@ export interface Animal {
     infoExtras: string;
     nomeTitular: string;
     contato: string;
-    endereco?: Endereco;
+    // endereco?: Endereco;
     // enderecoCep: string;
     // enderecoLogradouro: string;
     // enderecoCidade: string;
