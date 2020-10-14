@@ -4,3 +4,8 @@
     top: 8%;
     width: 20%;
     }
+   .deslocamento {
+    display:inline-block;
+    position: relative;
+    left: 40%;
+    }

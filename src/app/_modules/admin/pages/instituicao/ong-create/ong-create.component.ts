@@ -11,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ong-create.component.css']
 })
 export class OngCreateComponent implements OnInit {
+  //timeline
+  listaPassos = ['Dados', 'Endereço'];
+
   id: number;
   formCadastro: FormGroup;
   razaoSocial: String;
