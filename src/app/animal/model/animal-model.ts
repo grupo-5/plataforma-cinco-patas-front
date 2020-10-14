@@ -8,7 +8,7 @@ export interface AnimalModel {
     sexo: string;
     porte: string;
     localizacao: string;
-    personalidade: string;
+    personalidades: Array<string>;
     cuidadosVet: Array<string>;
     infoExtras: string;
     endereco:EnderecoModel

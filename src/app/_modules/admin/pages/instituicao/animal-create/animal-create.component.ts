@@ -83,7 +83,7 @@ export class AnimalCreateComponent implements OnInit {
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
-      personalidade: [animal.personalidade, [Validators.required]],
+      personalidades: [animal.personalidades, [Validators.required]],
       cuidadosVet: [animal.cuidadosVet, [Validators.required]],
       localizacao: [animal.localizacao, [Validators.required]],
       infoExtras: [animal.infoExtras],
