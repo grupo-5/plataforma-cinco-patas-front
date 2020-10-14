@@ -27,7 +27,7 @@ export class AnimalCreateComponent implements OnInit {
   disabled: boolean = false;
 
   constructor(
-    public sharedDataService:SharedDataService,
+    public sharedDataService: SharedDataService,
     public animalService: AnimalRepository,
     public validarInputsService: ValidarInputsService,
     private fb: FormBuilder,
@@ -38,18 +38,18 @@ export class AnimalCreateComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.animalService.getAnimalById(this.id).subscribe((animal: AnimalModel) => this.criarFormulario(animal));
-    } 
+    }
     else {
       this.criarFormulario(this.criarAnimalEmBranco());
-   }
+    }
 
     this.generos = ['Macho', 'Fêmea'];
     this.especies = ['Gato', 'Cachorro'];
-    this.portes = ['P','M','G'];
+    this.portes = ['P', 'M', 'G'];
     this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
     this.cuidadosVets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
-    this.localizacoes = ['Ong','Com o dono'];
-    this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
+    this.localizacoes = ['Ong', 'Com o dono'];
+    this.cidades = ['', 'São Paulo', 'Rio de Janeiro', 'Goias'];
   }
 
 
@@ -66,9 +66,9 @@ export class AnimalCreateComponent implements OnInit {
       console.log("editar *** " + animal.nome)
       this.editar(animal);
     }
-     else {
+    else {
       console.log("salvar *** " + animal.nome)
-      this.salvar(animal);
+      this.salvar();
     }
   }
 
@@ -79,7 +79,7 @@ export class AnimalCreateComponent implements OnInit {
   private criarFormulario(animal: AnimalModel): void {
     this.formCadastro = this.fb.group({
       nome: [animal.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]], // Não está imprimindo a msg quando tem menos que 3 mais que 100
-      dataNasci: [animal.dataNasc, [Validators.required]],
+      dataNasc: [animal.dataNasc, [Validators.required]],
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
@@ -96,7 +96,7 @@ export class AnimalCreateComponent implements OnInit {
   }
 
   private editar(animal: AnimalModel): void {
-   this.sharedDataService.changeMessage(JSON.stringify(animal));
+    this.sharedDataService.changeMessage(JSON.stringify(animal));
 
     //   () => {
     //   const config = {
@@ -121,7 +121,7 @@ export class AnimalCreateComponent implements OnInit {
     //   });
   }
 
-  private salvar(animal: AnimalModel): void {
+  private salvar2(animal: AnimalModel): void {
     this.sharedDataService.changeMessage(JSON.stringify(animal));
 
     //   () => { // Primeira parte do subscrive é o sucesso
@@ -135,7 +135,7 @@ export class AnimalCreateComponent implements OnInit {
     //   };
     //   const dialogRef = this.dialog.open(AlertaComponent, config);
     //   dialogRef.afterClosed().subscribe((opcao: boolean) => {
-    //     if (opcao) { // Verifica qual opção foi clicada no formulario: listar ou cadastrar animal
+    //     if (opcao) { // Verifica qual opção foi clicada no formCadastro: listar ou cadastrar animal
     //       this.router.navigateByUrl('animals');  //navega para lista de animals
     //     } else {
     //       this.reiniciarForm();
@@ -163,4 +163,23 @@ export class AnimalCreateComponent implements OnInit {
       : this.router.navigate(['cadastro-animal-2']);
   }
 
+
+  // salvar() { //TESTE
+  //   const dados = {
+  //     id: this.formCadastro.value.id,
+  //     nome: this.formCadastro.value.nome,
+  //     especie: this.formCadastro.value.especie,
+  //     dataNasc: this.formCadastro.value.dataNasc,
+  //     sexo: this.formCadastro.value.sexo,
+  //     porte: this.formCadastro.value.porte,
+  //     localizacao: this.formCadastro.value.localizacao,
+  //     infoExtras: this.formCadastro.value.infoExtras,
+  //     cuidadosVet: this.formCadastro.value.cuidadosVet,
+  //     personalidades: this.formCadastro.value.personalidades,
+  //   } as AnimalModel;
+
+  //   this.animalService.postAnimal(dados).subscribe(resposta => {
+  //     console.log("okkk")
+  //   });
+  // }
 }

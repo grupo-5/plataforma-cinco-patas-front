@@ -59,7 +59,7 @@ export class AnimalCreateP2Component implements OnInit {
       // enderecoComplemento: [animal.endereco.enderecoComplemento, [Validators.required]],
       // enderecoCep: [animal.endereco.enderecoCep, [Validators.required]],
       enderecoLogradouro: ['', [Validators.required]],
-      enderecoCidade: ['', [Validators.required]],
+      enderecoCidade: ['', ],
       enderecoBairro: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.required]],
@@ -104,7 +104,7 @@ export class AnimalCreateP2Component implements OnInit {
 
     }
      else {
-      console.log("salvar *** " + animal.nome)
+      console.log("salvar *** nome animal: " + animal.nome)
       this.salvar(animal);
     }
   }
@@ -119,16 +119,14 @@ export class AnimalCreateP2Component implements OnInit {
     this.repository.getAllEstados().subscribe(resposta => {
       this.estados.push(resposta.id);
     });
-    console.log()
   }
 
   listarCidades() {
-    console.log("ciddeeeeee")
     this.cidades = [];
-    let id: number = 5; //this.formCadastro.value.enderecoCidade;
-    console.log(id+"idddddddd \n")
+    let id: number = this.formCadastro.value.enderecoEstado;
     this.repository.getAllCidadesByEstado(id).subscribe(resposta => {
-      this.cidades.push(resposta.id );
+      this.cidades.push(resposta.nome);
+      // this.cidades.push({ label: resposta.nome, value: resposta.id });
     });
   }
 }

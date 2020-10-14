@@ -8,7 +8,7 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
         return {
             id: param.id,
             nome: param.nome,
-            dataNasc: param.dataNasci,
+            dataNasc: param.dataNasc,
             especie: param.especie,
             sexo: param.sexo,
             porte: param.porte,
@@ -16,9 +16,9 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
             personalidades: param.personalidades,
             cuidadosVet: param.cuidadosVet,
             infoExtras: param.infoExtras,
-            endereco: param.endereco,
-            nomeTitular: param.nomeTitular,
-            contato: param.contato
+            // endereco: param.endereco,
+            // nomeTitular: param.nomeTitular,
+            // contato: param.contato
         };
     }
 
@@ -26,7 +26,7 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
         return {
             id: param.id,
             nome: param.nome,
-            dataNasci: param.dataNasc,
+            dataNasc: param.dataNasc,
             especie: param.especie,
             sexo: param.sexo,
             porte: param.porte,
@@ -34,9 +34,9 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
             personalidades: param.personalidades,
             cuidadosVet: param.cuidadosVet,
             infoExtras: param.infoExtras,
-            endereco: param.endereco,
-            nomeTitular: param.nomeTitular,
-            contato: param.contato
+            // endereco: param.endereco,
+            // nomeTitular: param.nomeTitular,
+            // contato: param.contato
             
         };
     }

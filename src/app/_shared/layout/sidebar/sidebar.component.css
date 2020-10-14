@@ -74,5 +74,5 @@ h3 {
 display: block;
 }
 #sidebar.user{
-  background-color: var(--main-second-color);
+  /* background-color: var(--main-second-color); */
 }

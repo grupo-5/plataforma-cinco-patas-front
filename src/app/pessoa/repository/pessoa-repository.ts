@@ -19,13 +19,13 @@ export class PessoaRepository {
 
     getPessoaById(id: number): Observable<PessoaModel> {
         return this.http
-            .getAll<PessoaModel>(`${environment.URLSERVIDOR}Pessoa/${id}`)
+            .getAll<PessoaModel>(`${environment.URLSERVIDOR}pessoa/${id}`)
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
     getAllPessoas(): Observable<PessoaModel> {
         return this.http
-            .getAll<PessoaEntity[]>(`${environment.URLSERVIDOR}Pessoa`)
+            .getAll<PessoaEntity[]>(`${environment.URLSERVIDOR}pessoa`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
@@ -33,7 +33,7 @@ export class PessoaRepository {
 
     postPessoa(param: PessoaModel) {
         return this.http
-            .post<PessoaEntity>(`${environment.URLSERVIDOR}Pessoa`, this.mapper.mapTo(param))
+            .post<PessoaEntity>(`${environment.URLSERVIDOR}pessoa`, this.mapper.mapTo(param))
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
@@ -53,7 +53,7 @@ export class PessoaRepository {
 
     deletePessoa(id: number): Observable<void> {
         return this.http
-            .delete<void>(`${environment.URLSERVIDOR}Pessoa/${id}`, id)
+            .delete<void>(`${environment.URLSERVIDOR}pessoa/${id}`, id)
             .pipe(map((x) => x.data));
     }
 }

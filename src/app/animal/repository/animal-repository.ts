@@ -19,14 +19,14 @@ export class AnimalRepository {
 
     getAnimalById(id: number): Observable<AnimalModel> {
         return this.http
-            .getAll<AnimalModel>(`${environment.URLSERVIDOR}Animal/${id}`)
+            .getAll<AnimalModel>(`${environment.URLSERVIDOR}animal/${id}`)
             //@ts-ignore
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
     getAllAnimais(): Observable<AnimalModel> {
         return this.http
-            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}Animal`)
+            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
@@ -34,7 +34,7 @@ export class AnimalRepository {
    
     postAnimal(param: AnimalModel) {
         return this.http
-            .post<AnimalEntity>(`${environment.URLSERVIDOR}Animal`, this.mapper.mapTo(param))
+            .post<AnimalEntity>(`${environment.URLSERVIDOR}animal`, this.mapper.mapTo(param))
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
@@ -46,7 +46,7 @@ export class AnimalRepository {
     putAnimal(param: AnimalModel) {
         return this.http
             .put<void>(
-                `${environment.URLSERVIDOR}Animal/${param.id}`,
+                `${environment.URLSERVIDOR}animal/${param.id}`,
                 this.mapper.mapTo(param)
             )
             .pipe(map((x) => x.data));
@@ -54,7 +54,7 @@ export class AnimalRepository {
 
     deleteAnimal(id: number): Observable<void> {
         return this.http
-            .delete<void>(`${environment.URLSERVIDOR}Animal/${id}`, id)
+            .delete<void>(`${environment.URLSERVIDOR}animal/${id}`, id)
             .pipe(map((x) => x.data));
     }
 }
