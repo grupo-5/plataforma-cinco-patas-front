@@ -1,8 +1,9 @@
+import { SharedDataService } from './../../../../../_services/shared-data.service';
+import { AnimalModel } from './../../../../../animal/model/animal-model';
+import { AnimalRepository } from './../../../../../animal/repository/animal-repository';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Animal } from '../../../../../_models/animal.model';
-import { AnimalService } from './../../../../../_services/animal.service';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class AnimalCreateComponent implements OnInit {
   disabled: boolean = false;
 
   constructor(
-    public animalService: AnimalService,
+    public sharedDataService:SharedDataService,
+    public animalService: AnimalRepository,
     public validarInputsService: ValidarInputsService,
     private fb: FormBuilder,
     private router: Router,
@@ -35,7 +37,7 @@ export class AnimalCreateComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.animalService.visualizar(this.id).subscribe((animal: Animal) => this.criarFormulario(animal));
+      this.animalService.getAnimalById(this.id).subscribe((animal: AnimalModel) => this.criarFormulario(animal));
     } 
     else {
       this.criarFormulario(this.criarAnimalEmBranco());
@@ -58,7 +60,7 @@ export class AnimalCreateComponent implements OnInit {
       return;
     }
 
-    const animal = this.formCadastro.getRawValue() as Animal;  // retorna os campos que existem dentro do formGroup cadastro
+    const animal = this.formCadastro.getRawValue() as AnimalModel;  // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       animal.id = this.id;
       console.log("editar *** " + animal.nome)
@@ -74,10 +76,10 @@ export class AnimalCreateComponent implements OnInit {
     this.formCadastro.reset();
   }
 
-  private criarFormulario(animal: Animal): void {
+  private criarFormulario(animal: AnimalModel): void {
     this.formCadastro = this.fb.group({
       nome: [animal.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]], // Não está imprimindo a msg quando tem menos que 3 mais que 100
-      dataNasci: [animal.dataNasci, [Validators.required]],
+      dataNasci: [animal.dataNasc, [Validators.required]],
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
@@ -89,12 +91,12 @@ export class AnimalCreateComponent implements OnInit {
     });
   }
 
-  private criarAnimalEmBranco(): Animal {
-    return {} as Animal;
+  private criarAnimalEmBranco(): AnimalModel {
+    return {} as AnimalModel;
   }
 
-  private editar(animal: Animal): void {
-    this.animalService.editar(animal).subscribe();
+  private editar(animal: AnimalModel): void {
+   this.sharedDataService.changeMessage(JSON.stringify(animal));
 
     //   () => {
     //   const config = {
@@ -119,8 +121,8 @@ export class AnimalCreateComponent implements OnInit {
     //   });
   }
 
-  private salvar(animal: Animal): void {
-    this.animalService.salvar(animal).subscribe();
+  private salvar(animal: AnimalModel): void {
+    this.sharedDataService.changeMessage(JSON.stringify(animal));
 
     //   () => { // Primeira parte do subscrive é o sucesso
     //   const config = {

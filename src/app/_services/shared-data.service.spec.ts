@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AnimalService } from './animal.service';
+import { SharedDataService } from './shared-data.service';
 
-describe('AnimalService', () => {
-  let service: AnimalService;
+describe('SharedDataService', () => {
+  let service: SharedDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AnimalService);
+    service = TestBed.inject(SharedDataService);
   });
 
   it('should be created', () => {

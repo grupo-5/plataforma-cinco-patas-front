@@ -1,9 +1,9 @@
-import { Ong } from './../../../../../_models/ong.model';
+import { InstituicaoRepository } from './../../../../../instituicao/repository/instituicao-repository';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
-import { OngService } from './../../../../../_services/ong.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { InstituicaoModel } from 'src/app/instituicao/model/instituicao-model';
 
 @Component({
   selector: 'app-ong-create',
@@ -28,7 +28,7 @@ export class OngCreateComponent implements OnInit {
   agencia: Array<String>;
   conta: Array<String>;
  
-  constructor(public ongService: OngService,
+  constructor(public ongService: InstituicaoRepository,
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -38,7 +38,7 @@ export class OngCreateComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.ongService.visualizar(this.id).subscribe((ong: Ong) => this.criarFormulario(ong));
+      // this.ongService.visualizar(this.id).subscribe((ong: Ong) => this.criarFormulario(ong));
     }
     else {
       this.criarFormulario(this.criarOngEmBranco());
@@ -51,7 +51,7 @@ export class OngCreateComponent implements OnInit {
 
 
 
-  private criarFormulario(ong: Ong): void {
+  private criarFormulario(ong: InstituicaoModel): void {
     this.formCadastro = this.fb.group({
       nome: [ong.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       razaoSocial: [ong.razaoSocial, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
@@ -66,15 +66,15 @@ export class OngCreateComponent implements OnInit {
     });
   }
 
-  private criarOngEmBranco(): Ong {
-    return {} as Ong;
+  private criarOngEmBranco(): InstituicaoModel {
+    return {} as InstituicaoModel;
   }
 
-  private editar(ong: Ong): void {
-    this.ongService.editar(ong).subscribe();
+  private editar(ong: InstituicaoModel): void {
+    // this.ongService.editar(ong).subscribe();
   }
-  private salvar(ong: Ong): void {
-    this.ongService.salvar(ong).subscribe();
+  private salvar(ong: InstituicaoModel): void {
+    // this.ongService.salvar(ong).subscribe();
   }
 
   submit(): void {
@@ -84,7 +84,7 @@ export class OngCreateComponent implements OnInit {
       return;
     }
 
-    const ong = this.formCadastro.getRawValue() as Ong;  // retorna os campos que existem dentro do formGroup cadastro
+    const ong = this.formCadastro.getRawValue() as InstituicaoModel;  // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       ong.id = this.id;
       console.log("editar *** " + ong.nome)
