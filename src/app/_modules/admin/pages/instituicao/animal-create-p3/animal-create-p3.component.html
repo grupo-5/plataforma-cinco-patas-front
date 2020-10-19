@@ -11,12 +11,13 @@
                 </div>
             </div>
             <div class=" mt-4 mr-5">
-                <!-- <app-upload-de-imagens></app-upload-de-imagens>               -->
+                <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+                 <app-upload-de-imagens></app-upload-de-imagens>              
                 <div class="d-flex justify-content-between">
                     <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
-                    <app-button-g nomeBotao="Salvar"  [disabled]="disabled"></app-button-g>
+                    <app-button-g nomeBotao="Salvar"  [disabled]="disabled" type="submit"></app-button-g>
                 </div>
-
+                </form>
             </div>
         </div>
     </div>

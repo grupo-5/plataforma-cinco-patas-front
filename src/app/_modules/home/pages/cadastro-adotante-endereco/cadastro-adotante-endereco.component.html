@@ -2,9 +2,9 @@
   <app-header-com-carrossel></app-header-com-carrossel>
 </div>
 <div class="row mt-4">
-    <div class="col-10 mx-auto text-center" >
-        <h1>Cadastro Adotante</h1>
-        </div>
+  <div class="col-10 mx-auto text-center">
+    <h1>Cadastro Adotante</h1>
+  </div>
 </div>
 <div class="row">
   <div class="col-10 mx-auto">
@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="row">
-  <form [formGroup]="formCadastroAdotanteEndereco" class="col-10 mx-auto">
+  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()"  (ngReset)="resetForm()"class="col-10 mx-auto">
     <div class="row">
       <div class="col-3">
         <app-input-text
@@ -23,18 +23,18 @@
           tipo="text"
           idInput="name"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="name"
+          [formGroup]="formCadastroAdotante"
+          controlName="cep"
         ></app-input-text>
       </div>
       <div class="col-9">
         <app-input-text
           titulo="Logradouro"
           tipo="text"
-          idInput="cpf"
+          idInput="logradouro"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="cpf"
+          [formGroup]="formCadastroAdotante"
+          controlName="logradouro"
         ></app-input-text>
       </div>
     </div>
@@ -44,10 +44,10 @@
         <app-input-text
           titulo="Complemento"
           tipo="text"
-          idInput="cpf"
+          idInput="complemento"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="cpf"
+          [formGroup]="formCadastroAdotante"
+          controlName="complemento"
         ></app-input-text>
       </div>
 
@@ -55,10 +55,10 @@
         <app-input-text
           titulo="Numero"
           tipo="text"
-          idInput="rg"
+          idInput="numero"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="rg"
+          [formGroup]="formCadastroAdotante"
+          controlName="numero"
         ></app-input-text>
       </div>
     </div>
@@ -68,20 +68,20 @@
         <app-input-text
           titulo="Estado"
           tipo="text"
-          idInput="email"
+          idInput="estado"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="email"
+          [formGroup]="formCadastroAdotante"
+          controlName="estado"
         ></app-input-text>
       </div>
       <div class="col-6">
         <app-input-text
           titulo="Cidade"
           tipo="text"
-          idInput="email"
+          idInput="cidade"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="email"
+          [formGroup]="formCadastroAdotante"
+          controlName="cidade"
         ></app-input-text>
       </div>
     </div>
@@ -91,29 +91,28 @@
         <app-input-text
           titulo="Bairro"
           tipo="text"
-          idInput="telefone"
+          idInput="bairro"
           placeholderInput="preencha "
-          [formGroup]="formCadastroAdotanteEndereco"
-          controlName="telefone"
+          [formGroup]="formCadastroAdotante"
+          controlName="bairro"
         ></app-input-text>
       </div>
-
-
     </div>
-  </form>
-</div>
-<div class="row mb-5 mt-5">
-  <div class="col-10 mx-auto d-flex justify-content-between">
-    <app-button-g
-      nomeBotao="Voltar"
-      (onClick)="trocaRota($event)"
-      [disabled]="disabled"
-    ></app-button-g>
 
-    <app-button-g
-      nomeBotao="Avancar"
-      (onClick)="trocaRota($event)"
-      [disabled]="disabled"
-    ></app-button-g>
-  </div>
+    <div class="row mb-5 mt-5">
+      <div class="col-12 mx-auto d-flex justify-content-between">
+        <app-button-g
+          nomeBotao="Voltar"
+          (onClick)="trocaRota($event)"
+          [disabled]="disabled"
+        ></app-button-g>
+        <app-button-g
+          nomeBotao="Avançar"
+          [disabled]="disabled"
+          type="submit"
+        ></app-button-g>
+      </div>
+    </div>
+
+  </form>
 </div>

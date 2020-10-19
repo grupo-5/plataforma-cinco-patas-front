@@ -14,6 +14,6 @@ export class SelecaoTipoCadastroComponent implements OnInit {
   trocaRota = (evento) => {
     evento.target.innerText == 'Adotante'
       ? this.route.navigate(['cadastro-adotante'])
-      : this.route.navigate(['instituicao']);
+      : this.route.navigate(['cadastro-instituicao']);
   };
 }

@@ -2,7 +2,7 @@
   <div class="form-group color-fonts-form">
     <label for="idSelect">{{titulo}}</label>
       <select class="form-control" [id]="idSelect" [formControlName]="controlName">
-        <option *ngFor="let l of lista">{{l}}</option>
+        <option *ngFor="let l of lista" [value]="l.value?l.value:l">{{l.label?l.label:l}}</option>
       </select>
       <div><label class="text-danger fonte-erros-inputs"
           *ngIf="validacaoInputsService.fieldHasError(formControl, 'required')">Campo

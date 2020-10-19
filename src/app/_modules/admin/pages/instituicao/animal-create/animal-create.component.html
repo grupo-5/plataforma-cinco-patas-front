@@ -45,8 +45,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <app-input-checkbox idCheckBox="idCuidados" titulo="Cuidados Veterinários"
-                                [texto_opcoes]="cuidadosVets" [formGroup]="formCadastro" controlName="cuidadosVet">
+                            <app-input-checkbox  idCheckBox="idCuidados" titulo="Cuidados Veterinários"
+                                [texto_opcoes]="cuidadosVets" [formGroup]="formCadastro" controlName="cuidadosVet" >
                             </app-input-checkbox>
                         </div>
                         <div class="col-sm-6">
@@ -70,7 +70,7 @@
                         <!-- <button class="btn btn-primary float-right"  >Avançar</button> -->
 
                         <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
-                        <app-button-g nomeBotao="Avançar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+                        <app-button-g nomeBotao="Avançar"  [disabled]="disabled" type="submit"></app-button-g>
                     </div>
                 </form>
             </div>

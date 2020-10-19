@@ -1,18 +1,23 @@
 import { SharedDataService } from './../../../../../_services/shared-data.service';
-import { AnimalModel } from './../../../../../animal/model/animal-model';
-import { AnimalRepository } from './../../../../../animal/repository/animal-repository';
+import { AnimalModel } from './../../../../../_core/model/animal-model';
+import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  FormControl,
+} from '@angular/forms';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
 @Component({
   selector: 'app-animal-create',
   templateUrl: './animal-create.component.html',
-  styleUrls: ['./animal-create.component.css']
+  styleUrls: ['./animal-create.component.css'],
 })
 export class AnimalCreateComponent implements OnInit {
-
   id: number;
   formCadastro: FormGroup;
   generos: Array<String>;
@@ -32,53 +37,73 @@ export class AnimalCreateComponent implements OnInit {
     public validarInputsService: ValidarInputsService,
     private fb: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.animalService.getAnimalById(this.id).subscribe((animal: AnimalModel) => this.criarFormulario(animal));
-    }
-    else {
-      this.criarFormulario(this.criarAnimalEmBranco());
+      this.animalService
+        .getAnimalById(this.id)
+        .subscribe((animal: AnimalModel) => this.criarFormulario(animal));
+    } else {
+     this.criarFormulario(this.criarAnimalEmBranco())
     }
 
     this.generos = ['Macho', 'Fêmea'];
     this.especies = ['Gato', 'Cachorro'];
     this.portes = ['P', 'M', 'G'];
-    this.personalidades = ['Dócil', 'Brincalhão', 'Sociável', 'Imperativo', 'Carente'];
-    this.cuidadosVets = ['Vermifugado', 'Castrado', 'Vacinado', 'Cuidados especiais'];
+    this.personalidades = [
+      'Dócil',
+      'Brincalhão',
+      'Sociável',
+      'Imperativo',
+      'Carente',
+    ];
+    this.cuidadosVets = [
+      'Vermifugado',
+      'Castrado',
+      'Vacinado',
+      'Cuidados especiais',
+    ];
     this.localizacoes = ['Ong', 'Com o dono'];
     this.cidades = ['', 'São Paulo', 'Rio de Janeiro', 'Goias'];
   }
 
-
   submit(): void {
-    this.formCadastro.markAllAsTouched();  // Faz parecer que todos os campos foram clicados
+    this.formCadastro.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastro.invalid) {
-      console.log("\n inválido form  ")
+      console.log('\n inválido form  ');
       return;
     }
 
-    const animal = this.formCadastro.getRawValue() as AnimalModel;  // retorna os campos que existem dentro do formGroup cadastro
+    const animal = this.formCadastro.getRawValue() as AnimalModel; // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       animal.id = this.id;
-      console.log("editar *** " + animal.nome)
+      console.log('editar *** ' + animal.nome);
       this.editar(animal);
-    }
-    else {
-      console.log("salvar *** " + animal.nome)
-      //this.salvar();
+    } else {
+      console.log('salvar *** ' + animal.nome);
+      this.salvar(animal);
     }
   }
 
   reiniciarForm(): void {
     this.formCadastro.reset();
   }
-
+  
   private criarFormulario(animal: AnimalModel): void {
     this.formCadastro = this.fb.group({
-      nome: [animal.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]], // Não está imprimindo a msg quando tem menos que 3 mais que 100
+      nome: [
+        animal.nome,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(100),
+        ],
+      ], // Não está imprimindo a msg quando tem menos que 3 mais que 100
       dataNasc: [animal.dataNasc, [Validators.required]],
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
@@ -96,6 +121,7 @@ export class AnimalCreateComponent implements OnInit {
   }
 
   private editar(animal: AnimalModel): void {
+    console.log(animal);
     this.sharedDataService.changeMessage(JSON.stringify(animal));
 
     //   () => {
@@ -121,62 +147,22 @@ export class AnimalCreateComponent implements OnInit {
     //   });
   }
 
-  private salvar2(animal: AnimalModel): void {
+  private salvar(animal: AnimalModel): void {
+    console.log(animal);
     this.sharedDataService.changeMessage(JSON.stringify(animal));
-
-    //   () => { // Primeira parte do subscrive é o sucesso
-    //   const config = {
-    //     data: {
-    //       btnSucesso: 'Ir para a listagem',
-    //       btnCancelar: 'Cadastrar um novo animal',
-    //       corBtnCancelar: 'primary',
-    //       possuirBtnFechar: true
-    //     } as Alerta
-    //   };
-    //   const dialogRef = this.dialog.open(AlertaComponent, config);
-    //   dialogRef.afterClosed().subscribe((opcao: boolean) => {
-    //     if (opcao) { // Verifica qual opção foi clicada no formCadastro: listar ou cadastrar animal
-    //       this.router.navigateByUrl('animals');  //navega para lista de animals
-    //     } else {
-    //       this.reiniciarForm();
-    //     }
-    //   });
-    // }
-    //   () => {  // Segunda parte do subscrive é o error
-    //     const config = {
-    //       data: {
-    //         titulo: 'Erro ao salvar o registro!',
-    //         descricao: 'Não conseguimos salvar seu registro, favor tentar novamente mais tarde',
-    //         corBtnSucesso: 'warn',
-    //         btnSucesso: 'Fechar'
-    //       } as Alerta
-    //     };
-    //     this.dialog.open(AlertaComponent, config);
-    //   }
-    //   // Terceira parte seria o finally - poderia ter uma configuração para ser exibida independente de dar sucesso ou error.
-    // );
+    this.trocaRota();
   }
 
-  trocaRota = (evento) => {
-    evento.target.innerText == 'Voltar'
-      ? this.router.navigate(['animais'])
-      : this.router.navigate(['cadastro-animal-2']);
-  }
+  trocaRota = (evento?) => {
+    if (evento) {
+      evento.target.innerText == 'Voltar'
+        ? this.router.navigate(['cadastro-animal-2'])
+        : this.router.navigate(['cadastro-animal-1']);
+    } else {
+      this.router.navigate(['cadastro-animal-2']);
+    }
+  };
 
-
-  // salvar() { //TESTE
-  //   const dados = {
-  //     id: this.formCadastro.value.id,
-  //     nome: this.formCadastro.value.nome,
-  //     especie: this.formCadastro.value.especie,
-  //     dataNasc: this.formCadastro.value.dataNasc,
-  //     sexo: this.formCadastro.value.sexo,
-  //     porte: this.formCadastro.value.porte,
-  //     localizacao: this.formCadastro.value.localizacao,
-  //     infoExtras: this.formCadastro.value.infoExtras,
-  //     cuidadosVet: this.formCadastro.value.cuidadosVet,
-  //     personalidades: this.formCadastro.value.personalidades,
-  //   } as AnimalModel;
 
   //   this.animalService.postAnimal(dados).subscribe(resposta => {
   //     console.log("okkk")

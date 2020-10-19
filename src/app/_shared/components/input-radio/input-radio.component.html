@@ -2,7 +2,7 @@
     <div class="form-group color-fonts-form">
         <div><label class="form" for="titulo">{{titulo}}</label></div>
         <div class="form-check form-check-inline" *ngFor="let opcao of texto_opcoes">
-            <input class="form-check-input" type="radio" [name]="nomeRadio" [id]="idRadio" [value]="opcao" [formControlName]="controlName">
+            <input class="form-check-input" type="radio" [name]="nomeRadio" [id]="idRadio" [value]="opcao|uppercase" [formControlName]="controlName">
             <label class="form-check-label" for="idRadio">{{opcao}}</label>
         </div>
         <div>

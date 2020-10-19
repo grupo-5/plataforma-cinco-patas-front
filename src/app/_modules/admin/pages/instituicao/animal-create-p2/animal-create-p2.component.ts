@@ -1,8 +1,7 @@
-import { EnderecoRepository } from './../../../../../endereco/repository/endereco-repository ';
+import { EnderecoRepository } from './../../../../../_core/repository/endereco-repository ';
+import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
+import { AnimalModel } from './../../../../../_core/model/animal-model';
 import { SharedDataService } from './../../../../../_services/shared-data.service';
-import { AnimalModel } from './../../../../../animal/model/animal-model';
-import { AnimalRepository } from './../../../../../animal/repository/animal-repository';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
@@ -36,9 +35,9 @@ export class AnimalCreateP2Component implements OnInit {
   ngOnInit(): void {
     this.listarEstados();
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.sharedDataService.currentMessage.subscribe(
-      (message) => (this.selectedMessage = message)
-    );
+    this.sharedDataService.currentMessage.subscribe((message) => {
+      this.selectedMessage = message;
+    });
 
     if (this.id) {
       this.animalService
@@ -52,20 +51,14 @@ export class AnimalCreateP2Component implements OnInit {
   private criarFormulario(animal: AnimalModel): void {
     this.formCadastro = this.fb.group({
       nomeTitular: [animal.nomeTitular, [Validators.required]],
-      // enderecoLogradouro: [animal.endereco.enderecoLogradouro, [Validators.required]],
-      // enderecoCidade: [animal.endereco.enderecoCidade, [Validators.required]],
-      // enderecoEstado: [animal.endereco.enderecoCidade.estado, [Validators.required]],
-      // enderecoNumero: [animal.endereco.enderecoNumero, [Validators.required]],
-      // enderecoComplemento: [animal.endereco.enderecoComplemento, [Validators.required]],
-      // enderecoCep: [animal.endereco.enderecoCep, [Validators.required]],
       enderecoLogradouro: ['', [Validators.required]],
-      enderecoCidade: ['', ],
+      enderecoCidade: [''],
       enderecoBairro: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.required]],
       enderecoComplemento: ['', [Validators.required]],
       enderecoCep: ['', [Validators.required]],
-      contato: [animal.contato]
+      contato: [''],
       // celular: [animal.contato, [Validators.required]],
       // enderecoLogradouro: [animal.endereco.logradouro, [Validators.required]],
       // enderecoCidade: [animal.endereco.cidade, [Validators.required]],
@@ -81,52 +74,61 @@ export class AnimalCreateP2Component implements OnInit {
   }
 
   private salvar(animal: AnimalModel) {
+
+    console.log(this.selectedMessage);
+    console.log(animal);
     if (this.selectedMessage != '') {
-      let animalAssign = Object.assign(
-        JSON.parse(this.selectedMessage),
-        animal
-      );
+      Object.assign(animal, JSON.parse(this.selectedMessage));
+      console.log(animal);
     }
 
     this.sharedDataService.changeMessage(JSON.stringify(animal));
+    this.trocaRota();
   }
 
   submit(): void {
-    this.formCadastro.markAllAsTouched();  // Faz parecer que todos os campos foram clicados
+
+    this.formCadastro.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastro.invalid) {
-      console.log("\n inválido form  ")
+      console.log('\n inválido form  ');
       return;
     }
 
-    const animal = this.formCadastro.getRawValue() as AnimalModel;  // retorna os campos que existem dentro do formGroup cadastro
+    const animal = this.formCadastro.getRawValue() as AnimalModel; // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       animal.id = this.id;
-
-    }
-     else {
-      console.log("salvar *** nome animal: " + animal.nome)
+    } else {
+      console.log('salvar *** nome animal: ' + animal.nome);
       this.salvar(animal);
     }
   }
 
-  trocaRota = (evento) => {
-    evento.target.innerText == 'Voltar'
-      ? this.router.navigate(['cadastro-animal-1'])
-      : this.router.navigate(['cadastro-animal-3']);
-  }
+  trocaRota = (evento?) => {
+    if (evento) {
+      evento.target.innerText == 'Voltar'
+        ? this.router.navigate(['cadastro-animal-1'])
+        : this.router.navigate(['cadastro-animal-3']);
+    } else {
+      this.router.navigate(['cadastro-animal-3']);
+    }
+  };
 
   listarEstados() {
-    this.repository.getAllEstados().subscribe(resposta => {
-      this.estados.push(resposta.id);
+    this.repository.getAllEstados().subscribe((resposta) => {
+      this.estados.push({ label: resposta.nome, value: resposta.id });
+      console.log(this.estados);
     });
   }
 
   listarCidades() {
     this.cidades = [];
     let id: number = this.formCadastro.value.enderecoEstado;
-    this.repository.getAllCidadesByEstado(id).subscribe(resposta => {
-      this.cidades.push(resposta.nome);
-      // this.cidades.push({ label: resposta.nome, value: resposta.id });
+    this.repository.getAllCidadesByEstado(id).subscribe((resposta) => {
+      this.cidades.push({ label: resposta.nome, value: resposta.id });
     });
+  }
+
+  editar(animal: AnimalModel): void {
+    this.sharedDataService.changeMessage(JSON.stringify(animal));
   }
 }

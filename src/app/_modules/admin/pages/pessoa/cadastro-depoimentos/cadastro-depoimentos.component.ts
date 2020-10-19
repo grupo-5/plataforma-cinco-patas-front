@@ -1,5 +1,6 @@
-import { DepoimentoModel } from './../../../../../depoimento/model/depoimento-model';
-import { DepoimentoRepository } from './../../../../../depoimento/repository/depoimento-repository';
+import { DepoimentoModel } from './../../../../../_core/model/depoimento-model';
+import { DepoimentoRepository } from './../../../../../_core/repository/depoimento-repository';
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';

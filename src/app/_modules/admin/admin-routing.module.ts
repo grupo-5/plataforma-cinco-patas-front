@@ -3,8 +3,7 @@ import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/an
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
 import { AnimalCreateComponent } from './pages/instituicao/animal-create/animal-create.component';
 import { AnimalCreateP2Component } from './pages/instituicao/animal-create-p2/animal-create-p2.component';
-import { OngCreateP2Component } from './pages/instituicao/ong-create-p2/ong-create-p2.component';
-import { OngCreateComponent } from './pages/instituicao/ong-create/ong-create.component';
+
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -19,8 +18,6 @@ const routes: Routes = [
             { path: 'pessoa', component: DashboardPessoaComponent},
             { path: 'cadastro-animal-1', component: AnimalCreateComponent},
             { path: 'cadastro-animal-2', component: AnimalCreateP2Component},
-            { path: 'cadastro-ong-2', component: OngCreateP2Component},
-            { path: 'cadastro-ong-1', component: OngCreateComponent},
             { path: 'cadastro-animal-3', component: AnimalCreateP3Component},
             { path: 'pessoas', component: ListagemAnimaisComponent},
             { path: 'animais', component: ListagemAnimaisComponent},

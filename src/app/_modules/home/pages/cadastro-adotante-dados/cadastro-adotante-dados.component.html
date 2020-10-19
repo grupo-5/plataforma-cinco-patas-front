@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="row">
-  <form [formGroup]="formCadastroAdotante" class="col-10 mx-auto">
+  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()" (ngReset)="resetForm()" class="col-10 mx-auto">
     <div class="row">
       <div class="col-12">
         <app-input-text
@@ -90,14 +90,13 @@
         </app-input-radio>
       </div>
     </div>
+
+    <div class="row mb-5 mt-5">
+      <div class="col-12 mx-auto text-right">
+        <app-button-g
+        nomeBotao="Avançar"  [disabled]="disabled" type="submit"
+        ></app-button-g>
+      </div>
+    </div>
   </form>
-</div>
-<div class="row mb-5 mt-5">
-  <div class="col-10 mx-auto text-right">
-    <app-button-g
-      nomeBotao="Avancar"
-      (onClick)="trocaRota($event)"
-      [disabled]="disabled"
-    ></app-button-g>
-  </div>
 </div>

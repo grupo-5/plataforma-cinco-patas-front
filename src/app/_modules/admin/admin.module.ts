@@ -12,8 +12,6 @@ import { CadastroDepoimentosComponent } from './pages/pessoa/cadastro-depoimento
 import { AnimalCreateP2Component } from './pages/instituicao/animal-create-p2/animal-create-p2.component';
 import { DashboardComponent } from './pages/instituicao/dashboard.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
-import { OngCreateComponent } from './pages/instituicao/ong-create/ong-create.component';
-import { OngCreateP2Component } from './pages/instituicao/ong-create-p2/ong-create-p2.component';
 import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios/listagem-usuarios.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
@@ -27,8 +25,6 @@ import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.compon
     CadastroDepoimentosComponent,
     ListagemAnimaisComponent,
     AnimalCreateP3Component,
-    OngCreateComponent,
-    OngCreateP2Component,
     ListagemUsuariosComponent,
     DashboardPessoaComponent,
   ],
@@ -46,8 +42,6 @@ import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.compon
     AnimalCreateP2Component,
     DashboardComponent,
     ListagemAnimaisComponent,
-    OngCreateComponent,
-    OngCreateP2Component,
     ListagemUsuariosComponent,
     AnimalCreateP3Component,
     DashboardPessoaComponent,

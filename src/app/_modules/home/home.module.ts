@@ -16,6 +16,8 @@ import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-end
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
 import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
+import { OngCreateComponent } from './pages/ong-create/ong-create.component';
+import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.componen
     LoginComponent,
     CadastroAdotanteMatchComponent,
     QueroAjudarComponent,
+    OngCreateComponent,
+    OngCreateP2Component,
   ],
   imports: [
     CommonModule,

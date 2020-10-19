@@ -15,6 +15,7 @@ export class InputRadioComponent {
   @Input() nomeRadio: string;
   @Input() controlName: string;
   @Input() formGroup: FormGroup;
+  
 
 
   constructor(public validacaoInputsService: ValidarInputsService) { }
