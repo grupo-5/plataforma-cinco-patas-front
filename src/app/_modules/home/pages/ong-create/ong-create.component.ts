@@ -1,3 +1,4 @@
+import { InstituicaoDataService } from './../../../../_services/instituicao-data.service';
 import { InstituicaoModel } from './../../../../_core//model/instituicao-model';
 import { InstituicaoRepository } from './../../../../_core/repository/instituicao-repository';
 
@@ -14,7 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OngCreateComponent implements OnInit {
   //timeline
-  listaPassos = ['Dados', 'Endereço'];
+  listaPassos = ['Dados', 'Endereço', 'Foto'];
 
   id: number;
   formCadastro: FormGroup;
@@ -34,7 +35,8 @@ export class OngCreateComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public validarInputsService: ValidarInputsService
+    public validarInputsService: ValidarInputsService,
+    public instituicaoDataService: InstituicaoDataService
     ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class OngCreateComponent implements OnInit {
     }
     this.id = this.activatedRoute.snapshot.params['id'];
     this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
-    this.tipodeDocumento = ['','CNPJ', 'RG', 'CPF'];
+    this.tipodeDocumento = ['CNPJ', 'RG', 'CPF'];
     
   }
 
@@ -77,9 +79,22 @@ export class OngCreateComponent implements OnInit {
   private editar(ong: InstituicaoModel): void {
     // this.ongService.editar(ong).subscribe();
   }
+
   private salvar(ong: InstituicaoModel): void {
-    // this.ongService.salvar(ong).subscribe();
+    this.instituicaoDataService.changeMessage(JSON.stringify(ong));
+    this.trocaRota();
   }
+
+  trocaRota = (evento?) => {
+    if (evento) {
+      evento.target.innerText == 'Voltar'
+        ? this.router.navigate(['selecao-tipo-cadastro'])
+        : this.router.navigate(['cadastro-instituicao-1']);
+    } else {
+      this.router.navigate(['cadastro-instituicao-1']);
+    }
+  };
+  
 
   submit(): void {
     this.formCadastro.markAllAsTouched();  
