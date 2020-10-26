@@ -14,7 +14,6 @@ import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-ins
 import { CadastroAdotanteDadosComponent } from './pages/cadastro-adotante-dados/cadastro-adotante-dados.component';
 import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-endereco/cadastro-adotante-endereco.component';
 import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
-import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
 import { OngCreateComponent } from './pages/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.component';
 import { OngCreateP3Component } from './pages/ong-create-p3/ong-create-p3.component';
@@ -31,7 +30,6 @@ import { SegurancaModule } from './pages/seguranca/seguranca.module';
     CadastroAdotanteDadosComponent,
     CadastroAdotanteEnderecoComponent,
     CadastroAdotanteMatchComponent,
-    QueroAjudarComponent,
     OngCreateComponent,
     OngCreateP2Component,
     OngCreateP3Component,

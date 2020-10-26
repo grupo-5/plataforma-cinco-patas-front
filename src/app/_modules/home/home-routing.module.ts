@@ -1,7 +1,6 @@
 import { OngCreateP3Component } from './pages/ong-create-p3/ong-create-p3.component';
 import { OngCreateP2Component } from './../home/pages/ong-create-p2/ong-create-p2.component';
 import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-instituicoes.component';
-import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
 import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
 import { LoginComponent } from './pages/seguranca/login/login.component';
 import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-endereco/cadastro-adotante-endereco.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
     children: [
       { path: '', component: InicioComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'quero-ajudar', component: QueroAjudarComponent },
       { path: 'depoimentos', component: ListaDepoimentosComponent },
       { path: 'ongs-parceiras', component: SelecaoTipoCadastroComponent },
       { path: 'home-page', component: InicioComponent },

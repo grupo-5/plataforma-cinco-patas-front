@@ -10,7 +10,7 @@ p {
 }
 
 .img {
-    background-image: url(../../../../../../assets/images/logo.png);
+    background-image: url(../../../../../../assets/images/login.png);
     height: calc(100vh - 139px);
     background-size: 100%;
     background-repeat: no-repeat;
