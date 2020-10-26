@@ -1,3 +1,4 @@
+import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemAnimaisComponent implements OnInit {
 
-  constructor() { }
+  constructor(public animalRepository: AnimalRepository) { }
+
+  statusLabels: any = {
+    "Adotado": "#189CA1",
+    "Disponível": "#77CE32",
+    "Em processo de Adoção": "#FF4C61"
+  };
+
+  animaisListados: any[] = [];
+
+  carregaSolicitacoes() {
+    this.animalRepository.getAllAnimais().subscribe((resposta) => {
+      this.addArray(resposta);
+      console.log(resposta);
+    });
+  }
+
+  addArray(object) {
+    this.animaisListados.push(object);
+  }
 
   ngOnInit(): void {
+    this.carregaSolicitacoes();
   }
 
 }
