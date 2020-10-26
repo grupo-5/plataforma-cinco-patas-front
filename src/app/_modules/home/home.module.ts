@@ -13,11 +13,11 @@ import { ListaDepoimentosComponent } from './pages/lista-depoimentos/lista-depoi
 import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-instituicoes.component';
 import { CadastroAdotanteDadosComponent } from './pages/cadastro-adotante-dados/cadastro-adotante-dados.component';
 import { CadastroAdotanteEnderecoComponent } from './pages/cadastro-adotante-endereco/cadastro-adotante-endereco.component';
-import { LoginComponent } from './pages/login/login.component';
 import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/cadastro-adotante-match.component';
 import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
 import { OngCreateComponent } from './pages/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.component';
+import { SegurancaModule } from './pages/seguranca/seguranca.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,6 @@ import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.compon
     ListaDepoimentosComponent,
     CadastroAdotanteDadosComponent,
     CadastroAdotanteEnderecoComponent,
-    LoginComponent,
     CadastroAdotanteMatchComponent,
     QueroAjudarComponent,
     OngCreateComponent,
@@ -42,6 +41,7 @@ import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.compon
     FormsModule,
     ReactiveFormsModule,
     AdminModule,
+    SegurancaModule
   ],
 })
 export class HomeModule {}
