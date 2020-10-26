@@ -6,15 +6,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
-
-
 @Component({
   selector: 'app-cadastro-depoimentos',
   templateUrl: './cadastro-depoimentos.component.html',
-  styleUrls: ['./cadastro-depoimentos.component.css']
+  styleUrls: ['./cadastro-depoimentos.component.css'],
 })
 export class CadastroDepoimentosComponent implements OnInit {
-
   // Depoimentos
   caminhoImg: string;
   nome: string;
@@ -23,32 +20,33 @@ export class CadastroDepoimentosComponent implements OnInit {
   formDepoimento: FormGroup;
   texto: string;
   id: number;
+  tipo=['plataforma','ong']
 
-  constructor(public validarInputsService: ValidarInputsService,
+  constructor(
+    public validarInputsService: ValidarInputsService,
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public depoimentoService: DepoimentoRepository) { }
+    public depoimentoService: DepoimentoRepository
+  ) {}
 
   ngOnInit(): void {
-
-    this.caminhoImg = "../../../../../assets/images/pessoa.jpg";
-    this.nome = "aninha";
-    this.depoi = "deposgvdfd eposgvdfd eposgvdfd eposgvdfd eposgvdfd ";
-    this.nomeBotao = "Salvar";
+    this.caminhoImg = '../../../../../assets/images/pessoa.jpg';
+    this.nome = 'aninha';
+    this.depoi = 'deposgvdfd eposgvdfd eposgvdfd eposgvdfd eposgvdfd ';
+    this.nomeBotao = 'Salvar';
 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       // this.depoimentoService.visualizar(this.id).subscribe((depoimento: DepoimentoModel) => this.criarFormulario(depoimento));
-    } 
-    else {
+    } else {
       this.criarFormulario(this.criarDepoimentoEmBranco());
-   }
-
+    }
   }
   private criarFormulario(depoimento: DepoimentoModel): void {
     this.formDepoimento = this.fb.group({
-      texto: [depoimento.texto]
+      texto: ['', Validators.required],
+      tipo: ['', Validators.required],
     });
   }
 
@@ -61,7 +59,16 @@ export class CadastroDepoimentosComponent implements OnInit {
   }
 
   private salvar(depoimento: DepoimentoModel): void {
-    // this.depoimentoService.salvar(depoimento).subscribe();
+    let id = 3;
+    const dados: any = {
+      texto: depoimento.texto,
+      pessoa: {
+        id: id,
+      },
+    };
+    this.depoimentoService
+      .postDepoimento(dados)
+      .subscribe((resposta) => console.log(resposta));
   }
 
   private editar(depoimento: DepoimentoModel): void {
@@ -69,22 +76,20 @@ export class CadastroDepoimentosComponent implements OnInit {
   }
 
   submit(): void {
-    this.formDepoimento.markAllAsTouched();  // Faz parecer que todos os campos foram clicados
+    this.formDepoimento.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formDepoimento.invalid) {
-      console.log("\n inválido form  ")
+      console.log('\n inválido form  ');
       return;
     }
 
-    const depoimento = this.formDepoimento.getRawValue() as DepoimentoModel;  // retorna os campos que existem dentro do formGroup cadastro
+    const depoimento = this.formDepoimento.getRawValue() as DepoimentoModel; // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       depoimento.id = this.id;
-      console.log("editar *** " + depoimento.id)
+      console.log('editar *** ' + depoimento.id);
       this.editar(depoimento);
-    }
-     else {
-      console.log("salvar *** " + depoimento.id)
+    } else {
+      console.log('salvar *** ' + depoimento.id);
       this.salvar(depoimento);
     }
   }
-
 }

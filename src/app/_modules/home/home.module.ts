@@ -17,6 +17,7 @@ import { CadastroAdotanteMatchComponent } from './pages/cadastro-adotante-match/
 import { QueroAjudarComponent } from './pages/quero-ajudar/quero-ajudar.component';
 import { OngCreateComponent } from './pages/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.component';
+import { OngCreateP3Component } from './pages/ong-create-p3/ong-create-p3.component';
 import { SegurancaModule } from './pages/seguranca/seguranca.module';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { SegurancaModule } from './pages/seguranca/seguranca.module';
     QueroAjudarComponent,
     OngCreateComponent,
     OngCreateP2Component,
+    OngCreateP3Component,
   ],
   imports: [
     CommonModule,

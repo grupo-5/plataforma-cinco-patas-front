@@ -17,6 +17,8 @@ export class AnimalCreateP3Component implements OnInit {
   disabled: boolean = false;
   listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
   selectedMessage: any;
+  image: any;
+  mensagem;
 
   constructor(
     private router: Router,
@@ -28,7 +30,13 @@ export class AnimalCreateP3Component implements OnInit {
 
   ngOnInit(): void {
     this.sharedDataService.currentMessage.subscribe((message) => {
-      this.selectedMessage = message;
+      if(message!=''){
+
+        this.selectedMessage = message;
+      }else{
+        this.router.navigate(['cadastro-animal-2'])
+
+      }
 
       this.criarFormulario(JSON.parse(message));
     });
@@ -64,49 +72,94 @@ export class AnimalCreateP3Component implements OnInit {
 
   editar(animal: AnimalModel) {}
 
+  receiveImage(image) {
+    this.image = image;
+  }
   salvar(animal) {
+    let imageId;
+    this.repository.postImagem(this.image).subscribe((resposta) => {
+      //@ts-ignore
+      imageId = resposta.id;
+      console.log(resposta);
 
-    animal.personalidades = [{  descricao: 'oi' }];
-    animal.cuidadosVet = [{  descricao: 'oi' }];
-    animal.status="disponivel"
-
-
-    const dados = {
-       nome: animal.nome,
-      especie: animal.especie,
-      dataNasc: animal.dataNasc,
-      sexo: animal.sexo,
-      porte: animal.porte,
-      localizacao:animal.localizacao,
-      infoExtras: animal.infoExtras,
-      cuidadosVet: animal.cuidadosVet,
-      personalidades: animal.personalidades,
-      nomeTitular:animal.nomeTitular,
-      status:animal.status,
-      contato:animal.contato,
-      endereco:{
-        cep:animal.enderecoCep,
-        logradouro:animal.enderecoLogradouro,
-        numero:animal.enderecoNumero,
-        complemento:animal.enderecoComplemento,
-        bairro:animal.enderecoBairro,
-        cidade:{
-          id:animal.enderecoCidade,
-          estado:{
-            id:animal.enderecoEstado
-          }
+      animal.personalidades = [{ descricao: 'oi' }];
+      animal.cuidadosVet = [{ descricao: 'oi' }];
+      animal.status = 'disponivel';
+  
+      const dados = {
+        nome: animal.nome,
+        especie: animal.especie,
+        dataNasc: animal.dataNasc,
+        sexo: animal.sexo,
+        porte: animal.porte,
+        localizacao: animal.localizacao,
+        infoExtras: animal.infoExtras,
+        cuidadosVet: animal.cuidadosVet,
+        personalidades: animal.personalidades,
+        nomeTitular: animal.nomeTitular,
+        status: animal.status,
+        contato: animal.contato,
+        endereco: {
+          cep: animal.enderecoCep,
+          logradouro: animal.enderecoLogradouro,
+          numero: animal.enderecoNumero,
+          complemento: animal.enderecoComplemento,
+          bairro: animal.enderecoBairro,
+          cidade: {
+            id: animal.enderecoCidade,
+            estado: {
+              id: animal.enderecoEstado,
+            },
+          },
         },
-        
-             }
-    } as AnimalModel;
+        foto: {
+          id: imageId,
+        },
+      } as AnimalModel;
+  
 
+      if (dados.id) {
+        this.repository.putAnimal(dados).subscribe(resposta => {
+          this.reiniciarForm();
+        });
+      } else {
+        this.repository.postAnimal(dados).subscribe(resposta => {
+          this.mensagem = [
+            {
+              severity: 'success',
+              summary: 'CLIENTE',
+              detail: 'cadastrado com sucesso!'
+            }];
+          this.reiniciarForm();
+        },
+        (e) => {
+            var msg: any[] = [];
+            //Erro Principal
+            msg.push({
+              severity: 'error',
+              summary: 'ERRO',
+              detail: e.error.userMessage
+            });
+            //Erro de cada atributo
+            var erros = e.error.objects;
+            erros.forEach(function (elemento) {
+              msg.push(
+                {
+                  severity: 'error',
+                  summary: 'ERRO',
+                  detail: elemento.userMessage
+                });
+            });
+            this.mensagem = msg;
+          }
+        );
+      }
+      console.log(dados);
+      this.repository
+        .postAnimal(dados)
+        .subscribe((resposta) => console.log(resposta));
+    });
 
-
-
-    console.log(dados);
-    this.repository
-      .postAnimal(dados)
-      .subscribe((resposta) => console.log(resposta));
   }
   reiniciarForm() {}
 }

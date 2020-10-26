@@ -1,7 +1,14 @@
 <form>
-    <img [src]="imgURL" height="200" *ngIf="imgURL" class="img-thumbnail">
+  <div class="row">
+    <div class="col-3 image-container " [ngClass]="{'img-thumbnail':!imgURL}">
+
+      <img [src]="imgURL"  *ngIf="imgURL" class=" img-thumbnail" >
+      <div *ngIf="!imgURL" class="text-center text-muted "><small>Pré-visualização</small></div>
+
+    </div>
+  </div>
     <div class="form-group">
-      <label for="exampleFormControlFile1">Example file input</label>
-      <input type="file" #file  class="form-control-file" id="uploadFile" accept='image/*' (change)="preview(file.files)">
+      <label for="exampleFormControlFile1 " class="text-hide">Upload de Imagem</label>
+      <input type="file" #file  class="form-control-file" id="uploadFile" accept='image/*' (change)="onChange($event)">
     </div>
   </form>

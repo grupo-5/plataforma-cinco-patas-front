@@ -1,4 +1,5 @@
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
+import { CadastroDepoimentosComponent } from './pages/pessoa/cadastro-depoimentos/cadastro-depoimentos.component';
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
             { path: 'pessoas', component: ListagemUsuariosComponent},
             { path: 'animais', component: ListagemAnimaisComponent},
             { path: 'solicitacoes', component: ListagemSolicitacoesComponent},
+            { path: 'cadastro-depoimento', component: CadastroDepoimentosComponent},
                  ],
     },
 ];

@@ -36,7 +36,11 @@ export class AnimalCreateP2Component implements OnInit {
     this.listarEstados();
     this.id = this.activatedRoute.snapshot.params['id'];
     this.sharedDataService.currentMessage.subscribe((message) => {
-      this.selectedMessage = message;
+      if (message != '') {
+        this.selectedMessage = message;
+      } else {
+        this.router.navigate(['cadastro-animal-1']);
+      }
     });
 
     if (this.id) {
@@ -74,7 +78,6 @@ export class AnimalCreateP2Component implements OnInit {
   }
 
   private salvar(animal: AnimalModel) {
-
     console.log(this.selectedMessage);
     console.log(animal);
     if (this.selectedMessage != '') {
@@ -87,7 +90,6 @@ export class AnimalCreateP2Component implements OnInit {
   }
 
   submit(): void {
-
     this.formCadastro.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastro.invalid) {
       console.log('\n inválido form  ');

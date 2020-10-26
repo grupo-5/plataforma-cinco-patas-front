@@ -10,7 +10,8 @@ export class DepoimentoMapper extends Mapper<DepoimentoEntity, DepoimentoModel> 
     return {
       id: param.id,
       texto: param.texto,
-      pessoa:param.pessoa
+      pessoa:param.pessoa,
+      tipo:param.tipo
     };
   }
 
@@ -18,7 +19,8 @@ export class DepoimentoMapper extends Mapper<DepoimentoEntity, DepoimentoModel> 
     return {
       id: param.id,
       texto: param.texto,
-      pessoa:param.pessoa
+      pessoa:param.pessoa,
+      tipo:param.tipo
     };
   }
 }

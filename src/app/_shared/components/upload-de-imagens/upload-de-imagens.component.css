@@ -1,4 +1,12 @@
+
+.image-container {
+    min-height: 200px;
+    border-radius: 20px;
+
+
+}
 img{
-    height: 200px;
-    width: 200px;
+    min-height: 200px;
+    max-width: 300px;
+    max-height: 200px;
 }

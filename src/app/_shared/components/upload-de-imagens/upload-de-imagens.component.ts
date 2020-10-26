@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-upload-de-imagens',
@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadDeImagensComponent implements OnInit {
 
-  
-
+  @Output() image = new EventEmitter();
 
   public imagePath;
   imgURL: any;
@@ -16,35 +15,34 @@ export class UploadDeImagensComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  // testar qual metoto funciona melhor
 
   onChange(event) {
+    var mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Only images are supported.';
+      return;
+    }
+
     if (event.target.files && event.target.files[0]) {
       const foto = event.target.files[0];
+      var reader = new FileReader();
+      this.imagePath = event.target.files;
+      reader.readAsDataURL(foto);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      };
 
       const formData = new FormData();
-      formData.append('foto', foto);
-      console.log(foto);
+      formData.append('imagem', foto);
+      this.sendImage(formData);
+    } else {
+      return;
     }
   }
 
- 
-  preview(files) {
-    if (files.length === 0)
-      return;
- 
-    var mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return;
-    }
- 
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
-    }
-  
-}
+  sendImage(image) {
+
+    this.image.emit(image);
+  }
+
 }

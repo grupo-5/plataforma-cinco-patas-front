@@ -54,13 +54,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <app-input-combobox idSelect="idCidade" titulo="Cidade" [formGroup]="formCadastro"
-                                controlName="enderecoCidade" [lista]="cidades" >
+                            <app-input-combobox idSelect="idEstado" titulo="Estado" [formGroup]="formCadastro"
+                                controlName="enderecoEstado" (change)="listarCidades()" [lista]="estados">
                             </app-input-combobox>
                         </div>
                         <div class="col-sm-6">
-                            <app-input-combobox idSelect="idEstado" titulo="Estado" [formGroup]="formCadastro"
-                                controlName="enderecoEstado" (change)="listarCidades()" [lista]="estados">
+                            <app-input-combobox idSelect="idCidade" titulo="Cidade" [formGroup]="formCadastro"
+                                controlName="enderecoCidade" [lista]="cidades" >
                             </app-input-combobox>
                         </div>
                     </div>
