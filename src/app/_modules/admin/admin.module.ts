@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from './../../_shared/shared.module';
 import { AdminComponent } from './pages/admin/admin.component';
@@ -15,6 +16,7 @@ import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/l
 import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios/listagem-usuarios.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
+import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.compon
     AnimalCreateP3Component,
     ListagemUsuariosComponent,
     DashboardPessoaComponent,
+    ListagemSolicitacoesComponent,
   ],
 
   imports: [
@@ -35,6 +38,7 @@ import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.compon
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule
   ],
   exports: [
     AnimalCreateComponent,
@@ -45,6 +49,7 @@ import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.compon
     ListagemUsuariosComponent,
     AnimalCreateP3Component,
     DashboardPessoaComponent,
+    ListagemSolicitacoesComponent
   ],
 })
 export class AdminModule {}

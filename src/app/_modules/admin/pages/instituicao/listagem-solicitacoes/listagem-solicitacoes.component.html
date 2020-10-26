@@ -1,0 +1,94 @@
+<div class="container-fluid background pl-0">
+    <div class="row">
+        <div class="col-md-1 d-none d-sm-none d-md-block">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="col-md-11 pt-5 mt-5 dash mx-auto">
+            <div class="m-2 ">
+                <h1 class="text-center mb-4">Solicitações</h1>
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th>NOME</th>
+                            <th>DATA</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td type="button" (click)="solicitacao.clicado = !solicitacao.clicado">
+                                <label for="" class="myColor">Solicitação {{ solicitacao.id }}</label>
+
+                                <div id="collapseExample" [ngbCollapse]="!solicitacao.clicado">
+                                    <!-- <div class="card">
+                                    <div class="card-body"> -->
+                                    <label class="mt-1"><strong>Dados do Solicitante</strong></label>
+                                    <p for="">Nome: {{ solicitacao.pessoa.nome }}</p>
+                                    <p for="">Contato: {{ solicitacao.pessoa.telefone }}</p>
+                                    <p for="">Email: {{ solicitacao.pessoa.email }}</p>
+                                    <p for="">Endereço: {{ solicitacao.pessoa.endereco.logradouro}},
+                                        {{ solicitacao.pessoa.endereco.cidade.nome}} -
+                                        {{ solicitacao.pessoa.endereco.cidade.estado.nome}}</p>
+
+                                    <label class="mt-1 "><strong>Dados do Animal</strong></label>
+                                    <p for="">Nome: {{ solicitacao.animal.nome }}</p>
+                                    <p for="">Contato: {{ solicitacao.animal.contato }}</p>
+                                    <p for="">Endereço: {{ solicitacao.animal.endereco.logradouro}},
+                                        {{ solicitacao.pessoa.endereco.cidade.nome}} -
+                                        {{ solicitacao.pessoa.endereco.cidade.estado.nome}}</p>
+                                    <!-- </div>
+                                </div> -->
+                                    <div class="d-flex justify-content-end">
+                                        <app-button-g nomeBotao="Aceitar" (onClick)="aceitarSolicitacao($event)">
+                                        </app-button-g>
+                                        <button type="button" class="botao ml-2 btn" data-toggle="modal" data-target="#abrirModal">Recusar</button>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <label for="" class="myColor">{{solicitacao.data| date: 'dd/MM/yyyy'}}</label>
+                            <td>
+                                <a class="mb-1 btn ">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    <ngb-pagination [collectionSize]="solicitacoes.length" [(page)]="page" [pageSize]="pageSize"
+                        [maxSize]="3" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="abrirModal" tabindex="-1" role="dialog"
+    aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalCentralizado">Justificativa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <!-- <label for="exampleFormControlTextarea1">Exemplo de textarea</label> -->
+                        <textarea class="form-control" id="textarea" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <app-button-g nomeBotao="Salvar"></app-button-g>
+                <button type="button" class="botao ml-2 btn" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

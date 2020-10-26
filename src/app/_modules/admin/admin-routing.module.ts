@@ -1,3 +1,4 @@
+import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { ListagemAnimaisComponent } from './pages/instituicao/listagem-animais/listagem-animais.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
             { path: 'cadastro-animal-3', component: AnimalCreateP3Component},
             { path: 'pessoas', component: ListagemAnimaisComponent},
             { path: 'animais', component: ListagemAnimaisComponent},
+            { path: 'solicitacoes', component: ListagemSolicitacoesComponent},
                  ],
     },
 ];
