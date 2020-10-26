@@ -5,7 +5,7 @@
   </div>
   <div class="col-12 col-md-6 d-flex justify-content-center align-items-center px-0">
     <div>
-      <form [formGroup]="formLogin" class="col-12 mx-auto">
+      <form [formGroup]="formLogin" (ngSubmit)="logar()" class="col-12 mx-auto">
         <div class="row">
           <div class="col-12">
             <app-input-text
@@ -14,7 +14,7 @@
               idInput="name"
               placeholderInput=""
               [formGroup]="formLogin"
-              controlName="user"
+              required autofocus controlName="user"
             ></app-input-text>
             <app-input-text
               titulo="Senha"
@@ -22,7 +22,7 @@
               idInput="name"
               placeholderInput=""
               [formGroup]="formLogin"
-              controlName="password"
+              required autofocus controlName="password"
             ></app-input-text>
           </div>
         </div>
