@@ -23,7 +23,6 @@ export class UploadDeImagensComponent implements OnInit {
       return;
     }
 
-    console.log(event);
     if (event.target.files && event.target.files[0]) {
       const foto = event.target.files[0];
       var reader = new FileReader();
@@ -42,7 +41,7 @@ export class UploadDeImagensComponent implements OnInit {
   }
 
   sendImage(image) {
-    debugger;
+
     this.image.emit(image);
   }
 

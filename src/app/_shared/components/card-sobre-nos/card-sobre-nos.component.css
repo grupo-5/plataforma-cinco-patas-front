@@ -11,7 +11,7 @@
      /* height: 450px;
      width: 500px; */ 
      margin-bottom: 15px;
-     height: 200px;
+     min-height: 200px;
 }
 
 p{

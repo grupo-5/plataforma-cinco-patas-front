@@ -30,7 +30,13 @@ export class AnimalCreateP3Component implements OnInit {
 
   ngOnInit(): void {
     this.sharedDataService.currentMessage.subscribe((message) => {
-      this.selectedMessage = message;
+      if(message!=''){
+
+        this.selectedMessage = message;
+      }else{
+        this.router.navigate(['cadastro-animal-2'])
+
+      }
 
       this.criarFormulario(JSON.parse(message));
     });
