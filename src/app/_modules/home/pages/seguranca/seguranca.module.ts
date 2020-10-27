@@ -23,8 +23,7 @@ import { SegurancaRoutingModule } from './seguranca-routing.modules';
 
   ],
   providers:[
-    AuthService,
-    AuthGuard,
+      AuthGuard,
   ],
   exports:[
     LoginComponent

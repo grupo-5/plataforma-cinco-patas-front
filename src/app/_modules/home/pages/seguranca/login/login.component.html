@@ -14,7 +14,7 @@
               idInput="name"
               placeholderInput=""
               [formGroup]="formLogin"
-              required autofocus controlName="user"
+            autofocus controlName="user"
             ></app-input-text>
             <app-input-text
               titulo="Senha"
@@ -22,17 +22,17 @@
               idInput="name"
               placeholderInput=""
               [formGroup]="formLogin"
-              required autofocus controlName="password"
+             autofocus controlName="password"
             ></app-input-text>
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
             <app-button-g
-              nomeBotao="Avancar"
-              (onClick)="trocaRota($event)"
-              [disabled]="disabled"
-            ></app-button-g>
+            nomeBotao="Acessar"
+            [disabled]="disabled"
+            type="submit" 
+          ></app-button-g>
           </div>
         </div>
       </form>

@@ -31,12 +31,13 @@ export class LoginComponent implements OnInit {
   };
 
   logar() {
+    debugger
     if (this.formLogin.invalid) {
       return;
     }
     //fazer a chamada
-    const user = this.formLogin.value.login;
-    const password = this.formLogin.value.senha;
+    const user = this.formLogin.value.user;
+    const password = this.formLogin.value.password;
 
     this.service.login(user, password);
   }

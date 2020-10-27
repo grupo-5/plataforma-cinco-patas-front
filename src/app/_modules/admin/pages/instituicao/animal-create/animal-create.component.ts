@@ -47,7 +47,12 @@ export class AnimalCreateComponent implements OnInit {
     if (this.id) {
       this.animalService
         .getAnimalById(this.id)
-        .subscribe((animal: AnimalModel) => this.criarFormulario(animal));
+        .subscribe((animal: AnimalModel) =>{
+
+          this.criarFormulario(animal)
+         
+        } 
+        );
     } else {
      this.criarFormulario(this.criarAnimalEmBranco())
     }
@@ -123,44 +128,32 @@ export class AnimalCreateComponent implements OnInit {
   private editar(animal: AnimalModel): void {
     console.log(animal);
     this.sharedDataService.changeMessage(JSON.stringify(animal));
+    this.trocaRota('',animal.id);
 
-    //   () => {
-    //   const config = {
-    //     data: {
-    //       descricao: 'Seu registro foi atualizado com sucesso!',
-    //       btnSucesso: 'Ir para a listagem',
-    //     } as Alerta
-    //   };
-    //   const dialogRef = this.dialog.open(AlertaComponent, config);
-    //   dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('animals'));
-    // },
-    //   () => {
-    //     const config = {
-    //       data: {
-    //         titulo: 'Erro ao editar o registro!',
-    //         descricao: 'Não conseguimos editar seu registro, favor tentar novamente mais tarde',
-    //         corBtnSucesso: 'warn',
-    //         btnSucesso: 'Fechar'
-    //       } as Alerta
-    //     };
-    //     this.dialog.open(AlertaComponent, config);
-    //   });
   }
 
   private salvar(animal: AnimalModel): void {
     console.log(animal);
     this.sharedDataService.changeMessage(JSON.stringify(animal));
-    this.trocaRota();
+    this.trocaRota('',animal.id);
   }
 
-  trocaRota = (evento?) => {
+  trocaRota = (evento?, id?) => {
     if (evento) {
       evento.target.innerText == 'Voltar'
         ? this.router.navigate(['cadastro-animal-2'])
         : this.router.navigate(['cadastro-animal-1']);
     } else {
-      this.router.navigate(['cadastro-animal-2']);
+
+      if(id){
+
+        this.router.navigate(['cadastro-animal-2/'+id]);
+      }
+      else{
+        this.router.navigate(['cadastro-animal-2']);
+      }
     }
+
   };
 
 

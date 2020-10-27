@@ -18,12 +18,11 @@ export class AuthService {
     return this.repository.postLogin(login, senha).subscribe(resposta => {
         
         const json: JSON = JSON.parse(JSON.stringify(resposta));
-        console.log(json);
         this.armazenarToken(json['access_token']);
         
         console.log('Novo access token criado!'+JSON.stringify(this.jwtPayload));
-        this.router.navigate(['/cliente']);
-        console.log
+        this.router.navigate(['/instituicao']);
+        
       },
         (e) => {
           console.log(e.error.error_description);      
@@ -90,7 +89,10 @@ export class AuthService {
   }
 
   temPermissao(permissao: string) {
-    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+
+    return this.jwtPayload 
+    
+    // && this.jwtPayload.authorities.includes(permissao);
   }
 
   temQualquerPermissao(roles) {

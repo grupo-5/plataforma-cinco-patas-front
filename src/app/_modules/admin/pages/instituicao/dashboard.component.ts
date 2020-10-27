@@ -1,3 +1,5 @@
+import { AuthService } from './../../../home/pages/seguranca/auth.service';
+import { AuthRepository } from './../../../home/pages/seguranca/auth-repository';
 import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
 import { AnimalRepository } from './../../../../_core/repository/animal-repository';
 import { Observable } from 'rxjs';
@@ -51,7 +53,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     public animalRepository: AnimalRepository,
-    public pessoaRepository: PessoaRepository
+    public pessoaRepository: PessoaRepository,
+    public logoutRepository: AuthService
   ) {}
 
 
@@ -134,6 +137,9 @@ export class DashboardComponent implements OnInit {
       this.pessoasTamanho.push(object);
       this.myTotalizadorCapacidade.value=this.pessoasTamanho.length
     }
+  }
+  deslogar(){
+ this.logoutRepository.logout()
   }
 
 

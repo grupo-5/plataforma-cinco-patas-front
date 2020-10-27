@@ -1,3 +1,4 @@
+import { SegurancaModule } from './../home/pages/seguranca/seguranca.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -38,7 +39,8 @@ import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-soli
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    SegurancaModule
   ],
   exports: [
     AnimalCreateComponent,
