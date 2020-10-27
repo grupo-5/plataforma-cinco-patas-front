@@ -34,7 +34,7 @@ export class CadastroAdotanteDadosComponent implements OnInit {
       cpf: ['', Validators.required],
       rg: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefone: ['', Validators.required],
+      contato: ['', Validators.required],
       sexo: ['', Validators.required],
     });
   };

@@ -78,7 +78,7 @@ export class CadastroAdotanteMatchComponent implements OnInit {
       sexo: pessoa.sexo,
       rg:pessoa.rg,
       cpf:pessoa.cpf,
-      contato:pessoa.telefone,
+      contato:pessoa.contato,
       tipo:'ADOTANTE',
       email:pessoa.email,
       endereco: {

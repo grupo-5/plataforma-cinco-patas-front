@@ -10,19 +10,19 @@ export class InstituicaoMapper extends Mapper<InstituicaoEntity, InstituicaoMode
     return {
       id: param.id,
       nome: param.nome,
-      capacidade:param.capacidade,
+      capacidade: param.capacidade,
       razaoSocial: param.razaoSocial,
-      tipoDeDocumento: param.tipoDeDocumento,
-      numeroDoDocumento: param.numeroDoDocumento,
+      tipoDocumento: param.tipoDocumento,
+      numeroDocumento: param.numeroDocumento,
       email: param.email,
       banco: param.banco,
       agencia: param.agencia,
       conta: param.conta,
       inscricaoEstadual: param.inscricaoEstadual,
-      endereco:param.endereco,
-      contato:param.contato
-   
-     
+      endereco: param.endereco,
+      contato: param.contato,
+      imagem: param.imagem
+
     };
   }
 
@@ -30,19 +30,18 @@ export class InstituicaoMapper extends Mapper<InstituicaoEntity, InstituicaoMode
     return {
       id: param.id,
       nome: param.nome,
-      capacidade:param.capacidade,
+      capacidade: param.capacidade,
       razaoSocial: param.razaoSocial,
-      tipoDeDocumento: param.tipoDeDocumento,
-      numeroDoDocumento: param.numeroDoDocumento,
+      tipoDocumento: param.tipoDocumento,
+      numeroDocumento: param.numeroDocumento,
       email: param.email,
       banco: param.banco,
       agencia: param.agencia,
       conta: param.conta,
       inscricaoEstadual: param.inscricaoEstadual,
-      endereco:param.endereco,
-      contato:param.contato,
-  
-      
+      endereco: param.endereco,
+      contato: param.contato,
+      imagem: param.imagem
     };
   }
 }

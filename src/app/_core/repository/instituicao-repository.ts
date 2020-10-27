@@ -45,6 +45,11 @@ export class InstituicaoRepository {
       )
       .pipe(map((x) => x.data));
   }
+  
+  postImagem(param: any) {
+    return this.http.post(`${environment.URLSERVIDOR}imagem`, param);
+
+  }
 
   deleteCliente(id: number): Observable<void> {
     return this.http

@@ -14,7 +14,8 @@ export interface AnimalModel {
   endereco?: EnderecoModel
   nomeTitular?: string;
   contato?: string;
-  status?:string;
+  status?: string;
+  imagem?: any;
   }
   
 

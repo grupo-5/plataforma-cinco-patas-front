@@ -31,9 +31,9 @@ export class OngCreateP3Component implements OnInit {
 
   ngOnInit(): void {
     this.instituicaoDataService.currentMessageInstituicao.subscribe((message) => {
-      if(message!=''){
+      if (message != '') {
         this.selectedMessage = message;
-      }else{
+      } else {
         this.router.navigate(['cadastro-instituicao-2'])
       }
 
@@ -73,32 +73,33 @@ export class OngCreateP3Component implements OnInit {
     }
   }
 
-  editar(ong: InstituicaoModel) {}
+  editar(ong: InstituicaoModel) { }
 
   receiveImage(image) {
     this.image = image;
   }
   salvar(ong) {
-    let imageId;
-    // this.repository.postImagem(this.image).subscribe((resposta) => {
-      //@ts-ignore
-      // imageId = resposta.id;
-      // console.log(resposta);
 
-     
+    this.repository.postImagem(this.image).subscribe((resposta) => {
+      //@ts-ignore
+      let imageId = resposta.data.id;
+      console.log(resposta);
+      console.log("id imagem "+imageId);
+
+
       const dados = {
         capacidade: ong.capacidade,
         razaoSocial: ong.razaoSocial,
         nome: ong.nome,
-        tipoDeDocumento: ong.tipoDeDocumento,
-        numeroDoDocumento: ong.numeroDoDocumento,
+        tipoDocumento: ong.tipoDocumento,
+        numeroDocumento: ong.numeroDocumento,
         email: ong.email,
         banco: ong.banco,
         agencia: ong.agencia,
         conta: ong.conta,
         contato: ong.contato,
         inscricaoEstadual: ong.enderecoCep,
-          endereco: {
+        endereco: {
           cep: ong.enderecoCep,
           logradouro: ong.enderecoLogradouro,
           numero: ong.enderecoNumero,
@@ -111,8 +112,11 @@ export class OngCreateP3Component implements OnInit {
             },
           },
         },
-           } as InstituicaoModel;
-  
+        imagem: {
+          id: imageId,
+        },
+      } as InstituicaoModel;
+
 
       if (dados.id) {
         this.repository.putInstituicao(dados).subscribe(resposta => {
@@ -128,7 +132,7 @@ export class OngCreateP3Component implements OnInit {
             }];
           this.reiniciarForm();
         },
-        (e) => {
+          (e) => {
             var msg: any[] = [];
             //Erro Principal
             msg.push({
@@ -151,11 +155,11 @@ export class OngCreateP3Component implements OnInit {
         );
       }
       console.log(dados);
-      this.repository
-        .postInstituicao(dados)
-        .subscribe((resposta) => console.log(resposta));
-    // });
+      // this.repository
+      //   .postInstituicao(dados)
+      //   .subscribe((resposta) => console.log(resposta));
+    });
 
   }
-  reiniciarForm() {}
+  reiniciarForm() { }
 }

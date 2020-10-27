@@ -13,7 +13,6 @@ import { AnimalModel } from './../../../../../_core/model/animal-model';
 export class AnimalCreateP3Component implements OnInit {
   formCadastro: FormGroup;
   id;
-
   disabled: boolean = false;
   listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
   selectedMessage: any;
@@ -26,18 +25,17 @@ export class AnimalCreateP3Component implements OnInit {
     public sharedDataService: SharedDataService,
     public repository: AnimalRepository,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.sharedDataService.currentMessage.subscribe((message) => {
-      if(message!=''){
+      if (message != '') {
 
         this.selectedMessage = message;
-      }else{
+      } else {
         this.router.navigate(['cadastro-animal-2'])
 
       }
-
       this.criarFormulario(JSON.parse(message));
     });
 
@@ -70,22 +68,24 @@ export class AnimalCreateP3Component implements OnInit {
     }
   }
 
-  editar(animal: AnimalModel) {}
+  editar(animal: AnimalModel) { }
 
   receiveImage(image) {
     this.image = image;
   }
   salvar(animal) {
-    let imageId;
+
     this.repository.postImagem(this.image).subscribe((resposta) => {
       //@ts-ignore
-      imageId = resposta.id;
+      let imageId = resposta.data.id;
+      console.log("resposta upload");
       console.log(resposta);
+      console.log("id da imagem " + imageId);
 
       animal.personalidades = [{ descricao: 'oi' }];
       animal.cuidadosVet = [{ descricao: 'oi' }];
       animal.status = 'disponivel';
-  
+
       const dados = {
         nome: animal.nome,
         especie: animal.especie,
@@ -112,11 +112,11 @@ export class AnimalCreateP3Component implements OnInit {
             },
           },
         },
-        foto: {
+        imagem: {
           id: imageId,
         },
       } as AnimalModel;
-  
+
 
       if (dados.id) {
         this.repository.putAnimal(dados).subscribe(resposta => {
@@ -132,7 +132,7 @@ export class AnimalCreateP3Component implements OnInit {
             }];
           this.reiniciarForm();
         },
-        (e) => {
+          (e) => {
             var msg: any[] = [];
             //Erro Principal
             msg.push({
@@ -154,12 +154,12 @@ export class AnimalCreateP3Component implements OnInit {
           }
         );
       }
-      console.log(dados);
-      this.repository
-        .postAnimal(dados)
-        .subscribe((resposta) => console.log(resposta));
+      console.log("Dadosdo animal" + dados);
+      // this.repository
+      //   .postAnimal(dados)
+      //   .subscribe((resposta) => console.log(resposta));
     });
 
   }
-  reiniciarForm() {}
+  reiniciarForm() { }
 }

@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class=" mt-4 mr-5" *ngIf="formCadastro">
-                <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+                <form [formGroup]="formCadastro" (ngSubmit)="valida()" (ngReset)="reiniciarForm()">
                     <div class="row">
                         <div class="col-sm-8">
                             <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome"

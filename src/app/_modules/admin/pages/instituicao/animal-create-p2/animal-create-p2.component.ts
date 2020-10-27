@@ -56,13 +56,13 @@ export class AnimalCreateP2Component implements OnInit {
     this.formCadastro = this.fb.group({
       nomeTitular: [animal.nomeTitular, [Validators.required]],
       enderecoLogradouro: ['', [Validators.required]],
-      enderecoCidade: [''],
+      enderecoCidade: ['', [Validators.required]],
       enderecoBairro: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.required]],
       enderecoComplemento: ['', [Validators.required]],
       enderecoCep: ['', [Validators.required]],
-      contato: [''],
+      contato: ['', [Validators.required]],
       // celular: [animal.contato, [Validators.required]],
       // enderecoLogradouro: [animal.endereco.logradouro, [Validators.required]],
       // enderecoCidade: [animal.endereco.cidade, [Validators.required]],
@@ -89,7 +89,7 @@ export class AnimalCreateP2Component implements OnInit {
     this.trocaRota();
   }
 
-  submit(): void {
+  valida(): void {
     this.formCadastro.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastro.invalid) {
       console.log('\n inválido form  ');
