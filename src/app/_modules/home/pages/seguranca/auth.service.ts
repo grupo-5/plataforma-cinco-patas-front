@@ -21,7 +21,14 @@ export class AuthService {
         this.armazenarToken(json['access_token']);
         
         console.log('Novo access token criado!'+JSON.stringify(this.jwtPayload));
-        this.router.navigate(['/instituicao']);
+        //precisar testar
+        if (this.jwtPayload['authorities'].includes('DH01')) {
+          this.router.navigate(['/instituicao']);
+
+        }else{
+          this.router.navigate(['/pessoa']);
+
+        }
         
       },
         (e) => {
@@ -29,7 +36,7 @@ export class AuthService {
         });    
   }
 
-  private armazenarToken(token: string) {
+  private armazenarToken(token: string) { 
     this.jwtPayload = JSON.parse(atob(token.split('.')[1]));
     
     localStorage.setItem('token', token);

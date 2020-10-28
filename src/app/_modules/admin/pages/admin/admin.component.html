@@ -1,4 +1,17 @@
-<app-navbar></app-navbar>
+<div class="container-fluid background pl-0">
+  <div class="row">
+    <div class="col-12">
+      <app-navbar></app-navbar>
+    </div>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="row mt-5 pt-5">
+    <div class="col-1 d-none d-sm-none d-md-block">
+      <app-sidebar></app-sidebar>
+    </div>
+  </div>
+</div>
 
+<div class="col-11 offset-1">
+  <router-outlet></router-outlet>
+</div>

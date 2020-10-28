@@ -14,15 +14,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
  
 import { AdminComponent } from './pages/admin/admin.component';
-import { DashboardComponent } from './pages/instituicao/dashboard.component';
+import { DashboardComponent } from './pages/instituicao/dashboard/dashboard.component';
  
 const routes: Routes = [
     {   path: '', component: AdminComponent,
         children :[
           { path: 'animais', component: ListagemAnimaisComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'instituicao', component: DashboardComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
-            { path: 'pessoa', component: DashboardPessoaComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
-            { path: 'pessoa/:id', component: DashboardPessoaComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
+            { path: 'pessoa', component: DashboardPessoaComponent,canActivate:[AuthGuard], data: { roles: ['DH05'] }},
+            { path: 'pessoa/:id', component: DashboardPessoaComponent,canActivate:[AuthGuard], data: { roles: ['DH05'] }},
             { path: 'cadastro-animal-1', component: AnimalCreateComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-1/:id', component: AnimalCreateComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-2', component: AnimalCreateP2Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
