@@ -13,13 +13,12 @@ import { InstituicaoModel } from 'src/app/_core/model/instituicao-model';
 export class OngCreateP3Component implements OnInit {
 
   formCadastro: FormGroup;
-  id;
-
   disabled: boolean = false;
   listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
   selectedMessage: any;
   image: any;
-  mensagem;
+  mensagem: any;
+  id: number;
 
   constructor(
     private router: Router,
@@ -43,11 +42,9 @@ export class OngCreateP3Component implements OnInit {
     console.log(JSON.parse(this.selectedMessage) as InstituicaoModel);
   }
 
-
   private criarFormulario(animal: InstituicaoModel): void {
     this.formCadastro = this.fb.group(JSON.parse(this.selectedMessage));
   }
-
 
   trocaRota = (evento) => {
     evento.target.innerText == 'Voltar'
@@ -78,14 +75,13 @@ export class OngCreateP3Component implements OnInit {
   receiveImage(image) {
     this.image = image;
   }
+  
   salvar(ong) {
-
     this.repository.postImagem(this.image).subscribe((resposta) => {
       //@ts-ignore
       let imageId = resposta.data.id;
       console.log(resposta);
       console.log("id imagem "+imageId);
-
 
       const dados = {
         capacidade: ong.capacidade,
@@ -130,7 +126,8 @@ export class OngCreateP3Component implements OnInit {
               summary: 'Instituicao',
               detail: 'cadastrado com sucesso!'
             }];
-          this.reiniciarForm();
+          // this.reiniciarForm();
+          this.router.navigate(["/login"])
         },
           (e) => {
             var msg: any[] = [];
@@ -159,7 +156,7 @@ export class OngCreateP3Component implements OnInit {
       //   .postInstituicao(dados)
       //   .subscribe((resposta) => console.log(resposta));
     });
-
   }
+  
   reiniciarForm() { }
 }

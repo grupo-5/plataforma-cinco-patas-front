@@ -1,3 +1,4 @@
+import { EnderecoRepository } from './../../../../_core/repository/endereco-repository ';
 import { PessoaDataService } from './../../../../_services/pessoa-data.service';
 import { PessoaModel } from './../../../../_core/model/pessoa-model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,18 +14,23 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
 
   formCadastroAdotante: FormGroup;
   listSexo = ['Feminino', 'Masculino', 'Nao declarar'];
-  listaPassos = ['Dados Pessoais', 'Endereco', 'Match'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
   disabled: boolean = false;
   id: any;
   selectedMessagePessoa: any;
+  estados: any[] = [];
+  cidades: any[] = [];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private route: Router,
     private fb: FormBuilder,
-    public pessoaDataService: PessoaDataService
+    public pessoaDataService: PessoaDataService,
+    private repository: EnderecoRepository
   ) {}
 
   ngOnInit(): void {
+    this.listarEstados();
     this.criaFormulario();
     this.id = this.activatedRoute.snapshot.params['id'];
     this.pessoaDataService.currentMessagePessoa.subscribe((message) => {
@@ -40,7 +46,7 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     this.formCadastroAdotante = this.fb.group({
       cep: ['', Validators.required],
       logradouro: ['', Validators.required],
-      complemento: ['', Validators.required],
+      complemento: ['',],
       estado: ['', Validators.required],
       cidade: ['', Validators.required],
       bairro: ['', Validators.required],
@@ -48,7 +54,7 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     });
   };
 
-  submit = () => {
+  validar = () => {
     this.formCadastroAdotante.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastroAdotante.invalid) {
       console.log('\n inválido form  ');
@@ -94,5 +100,19 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     }
   };
 
+  listarEstados() {
+    this.repository.getAllEstados().subscribe((resposta) => {
+      this.estados.push({ label: resposta.nome, value: resposta.id });
+      console.log(this.estados);
+    });
+  }
+
+  listarCidades() {
+    this.cidades = [];
+    let id: number = this.formCadastroAdotante.value.estado;
+    this.repository.getAllCidadesByEstado(id).subscribe((resposta) => {
+      this.cidades.push({ label: resposta.nome, value: resposta.id });
+    });
+  }
 
 }

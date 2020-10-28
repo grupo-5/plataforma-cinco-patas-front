@@ -4,8 +4,6 @@ import { PessoaDataService } from './../../../../_services/pessoa-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { faRulerHorizontal } from '@fortawesome/free-solid-svg-icons';
-import { syntaxError } from '@angular/compiler';
 
 @Component({
   selector: 'app-cadastro-adotante-match',
@@ -14,17 +12,19 @@ import { syntaxError } from '@angular/compiler';
 })
 export class CadastroAdotanteMatchComponent implements OnInit {
   formCadastroAdotante: FormGroup;
-  listaPassos = ['Dados Pessoais', 'Endereco', 'Match'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
   disabled = false;
   id: any;
   selectedMessagePessoa: any;
+  mensagem: any;
+  image: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private route: Router,
+    private router: Router,
     private fb: FormBuilder,
     public pessoaDataService: PessoaDataService,
-    public repository: PessoaRepository
+    public repository: PessoaRepository,
   ) {}
 
   ngOnInit(): void {
@@ -35,7 +35,7 @@ export class CadastroAdotanteMatchComponent implements OnInit {
         this.selectedMessagePessoa = message;
         console.log(this.selectedMessagePessoa);
       }else{
-        this.route.navigate(['cadastro-adotante-2'])
+        this.router.navigate(['cadastro-adotante-2'])
       }
     });
   }
@@ -48,8 +48,8 @@ export class CadastroAdotanteMatchComponent implements OnInit {
 
   trocaRota = (evento) => {
     evento.target.innerText == 'Voltar'
-      ? this.route.navigate(['cadastro-adotante-2'])
-      : this.route.navigate(['cadastro-adotante-3']);
+      ? this.router.navigate(['cadastro-adotante-2'])
+      : this.router.navigate(['cadastro-adotante-3']);
   };
 
   submit(): void {
@@ -72,7 +72,17 @@ export class CadastroAdotanteMatchComponent implements OnInit {
 
   editar(pessoa) {}
 
+  receiveImage(image) {
+    this.image = image;
+  }
+
   salvar(pessoa) {
+    this.repository.postImagem(this.image).subscribe((resposta) => {
+      //@ts-ignore
+      let imageId = resposta.data.id;
+      console.log(resposta);
+      console.log("id imagem " + imageId);
+
     const dados: PessoaModel = {
       nome: pessoa.name,
       sexo: pessoa.sexo,
@@ -94,12 +104,56 @@ export class CadastroAdotanteMatchComponent implements OnInit {
           },
         },
       },
-    };
+      imagem: {
+        id: imageId,
+      },
+    } as PessoaModel;
 
-    console.log(dados);
-    this.repository
-      .postPessoa(dados)
-      .subscribe((resposta) => console.log(resposta));
+      if (dados.id) {
+        this.repository.putPessoa(dados).subscribe(resposta => {
+          this.resetForm();
+        });
+      } else {
+        this.repository.postPessoa(dados).subscribe(resposta => {
+          this.mensagem = [
+            {
+              severity: 'success',
+              summary: 'Instituicao',
+              detail: 'cadastrado com sucesso!'
+            }];
+          // this.reiniciarForm();
+          this.router.navigate(["/login"])
+        },
+          (e) => {
+            var msg: any[] = [];
+            //Erro Principal
+            msg.push({
+              severity: 'error',
+              summary: 'ERRO',
+              detail: e.error.userMessage
+            });
+            //Erro de cada atributo
+            var erros = e.error.objects;
+            erros.forEach(function (elemento) {
+              msg.push(
+                {
+                  severity: 'error',
+                  summary: 'ERRO',
+                  detail: elemento.userMessage
+                });
+            });
+            this.mensagem = msg;
+          }
+        );
+      }
+      console.log(dados);
+      // this.repository
+      //   .postInstituicao(dados)
+      //   .subscribe((resposta) => console.log(resposta));
+    });
+
   }
+
   resetForm() {}
 }
+

@@ -51,13 +51,13 @@ export class ListagemSolicitacoesComponent implements OnInit {
     this.solicitacoes.push(object);
   }
 
-  aceitarSolicitacao() {
+  aceitarSolicitacao(solicitacao) {
     const dados = {
-      id: 5,//this.formulario.value.id,
+      id: solicitacao.id,//5,//this.formulario.value.id,
       situacao: "Finalizada com Sucesso",
       tipoSolicitacao: "Adoção",
-      justificativa: "Aprovada",
-      data: "2020-10-23T23:20:18.597302-03:00",
+      justificativa: "Aprovada com sucesso",
+      data: solicitacao.data,
       animal: {
         id: 1
       },
@@ -68,7 +68,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
 
     if (dados.id) {
       this.solicitacaoRepository.putSolicitacao(dados).subscribe(() => {
-        console.log("Solicitação atualizada com sucesso")
+        console.log("Solicitação atualizada com sucesso" + dados.id)
       })
 
     }
