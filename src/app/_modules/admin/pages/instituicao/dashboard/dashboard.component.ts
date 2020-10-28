@@ -1,7 +1,7 @@
-import { AuthService } from './../../../home/pages/seguranca/auth.service';
-import { AuthRepository } from './../../../home/pages/seguranca/auth-repository';
-import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
-import { AnimalRepository } from './../../../../_core/repository/animal-repository';
+import { AuthService } from './../../../../home/pages/seguranca/auth.service';
+import { AuthRepository } from './../../../../home/pages/seguranca/auth-repository';
+import { PessoaRepository } from './../../../../../_core/repository/pessoa-repository';
+import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, resolveForwardRef } from '@angular/core';
