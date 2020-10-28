@@ -2,40 +2,22 @@
   <app-header-com-carrossel></app-header-com-carrossel>
 </div>
 <div class="row mt-4">
-    <div class="col-10 mx-auto text-center">
-        <h1>Cadastro Adotante</h1>
-        </div>
-</div>
-<div class="row">
-  <div class="col-10 mx-auto">
-    <app-card-timeline
-      [listaPassos]="listaPassos"
-      [active]="'Match'"
-    ></app-card-timeline>
+  <div class="col-10 mx-auto text-center">
+    <h1>Cadastro Adotante</h1>
   </div>
 </div>
 <div class="row">
-  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()"  (ngReset)="resetForm()" class="col-10 mx-auto">
-    <div class="row">
-      <div class="col-3">
-        <app-input-text
-          titulo="CEP"
-          tipo="text"
-          idInput="name"
-          placeholderInput="preencha "
-          [formGroup]="formCadastroAdotante"
-          controlName="name"
-        ></app-input-text>
-      </div>
-    </div>
+  <div class="col-10 mx-auto">
+    <app-card-timeline [listaPassos]="listaPassos" [active]="'Upload de Imagem'"></app-card-timeline>
+  </div>
+</div>
+<div class="row">
+  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()" (ngReset)="resetForm()" class="col-10 mx-auto">
+    <app-upload-de-imagens (image)="receiveImage($event)"></app-upload-de-imagens>
     <div class="row mb-5 mt-5">
-      <div class="col-10 mx-auto d-flex justify-content-between">
-        <app-button-g
-          nomeBotao="Voltar"
-          (onClick)="trocaRota($event)"
-          [disabled]="disabled"
-        ></app-button-g>
-        <app-button-g nomeBotao="Salvar"  [disabled]="disabled" type="submit"></app-button-g>
+      <div class="col-12 mx-auto d-flex justify-content-between">
+        <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+        <app-button-g nomeBotao="Salvar" [disabled]="disabled" type="submit"></app-button-g>
       </div>
     </div>
   </form>

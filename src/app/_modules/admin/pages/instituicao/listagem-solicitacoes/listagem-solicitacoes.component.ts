@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SolicitacaoModel } from './../../../../../_core/model/solicitacao-model';
 import { SolicitacaoRepository } from './../../../../../_core/repository/solicitacao-repository';
 import { Component, OnInit } from '@angular/core';
@@ -18,11 +18,19 @@ export class ListagemSolicitacoesComponent implements OnInit {
   pageSize = 2;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
-              public router: Router) { }
+    public router: Router,
+    public route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.carregaSolicitacoes();
+
+    var codigoSolicitacao = this.route.snapshot.params['id'];
+
+    // if (codigoSolicitacao) {
+    //   this.carregarSolicitacao(codigoSolicitacao);
+    // }
   }
+
 
   // carregaSolicitacoes() {
   //   this.solicitacaoRepository.getAllSolicitacoes().subscribe({
@@ -43,10 +51,28 @@ export class ListagemSolicitacoesComponent implements OnInit {
     this.solicitacoes.push(object);
   }
 
-  aceitarSolicitacao(){
-    // this.solicitacaoRepository.putSolicitacao(this.solicitacao).subscribe(() => {
-    //   console.log("Solicitação atualizada com sucesso")
-    // })
-    // this.router.navigate(["/solicitacoes"])
+  aceitarSolicitacao(solicitacao) {
+    const dados = {
+      id: solicitacao.id,//5,//this.formulario.value.id,
+      situacao: "Finalizada com Sucesso",
+      tipoSolicitacao: "Adoção",
+      justificativa: "Aprovada com sucesso",
+      data: solicitacao.data,
+      animal: {
+        id: 1
+      },
+      pessoa: {
+        id: 1
+      }
+    } as SolicitacaoModel;
+
+    if (dados.id) {
+      this.solicitacaoRepository.putSolicitacao(dados).subscribe(() => {
+        console.log("Solicitação atualizada com sucesso" + dados.id)
+      })
+
+    }
+    this.router.navigate(["/solicitacoes"])
   }
+
 }

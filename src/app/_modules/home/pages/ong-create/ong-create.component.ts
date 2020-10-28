@@ -58,16 +58,16 @@ export class OngCreateComponent implements OnInit {
   private criarFormulario(ong: InstituicaoModel): void {
     this.formCadastro = this.fb.group({
       nome: [ong.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      razaoSocial: [ong.razaoSocial, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      tipoDeDocumento: [ong.tipoDeDocumento, [Validators.required]],
-      numeroDoDocumento: [ong.numeroDoDocumento, [Validators.required]],
-      inscricaoEstadual: [ong.inscricaoEstadual, [Validators.required]],
-      email: [ong.email, [Validators.required]],
+      razaoSocial: [ong.razaoSocial, [Validators.minLength(3), Validators.maxLength(100)]],
+      tipoDocumento: [ong.tipoDocumento, [Validators.required]],
+      numeroDocumento: [ong.numeroDocumento, [Validators.required]],
+      inscricaoEstadual: [ong.inscricaoEstadual, ],
+      email: [ong.email, [Validators.required, Validators.email]],
       capacidade: [ong.capacidade, [Validators.required]],
-      banco: [ong.banco, [Validators.required]],
-      agencia: [ong.agencia, [Validators.required]],
+      banco: [ong.banco],
+      agencia: [ong.agencia],
       conta: [ong.conta],
-      contato: [ong.contato],
+      contato: [ong.contato, [Validators.required]],
     });
     
   }

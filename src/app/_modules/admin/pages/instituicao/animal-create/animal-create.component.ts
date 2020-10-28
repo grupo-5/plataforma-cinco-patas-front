@@ -77,7 +77,7 @@ export class AnimalCreateComponent implements OnInit {
     this.cidades = ['', 'São Paulo', 'Rio de Janeiro', 'Goias'];
   }
 
-  submit(): void {
+  valida(): void {
     this.formCadastro.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastro.invalid) {
       console.log('\n inválido form  ');
@@ -108,7 +108,7 @@ export class AnimalCreateComponent implements OnInit {
           Validators.minLength(3),
           Validators.maxLength(100),
         ],
-      ], // Não está imprimindo a msg quando tem menos que 3 mais que 100
+      ],
       dataNasc: [animal.dataNasc, [Validators.required]],
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
@@ -117,7 +117,6 @@ export class AnimalCreateComponent implements OnInit {
       cuidadosVet: [animal.cuidadosVet, [Validators.required]],
       localizacao: [animal.localizacao, [Validators.required]],
       infoExtras: [animal.infoExtras],
-      // email: [animal.email, [Validators.required, Validators.email]],
     });
   }
 

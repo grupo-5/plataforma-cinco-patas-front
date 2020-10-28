@@ -99,7 +99,7 @@ export class AuthService {
 
     return this.jwtPayload 
     
-    // && this.jwtPayload.authorities.includes(permissao);
+    && this.jwtPayload.authorities.includes(permissao);
   }
 
   temQualquerPermissao(roles) {

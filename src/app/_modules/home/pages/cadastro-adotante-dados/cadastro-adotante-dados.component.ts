@@ -18,7 +18,7 @@ import { PessoaModel } from 'src/app/_core/model/pessoa-model';
 export class CadastroAdotanteDadosComponent implements OnInit {
   formCadastroAdotante: FormGroup;
   listSexo = ['Feminino', 'Masculino', 'Nao declarar'];
-  listaPassos = ['Dados Pessoais', 'Endereco', 'Match'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
   disabled: boolean = false;
   id: number;
 
@@ -34,12 +34,12 @@ export class CadastroAdotanteDadosComponent implements OnInit {
       cpf: ['', Validators.required],
       rg: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefone: ['', Validators.required],
+      contato: ['', Validators.required],
       sexo: ['', Validators.required],
     });
   };
 
-  submit = () => {
+  validar = () => {
     this.formCadastroAdotante.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
     if (this.formCadastroAdotante.invalid) {
       console.log('\n inválido form  ');

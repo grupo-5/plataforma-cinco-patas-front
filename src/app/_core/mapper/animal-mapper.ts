@@ -16,10 +16,11 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
             personalidades: param.personalidades,
             cuidadosVet: param.cuidadosVet,
             infoExtras: param.infoExtras,
-             endereco: param.endereco,
-             nomeTitular: param.nomeTitular,
-             contato: param.contato,
-             status:param.status
+            endereco: param.endereco,
+            nomeTitular: param.nomeTitular,
+            contato: param.contato,
+            status: param.status,
+            imagem: param.imagem
         };
     }
 
@@ -32,15 +33,14 @@ export class AnimalMapper extends Mapper<AnimalEntity, AnimalModel> {
             sexo: param.sexo,
             porte: param.porte,
             localizacao: param.localizacao,
-            personalidades: param.personalidades        
-                    ,
+            personalidades: param.personalidades,
             cuidadosVet: param.cuidadosVet,
             infoExtras: param.infoExtras,
-             endereco: param.endereco,
-             nomeTitular: param.nomeTitular,
-             contato: param.contato,
-             status:param.status
-            
+            endereco: param.endereco,
+            nomeTitular: param.nomeTitular,
+            contato: param.contato,
+            status: param.status,
+            imagem: param.imagem
         };
     }
 }

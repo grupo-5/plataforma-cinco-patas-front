@@ -58,7 +58,8 @@ export class OngCreateP2Component implements OnInit {
       enderecoCidade: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.required]],
-      enderecoComplemento: ['', [Validators.required]],
+      enderecoBairro: ['', [Validators.required]],
+      enderecoComplemento: ['',],
       enderecoCep: ['', [Validators.required]],
     });
   }

@@ -10,12 +10,12 @@
   <div class="col-10 mx-auto">
     <app-card-timeline
       [listaPassos]="listaPassos"
-      [active]="'Endereco'"
+      [active]="'Endereço'"
     ></app-card-timeline>
   </div>
 </div>
 <div class="row">
-  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()"  (ngReset)="resetForm()"class="col-10 mx-auto">
+  <form [formGroup]="formCadastroAdotante" (ngSubmit)="validar()"  (ngReset)="resetForm()"class="col-10 mx-auto">
     <div class="row">
       <div class="col-3">
         <app-input-text
@@ -64,25 +64,24 @@
     </div>
 
     <div class="row">
-      <div class="col-6">
-        <app-input-text
-          titulo="Estado"
-          tipo="text"
-          idInput="estado"
-          placeholderInput="  "
-          [formGroup]="formCadastroAdotante"
+      <div class="col-sm-6">
+        <app-input-combobox 
+          idSelect="idEstado" 
+          titulo="Estado" 
+          [formGroup]="formCadastroAdotante" 
           controlName="estado"
-        ></app-input-text>
+          (change)="listarCidades()" 
+          [lista]="estados">
+        </app-input-combobox>
       </div>
-      <div class="col-6">
-        <app-input-text
-          titulo="Cidade"
-          tipo="text"
-          idInput="cidade"
-          placeholderInput="  "
-          [formGroup]="formCadastroAdotante"
+      <div class="col-sm-6">
+        <app-input-combobox 
+          idSelect="idCidade" 
+          titulo="Cidade" 
+          [formGroup]="formCadastroAdotante" 
           controlName="cidade"
-        ></app-input-text>
+          [lista]="cidades">
+        </app-input-combobox>
       </div>
     </div>
 

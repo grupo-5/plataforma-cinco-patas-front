@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   };
 
   logar() {
-    debugger
+    // debugger
     if (this.formLogin.invalid) {
       return;
     }

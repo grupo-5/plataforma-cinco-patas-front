@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="row">
-  <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()" (ngReset)="resetForm()" class="col-10 mx-auto">
+  <form [formGroup]="formCadastroAdotante" (ngSubmit)="validar()" (ngReset)="resetForm()" class="col-10 mx-auto">
     <div class="row">
       <div class="col-12">
         <app-input-text
@@ -70,12 +70,12 @@
     <div class="row">
       <div class="col-6">
         <app-input-text
-          titulo="Telefone"
+          titulo="Contato"
           tipo="text"
-          idInput="telefone"
+          idInput="contato"
           placeholderInput=""
           [formGroup]="formCadastroAdotante"
-          controlName="telefone"
+          controlName="contato"
         ></app-input-text>
       </div>
 

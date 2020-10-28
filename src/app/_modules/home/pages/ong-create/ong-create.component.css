@@ -1,11 +1,16 @@
 #imgpos {
-	position: relative;
-    left:0%;
-    top: 8%;
-    width: 20%;
-    }
-   .deslocamento {
-    display:inline-block;
-    position: relative;
-    left: 40%;
-    }
+  position: relative;
+  left: 0%;
+  top: 8%;
+  width: 20%;
+}
+
+.deslocamento {
+  display: inline-block;
+  position: relative;
+  left: 40%;
+}
+
+.box-marg {
+  padding-right: 40px;
+}
