@@ -1,6 +1,6 @@
 <form>
   <div class="row">
-    <div class="col-3 image-container " [ngClass]="{'img-thumbnail':!imgURL}">
+    <div class="col-12 image-container " [ngClass]="{'img-thumbnail':!imgURL}">
 
       <img [src]="imgURL"  *ngIf="imgURL" class=" img-thumbnail" >
       <div *ngIf="!imgURL" class="text-center text-muted "><small>Pré-visualização</small></div>

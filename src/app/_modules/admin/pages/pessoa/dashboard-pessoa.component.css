@@ -1,6 +1,6 @@
-.box {
+/* .box {
   margin-top: 85px;
-}
+} */
 
 .dash {
   background-color: var(--main-second-color);
@@ -9,16 +9,17 @@
 }
 
 .marg-l {
-  margin-left: 0 !important;
-  padding-left: 0;
+  margin-left: 20px !important;
+  /* padding-left: 0; */
 }
 
 @media (max-width: 768px) {
   .dash {
-    display: none;
+    /* display: none; */
   }
   .marg-l {
-    padding-left: 15px;
+    /* padding-left: 15px; */
+    margin-left: 0px !important;
   }
 
 }
