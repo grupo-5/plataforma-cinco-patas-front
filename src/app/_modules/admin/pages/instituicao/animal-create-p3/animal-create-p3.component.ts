@@ -30,11 +30,9 @@ export class AnimalCreateP3Component implements OnInit {
   ngOnInit(): void {
     this.sharedDataService.currentMessage.subscribe((message) => {
       if (message != '') {
-
         this.selectedMessage = message;
       } else {
         this.router.navigate(['cadastro-animal-2'])
-
       }
       this.criarFormulario(JSON.parse(message));
     });
@@ -56,7 +54,6 @@ export class AnimalCreateP3Component implements OnInit {
     //   console.log("\n inválido form  ")
     //   return;
     // }
-
     const animal = this.formCadastro.getRawValue() as AnimalModel; // retorna os campos que existem dentro do formGroup cadastro
     if (this.id) {
       animal.id = this.id;
@@ -82,8 +79,10 @@ export class AnimalCreateP3Component implements OnInit {
       console.log(resposta);
       console.log("id da imagem " + imageId);
 
-      animal.personalidades = [{ descricao: 'oi' }];
-      animal.cuidadosVet = [{ descricao: 'oi' }];
+      // animal.personalidades = [{ descricao: 'oia' }, { descricao: 'eii' }];
+      // animal.cuidadosVet = [{ descricao: 'um' }, { descricao: 'dois' }];
+      // animal.personalidades = [{ descricao: 'oia' }, { descricao: 'eii' }];
+      // animal.cuidadosVet = [{ descricao: 'um' }, { descricao: 'dois' }];
       animal.status = 'disponivel';
 
       const dados = {
@@ -118,6 +117,9 @@ export class AnimalCreateP3Component implements OnInit {
       } as AnimalModel;
 
 
+      console.log("personalidades: " + dados.personalidades);
+      console.log("cuidados : " + dados.cuidadosVet);
+
       if (dados.id) {
         this.repository.putAnimal(dados).subscribe(resposta => {
           this.reiniciarForm();
@@ -130,6 +132,7 @@ export class AnimalCreateP3Component implements OnInit {
               summary: 'CLIENTE',
               detail: 'cadastrado com sucesso!'
             }];
+          this.router.navigate(['/animais']);            
           this.reiniciarForm();
         },
           (e) => {

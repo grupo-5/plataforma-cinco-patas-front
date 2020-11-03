@@ -9,6 +9,7 @@ import {
   FormGroup,
   FormArray,
   FormControl,
+  AbstractControl,
 } from '@angular/forms';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
@@ -22,39 +23,37 @@ export class AnimalCreateComponent implements OnInit {
   formCadastro: FormGroup;
   generos: Array<String>;
   especies: Array<String>;
-  cuidadosVets: Array<String>;
-  personalidades: Array<String>;
+  cuidadosVet: Array<any>;
+  personalidades: Array<any>;
   portes: Array<String>;
   localizacoes: Array<String>;
-  cidades: Array<String>;
   informacoes: string;
   listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
   disabled: boolean = false;
+  controlName: string;
 
   constructor(
     public sharedDataService: SharedDataService,
-    public animalService: AnimalRepository,
+    public animalRepositoy: AnimalRepository,
     public validarInputsService: ValidarInputsService,
     private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.animalService
+      this.animalRepositoy
         .getAnimalById(this.id)
-        .subscribe((animal: AnimalModel) =>{
+        .subscribe((animal: AnimalModel) => {
 
           this.criarFormulario(animal)
-         
-        } 
+        }
         );
+      // this.carregarAnimal(this.id);
     } else {
-     this.criarFormulario(this.criarAnimalEmBranco())
+      this.criarFormulario(this.criarAnimalEmBranco())
     }
 
     this.generos = ['Macho', 'Fêmea'];
@@ -67,14 +66,14 @@ export class AnimalCreateComponent implements OnInit {
       'Imperativo',
       'Carente',
     ];
-    this.cuidadosVets = [
+
+    this.cuidadosVet = [
       'Vermifugado',
       'Castrado',
       'Vacinado',
       'Cuidados especiais',
     ];
     this.localizacoes = ['Ong', 'Com o dono'];
-    this.cidades = ['', 'São Paulo', 'Rio de Janeiro', 'Goias'];
   }
 
   valida(): void {
@@ -88,7 +87,7 @@ export class AnimalCreateComponent implements OnInit {
     if (this.id) {
       animal.id = this.id;
       console.log('editar *** ' + animal.nome);
-      this.editar(animal);
+      this.salvar(animal);
     } else {
       console.log('salvar *** ' + animal.nome);
       this.salvar(animal);
@@ -98,8 +97,9 @@ export class AnimalCreateComponent implements OnInit {
   reiniciarForm(): void {
     this.formCadastro.reset();
   }
-  
+
   private criarFormulario(animal: AnimalModel): void {
+
     this.formCadastro = this.fb.group({
       nome: [
         animal.nome,
@@ -113,8 +113,8 @@ export class AnimalCreateComponent implements OnInit {
       especie: [animal.especie, [Validators.required]],
       sexo: [animal.sexo, [Validators.required]],
       porte: [animal.porte, [Validators.required]],
-      personalidades: [animal.personalidades, [Validators.required]],
-      cuidadosVet: [animal.cuidadosVet, [Validators.required]],
+      personalidades: this.fb.array([animal.personalidades], [Validators.required]),
+      cuidadosVet: this.fb.array([animal.cuidadosVet], [Validators.required]),
       localizacao: [animal.localizacao, [Validators.required]],
       infoExtras: [animal.infoExtras],
     });
@@ -127,15 +127,50 @@ export class AnimalCreateComponent implements OnInit {
   private editar(animal: AnimalModel): void {
     console.log(animal);
     this.sharedDataService.changeMessage(JSON.stringify(animal));
-    this.trocaRota('',animal.id);
+    this.trocaRota('', animal.id);
 
   }
 
   private salvar(animal: AnimalModel): void {
     console.log(animal);
-    this.sharedDataService.changeMessage(JSON.stringify(animal));
-    this.trocaRota('',animal.id);
+
+    let formAnimal = Object.assign({}, animal);
+
+    formAnimal = Object.assign(formAnimal, {
+      personalidades:
+        formAnimal.personalidades
+          .filter(v => v != null)
+          .map((v, i) =>  { return {descricao: v } })
+    });
+
+    formAnimal = Object.assign(formAnimal, {
+      cuidadosVet:
+        formAnimal.cuidadosVet
+          .filter(v => v != null)
+          .map((v, i) =>  { return {descricao: v } })
+    });
+
+    console.log(formAnimal);
+    this.sharedDataService.changeMessage(JSON.stringify(formAnimal));
+    this.trocaRota('', animal.id);
   }
+
+
+  carregarAnimal(codigoAnimal: number) {
+    this.animalRepositoy.getAnimalById(codigoAnimal).subscribe(resposta => {
+      this.formCadastro.controls.id.setValue(resposta.id);
+      this.formCadastro.controls.nome.setValue(resposta.nome);
+      this.formCadastro.controls.sobrenome.setValue(resposta.dataNasc);
+      this.formCadastro.controls.telefones.setValue(resposta.personalidades[0].descricao);
+      this.formCadastro.controls.dataNasc.setValue(resposta.especie);
+      this.formCadastro.controls.cpf.setValue(resposta.sexo);
+      this.formCadastro.controls.rg.setValue(resposta.porte);
+      this.formCadastro.controls.email.setValue(resposta.localizacao);
+      this.formCadastro.controls.cep.setValue(resposta.infoExtras);
+      this.formCadastro.controls.logradouro.setValue(resposta.cuidadosVet[0].descricao);
+    });
+  }
+
 
   trocaRota = (evento?, id?) => {
     if (evento) {
@@ -144,20 +179,39 @@ export class AnimalCreateComponent implements OnInit {
         : this.router.navigate(['cadastro-animal-1']);
     } else {
 
-      if(id){
+      if (id) {
 
-        this.router.navigate(['cadastro-animal-2/'+id]);
+        this.router.navigate(['cadastro-animal-2/' + id]);
       }
-      else{
+      else {
         this.router.navigate(['cadastro-animal-2']);
       }
     }
 
   };
 
+  onCheckboxChange(e) {
+    const personalidadess: FormArray = this.formCadastro.get('personalidades') as FormArray;
 
-  //   this.animalService.postAnimal(dados).subscribe(resposta => {
-  //     console.log("okkk")
-  //   });
+    if (e.target.checked) {
+      personalidadess.push(new FormControl(e.target.value));
+    } else {
+      const index = personalidadess.controls.findIndex(x => x.value === e.target.value);
+      personalidadess.removeAt(index);
+    }
+  }
+
+  onCheckboxChangee(e) {
+    const cuidados: FormArray = this.formCadastro.get('cuidadosVet') as FormArray;
+    if (e.target.checked) {
+      cuidados.push(new FormControl(e.target.value));
+    } else {
+      const index = cuidados.controls.findIndex(x => x.value === e.target.value);
+      cuidados.removeAt(index);
+    }
+  }
+
+  // get formControl(): AbstractControl {
+  //   return this.formCadastro.controls[this.controlName];
   // }
 }

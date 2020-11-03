@@ -1,75 +1,82 @@
 <div class="container-fluid">
- 
-        <div class="col-sm-10 pt-5 mb-5">
-            <h1 class="text-center pt-5">Cadastro Animal</h1>
-            <div class="row">
-                <div class="col-10 mx-auto">
-                    <app-card-timeline [listaPassos]="listaPassos" [active]="'Dados Pessoais'"></app-card-timeline>
+
+    <div class="col-sm-10 mb-5">
+        <h1 class="text-center ">Cadastro Animal</h1>
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <app-card-timeline [listaPassos]="listaPassos" [active]="'Dados Pessoais'"></app-card-timeline>
+            </div>
+        </div>
+        <div class=" mt-4 mr-5" *ngIf="formCadastro">
+            <form [formGroup]="formCadastro" (ngSubmit)="valida()" (ngReset)="reiniciarForm()">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome"
+                            [formGroup]="formCadastro" controlName="nome"></app-input-text>
+                    </div>
+                    <div class="col-sm-4">
+                        <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento"
+                            [formGroup]="formCadastro" controlName="dataNasc"></app-input-text>
+                    </div>
                 </div>
-            </div>
-            <div class=" mt-4 mr-5" *ngIf="formCadastro">
-                <form [formGroup]="formCadastro" (ngSubmit)="valida()" (ngReset)="reiniciarForm()">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <app-input-text tipo="text" idInput="imputNome" placeholderInput="" titulo="Nome"
-                                [formGroup]="formCadastro" controlName="nome"></app-input-text>
-                        </div>
-                        <div class="col-sm-4">
-                            <app-input-text tipo="date" idInput="imputData" placeholderInput="" titulo="Data Nascimento"
-                                [formGroup]="formCadastro" controlName="dataNasc"></app-input-text>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
+                            [formGroup]="formCadastro" controlName="especie"></app-input-radio>
+                    </div>
+                    <div class="col-sm-6">
+                        <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos"
+                            [formGroup]="formCadastro" controlName="sexo"></app-input-radio>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
+                            [formGroup]="formCadastro" controlName="porte"></app-input-radio>
+                    </div>
+                    <div class="col-sm-6">
+                        <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra"
+                            [texto_opcoes]="localizacoes" [formGroup]="formCadastro" controlName="localizacao">
+                        </app-input-radio>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div *ngFor="let p of personalidades" >
+                            <label class="color-fonts-form">
+                                <input type="checkbox" [value]="p" (change)="onCheckboxChange($event)" />
+                                {{p}}
+                            </label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <app-input-radio idradio="idEspecie" titulo="Espécie" [texto_opcoes]="especies"
-                                [formGroup]="formCadastro" controlName="especie"></app-input-radio>
-                        </div>
-                        <div class="col-sm-6">
-                            <app-input-radio idRadio="idSexo" titulo="Sexo" [texto_opcoes]="generos"
-                                [formGroup]="formCadastro" controlName="sexo"></app-input-radio>
-                        </div>
+                    <div class="col-sm-6">
+                        <div *ngFor="let c of cuidadosVet">
+                            <label class="color-fonts-form">
+                                <input  type="checkbox" [value]="c" (change)="onCheckboxChangee($event)"
+                                     name="cuidadosV" [formGroup]="formCadastro" controlName="localizacao"/>
+                                {{c}}
+                            </label>
+                        </div>                        
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <app-input-radio idradio="idPorte" titulo="Porte" [texto_opcoes]="portes"
-                                [formGroup]="formCadastro" controlName="porte"></app-input-radio>
-                        </div>
-                        <div class="col-sm-6">
-                            <app-input-radio idRadio="idLocalizacao" titulo="Onde o animal se encontra"
-                                [texto_opcoes]="localizacoes" [formGroup]="formCadastro" controlName="localizacao">
-                            </app-input-radio>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro"
+                            controlName="infoExtras"></app-form-textarea>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <app-input-checkbox  idCheckBox="idCuidados" titulo="Cuidados Veterinários"
-                                [texto_opcoes]="cuidadosVets" [formGroup]="formCadastro" controlName="cuidadosVet" >
-                            </app-input-checkbox>
-                        </div>
-                        <div class="col-sm-6">
-                            <app-input-checkbox idCheckBox="idPersonalidade" titulo="Personalidade"
-                                [texto_opcoes]="personalidades" [formGroup]="formCadastro" controlName="personalidades">
-                            </app-input-checkbox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <app-form-textarea titulo="Informações extras" [formGroup]="formCadastro"
-                                controlName="infoExtras"></app-form-textarea>
-                        </div>
-                    </div>
+                </div>
 
-                    <!-- <button class="btn btn-secondary mr-3" type="reset">Limpar</button> -->
-                    
-                    <div class="d-flex justify-content-between">
-                        <!-- <button class="btn btn-secondary mr-3" routerLink='/animais'>Voltar</button> -->
-                        <!-- <app-button-g nomeBotao="Avançar" routerLink="/cadastro-animal-2"></app-button-g> -->
-                        <!-- <button class="btn btn-primary float-right"  >Avançar</button> -->
+                <!-- <button class="btn btn-secondary mr-3" type="reset">Limpar</button> -->
 
-                        <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
-                        <app-button-g nomeBotao="Avançar"  [disabled]="disabled" type="submit"></app-button-g>
-                    </div>
-                </form>
-            </div>
+                <div class="d-flex justify-content-between">
+                    <!-- <button class="btn btn-secondary mr-3" routerLink='/animais'>Voltar</button> -->
+                    <!-- <app-button-g nomeBotao="Avançar" routerLink="/cadastro-animal-2"></app-button-g> -->
+                    <!-- <button class="btn btn-primary float-right"  >Avançar</button> -->
 
-</div>
+                    <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
+                    <app-button-g nomeBotao="Avançar" [disabled]="disabled" type="submit"></app-button-g>
+                </div>
+            </form>
+        </div>
+
+    </div>

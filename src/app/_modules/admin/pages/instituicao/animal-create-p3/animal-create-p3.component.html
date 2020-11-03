@@ -1,18 +1,18 @@
 <div class="container-fluid">
-    <div class="row box-marg">
-        <div class="col-sm-2 d-none d-sm-block d-md-block">
+    <div class="row">
+        <!-- <div class="col-sm-2 d-none d-sm-block d-md-block">
             <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-sm-10 pt-5 mb-5">
-            <h1 class="text-center pt-5">Cadastro Animal</h1>
+        </div> -->
+        <div class="col-sm-10 mb-5">
+            <h1 class="text-center">Cadastro Animal</h1>
             <div class="row">
                 <div class="col-10 mx-auto">
                     <app-card-timeline [listaPassos]="listaPassos" [active]="'Upload Foto'"></app-card-timeline>
                 </div>
             </div>
             <div class=" mt-4 mr-5">
-                <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
-                    <app-upload-de-imagens  (image)="receiveImage($event)"></app-upload-de-imagens>         
+                <form (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
+                    <app-upload-de-imagens class="justify-content-center d-flex" (image)="receiveImage($event)"></app-upload-de-imagens>         
                 <div class="d-flex justify-content-between">
                     <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled"></app-button-g>
                     <app-button-g nomeBotao="Salvar"  [disabled]="disabled" type="submit"></app-button-g>

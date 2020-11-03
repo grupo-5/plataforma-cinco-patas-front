@@ -1,5 +1,3 @@
-import { AnimalCreateComponent } from './../_modules/admin/pages/instituicao/animal-create/animal-create.component';
-import { DashboardComponent } from './../_modules/admin/pages/instituicao/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,7 +23,6 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { GraficoBarrasComponent } from './components/grafico-barras/grafico-barras.component';
 import { CardTotalizadorComponent } from './components/card-totalizador/card-totalizador.component';
 import { InputComboboxComponent } from './components/input-combobox/input-combobox.component';
-import { TestesTathiComponent } from './testes-tathi/testes-tathi.component';
 import { CardGraficoComponent } from './components/card-grafico/card-grafico.component';
 import { ImagemPaginacaoComponent } from './components/imagem-paginacao/imagem-paginacao.component';
 import { FormTextareaComponent } from './components/form-textarea/form-textarea.component';
@@ -58,7 +55,6 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    TestesTathiComponent,
     CardGraficoComponent,
     ImagemPaginacaoComponent,
     HeaderComCarrosselComponent,
@@ -98,7 +94,6 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     CardListaComponent,
     GraficoRosquinhaComponent,
     InputComboboxComponent,
-    TestesTathiComponent,
     CardGraficoComponent,
     ImagemPaginacaoComponent,
     FormTextareaComponent,

@@ -8,8 +8,9 @@ export interface AnimalModel {
   sexo?: string;
   porte?: string;
   localizacao?: string;
-  personalidades?: {};
-  cuidadosVet?: {};
+  personalidades?: {id: number; descricao: string; }[];
+  // telefones?: { id: number; telefone: string, tipo: string }[];
+  cuidadosVet?: { id: number; descricao: string; }[];
   infoExtras?: string;
   endereco?: EnderecoModel
   nomeTitular?: string;

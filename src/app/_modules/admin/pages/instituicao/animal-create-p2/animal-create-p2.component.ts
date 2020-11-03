@@ -55,14 +55,14 @@ export class AnimalCreateP2Component implements OnInit {
   private criarFormulario(animal: AnimalModel): void {
     this.formCadastro = this.fb.group({
       nomeTitular: [animal.nomeTitular, [Validators.required]],
-      enderecoLogradouro: ['', [Validators.required]],
       enderecoCidade: ['', [Validators.required]],
+      enderecoLogradouro: ['', [Validators.required]],
       enderecoBairro: ['', [Validators.required]],
       enderecoEstado: ['', [Validators.required]],
       enderecoNumero: ['', [Validators.required]],
-      enderecoComplemento: ['', [Validators.required]],
+      enderecoComplemento: ['', ],
       enderecoCep: ['', [Validators.required]],
-      contato: ['', [Validators.required]],
+      contato: [animal.contato, [Validators.required]],
       // celular: [animal.contato, [Validators.required]],
       // enderecoLogradouro: [animal.endereco.logradouro, [Validators.required]],
       // enderecoCidade: [animal.endereco.cidade, [Validators.required]],
@@ -70,6 +70,7 @@ export class AnimalCreateP2Component implements OnInit {
       // enderecoNumero: [animal.endereco.numero, [Validators.required]],
       // enderecoComplemento: [animal.endereco.complemento, [Validators.required]],
       // enderecoCep: [animal.endereco.cep, [Validators.required]],
+      
     });
   }
 
@@ -79,7 +80,7 @@ export class AnimalCreateP2Component implements OnInit {
 
   private salvar(animal: AnimalModel) {
     console.log(this.selectedMessage);
-    console.log(animal);
+    //console.log(animal);
     if (this.selectedMessage != '') {
       Object.assign(animal, JSON.parse(this.selectedMessage));
       console.log(animal);
@@ -118,7 +119,7 @@ export class AnimalCreateP2Component implements OnInit {
   listarEstados() {
     this.repository.getAllEstados().subscribe((resposta) => {
       this.estados.push({ label: resposta.nome, value: resposta.id });
-      console.log(this.estados);
+      // console.log(this.estados);
     });
   }
 

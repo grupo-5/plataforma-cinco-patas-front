@@ -8,8 +8,8 @@ export interface AnimalEntity {
   sexo?: string;
   porte?: string;
   localizacao?: string;
-  personalidades?: {};
-  cuidadosVet?: {};
+  personalidades?: any[];
+  cuidadosVet?: any[];
   infoExtras?: string;
   endereco?: EnderecoEntity
   nomeTitular?: string;
