@@ -1,46 +1,48 @@
-<div class="text-right">
-  <app-button-g nomeBotao="Adicionar" routerLink="{{rLink}}"></app-button-g>
-</div>
-<form>
-  <div class="form-group form-inline float-left">
-    <img id="lupa" class="ml-2" src="assets/icons/search.svg" alt=""><input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search"/>
+<div class="container" *ngIf="objetosListados.length > 0">
+  <div class="text-right">
+    <app-button-g nomeBotao="Adicionar" routerLink="{{rLink}}"></app-button-g>
   </div>
-  
-</form>
+  <form>
+    <div class="form-group form-inline float-left">
+      <img id="lupa" class="ml-2" src="assets/icons/search.svg" alt=""><input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search"/>
+    </div>
+    
+  </form>
 
-<div class="float-right">
-  <label for="filtrar"><img src="assets/icons/filter.svg"></label>
+  <div class="float-right">
+    <label for="filtrar"><img src="assets/icons/filter.svg"></label>
 
-  <select id="filtrar" class="custom-select" [(ngModel)]="selectedBrand" (change)="valueSelected()">
-    <option>Todos</option>
-    <option *ngFor="let item of selectHeaders()">{{item}}</option>
-  </select>
-</div>
+    <select id="filtrar" class="custom-select" [(ngModel)]="selectedBrand" (change)="valueSelected()">
+      <option>Todos</option>
+      <option *ngFor="let item of selectHeaders()">{{item}}</option>
+    </select>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th *ngFor="let header of listarHeaders()" scope="col">{{header}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let objeto of objetosFiltrados | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <td *ngFor="let elemento of listarElementos(objeto)">
-          <span 
-          [ngClass]="{
-          'badge badge-pill badge-primary': selectHeaders().includes(elemento)
-          }"
-          [style.background]="selectItems[elemento]">{{elemento}}
-        </span>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of listarHeaders()" scope="col">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let objeto of objetosFiltrados | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <td *ngFor="let elemento of listarElementos(objeto)">
+            <span 
+            [ngClass]="{
+            'badge badge-pill badge-primary': selectHeaders().includes(elemento)
+            }"
+            [style.background]="selectItems[elemento]">{{elemento}}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="d-flex justify-content-center">
-  <ngb-pagination
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="collectionSize">
-  </ngb-pagination>
+  <div class="d-flex justify-content-center">
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="collectionSize">
+    </ngb-pagination>
+  </div>
 </div>
