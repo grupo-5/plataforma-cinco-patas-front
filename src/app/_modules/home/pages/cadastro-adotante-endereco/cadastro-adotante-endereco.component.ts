@@ -14,7 +14,7 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
 
   formCadastroAdotante: FormGroup;
   listSexo = ['Feminino', 'Masculino', 'Nao declarar'];
-  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Segurança', 'Upload de Imagem'];
   disabled: boolean = false;
   id: any;
   selectedMessagePessoa: any;

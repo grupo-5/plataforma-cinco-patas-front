@@ -1,12 +1,6 @@
 import { PessoaDataService } from './../../../../_services/pessoa-data.service';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormControl,
-  Validators,
-  FormGroup,
-  EmailValidator,
-} from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PessoaModel } from 'src/app/_core/model/pessoa-model';
 
@@ -18,7 +12,7 @@ import { PessoaModel } from 'src/app/_core/model/pessoa-model';
 export class CadastroAdotanteDadosComponent implements OnInit {
   formCadastroAdotante: FormGroup;
   listSexo = ['Feminino', 'Masculino', 'Nao declarar'];
-  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Segurança', 'Upload de Imagem'];
   disabled: boolean = false;
   id: number;
 
@@ -33,7 +27,6 @@ export class CadastroAdotanteDadosComponent implements OnInit {
       name: ['', Validators.required],
       cpf: ['', Validators.required],
       rg: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       contato: ['', Validators.required],
       sexo: ['', Validators.required],
     });

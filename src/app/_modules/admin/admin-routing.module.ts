@@ -1,4 +1,3 @@
-import { AuthService } from './../home/pages/seguranca/auth.service';
 import { AuthGuard } from './../home/pages/seguranca/auth.guard';
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
 import { CadastroDepoimentosComponent } from './pages/pessoa/cadastro-depoimentos/cadastro-depoimentos.component';
@@ -37,7 +36,7 @@ const routes: Routes = [
                  ],
     },
 ];
- 
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

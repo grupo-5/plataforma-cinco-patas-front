@@ -12,3 +12,4 @@ export interface PessoaModel {
   sexo:string;
   tipo:string;
 }
+ 

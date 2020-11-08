@@ -14,7 +14,7 @@ export class OngCreateP3Component implements OnInit {
 
   formCadastro: FormGroup;
   disabled: boolean = false;
-  listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
+  listaPassos = ['Dados', 'Endereço', 'Segurança', 'Foto'];
   selectedMessage: any;
   image: any;
   mensagem: any;

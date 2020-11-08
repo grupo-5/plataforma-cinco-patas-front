@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "../node_modules/ngx-toastr/toastr.css";
 @import "./assets/style/colors.css";
 .fonte-erros-inputs {
     font-size: 0.8rem !important;
@@ -66,3 +66,4 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 } */
+

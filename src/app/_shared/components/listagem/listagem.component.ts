@@ -18,26 +18,7 @@ export class ListagemComponent implements OnInit {
   };
 
   // Array de objetos que serao mostrados na listagem (qualquer objeto de qualquer tamanho)
-  @Input() public objetosListados: any[] = [
-    {
-      "Nome": "João",
-      "Situacao": "Adotante",
-      "Idade": 14,
-      "Cor": "verde"
-    },
-    {
-     "Nome": "Roberto",
-      "Situacao": "Tutor",
-      "Idade": 18,
-      "Cor": "verde"
-    },
-    {
-      "Nome": "Junior",
-      "Situacao": "Responsavel",
-      "Idade": 27,
-      "Cor": "verde"
-    }
-  ];
+  @Input() public objetosListados: any[] = [];
 
   // variaveis para o filtro funcionar
   page = 1;
