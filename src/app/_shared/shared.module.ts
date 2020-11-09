@@ -1,5 +1,4 @@
 import { AnimalCreateComponent } from './../_modules/admin/pages/instituicao/animal-create/animal-create.component';
-import { DashboardComponent } from './../_modules/admin/pages/instituicao/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
