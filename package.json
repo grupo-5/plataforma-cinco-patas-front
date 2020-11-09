@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "engines": {
+    "node": "12.18.0",
+    "npm": "6.14.5"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +35,7 @@
     "@types/jquery": "^3.5.4",
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.3",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ng2-charts": "^2.4.1",
