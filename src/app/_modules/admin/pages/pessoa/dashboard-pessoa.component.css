@@ -1,27 +1,32 @@
-/* .box {
-  margin-top: 85px;
-} */
-
-.dash {
-  background-color: var(--main-second-color);
-  max-width: 60px;
-  min-height: 100vh;
+.myColor {
+  color: var(--main-second-color) !important;
 }
 
-.marg-l {
-  margin-left: 20px !important;
-  /* padding-left: 0; */
+.botao {
+  border: 1px var(--main-color) solid;
+  color: var(--main-color);
 }
 
-@media (max-width: 768px) {
-  .dash {
-    /* display: none; */
-  }
-  .marg-l {
-    /* padding-left: 15px; */
-    margin-left: 0px !important;
-  }
-
+.colorIcons {
+  color: var(--main-second-color);
 }
 
+ngb-pagination ::ng-deep ul>li:not(.active)>a {
+  background-color: white !important;
+  color: #000;
+  outline: none !important;
+  border: none !important;
+}
 
+ngb-pagination ::ng-deep ul>li.active>a {
+  background-color: var(--main-color) !important;
+  border-radius: 10px;
+  color: #000 !important;
+  border: none !important;
+  font-weight: bold;
+  outline: none !important;
+}
+
+ngb-pagination ::ng-deep .page-link:focus {
+  box-shadow: none;
+}

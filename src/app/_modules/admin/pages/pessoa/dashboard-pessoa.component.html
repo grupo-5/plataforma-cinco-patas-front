@@ -1,11 +1,47 @@
-<div class="marg-l">
-    <!-- <div class="row "></div> -->
-        <!-- <div class="col-md-3 ">
-            <div class="dash"></div>
-        </div> -->
-        <div class="col-md-9 box">
-            <h1 class="text-center mb-5">Acompanhamento de Solicitações</h1>
-            <app-card-adotante class="justify-content" [caminhoImg]="caminho" nomeBotao="Detalhes"></app-card-adotante>
+<div class="container-fluid background pl-0">
+    <div class="row">
+        <div class="col-md-11 dash mx-auto">
+            <div class="m-2 ">
+                <h1 class="text-center mb-4">Solicitações</h1>
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th>NOME</th>
+                            <th>DATA</th>
+                            <th>SITUAÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                            <td type="button" (click)="solicitacao.clicado = !solicitacao.clicado">
+                                <label for="" class="myColor">Solicitação {{ solicitacao.id }}</label>
+
+                                <div id="collapseExample" [ngbCollapse]="!solicitacao.clicado">                                                    
+                                    <label class="mt-1 "><strong>Dados do Animal</strong></label>
+                                    <p for="">Nome: {{ solicitacao.animal.nome }}</p>
+                                    <p for="">Contato: {{ solicitacao.animal.contato }}</p>
+                                    <p for="">Endereço: {{ solicitacao.animal.endereco.logradouro}},
+                                        {{ solicitacao.pessoa.endereco.cidade.nome}} -
+                                        {{ solicitacao.pessoa.endereco.cidade.estado.nome}}</p>
+                                        <p for="">Justificativa: {{ solicitacao.justificativa }}</p>
+                                </div>
+                            </td>
+
+                            <td>
+                                <label for="" class="myColor">{{solicitacao.data| date: 'dd/MM/yyyy'}}</label>
+                            <td>
+                               <p>{{nomeSituacao(solicitacao.id)}}</p>
+                                
+                            </td>                           
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    <ngb-pagination [collectionSize]="solicitacoes.length" [(page)]="page" [pageSize]="pageSize"
+                        [maxSize]="3" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                </div>
+            </div>
         </div>
-    <!-- </div> -->
+    </div>
 </div>

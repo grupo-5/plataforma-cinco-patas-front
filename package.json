@@ -27,6 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@types/jquery": "^3.5.4",
     "bootstrap": "^4.5.2",
     "chart.js": "^2.9.3",
     "font-awesome": "^4.7.0",
