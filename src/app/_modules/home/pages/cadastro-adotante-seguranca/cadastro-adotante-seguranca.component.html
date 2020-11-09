@@ -62,9 +62,16 @@
           </div>
 
           <div class="row mb-5 mt-5">
-            <div class="col-12 mx-auto text-right">
+            <div class="col-12 mx-auto d-flex justify-content-between">
               <app-button-g
-                nomeBotao="Avançar"  [disabled]="disabled" type="submit"
+                nomeBotao="Voltar"
+                (onClick)="trocaRota($event)"
+                [disabled]="disabled"
+              ></app-button-g>
+              <app-button-g
+                nomeBotao="Avançar"
+                [disabled]="disabled"
+                type="submit"
               ></app-button-g>
             </div>
           </div>

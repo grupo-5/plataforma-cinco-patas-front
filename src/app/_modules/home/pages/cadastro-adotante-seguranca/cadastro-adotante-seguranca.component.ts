@@ -1,4 +1,6 @@
-import { Router } from '@angular/router';
+import { PessoaDataService } from './../../../../_services/pessoa-data.service';
+import { PessoaModel } from './../../../../_core/model/pessoa-model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,29 +18,63 @@ export class CadastroAdotanteSegurancaComponent implements OnInit {
   public formCadastroAdotante: FormGroup;
 
   public disabled: boolean;
+  public selectedMessagePessoa: any;
+  public id: number;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private route: Router,
+    public pessoaDataService: PessoaDataService
   ) { }
 
   ngOnInit(): void {
     this.criarForm();
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.pessoaDataService.currentMessagePessoa.subscribe((message) => {
+      if(message!=''){
+        this.selectedMessagePessoa = message;
+          }else{
+        this.route.navigate(['cadastro-adotante'])
+      }
+    });
   }
 
   public submit(): void {
 
-  //   if(!this.validarSenhas()) {
-  //     this.formCadastroAdotante.markAllAsTouched();
-  //     return;
-  //   }
+    this.formCadastroAdotante.markAllAsTouched();
 
-  //   if(this.formCadastroAdotante.status === 'INVALID') {
-  //     this.formCadastroAdotante.markAllAsTouched();
-  //   } else {
-  //     let 
-  //   }
+    if(!this.validarSenhas()) {
+      return;
+    }
+
+    if(this.formCadastroAdotante.status === 'INVALID') {
+      return;
+    } 
+
+    const adotante = this.formCadastroAdotante.getRawValue() as PessoaModel; // retorna os campos que existem dentro do formGroup cadastro
+    if (this.id) {
+      adotante.id = this.id;
+      console.log('editar *** ' + adotante.nome);
+      // this.editar(adotante);
+    } else {
+      console.log('salvar *** ' + adotante.nome);
+      this.salvar(adotante);
+    }
     
+  }
+
+  private salvar = (adotante: PessoaModel) => {
+
+    console.log(this.selectedMessagePessoa);
+    console.log(adotante);
+    if (this.selectedMessagePessoa != '') {
+      Object.assign(adotante, JSON.parse(this.selectedMessagePessoa));
+      console.log(adotante);
+    }
+
+    this.pessoaDataService.changeMessage(JSON.stringify(adotante));
+    this.trocaRota();
   }
 
   public resetForm(): void {

@@ -94,9 +94,9 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
     if (evento) {
       evento.target.innerText == 'Voltar'
         ? this.route.navigate(['cadastro-adotante'])
-        : this.route.navigate(['cadastro-adotante-3']);
+        : this.route.navigate(['cadastro-adotante-2']);
     } else {
-      this.route.navigate(['cadastro-adotante-3']);
+      this.route.navigate(['cadastro-adotante-2']);
     }
   };
 
