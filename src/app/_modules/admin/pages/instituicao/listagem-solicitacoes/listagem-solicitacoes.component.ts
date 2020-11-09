@@ -20,6 +20,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
   page = 1;
   pageSize = 5;
   aux: number;
+  disabled : boolean;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
@@ -58,7 +59,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
   }
 
   adicionaSituacao(solicitacao, tipo) {
-    this.aux = solicitacao.id;
+    
     console.log("aux"+this.aux)
     let dados: any ;
 

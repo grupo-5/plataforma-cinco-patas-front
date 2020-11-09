@@ -55,7 +55,7 @@
                             <td>
                                 <a class="mb-1 btn ">
                                     <i class="fa fa-check-square colorIcons" type="button"
-                                        (click)="adicionaSituacao(solicitacao, 1)" ></i>
+                                        (click)="adicionaSituacao(solicitacao, 1)" [disable]="status=='recebida'?true:false"></i>
                                 </a>
                             </td>
                         </tr>
