@@ -25,7 +25,7 @@ const routes: Routes = [
             { path: 'cadastro-animal-1', component: AnimalCreateComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-1/:id', component: AnimalCreateComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-2', component: AnimalCreateP2Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
-            {path: 'cadastro-animal-2/:id', component: AnimalCreateP2Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
+            { path: 'cadastro-animal-2/:id', component: AnimalCreateP2Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-3', component: AnimalCreateP3Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-animal-3/:id', component: AnimalCreateP3Component,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'pessoas', component: ListagemUsuariosComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
