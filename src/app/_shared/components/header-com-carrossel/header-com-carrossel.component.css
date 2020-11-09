@@ -1,14 +1,16 @@
 h4 {
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
 p {
-    color: black;
+    color: white;
     font-weight: bold;
+    position: absolute;
 }
 
 img {
     height: 500px;
     object-fit: cover;
 }
+

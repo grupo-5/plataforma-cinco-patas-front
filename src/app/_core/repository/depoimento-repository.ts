@@ -3,7 +3,7 @@ import { BaseHttpService } from '../../_services/http/base-http.service';
 import { environment } from '../../../environments/environment';
 import { DepoimentoMapper } from '../mapper/depoimento-mapper';
 import { DepoimentoEntity} from '../entity/depoimento-entity';
-import { DepoimentoModel } from '../model/Depoimento-model';
+import { DepoimentoModel } from '../model/depoimento-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';

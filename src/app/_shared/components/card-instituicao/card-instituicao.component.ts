@@ -10,6 +10,7 @@ export class CardInstituicaoComponent implements OnInit {
   @Input() caminhoImg: string;
   @Input() nomeOng: string;
   @Input() cidadeOng: string;
+  @Input() estadoOng: string;
   constructor() { }
 
   ngOnInit(): void {

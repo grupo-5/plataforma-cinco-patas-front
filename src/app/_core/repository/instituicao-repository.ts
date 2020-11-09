@@ -1,7 +1,7 @@
 import { InstituicaoModel } from './../model/instituicao-model';
 import { BaseHttpService } from './../../_services/http/base-http.service';
 import { environment } from './../../../environments/environment';
-import { InstituicaoMapper } from './../mapper/Instituicao-mapper';
+import { InstituicaoMapper } from './../mapper/instituicao-mapper';
 import { InstituicaoEntity } from './../entity/instituicao-entity';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { map, mergeMap } from 'rxjs/operators';
 export class InstituicaoRepository {
   mapper = new InstituicaoMapper();
 
-  constructor(public http: BaseHttpService) {}
+  constructor(public http: BaseHttpService) { }
 
   getInstituicaoById(id: number): Observable<InstituicaoModel> {
     return this.http
@@ -21,11 +21,25 @@ export class InstituicaoRepository {
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
-  getAllInstituicoes(): Observable<InstituicaoModel> {
-    return this.http
+  async getAllInstituicoes(): Promise<InstituicaoModel[]> {
+    const x = await this.http
       .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao`)
-      .pipe(mergeMap((x) => x.data))
-      .pipe(map((x) => this.mapper.mapFrom(x)));
+      .toPromise();
+    return x.data.map(this.mapper.mapFrom);
+  }
+
+  async getInstituicoesCidade(id: number): Promise<InstituicaoModel[]> {
+    const x = await this.http
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/${id}/cidade`)
+      .toPromise();
+    return x.data.map(this.mapper.mapFrom);
+  }
+
+  async getInstituicoesEstado(id: number): Promise<InstituicaoModel[]> {
+    const x = await this.http
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/${id}/estado`)
+      .toPromise();
+    return x.data.map(this.mapper.mapFrom);
   }
 
   postInstituicao(param: InstituicaoModel) {
@@ -45,7 +59,7 @@ export class InstituicaoRepository {
       )
       .pipe(map((x) => x.data));
   }
-  
+
   postImagem(param: any) {
     return this.http.post(`${environment.URLSERVIDOR}imagem`, param);
 
