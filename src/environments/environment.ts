@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   logRequest: true,
   traceRequest: true,
-  URLSERVIDOR: 'https://plataforma-cinco-patas-back.herokuapp.com/', //Vai alterar em todos os arquivos para essa rota
+  URLSERVIDOR: 'http://localhost:8080/', //Vai alterar em todos os arquivos para essa rota
 };
 
 /*
