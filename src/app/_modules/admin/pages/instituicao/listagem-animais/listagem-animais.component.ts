@@ -18,7 +18,7 @@ export class ListagemAnimaisComponent implements OnInit {
 
   animaisListados: any[] = [];
 
-  carregaSolicitacoes() {
+  carregaAnimais() {
     this.animalRepository.getAllAnimais().subscribe((resposta) => {
       this.addArray(resposta);
       console.log(resposta);
@@ -26,11 +26,17 @@ export class ListagemAnimaisComponent implements OnInit {
   }
 
   addArray(object) {
-    this.animaisListados.push(object);
+    let newObject = {
+      'Nome': object.nome,
+      'Situação': object.status.charAt(0).toUpperCase() + object.status.slice(1),
+      'Local': object.localizacao,
+      'Contato Responsável': object.contato
+    }
+    this.animaisListados.push(newObject);
   }
 
   ngOnInit(): void {
-    this.carregaSolicitacoes();
+    this.carregaAnimais();
   }
 
 }

@@ -1,3 +1,4 @@
+import { ToastrModule } from 'ngx-toastr';
 import { SegurancaModule } from './_modules/home/pages/seguranca/seguranca.module';
 import { AuthService } from './_modules/home/pages/seguranca/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,8 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     SegurancaModule,
-
-
+    ToastrModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

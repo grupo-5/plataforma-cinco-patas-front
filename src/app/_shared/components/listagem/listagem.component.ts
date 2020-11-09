@@ -11,46 +11,32 @@ export class ListagemComponent implements OnInit {
   @Input() public rLink: string;
 
   // Categorias que ficarao no select e suas cores
-  @Input() public selectItems: any = {
-    "Tutor": "blue", 
-    "Adotante": "yellow", 
-    "Responsavel": "green"
-  };
+  @Input() public selectItems: any;
 
   // Array de objetos que serao mostrados na listagem (qualquer objeto de qualquer tamanho)
-  @Input() public objetosListados: any[] = [
-    {
-      "Nome": "João",
-      "Situacao": "Adotante",
-      "Idade": 14,
-      "Cor": "verde"
-    },
-    {
-     "Nome": "Roberto",
-      "Situacao": "Tutor",
-      "Idade": 18,
-      "Cor": "verde"
-    },
-    {
-      "Nome": "Junior",
-      "Situacao": "Responsavel",
-      "Idade": 27,
-      "Cor": "verde"
-    }
-  ];
+  @Input() public objetosListados: any[] = [{}];
 
   // variaveis para o filtro funcionar
-  page = 1;
-  pageSize = 4;
-  collectionSize = this.objetosListados.length;
-  _filterBy: string;
-  objetosFiltrados: any[];
-  selectFilteredObj: any[];
-  selectKey: string = Object.keys(this.objetosListados[0])[1];
+  public page = 1;
+  public pageSize = 4;
+  public collectionSize = this.objetosListados.length;
+  public _filterBy: string;
+  public objetosFiltrados: any[] = [];
+  public selectFilteredObj: any[] = [];
+  public selectKey: string;
 
   // implementacao do filtro do select
   public selectedBrand: string;
-  public valueSelected() {
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.objetosFiltrados = this.objetosListados;
+    this.selectFilteredObj = this.objetosListados;
+  }
+  
+  public valueSelected(): void {
+    this.selectKey = Object.keys(this.objetosListados[0])[1];
     if(this.selectedBrand != "Todos") {
       this.objetosFiltrados = this.objetosListados.filter(item => item[this.selectKey] === this.selectedBrand);
     } else {
@@ -59,15 +45,15 @@ export class ListagemComponent implements OnInit {
     this.selectFilteredObj = this.objetosFiltrados;
   }
 
-  selectHeaders() {
+  public selectHeaders(): any {
     return Object.keys(this.selectItems);
   }
 
-  listarHeaders() {
+  public listarHeaders(): any {
     return Object.keys(this.objetosListados[0]);
   }
 
-  listarElementos(obj) {
+  public listarElementos(obj): any {
     return Object.values(obj);
   }
 
@@ -78,13 +64,6 @@ export class ListagemComponent implements OnInit {
 
   get filter() {
     return this._filterBy;
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.objetosFiltrados = this.objetosListados;
-    this.selectFilteredObj = this.objetosListados;
   }
 
 }

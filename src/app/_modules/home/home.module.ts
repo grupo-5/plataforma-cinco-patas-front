@@ -18,6 +18,8 @@ import { OngCreateComponent } from './pages/ong-create/ong-create.component';
 import { OngCreateP2Component } from './pages/ong-create-p2/ong-create-p2.component';
 import { OngCreateP3Component } from './pages/ong-create-p3/ong-create-p3.component';
 import { SegurancaModule } from './pages/seguranca/seguranca.module';
+import { CadastroAdotanteSegurancaComponent } from './pages/cadastro-adotante-seguranca/cadastro-adotante-seguranca.component';
+import { OngCreateSegurancaComponent } from './pages/ong-create-seguranca/ong-create-seguranca.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { SegurancaModule } from './pages/seguranca/seguranca.module';
     OngCreateComponent,
     OngCreateP2Component,
     OngCreateP3Component,
+    CadastroAdotanteSegurancaComponent,
+    OngCreateSegurancaComponent,
   ],
   imports: [
     CommonModule,

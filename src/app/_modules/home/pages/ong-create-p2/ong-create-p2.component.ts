@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OngCreateP2Component implements OnInit {
   //timeline
-  listaPassos = ['Dados', 'Endereço', 'Foto'];
+  listaPassos = ['Dados', 'Endereço', 'Segurança', 'Foto'];
   id: number;
   formCadastro: FormGroup;
   selectedMessage;

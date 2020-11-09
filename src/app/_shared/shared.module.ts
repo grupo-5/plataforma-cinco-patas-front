@@ -64,7 +64,7 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     UploadDeImagensComponent,
     ListagemComponent,
     CardInstituicaoComponent,
-    CardAdotanteComponent,
+    CardAdotanteComponent
   ],
   imports: [
     CommonModule,

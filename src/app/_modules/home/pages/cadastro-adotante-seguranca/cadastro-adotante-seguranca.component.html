@@ -1,0 +1,72 @@
+<div class="row">
+    <app-header-com-carrossel></app-header-com-carrossel>
+</div>
+
+<div class="row mt-4">
+    <div class="col-10 mx-auto text-center">
+        <h1>Cadastro Adotante</h1>
+    </div>
+</div>
+  
+<div class="row">
+    <div class="col-10 mx-auto">
+        <app-card-timeline
+            [listaPassos]="listaPassos"
+            [active]="'Segurança'"
+        ></app-card-timeline>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <form [formGroup]="formCadastroAdotante" (ngSubmit)="submit()" (ngReset)="resetForm()" class="col-10 mx-auto">
+        <div class="row">
+            <div class="col-12">
+              <app-input-text
+                titulo="E-mail"
+                tipo="text"
+                idInput="email"
+                placeholderInput=""
+                [formGroup]="formCadastroAdotante"
+                controlName="email"
+              ></app-input-text>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+                <app-input-text
+                    titulo="Senha"
+                    tipo="password"
+                    idInput="senha"
+                    placeholderInput=""
+                    [formGroup]="formCadastroAdotante"
+                    controlName="senha"
+                ></app-input-text>
+                <small 
+                    class="form-text text-danger" 
+                    *ngIf="(formCadastroAdotante.get('senha').value !== formCadastroAdotante.get('confirmarSenha').value)
+                        && formCadastroAdotante.get('senha').touched 
+                        && formCadastroAdotante.get('confirmarSenha').touched" >
+                    As senhas estão diferentes
+                </small>
+            </div>
+            <div class="col-6">
+                <app-input-text
+                  titulo="Confirmar Senha"
+                  tipo="password"
+                  idInput="confirmarSenha"
+                  placeholderInput=""
+                  [formGroup]="formCadastroAdotante"
+                  controlName="confirmarSenha"
+                ></app-input-text>
+              </div>
+          </div>
+
+          <div class="row mb-5 mt-5">
+            <div class="col-12 mx-auto text-right">
+              <app-button-g
+                nomeBotao="Avançar"  [disabled]="disabled" type="submit"
+              ></app-button-g>
+            </div>
+          </div>
+    </form>
+</div>

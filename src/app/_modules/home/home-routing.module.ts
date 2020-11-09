@@ -1,3 +1,5 @@
+import { CadastroAdotanteSegurancaComponent } from './pages/cadastro-adotante-seguranca/cadastro-adotante-seguranca.component';
+import { OngCreateSegurancaComponent } from './pages/ong-create-seguranca/ong-create-seguranca.component';
 import { OngCreateP3Component } from './pages/ong-create-p3/ong-create-p3.component';
 import { OngCreateP2Component } from './../home/pages/ong-create-p2/ong-create-p2.component';
 import { ListaInstituicoesComponent } from './pages/lista-instituicoes/lista-instituicoes.component';
@@ -27,23 +29,15 @@ const routes: Routes = [
       { path: 'home-page', component: InicioComponent },
       { path: 'sobre-nos', component: SobreNosComponent },
       { path: 'instituicoes-parceiras', component: ListaInstituicoesComponent },
-
-      {
-        path: 'selecao-tipo-cadastro',
-        component: SelecaoTipoCadastroComponent,
-      },
+      { path: 'selecao-tipo-cadastro', component: SelecaoTipoCadastroComponent },
       { path: 'cadastro-instituicao', component: OngCreateComponent },
       { path: 'cadastro-instituicao-1', component: OngCreateP2Component },
-      { path: 'cadastro-instituicao-2', component: OngCreateP3Component },
-      { path: 'cadastro-adotante', component: CadastroAdotanteDadosComponent },
-      {
-        path: 'cadastro-adotante-2',
-        component: CadastroAdotanteEnderecoComponent,
-      },
-      {
-        path: 'cadastro-adotante-3',
-        component: CadastroAdotanteMatchComponent,
-      },
+      { path: 'cadastro-instituicao-2', component: OngCreateSegurancaComponent},
+      { path: 'cadastro-instituicao-3', component: OngCreateP3Component },
+      { path: 'cadastro-adotante', component: CadastroAdotanteDadosComponent},
+      { path: 'cadastro-adotante-1', component: CadastroAdotanteEnderecoComponent },
+      { path: 'cadastro-adotante-2', component: CadastroAdotanteSegurancaComponent},
+      { path: 'cadastro-adotante-3', component: CadastroAdotanteMatchComponent }
     ],
   },
 ];

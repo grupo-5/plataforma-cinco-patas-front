@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroAdotanteMatchComponent implements OnInit {
   formCadastroAdotante: FormGroup;
-  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload de Imagem'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Segurança', 'Upload de Imagem'];
   disabled = false;
   id: any;
   selectedMessagePessoa: any;
