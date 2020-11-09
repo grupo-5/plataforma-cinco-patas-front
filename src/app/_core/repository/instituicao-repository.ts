@@ -1,7 +1,7 @@
 import { InstituicaoModel } from './../model/instituicao-model';
 import { BaseHttpService } from './../../_services/http/base-http.service';
 import { environment } from './../../../environments/environment';
-import { InstituicaoMapper } from './../mapper/Instituicao-mapper';
+import { InstituicaoMapper } from './../mapper/instituicao-mapper';
 import { InstituicaoEntity } from './../entity/instituicao-entity';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
