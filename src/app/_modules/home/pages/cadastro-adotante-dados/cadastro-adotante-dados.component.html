@@ -18,7 +18,7 @@
 <div class="row">
   <form [formGroup]="formCadastroAdotante" (ngSubmit)="validar()" (ngReset)="resetForm()" class="col-10 mx-auto">
     <div class="row">
-      <div class="col-12">
+      <div class="col-8">
         <app-input-text
           titulo="Nome"
           tipo="text"
@@ -26,6 +26,16 @@
           placeholderInput=""
           [formGroup]="formCadastroAdotante"
           controlName="name"
+        ></app-input-text>
+      </div>
+      <div class="col-4">
+        <app-input-text
+          titulo="Data de Nascimento"
+          tipo="date"
+          idInput="dataNasc"
+          placeholderInput=""
+          [formGroup]="formCadastroAdotante"
+          controlName="dataNasc"
         ></app-input-text>
       </div>
     </div>

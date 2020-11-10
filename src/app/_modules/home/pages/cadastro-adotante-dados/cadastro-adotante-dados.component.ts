@@ -25,6 +25,7 @@ export class CadastroAdotanteDadosComponent implements OnInit {
   criaFormulario = () => {
     this.formCadastroAdotante = this.fb.group({
       name: ['', Validators.required],
+      dataNasc: ['', Validators.required],
       cpf: ['', Validators.required],
       rg: ['', Validators.required],
       contato: ['', Validators.required],

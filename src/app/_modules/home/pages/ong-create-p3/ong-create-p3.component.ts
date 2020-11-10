@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InstituicaoRepository } from './../../../../_core/repository/instituicao-repository';
 import { InstituicaoDataService } from './../../../../_services/instituicao-data.service';
@@ -14,7 +15,7 @@ export class OngCreateP3Component implements OnInit {
 
   formCadastro: FormGroup;
   disabled: boolean = false;
-  listaPassos = ['Dados', 'Endereço', 'Segurança', 'Foto'];
+  listaPassos = ['Dados', 'Endereço', 'Segurança', 'Upload de Imagem'];
   selectedMessage: any;
   image: any;
   mensagem: any;
@@ -25,7 +26,8 @@ export class OngCreateP3Component implements OnInit {
     private activatedRoute: ActivatedRoute,
     public instituicaoDataService: InstituicaoDataService,
     public repository: InstituicaoRepository,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -127,6 +129,7 @@ export class OngCreateP3Component implements OnInit {
               detail: 'cadastrado com sucesso!'
             }];
           // this.reiniciarForm();
+          this.successToastr()
           this.router.navigate(["/login"])
         },
           (e) => {
@@ -159,4 +162,8 @@ export class OngCreateP3Component implements OnInit {
   }
   
   reiniciarForm() { }
+
+  public successToastr() {
+    this.toastr.success("Foi enviado um e-mail para verificação", "Cadastro efetuado com sucesso!");
+  }
 }

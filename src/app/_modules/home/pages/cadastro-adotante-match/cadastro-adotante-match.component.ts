@@ -4,6 +4,7 @@ import { PessoaDataService } from './../../../../_services/pessoa-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-adotante-match',
@@ -23,6 +24,7 @@ export class CadastroAdotanteMatchComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private toastr: ToastrService,
     public pessoaDataService: PessoaDataService,
     public repository: PessoaRepository,
   ) {}
@@ -123,6 +125,7 @@ export class CadastroAdotanteMatchComponent implements OnInit {
             }];
           // this.reiniciarForm();
           this.router.navigate(["/login"])
+          this.successToastr();
         },
           (e) => {
             var msg: any[] = [];
@@ -155,5 +158,9 @@ export class CadastroAdotanteMatchComponent implements OnInit {
   }
 
   resetForm() {}
+
+  public successToastr() {
+    this.toastr.success("Foi enviado um e-mail para verificação", "Cadastro efetuado com sucesso!");
+  }
 }
 
