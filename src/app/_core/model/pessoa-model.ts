@@ -9,6 +9,7 @@ export interface PessoaModel {
   cpf: string;
   rg: string;
   email: string;
+  senha: string;
   contato: string;
   endereco: EnderecoModel;
   

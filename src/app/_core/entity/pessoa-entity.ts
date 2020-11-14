@@ -1,3 +1,4 @@
+import { UsuarioEntity } from './usuario-entity';
 import { EnderecoEntity } from './endereco-entity';
 
 export interface PessoaEntity {
@@ -9,6 +10,7 @@ export interface PessoaEntity {
     cpf: string;
     rg: string;
     email: string;
+    senha: string;
     contato: string;
     endereco: EnderecoEntity;
 }

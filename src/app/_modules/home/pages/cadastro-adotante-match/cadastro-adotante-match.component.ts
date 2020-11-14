@@ -1,3 +1,4 @@
+import { UsuarioModel } from './../../../../_core/model/usuario-model';
 import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
 import { PessoaModel } from './../../../../_core/model/pessoa-model';
 import { PessoaDataService } from './../../../../_services/pessoa-data.service';
@@ -92,7 +93,8 @@ export class CadastroAdotanteMatchComponent implements OnInit {
       cpf:pessoa.cpf,
       contato:pessoa.contato,
       tipo:'ADOTANTE',
-      email:pessoa.email,
+      email: pessoa.email,
+      senha: pessoa.senha,
       endereco: {
         cep: pessoa.cep,
         logradouro: pessoa.logradouro,
