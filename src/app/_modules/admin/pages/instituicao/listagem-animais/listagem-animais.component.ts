@@ -11,10 +11,15 @@ export class ListagemAnimaisComponent implements OnInit {
   constructor(public animalRepository: AnimalRepository) { }
 
   statusLabels: any = {
-    "Adotado": "#189CA1",
-    "Disponível": "#77CE32",
-    "Em processo de Adoção": "#FF4C61"
+    "Adotado": "#FF4C61",
+    "Disponível": "#83DB12",
+    "Adoção em Andamento": "#009EA3",
+    "Tutelado": "#E6A400"
   };
+  
+  ngOnInit(): void {
+    this.carregaAnimais();
+  }
 
   animaisListados: any[] = [];
 
@@ -35,8 +40,5 @@ export class ListagemAnimaisComponent implements OnInit {
     this.animaisListados.push(newObject);
   }
 
-  ngOnInit(): void {
-    this.carregaAnimais();
-  }
 
 }
