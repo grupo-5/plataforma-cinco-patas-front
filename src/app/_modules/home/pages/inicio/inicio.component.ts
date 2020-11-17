@@ -1,6 +1,10 @@
+import { ModalInfoComponent } from './../../../../_shared/components/modal-info/modal-info.component';
+import { ModalService } from './../../../../_services/modal.service';
+import { AnimalModel } from './../../../../_core/model/animal-model';
+import { AnimalRepository } from './../../../../_core/repository/animal-repository';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-inicio',
@@ -8,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
+
+  @ViewChild("md") md: ModalInfoComponent;
   searchResult = [{ imgUrl: '../../../../assets/images/cat-1.jpg' }];
 
   formBuscaHome: FormGroup;
@@ -18,16 +24,18 @@ export class InicioComponent implements OnInit {
   listaCidade = ['Dados Pessoais', 'Endereco', 'Match'];
   listaPorte = ['Dados Pessoais', 'Endereco', 'Match'];
   
-  
-
-  constructor(private route: Router, private fb: FormBuilder) {}
+  listAnimais:any=[]
+  constructor(private route: Router, private fb: FormBuilder,public  repository:AnimalRepository) {}
 
   ngOnInit(): void {
     this.criaFormulario();
 
-    for (let i = 1; i < 50; i++) {
-      this.searchResult.push({ imgUrl: '../../../../assets/images/cat-1.jpg' });
-    }
+   
+    this.getAnimals()
+   
+  }
+  open(item) {
+    this.md.open(item);
   }
 
   criaFormulario = () => {
@@ -45,4 +53,17 @@ export class InicioComponent implements OnInit {
       ? this.route.navigate(['cadastro-adotante-endereco'])
       : this.route.navigate(['cadastro-adotante-match']);
   };
+  
+  getAnimals(){
+    this.repository.getAllAnimais().subscribe(
+      (resp:any)=> {this.addArray(resp)}   )
+  }
+
+
+
+  addArray(item){
+    this.listAnimais.push(item)
+
+  }
+ 
 }

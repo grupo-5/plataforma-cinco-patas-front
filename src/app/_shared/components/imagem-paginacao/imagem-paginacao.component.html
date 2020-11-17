@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-center flex-wrap">
   <div
     *ngFor="
-      let item of list
+      let item of actualList
         | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
     "
   >
     <div>
-      {{ item.name }}
-      <img class="img-thumbnail imagem-animal" [src]="item.imgUrl" alt="" />
+  
+      <img class="img-thumbnail imagem-animal" [src]="item.imagem!=null?item.imagem:'../../../../assets/images/cat-1.jpg'" alt="" (click)="selectedAnimal(item)" />
     </div>
   </div>
 </div>

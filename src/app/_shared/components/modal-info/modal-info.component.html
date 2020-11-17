@@ -1,32 +1,104 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
-    Abrir modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<button
+  #openModal
+  data-toggle="modal"
+  data-target="#modal"
+  class="hidden"
+></button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  #modal
+  *ngIf="item.porte"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 mt-2">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-5">
+            <img
+              class="img-thumbnail"
+              [src]="
+                item.imagem != null
+                  ? item.imagem
+                  : '../../../../assets/images/cat-1.jpg'
+              "
+            />
+          </div>
+          <div class="col-7">
+            <span class="d-block text-center">
+              Oi meu nome e
+              <strong>{{ item.nome }}</strong>
+              e estou em busca de uma nova familia
+            </span>
+            <span class="d-block mt-5">
+              Sexo:
+              <strong>{{ item.sexo }}</strong>
+            </span>
+            <span class="d-block">
+              Cidade:
+              <strong>{{ item.endereco.cidade.nome }}</strong>
+            </span>
+            <span class="d-block">
+              Idade:
+              <strong>{{ item.dataNasc }}</strong>
+            </span>
+            <span class="d-block">
+              Porte
+              <strong>{{ item.porte }}</strong>
+            </span>
             <div class="row">
-              <div class="col-sm">
-                <img src={{urlModal}} style="max-width: 200px; max-height: 200px;">
+
+              <div class="col-6">
+                <span>Personalidade</span>
+                <ul>
+                  <li *ngFor="let personalidade of item.personalidades">
+                    {{ personalidade.descricao }}
+                  </li>
+                </ul>
               </div>
-              <div class="col-sm">
+              <div class="col-6">
+                <span>Cuidados Veterinarios</span>
+                <ul>
+                  <li *ngFor="let cuidado of item.cuidadosVet">
+                    {{ cuidado.descricao }}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <app-button-b data-dismiss="modal"></app-button-b>
-          <app-button-g data-dismiss="modal"></app-button-g>
+        <div class="row mb-2">
+          <div class="col-12 d-flex justify-content-between">
+            <app-button-b
+              data-dismiss="modal"
+              nomeBotao="Adotar"
+            ></app-button-b>
+            <app-button-g
+              data-dismiss="modal"
+              nomeBotao="Oferecer Abrigo"
+            ></app-button-g>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>

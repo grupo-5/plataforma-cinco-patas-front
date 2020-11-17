@@ -1,3 +1,4 @@
+import { ModalService } from './../../_services/modal.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -43,5 +44,6 @@ import { SegurancaModule } from './pages/seguranca/seguranca.module';
     AdminModule,
     SegurancaModule
   ],
+  providers:[ModalService]
 })
 export class HomeModule {}
