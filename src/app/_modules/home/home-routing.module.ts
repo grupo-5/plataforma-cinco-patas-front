@@ -16,6 +16,7 @@ import { SobreNosComponent } from './pages/sobre-nos/sobre-nos.component';
 import { OngCreateComponent } from '../home/pages/ong-create/ong-create.component';
 import { ListaDepoimentosComponent } from './pages/lista-depoimentos/lista-depoimentos.component';
 
+
 const routes: Routes = [
   {
     path: '',

@@ -3,3 +3,9 @@
     background-color: var(--main-second-color);
 }
 
+::ng-deep app-input-combobox .color-fonts-form label {
+    color:black;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}

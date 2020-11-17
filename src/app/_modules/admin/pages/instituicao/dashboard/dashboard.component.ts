@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { createSkipSelf } from '@angular/compiler/src/core';
+import { AnimalModel } from 'src/app/_core/model/animal-model';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +29,7 @@ export class DashboardComponent implements OnInit {
   novo: Array<any>;
   totalAnimais: number;
   capacidadeAnimais = 170; // Esse valor será preenchidos com os dados vindo do back
-  animaisTamanho: any = [];
+  animaisTamanho: AnimalModel[] = [];
   pessoasTamanho : any=[];
   myTotalizadorAnimais = {
     name: 'Animais',
@@ -133,11 +134,16 @@ export class DashboardComponent implements OnInit {
     if(type=='animal'){
       this.animaisTamanho.push(object);
       this.myTotalizadorAnimais.value=this.animaisTamanho.length
+
     }else{
       this.pessoasTamanho.push(object);
       this.myTotalizadorCapacidade.value=this.pessoasTamanho.length
     }
+
+
+
   }
+
   deslogar(){
  this.logoutRepository.logout()
   }
