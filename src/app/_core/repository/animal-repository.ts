@@ -6,6 +6,7 @@ import { AnimalModel, } from '../model/animal-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +14,7 @@ import { map, mergeMap } from 'rxjs/operators';
 export class AnimalRepository {
 
     mapper = new AnimalMapper();
-  
+
 
     constructor(public http: BaseHttpService) { }
 
@@ -30,7 +31,20 @@ export class AnimalRepository {
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
 
-   
+    async getAnimaisInstituicao(): Promise<AnimalModel[]> {
+        const x = await this.http
+            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/instituicao`)
+            .toPromise();
+        return x.data.map(this.mapper.mapFrom);
+    }
+
+    getAnimalByFiltro(busca: String): Observable<AnimalModel> {
+        return this.http
+            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/filtrado?${busca}`)
+            .pipe(mergeMap((x) => x.data))
+            .pipe(map((x) => this.mapper.mapFrom(x)));
+    }
+
     postAnimal(param: AnimalModel) {
         return this.http
             .post<AnimalEntity>(`${environment.URLSERVIDOR}animal`, this.mapper.mapTo(param))
@@ -39,7 +53,6 @@ export class AnimalRepository {
 
     postImagem(param: any) {
         return this.http.post(`${environment.URLSERVIDOR}imagem`, param);
-            
     }
 
     putAnimal(param: AnimalModel) {
@@ -56,4 +69,5 @@ export class AnimalRepository {
             .delete<void>(`${environment.URLSERVIDOR}animal/${id}`, id)
             .pipe(map((x) => x.data));
     }
+
 }

@@ -37,7 +37,7 @@ export class InstituicaoRepository {
 
   async getInstituicoesEstado(id: number): Promise<InstituicaoModel[]> {
     const x = await this.http
-      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/${id}/estado`)
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/estado/${id}`)
       .toPromise();
     return x.data.map(this.mapper.mapFrom);
   }

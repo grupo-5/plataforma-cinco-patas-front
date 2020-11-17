@@ -1,3 +1,4 @@
+import { AuthService } from './../../_modules/home/pages/seguranca/auth.service';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,41 +6,33 @@ import { Observable } from 'rxjs';
 import { shareReplay, retry, delay, map } from 'rxjs/operators';
 import { DefaultResponse } from './default-response';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  constructor(private http: HttpClient) {}
-
-  headers = new HttpHeaders();
+  constructor(private http: HttpClient,
+    private service: AuthService) { }
 
   post<T>(
     url,
-    body,
-    useDefaultHeader: boolean = true,
-    useFormData: boolean = false
+    body
   ): Observable<DefaultResponse<T>> {
     return this.request<T>(
       'POST',
       `${url}`,
-      body,
-      useDefaultHeader,
-      useFormData
+      body
     );
   }
 
   put<T>(
     url,
-    body,
-    useDefaultHeader: boolean = true,
-    useFormData: boolean = false
+    body
   ): Observable<DefaultResponse<T>> {
     return this.request<T>(
       'PUT',
       `${url}`,
-      body,
-      useDefaultHeader,
-      useFormData
+      body
     );
   }
 
@@ -58,27 +51,27 @@ export class HttpService {
   private request<T>(
     type: string,
     url: string,
-    body: any = null,
-    useDefaultHeader: boolean = true,
-    useFormData: boolean = false
+    body: any = null
   ): Observable<DefaultResponse<T>> {
-    let headers: HttpHeaders;
-    headers = this.getDefaultHeader(useFormData);
+
+    this.service.isAccessTokenInvalido();
+
+    let headers: HttpHeaders = this.getDefaultHeader();
 
     if (environment.logRequest) {
-      console.dir({ type, url, headers, body });
+      //  console.dir({ type, url, headers, body });
     }
 
     if (environment.traceRequest) {
-      // tslint:disable-next-line: no-console
-      console.trace('trace');
+      // console.trace('trace');
     }
 
     return this.http
-      .request<T>(type, url, {
-        body,
-        headers,
-      })
+      .request<T>(
+        type,
+        url,
+        { body, headers }
+      )
       .pipe(
         shareReplay(),
         retry(0),
@@ -87,10 +80,13 @@ export class HttpService {
       );
   }
 
-  private getDefaultHeader(useFormData: boolean = false) {
-    const headers = new HttpHeaders({});
-
-    return headers;
+  private getDefaultHeader() {
+    const token: string = localStorage.getItem('token');
+    console.log("token -- "+ token)
+    if (token) {
+      const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      return headers;
+    }
   }
 
   private oncatch<T>(e) {
