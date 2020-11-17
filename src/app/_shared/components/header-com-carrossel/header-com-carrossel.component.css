@@ -6,7 +6,6 @@ h4 {
 p {
     color: white;
     font-weight: bold;
-    position: absolute;
 }
 
 img {
@@ -14,3 +13,9 @@ img {
     object-fit: cover;
 }
 
+.carousel-caption .caption-text {
+    position: absolute;
+    top: -255px;
+    background-color: rgba(0, 0, 0, 0.533);
+    padding: 20px;
+}

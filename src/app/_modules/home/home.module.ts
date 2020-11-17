@@ -1,3 +1,4 @@
+import { ModalService } from './../../_services/modal.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -47,5 +48,6 @@ import { OngCreateSegurancaComponent } from './pages/ong-create-seguranca/ong-cr
     AdminModule,
     SegurancaModule
   ],
+  providers:[ModalService]
 })
 export class HomeModule {}

@@ -3,37 +3,62 @@
     <app-header-com-carrossel></app-header-com-carrossel>
   </div>
 </div>
+<app-modal-info #md></app-modal-info>
 
-<div class="row search d-flex justify-content-center">
-  <div class="col-12"><div class="row">
+<div class="row search">
+  <div class="col-12">
+    <div class="row mt-5 d-flex justify-content-center">
+      <div class="col-lg-2">
+        <app-input-combobox
+          titulo="Especie"
+          [lista]="listaEspecie"
+          controlName="especie"
+          [formGroup]="formBuscaHome"
+          idSelected=""
+        ></app-input-combobox>
+      </div>
+      <div class="col-lg-2">
+        <app-input-combobox
+          titulo="Porte"
+          [lista]="listaPorte"
+          controlName="porte"
+          [formGroup]="formBuscaHome"
+          idSelected=""
+        ></app-input-combobox>
+      </div>
+      <div class="col-lg-2">
+        <app-input-combobox
+          titulo="Estado"
+          [lista]="listaEstado"
+          controlName="estado"
+          [formGroup]="formBuscaHome"
+          idSelected=""
+        ></app-input-combobox>
+      </div>
+      <div class="col-lg-2">
+        <app-input-combobox
+          titulo="Cidade"
+          [lista]="listaCidade"
+          controlName="cidade"
+          [formGroup]="formBuscaHome"
+          idSelected=""
+        ></app-input-combobox>
+      </div>
+    </div>
+    
+    <div class="row  mb-3  d-flex justify-content-center">
 
-    <!-- <div class="col-lg-2">
-      <app-input-combobox titulo="Especie"  [lista]="listaEspecie" controlName="especie" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
+        <app-button-g nomeBotao="Buscar"></app-button-g>
+    
     </div>
-    <div class="col-lg-2">
-      <app-input-combobox titulo="Porte"  [lista]="listaPorte" controlName="porte" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
-    </div>
-    <div class="col-lg-2">
-      <app-input-combobox titulo="Estado"  [lista]="listaEstado" controlName="Estado" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
-    </div>
-    <div class="col-lg-2">
-      <app-input-combobox titulo="Cidade"  [lista]="listaCidade" controlName="cidade" [formGroup]="formBuscaHome" idSelected=""></app-input-combobox>
-    </div>
-     -->
-
   </div>
-  <div class="row">
-    <app-button-g nomeBotao="Buscar"></app-button-g>
-
-
-  </div></div>
 </div>
 
 <div class="row">
   <div class="col-lg-12 p-0 m-0">
     <div class="results">
       <h2 class="text-center pt-4">Nossas patinhas disponiveis</h2>
-      <app-imagem-paginacao [list]="searchResult"></app-imagem-paginacao>
+      <app-imagem-paginacao *ngIf="listAnimais" [list]="listAnimais" (animalAdocaoData)="open($event)"></app-imagem-paginacao>
     </div>
   </div>
 </div>
@@ -44,3 +69,4 @@
     </div>
   </div>
 </div>
+
