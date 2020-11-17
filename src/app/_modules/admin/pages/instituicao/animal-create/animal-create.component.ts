@@ -3,14 +3,7 @@ import { AnimalModel } from './../../../../../_core/model/animal-model';
 import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-  FormControl,
-  AbstractControl,
-} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormArray, FormControl} from '@angular/forms';
 import { ValidarInputsService } from './../../../../../_services/validar-inputs.service';
 
 @Component({
@@ -140,14 +133,14 @@ export class AnimalCreateComponent implements OnInit {
       personalidades:
         formAnimal.personalidades
           .filter(v => v != null)
-          .map((v, i) =>  { return {descricao: v } })
+          .map((v, i) => { return { descricao: v } })
     });
 
     formAnimal = Object.assign(formAnimal, {
       cuidadosVet:
         formAnimal.cuidadosVet
           .filter(v => v != null)
-          .map((v, i) =>  { return {descricao: v } })
+          .map((v, i) => { return { descricao: v } })
     });
 
     console.log(formAnimal);
@@ -175,7 +168,7 @@ export class AnimalCreateComponent implements OnInit {
   trocaRota = (evento?, id?) => {
     if (evento) {
       evento.target.innerText == 'Voltar'
-        ? this.router.navigate(['cadastro-animal-2'])
+        ? this.router.navigate(['animais'])
         : this.router.navigate(['cadastro-animal-1']);
     } else {
 

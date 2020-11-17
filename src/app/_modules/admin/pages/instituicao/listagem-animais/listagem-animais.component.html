@@ -1,14 +1,18 @@
 <div class="container-fluid">
     <div class="row">
-    
-        <div class="col-md-12 pt-5 pr-5 mb-5">
-            <h1 class="text-center pt-5">Listagem de Animais</h1>
+        <div class="col-md-12 pr-5">
+            <h1 class="text-center">Listagem de Animais</h1>
             <br>
-            <app-listagem *ngIf="animaisListados.length > 0"
-                rLink="../cadastro-animal-1"
-                [selectItems] = "statusLabels"
-                [objetosListados]= "animaisListados">
+            <app-listagem 
+                *ngIf="animaisListados.length > 0" 
+                [selectItems]="statusLabels"
+                [objetosListados]="animaisListados">
             </app-listagem>
         </div>
     </div>
-</div> 
+    <div class="text-right row  mb-5 pr-5">
+        <div class="col-md-12">
+            <app-button-g nomeBotao="Adicionar" routerLink="../cadastro-animal-1"></app-button-g>
+        </div>
+    </div>
+</div>

@@ -2,16 +2,15 @@ import { EnderecoModel } from './endereco-model';
 
 export interface PessoaModel {
   id?: number;
-  nome: string;
+  nome?: string;
   dataNasc?: string;
-  tipo:string;
-  sexo:string;  
-  cpf: string;
-  rg: string;
-  email: string;
-  senha: string;
-  contato: string;
-  endereco: EnderecoModel;
-  
+  tipo?:string;
+  sexo?:string;  
+  cpf?: string;
+  rg?: string;
+  email?: string;
+  contato?: string;
+  senha?: any;
+  endereco?: EnderecoModel;
 }
  

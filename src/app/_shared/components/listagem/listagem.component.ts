@@ -8,18 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ListagemComponent implements OnInit {
 
   // Rota do botao adicionar
-  @Input() public rLink: string;
+  // @Input() public rLink: string;
 
   // Categorias que ficarao no select e suas cores
   @Input() public selectItems: any;
 
   // Array de objetos que serao mostrados na listagem (qualquer objeto de qualquer tamanho)
   @Input() public objetosListados: any[] = [{}];
+  @Input() public situacaoBotao: string;
 
   // variaveis para o filtro funcionar
   public page = 1;
-  public pageSize = 4;
-  public collectionSize = this.objetosListados.length;
+  public pageSize = 5;
+  public collectionSize: number;// = this.objetosListados.length;
   public _filterBy: string;
   public objetosFiltrados: any[] = [];
   public selectFilteredObj: any[] = [];
@@ -33,6 +34,7 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.objetosFiltrados = this.objetosListados;
     this.selectFilteredObj = this.objetosListados;
+    this.collectionSize = this.objetosFiltrados.length;
   }
   
   public valueSelected(): void {
@@ -43,6 +45,7 @@ export class ListagemComponent implements OnInit {
       this.objetosFiltrados = this.objetosListados;
     }
     this.selectFilteredObj = this.objetosFiltrados;
+    this.collectionSize = this.selectFilteredObj.length;
   }
 
   public selectHeaders(): any {
@@ -60,6 +63,7 @@ export class ListagemComponent implements OnInit {
   set filter(value: string) {
     this._filterBy = value;
     this.objetosFiltrados = this.selectFilteredObj.filter((filtro: any) => filtro.Nome.toLocaleLowerCase().indexOf(this._filterBy.toLocaleLowerCase()) == 0);
+    this.collectionSize = this.objetosFiltrados.length;
   }
 
   get filter() {

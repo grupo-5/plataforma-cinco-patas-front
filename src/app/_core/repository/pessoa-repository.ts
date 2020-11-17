@@ -1,8 +1,8 @@
 import { BaseHttpService } from './../../_services/http/base-http.service';
 import { environment } from '../../../environments/environment';
 import { PessoaMapper } from './../mapper/pessoa-mapper';
-import { PessoaEntity} from './../entity/pessoa-entity';
-import { PessoaModel} from './../model/pessoa-model';
+import { PessoaEntity } from './../entity/pessoa-entity';
+import { PessoaModel } from './../model/pessoa-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
@@ -30,6 +30,12 @@ export class PessoaRepository {
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
 
+    async getPessoasInstituicao(): Promise<PessoaModel[]> {
+        const x = await this.http
+            .getAll<PessoaEntity[]>(`${environment.URLSERVIDOR}pessoa/instituicao`)
+            .toPromise();
+        return x.data.map(this.mapper.mapFrom);
+    }
 
     postPessoa(param: PessoaModel) {
         return this.http
@@ -39,7 +45,6 @@ export class PessoaRepository {
 
     postImagem(param: any) {
         return this.http.post(`${environment.URLSERVIDOR}imagem`, param);
-            
     }
 
     putPessoa(param: PessoaModel) {

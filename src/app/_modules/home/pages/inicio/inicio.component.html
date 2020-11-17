@@ -5,52 +5,61 @@
 </div>
 <app-modal-info #md></app-modal-info>
 
-<div class="row search">
-  <div class="col-12">
-    <div class="row mt-5 d-flex justify-content-center">
-      <div class="col-lg-2">
-        <app-input-combobox
-          titulo="Especie"
-          [lista]="listaEspecie"
-          controlName="especie"
-          [formGroup]="formBuscaHome"
-          idSelected=""
-        ></app-input-combobox>
-      </div>
-      <div class="col-lg-2">
-        <app-input-combobox
-          titulo="Porte"
-          [lista]="listaPorte"
-          controlName="porte"
-          [formGroup]="formBuscaHome"
-          idSelected=""
-        ></app-input-combobox>
-      </div>
-      <div class="col-lg-2">
-        <app-input-combobox
-          titulo="Estado"
-          [lista]="listaEstado"
-          controlName="estado"
-          [formGroup]="formBuscaHome"
-          idSelected=""
-        ></app-input-combobox>
-      </div>
-      <div class="col-lg-2">
-        <app-input-combobox
-          titulo="Cidade"
-          [lista]="listaCidade"
-          controlName="cidade"
-          [formGroup]="formBuscaHome"
-          idSelected=""
-        ></app-input-combobox>
-      </div>
-    </div>
-    
-    <div class="row  mb-3  d-flex justify-content-center">
-
-        <app-button-g nomeBotao="Buscar"></app-button-g>
-    
-    </div>
+<div class="row search ">
+  <div class="col-md-12 justify-content-center">
+      <form [formGroup]="formBuscaHome" class="p-5">
+        <div class="row justify-content-center p-2">
+          <div class="col-md-2 col-sm-3 text-center">
+            <app-input-combobox 
+              titulo="Especie" 
+              [lista]="listaEspecie" 
+              controlName="especie"
+              [formGroup]="formBuscaHome" 
+              idSelected="">
+            </app-input-combobox>
+          </div>
+          <div class="col-md-2 col-sm-3 text-center">
+            <app-input-combobox 
+              titulo="Porte" 
+              [lista]="listaPorte" 
+              controlName="porte" 
+              [formGroup]="formBuscaHome"
+              idSelected="">
+            </app-input-combobox>
+          </div>
+          <div class="col-md-2 col-sm-3 text-center">
+            <app-input-combobox 
+              titulo="Sexo" 
+              [lista]="listaSexo" 
+              controlName="sexo" 
+              [formGroup]="formBuscaHome"
+              idSelected="">
+            </app-input-combobox>
+          </div>
+          <div class="col-md-2 col-sm-3 text-center">
+            <app-input-combobox 
+              idSelect="idEstado" 
+              titulo="Estado" 
+              [formGroup]="formBuscaHome" 
+              controlName="estado"
+              (change)="listarCidades()" 
+              [lista]="estados">
+            </app-input-combobox>
+          </div>
+          <div class="col-md-2 col-sm-3 text-center">
+            <app-input-combobox 
+              idSelect="idCidade" 
+              titulo="Cidade" 
+              [formGroup]="formBuscaHome" 
+              controlName="cidade"
+              [lista]="cidades">
+            </app-input-combobox>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <app-button-g nomeBotao="Pesquisar" (click)="carregaAnimais()"></app-button-g>
+        </div>
+      </form>
   </div>
 </div>
 
@@ -69,4 +78,3 @@
     </div>
   </div>
 </div>
-

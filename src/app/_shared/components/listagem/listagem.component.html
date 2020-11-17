@@ -1,7 +1,7 @@
 <div class="container" *ngIf="objetosListados.length > 0">
-  <div class="text-right">
-    <app-button-g nomeBotao="Adicionar" routerLink="{{rLink}}"></app-button-g>
-  </div>
+  <!-- <div class="text-right">
+    <app-button-g nomeBotao="Adicionar" routerLink="{{rLink}}" display="none"></app-button-g>
+  </div> -->
   <form>
     <div class="form-group form-inline float-left">
       <img id="lupa" class="ml-2" src="assets/icons/search.svg" alt=""><input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search"/>
@@ -31,18 +31,20 @@
             [ngClass]="{
             'badge badge-pill badge-primary': selectHeaders().includes(elemento)
             }"
-            [style.background]="selectItems[elemento]">{{elemento}}
-          </span>
+            [style.background]="selectItems[elemento]" class="comprimento">{{elemento}}
+            </span>
         </td>
       </tr>
     </tbody>
   </table>
 
   <div class="d-flex justify-content-center">
-    <ngb-pagination
-      [(page)]="page"
+    <!-- <ngb-pagination
+      [page]="page"
       [pageSize]="pageSize"
       [collectionSize]="collectionSize">
-    </ngb-pagination>
+    </ngb-pagination> -->
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="5"
+      [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
   </div>
 </div>

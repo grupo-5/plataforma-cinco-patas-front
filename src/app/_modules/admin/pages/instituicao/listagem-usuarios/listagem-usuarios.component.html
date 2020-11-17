@@ -1,11 +1,10 @@
 <div class="container-fluid">
     <div class="row">
- 
-        <div class="col-md-9 pt-5 pr-5 mb-5">
-            <h1 class="text-center pt-5">Listagem de Usuários</h1>
+        <div class="col-md-12 pr-5 mb-5">
+            <h1 class="text-center">Listagem de Usuários</h1>
             <br>
             <app-listagem
-                [rLink]=""
+                *ngIf="usuariosListados.length > 0" 
                 [selectItems]="personLabel"
                 [objetosListados]="usuariosListados">
             </app-listagem>

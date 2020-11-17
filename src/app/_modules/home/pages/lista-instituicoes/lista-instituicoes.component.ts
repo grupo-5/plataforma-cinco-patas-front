@@ -15,44 +15,10 @@ export class ListaInstituicoesComponent implements OnInit {
   estados: any[] = [];
   cidades: any[] = [];
   listaInstituicoes: any[] = [];
-  // lista: any[] = [
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   },
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   },
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   },
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   },
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   },
-  //   {
-  //     "nome": "Instituição Apoiadora de animais",
-  //     "nomeCidade": "Sao carlos - sp",
-  //     "caminho": "./../../../../../assets/images/dog-2.jpg",
-  //   }
-  // ];
-
+  
   constructor(private fb: FormBuilder,
               public instituicaoReposiyory: InstituicaoRepository,
-              public enderecoReposiyory: EnderecoRepository,
-              
-              ) { }
+              public enderecoReposiyory: EnderecoRepository) { }
 
   ngOnInit(): void {
    
@@ -64,14 +30,6 @@ export class ListaInstituicoesComponent implements OnInit {
     this.listarEstados();
     this.carregaInstituicoes();
   }
-
-  // valida(): void {
-  //   this.formPesquisa.markAllAsTouched(); // Faz parecer que todos os campos foram clicados
-  //   if (this.formPesquisa.invalid) {
-  //     console.log('\n inválido form  ');
-  //     return;
-  //   }
-  // }
 
   listarEstados() {
     this.estados = [];
@@ -97,17 +55,22 @@ export class ListaInstituicoesComponent implements OnInit {
     this.listaInstituicoes = [];
     
     let id: number = this.formPesquisa.value.cidade;
+    let idEstado: number = this.formPesquisa.value.estado;
     console.log(id);
-    if(id <= 0){
+    if(idEstado <= 0){
       this.instituicaoReposiyory.getAllInstituicoes().then((resposta) => {
         this.listaInstituicoes = resposta;
         console.log(this.listaInstituicoes);
       });
-    }else{
-      this.instituicaoReposiyory.getInstituicoesCidade(id).then((resposta) => {
-        // this.listaInstituicoes.push();
+    } else if (id <= 0) {
+      this.instituicaoReposiyory.getInstituicoesEstado(idEstado).then((resposta) => {
         this.listaInstituicoes = resposta;
-        console.log(this.listaInstituicoes);
+        console.log("entrei aqui  -- "+this.listaInstituicoes);
+      });
+    } else{
+      this.instituicaoReposiyory.getInstituicoesCidade(id).then((resposta) => {
+        this.listaInstituicoes = resposta;
+        // console.log(this.listaInstituicoes);
       });
     }
   }

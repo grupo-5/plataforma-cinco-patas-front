@@ -1,12 +1,7 @@
 import { AuthService } from './../../../../home/pages/seguranca/auth.service';
-import { AuthRepository } from './../../../../home/pages/seguranca/auth-repository';
 import { PessoaRepository } from './../../../../../_core/repository/pessoa-repository';
 import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
-import { Observable } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, resolveForwardRef } from '@angular/core';
-import { createSkipSelf } from '@angular/compiler/src/core';
-import { AnimalModel } from 'src/app/_core/model/animal-model';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,8 +9,6 @@ import { AnimalModel } from 'src/app/_core/model/animal-model';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  //Card totalizador
-
 
   //Card grafico
   labels: Array<any>;
@@ -28,9 +21,11 @@ export class DashboardComponent implements OnInit {
   elements2: Array<any>;
   novo: Array<any>;
   totalAnimais: number;
-  capacidadeAnimais = 170; // Esse valor será preenchidos com os dados vindo do back
-  animaisTamanho: AnimalModel[] = [];
-  pessoasTamanho : any=[];
+  capacidadeAnimais = 170; 
+  animaisTamanho: any = [];
+  pessoasTamanho: any = [];
+  
+  //Card totalizador
   myTotalizadorAnimais = {
     name: 'Animais',
     value: 0,
@@ -38,7 +33,7 @@ export class DashboardComponent implements OnInit {
     color: 'green',
     icon: 'fa fa-paw mr-2',
   };
-  myTotalizadorCapacidade = {
+  myTotalizadorPessoas = {
     name: 'Pessoas',
     value: 0,
     route: '/link',
@@ -49,58 +44,39 @@ export class DashboardComponent implements OnInit {
   // Gráfico barras
   resgatados: Array<number>;
   adotados: Array<number>;
-  myBarChartData: Array<any>;
+  myBarChartData: Array<any> = [];
   myBarChartLabels: Array<any>;
 
   constructor(
     public animalRepository: AnimalRepository,
     public pessoaRepository: PessoaRepository,
     public logoutRepository: AuthService
-  ) {}
+  ) { }
 
 
   ngOnInit(): void {
     this.loadAnimal();
     this.loadPessoas();
-    // this.myOptions =
-    //   { name: 'Animais', value: 13, route: '/link', imageUrl: '../../../../assets/images/logo.png', color: 'red' };
-
-    this.labels = ['Adotados', 'Tutelados', 'Disponíveis', 'Aguardando Adoção'];
+  
+    this.labels = ['Adotados', 'Tutelados', 'Disponíveis', 'Adoção em Andamento'];
     this.data = [20, 25, 30, 35];
-    this.labels2 = ['Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
+    this.labels2 = ['Livre', 'Gatos', 'Cachorros', 'Lar Temporário'];
     this.data2 = [30, 55, 35, 50];
-    this.elements = [
-      'Adotados',
-      'Tutelados',
-      'Disponíveis',
-      'Aguardando Adoção',
-    ];
-    this.elements2 = ['Lar Temporário', 'Cachorros', 'Gatos', 'Livre'];
+    this.elements = ['Adotados', 'Tutelados', 'Disponíveis', 'Adoção em Andamento'];
+    this.elements2 = ['Livre', 'Gatos', 'Cachorros', 'Lar Temporário'];
     this.calcPercentageAnimais(this.data);
     this.calcPercentageCapacity(this.data2);
 
     this.resgatados = [65, 59, 80, 81, 56, 65, 59, 80, 81, 56, 33, 24];
     this.adotados = [28, 48, 40, 19, 86, 65, 59, 80, 81, 56, 65, 59];
     this.myBarChartLabels = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Abr',
-      'Mai',
-      'Jun',
-      'Jul',
-      'Ago',
-      'Set',
-      'Out',
-      'Nov',
-      'Dez',
-    ];
+      'Jan', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez',];
     this.myBarChartData = [
       { data: this.resgatados, label: 'Resgatados' },
       { data: this.adotados, label: 'Adotados' },
     ];
 
-    
+    this.carregaDadosGráficoRosquinhaAnimal();
   }
 
   private calcPercentageAnimais(arr: Array<any>): Array<any> {
@@ -110,43 +86,65 @@ export class DashboardComponent implements OnInit {
       (number * 100).toFixed(2)
     ));
   }
+
   private calcPercentageCapacity(arr: Array<any>): Array<any> {
     this.novo = arr.map((number) => number / this.capacidadeAnimais);
     return (this.percentage2 = this.novo.map((number) =>
       (number * 100).toFixed(2)
     ));
   }
-   loadAnimal() {
-    this.animalRepository.getAllAnimais().subscribe((resposta: any) => {
-      this.addArray(resposta,'animal');
+
+  loadAnimal() {
+    this.animalRepository.getAnimaisInstituicao().then((resposta) => {
+      this.animaisTamanho = resposta;
+      this.myTotalizadorAnimais.value = this.animaisTamanho.length;
     });
- 
   }
 
   loadPessoas() {
-    this.pessoaRepository.getAllPessoas().subscribe((resposta) => {
-       this.addArray(resposta,'pessoa');
+    this.pessoaRepository.getPessoasInstituicao().then((resposta) => {
+      this.pessoasTamanho = resposta;
+      this.myTotalizadorPessoas.value = this.pessoasTamanho.length;
     });
-
   }
-  addArray(object, type) {
 
-    if(type=='animal'){
-      this.animaisTamanho.push(object);
-      this.myTotalizadorAnimais.value=this.animaisTamanho.length
+  carregaDadosGráficoRosquinhaAnimal(): Array<number> {
+    let adotado = 0;
+    let tutelado = 0;
+    let larTempo = 0;
+    let emAdocao = 0;
+    let arr: Array<number> = [];
 
-    }else{
-      this.pessoasTamanho.push(object);
-      this.myTotalizadorCapacidade.value=this.pessoasTamanho.length
+    // console.log(this.animaisTamanho)
+    // this.animaisTamanho.forEach(element => {
+    //   console.log(element.status)
+    //   if (element.status == "Adotado") {
+    //     adotado+=1;
+    //   } else if (element.status == "Tutelado") {
+    //     tutelado += 1;
+    //   }
+    // });
+
+    console.log("tamanho " + this.animaisTamanho)
+    // console.log("tamanho " + this.myBarChartData.length)
+
+    for (let i = 0; i < this.animaisTamanho.length; i++) {
+      console.log("entrei aqui")
+      if (this.animaisTamanho[i].status == "Adotado") {
+        adotado += 1;
+      } else if (this.animaisTamanho[i].status == "Tutelado") {
+        tutelado += 1;
+      }
     }
 
+    arr.push(adotado);
+    arr.push(tutelado);
+    console.log(adotado + " -- " + tutelado)
 
-
+    return arr
   }
 
-  deslogar(){
- this.logoutRepository.logout()
+  deslogar() {
+    this.logoutRepository.logout()
   }
-
-
 }
