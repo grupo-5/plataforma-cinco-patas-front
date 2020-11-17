@@ -82,7 +82,6 @@ export class HttpService {
 
   private getDefaultHeader() {
     const token: string = localStorage.getItem('token');
-    console.log("token -- "+ token)
     if (token) {
       const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
       return headers;

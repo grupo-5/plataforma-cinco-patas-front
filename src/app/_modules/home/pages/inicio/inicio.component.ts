@@ -12,7 +12,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
-  
+
   formBuscaHome: FormGroup;
   listAnimais = [];
   animais = [];
@@ -35,7 +35,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.criaFormulario();
     this.listarEstados();
-    this.carregaAnimais();
+    this.listarAnimais();
   }
 
   criaFormulario = () => {
@@ -52,7 +52,7 @@ export class InicioComponent implements OnInit {
   open(item) {
     this.md.open(item);
   }
-  
+
   listarEstados() {
     this.estados = [];
     this.estados[0] = '';
@@ -68,12 +68,11 @@ export class InicioComponent implements OnInit {
     if (id > 0) {
       this.enderecoReposiyory.getAllCidadesByEstado(id).subscribe((resposta) => {
         this.cidades.push({ label: resposta.nome, value: resposta.id });
-        console.log(this.cidades);
       });
     }
   }
 
-  carregaAnimais() {
+  listarAnimais() {
     this.listAnimais = [];
     var busca = new String("")
 
@@ -98,9 +97,7 @@ export class InicioComponent implements OnInit {
     }
 
     this.animalRepository.getAnimalByFiltro(busca).subscribe(resposta => {
-      this.listAnimais.push({ imgUrl: resposta.imagem.url });
-      console.log(resposta);
+      this.listAnimais.push(resposta);
     });
   }
- 
 }
