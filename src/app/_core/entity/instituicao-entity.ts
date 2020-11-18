@@ -7,6 +7,7 @@ export interface InstituicaoEntity {
   tipoDocumento?: string;
   numeroDocumento?: string;
   email?: string;
+  senha?: string;
   banco?: string;
   agencia?: string;
   conta?: string;
