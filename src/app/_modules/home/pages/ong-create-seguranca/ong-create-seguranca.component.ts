@@ -27,7 +27,7 @@ export class OngCreateSegurancaComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarForm();
-
+    this.id = this.activatedRoute.snapshot.params['id'];
     this.instituicaoDataService.currentMessageInstituicao.subscribe(
       (message) => {
         if (message != '') {

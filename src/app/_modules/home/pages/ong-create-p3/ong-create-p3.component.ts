@@ -92,6 +92,7 @@ export class OngCreateP3Component implements OnInit {
         tipoDocumento: ong.tipoDocumento,
         numeroDocumento: ong.numeroDocumento,
         email: ong.email,
+        senha: ong.senha,
         banco: ong.banco,
         agencia: ong.agencia,
         conta: ong.conta,
