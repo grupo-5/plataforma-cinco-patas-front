@@ -12,7 +12,11 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   disabled=false;
 
-  constructor(private route: Router, private fb: FormBuilder, private service: AuthService) {}
+  constructor(
+    private route: Router,
+    private fb: FormBuilder, 
+    private service: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.criaFormulario();

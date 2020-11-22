@@ -1,4 +1,3 @@
-import { UsuarioModel } from './../../../../_core/model/usuario-model';
 import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
 import { PessoaModel } from './../../../../_core/model/pessoa-model';
 import { PessoaDataService } from './../../../../_services/pessoa-data.service';

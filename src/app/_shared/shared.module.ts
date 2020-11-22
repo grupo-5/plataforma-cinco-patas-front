@@ -1,3 +1,4 @@
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -37,6 +38,8 @@ import { ListagemComponent } from './components/listagem/listagem.component';
 import { CardInstituicaoComponent } from './components/card-instituicao/card-instituicao.component';
 import { CardAdotanteComponent } from './components/card-adotante/card-adotante.component';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -75,7 +78,9 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     MatListModule,
     MatToolbarModule, 
     NgbModule,
-    RouterModule
+    RouterModule,
+    NgxMaskModule.forRoot()
+
 
   ], exports:[
     NavbarComponent,

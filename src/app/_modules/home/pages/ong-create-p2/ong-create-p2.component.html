@@ -15,7 +15,7 @@
             <form [formGroup]="formCadastro" (ngSubmit)="submit()">
                 <div class="row">
                     <div class="col-md-4">
-                        <app-input-text idInput="idCep" titulo="Cep" placeholderInput="" [formGroup]="formCadastro"
+                        <app-input-text inputMask="00000-000" idInput="idCep" titulo="Cep" placeholderInput="" [formGroup]="formCadastro"
                             controlName="enderecoCep">
                         </app-input-text>
                     </div>

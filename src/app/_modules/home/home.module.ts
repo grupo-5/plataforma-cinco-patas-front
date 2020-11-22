@@ -46,7 +46,7 @@ import { OngCreateSegurancaComponent } from './pages/ong-create-seguranca/ong-cr
     FormsModule,
     ReactiveFormsModule,
     AdminModule,
-    SegurancaModule
+    SegurancaModule,
   ],
   providers:[ModalService]
 })

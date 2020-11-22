@@ -15,6 +15,7 @@ export class InputTextComponent {
   @Input() idInput: string;
   @Input() formGroup: FormGroup; 
   @Input() controlName: string;
+  @Input() inputMask: string;
 
   constructor(public validacaoInputsService: ValidarInputsService) { }
 

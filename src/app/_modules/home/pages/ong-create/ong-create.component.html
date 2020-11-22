@@ -30,7 +30,7 @@
                   </app-input-combobox>
                 </div>
                 <div class="col-md-6">
-                  <app-input-text idInput="idnumerodoDocumento" titulo="Numero do documento" placeholderInput=""
+                  <app-input-text inputMask="CPF_CNPJ" idInput="idnumerodoDocumento" titulo="Numero do documento" placeholderInput=""
                     [formGroup]="formCadastro" controlName="numeroDocumento"></app-input-text>
                 </div>
               </div>
@@ -47,19 +47,13 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12">
-                  <app-input-text tipo="text" idInput="imputEmail" placeholderInput="" titulo="Email"
-                    [formGroup]="formCadastro" controlName="email"></app-input-text>
-                </div>
-              </div>
-              <div class="row">
                 <div class="col-md-6">
                   <app-input-text idInput="idRazaoSocial" titulo="Razão Social" placeholderInput=""
                     [formGroup]="formCadastro" controlName="razaoSocial">
                   </app-input-text>
                 </div>
                 <div class="col-md-6">
-                  <app-input-text idInput="idNumero" titulo="Contato" placeholderInput="" [formGroup]="formCadastro"
+                  <app-input-text inputMask="(00) 0000-0000 || (00) 0 0000-0000" idInput="idNumero" titulo="Contato" placeholderInput="" [formGroup]="formCadastro"
                     controlName="contato">
                   </app-input-text>
                 </div>

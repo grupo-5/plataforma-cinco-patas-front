@@ -24,7 +24,6 @@ export class OngCreateComponent implements OnInit {
   tipodeDocumento: Array<String>;
   numerodoDocumento: Array<String>;
   inscricaoEstadual: Array<String>;
-  email: Array<String>;
   capacidade: Array<number>;
   cidades: Array<String>;
   banco: Array<String>;
@@ -62,7 +61,6 @@ export class OngCreateComponent implements OnInit {
       tipoDocumento: [ong.tipoDocumento, [Validators.required]],
       numeroDocumento: [ong.numeroDocumento, [Validators.required]],
       inscricaoEstadual: [ong.inscricaoEstadual, ],
-      email: [ong.email, [Validators.required, Validators.email]],
       capacidade: [ong.capacidade, [Validators.required]],
       banco: [ong.banco],
       agencia: [ong.agencia],
