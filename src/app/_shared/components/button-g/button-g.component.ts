@@ -9,6 +9,7 @@ export class ButtonGComponent implements OnInit {
   @Input() nomeBotao: string;
   @Input() disabled: boolean;
   @Input() type: string;
+  @Input() size: string;
   
   @Output() onClick = new EventEmitter();
 
