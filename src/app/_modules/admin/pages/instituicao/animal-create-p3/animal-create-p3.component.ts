@@ -1,7 +1,8 @@
-import { SharedDataService } from './../../../../../_services/shared-data.service';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { SharedDataService } from './../../../../../_services/shared-data.service';
 import { AnimalRepository } from './../../../../../_core/repository/animal-repository';
 import { AnimalModel } from './../../../../../_core/model/animal-model';
 
@@ -24,7 +25,8 @@ export class AnimalCreateP3Component implements OnInit {
     private activatedRoute: ActivatedRoute,
     public sharedDataService: SharedDataService,
     public repository: AnimalRepository,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -66,10 +68,11 @@ export class AnimalCreateP3Component implements OnInit {
   }
 
   editar(animal: AnimalModel) { }
-
+  
   receiveImage(image) {
     this.image = image;
   }
+
   salvar(animal) {
 
     this.repository.postImagem(this.image).subscribe((resposta) => {
@@ -83,7 +86,7 @@ export class AnimalCreateP3Component implements OnInit {
       // animal.cuidadosVet = [{ descricao: 'um' }, { descricao: 'dois' }];
       // animal.personalidades = [{ descricao: 'oia' }, { descricao: 'eii' }];
       // animal.cuidadosVet = [{ descricao: 'um' }, { descricao: 'dois' }];
-      animal.status = 'disponivel';
+      animal.status = 'Disponível';
 
       const dados = {
         nome: animal.nome,
@@ -132,7 +135,8 @@ export class AnimalCreateP3Component implements OnInit {
               summary: 'CLIENTE',
               detail: 'cadastrado com sucesso!'
             }];
-          this.router.navigate(['/animais']);            
+          this.successToastr()
+          this.router.navigate(['/animais']);
           this.reiniciarForm();
         },
           (e) => {
@@ -146,6 +150,7 @@ export class AnimalCreateP3Component implements OnInit {
             //Erro de cada atributo
             var erros = e.error.objects;
             erros.forEach(function (elemento) {
+              this.toastr.error = elemento.userMessage;
               msg.push(
                 {
                   severity: 'error',
@@ -162,7 +167,11 @@ export class AnimalCreateP3Component implements OnInit {
       //   .postAnimal(dados)
       //   .subscribe((resposta) => console.log(resposta));
     });
-
   }
+
+  public successToastr() {
+    this.toastr.success("Animal cadastrado com sucesso!");
+  }
+
   reiniciarForm() { }
 }
