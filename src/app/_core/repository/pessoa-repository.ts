@@ -25,7 +25,7 @@ export class PessoaRepository {
 
     getAllPessoas(): Observable<PessoaModel> {
         return this.http
-            .getAll<PessoaEntity[]>(`${environment.URLSERVIDOR}pessoa`)
+            .getAll<PessoaEntity[]>(`${environment.URLSERVIDOR}pessoa/instituicao`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }

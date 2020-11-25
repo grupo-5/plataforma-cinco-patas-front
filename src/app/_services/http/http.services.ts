@@ -82,10 +82,20 @@ export class HttpService {
 
   private getDefaultHeader() {
     const token: string = localStorage.getItem('token');
-    if (token) {
+
+    // console.log("ttt- " + this.service.isAccessTokenInvalido())
+    // console.log("token- " + token)
+
+    if (token){
       const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+      console.log("entrei aqui 1")
       return headers;
-    }
+    } 
+    // else {
+    //   const headers2 = new HttpHeaders({});
+    //   console.log("entrei aqui 2")
+    //   return headers2;
+    // }
   }
 
   private oncatch<T>(e) {

@@ -1,3 +1,4 @@
+import { ConfimacaoSolicitacaoComponent } from './../admin/pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
 import { ModalService } from './../../_services/modal.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -48,6 +49,6 @@ import { OngCreateSegurancaComponent } from './pages/ong-create-seguranca/ong-cr
     AdminModule,
     SegurancaModule
   ],
-  providers:[ModalService]
+  providers: [ModalService, ConfimacaoSolicitacaoComponent]
 })
 export class HomeModule {}

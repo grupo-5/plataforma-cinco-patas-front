@@ -1,7 +1,7 @@
 <div [formGroup]="formGroup">
     <div class="form-group color-fonts-form ">
         <label for="inputName">{{titulo}}</label>
-        <input class="form-control color-fonts-form" [type]="tipo" [id]="idInput" [placeholder]="placeholderInput" [name]="controlName" [formControlName]="controlName">
+        <input class="form-control color-fonts-form" [type]="tipo" [id]="idInput" [placeholder]="placeholderInput" [name]="controlName" [formControlName]="controlName" [readonly]="readonly">
         <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.fieldHasError(formControl, 'required')">Campo obrigatório</label>
         <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.fieldHasError(formControl, 'email')">Email inválido</label>
         <label class="text-danger fonte-erros-inputs" *ngIf="validacaoInputsService.fieldHasError(formControl, 'minlength')">

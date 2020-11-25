@@ -12,19 +12,22 @@ export class DashboardComponent implements OnInit {
 
   //Card grafico
   labels: Array<any>;
-  data: Array<any>;
+  data: Array<any> = [];
   labels2: Array<any>;
-  data2: Array<any>;
+  data2: Array<any> = [];
   percentage: Array<any>;
   percentage2: Array<any>;
   elements: Array<any>;
   elements2: Array<any>;
-  novo: Array<any>;
+  novoAnimais: Array<any>;
+  novoCapacidade: Array<any>;
   totalAnimais: number;
-  capacidadeAnimais = 170; 
+  capacidadeAnimais = 170;
   animaisTamanho: any = [];
   pessoasTamanho: any = [];
-  
+  arrNumeroAnimais: Array<number> = [];
+  animais: any = [];
+
   //Card totalizador
   myTotalizadorAnimais = {
     name: 'Animais',
@@ -57,14 +60,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.loadAnimal();
     this.loadPessoas();
-  
+
     this.labels = ['Adotados', 'Tutelados', 'Disponíveis', 'Adoção em Andamento'];
-    this.data = [20, 25, 30, 35];
     this.labels2 = ['Livre', 'Gatos', 'Cachorros', 'Lar Temporário'];
     this.data2 = [30, 55, 35, 50];
     this.elements = ['Adotados', 'Tutelados', 'Disponíveis', 'Adoção em Andamento'];
     this.elements2 = ['Livre', 'Gatos', 'Cachorros', 'Lar Temporário'];
-    this.calcPercentageAnimais(this.data);
     this.calcPercentageCapacity(this.data2);
 
     this.resgatados = [65, 59, 80, 81, 56, 65, 59, 80, 81, 56, 33, 24];
@@ -75,21 +76,23 @@ export class DashboardComponent implements OnInit {
       { data: this.resgatados, label: 'Resgatados' },
       { data: this.adotados, label: 'Adotados' },
     ];
-
-    this.carregaDadosGráficoRosquinhaAnimal();
   }
 
   private calcPercentageAnimais(arr: Array<any>): Array<any> {
     this.totalAnimais = arr.reduce((total, numero) => total + numero, 0);
-    this.novo = arr.map((number) => number / this.totalAnimais);
-    return (this.percentage = this.novo.map((number) =>
+    if (this.totalAnimais == 0){
+      this.novoAnimais = arr.map((number) => number / 1);
+    }else{
+      this.novoAnimais = arr.map((number) => number / this.totalAnimais);
+    }
+    return (this.percentage = this.novoAnimais.map((number) =>
       (number * 100).toFixed(2)
     ));
   }
 
   private calcPercentageCapacity(arr: Array<any>): Array<any> {
-    this.novo = arr.map((number) => number / this.capacidadeAnimais);
-    return (this.percentage2 = this.novo.map((number) =>
+    this.novoCapacidade = arr.map((number) => number / this.capacidadeAnimais);
+    return (this.percentage2 = this.novoCapacidade.map((number) =>
       (number * 100).toFixed(2)
     ));
   }
@@ -98,6 +101,7 @@ export class DashboardComponent implements OnInit {
     this.animalRepository.getAnimaisInstituicao().then((resposta) => {
       this.animaisTamanho = resposta;
       this.myTotalizadorAnimais.value = this.animaisTamanho.length;
+      this.carregaDadosGráficoRosquinhaAnimal(resposta);
     });
   }
 
@@ -108,40 +112,30 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  carregaDadosGráficoRosquinhaAnimal(): Array<number> {
+  carregaDadosGráficoRosquinhaAnimal(res) {
+    this.animais = res;
     let adotado = 0;
+    let disponivel = 0;
     let tutelado = 0;
-    let larTempo = 0;
     let emAdocao = 0;
-    let arr: Array<number> = [];
 
-    // console.log(this.animaisTamanho)
-    // this.animaisTamanho.forEach(element => {
-    //   console.log(element.status)
-    //   if (element.status == "Adotado") {
-    //     adotado+=1;
-    //   } else if (element.status == "Tutelado") {
-    //     tutelado += 1;
-    //   }
-    // });
-
-    console.log("tamanho " + this.animaisTamanho)
-    // console.log("tamanho " + this.myBarChartData.length)
-
-    for (let i = 0; i < this.animaisTamanho.length; i++) {
-      console.log("entrei aqui")
-      if (this.animaisTamanho[i].status == "Adotado") {
+    this.animais.forEach(element => {
+      if (element.status == "Adotado") {
         adotado += 1;
-      } else if (this.animaisTamanho[i].status == "Tutelado") {
+      } else if (element.status == "Tutelado") {
         tutelado += 1;
-      }
-    }
+      } else if (element.status == "Disponível") {
+        disponivel += 1;
+      } else if (element.status == "EmAdocao") {
+        emAdocao += 1;
+      } 
+    });
 
-    arr.push(adotado);
-    arr.push(tutelado);
-    console.log(adotado + " -- " + tutelado)
-
-    return arr
+    this.data.push(adotado);
+    this.data.push(tutelado);
+    this.data.push(disponivel);
+    this.data.push(emAdocao);
+    this.calcPercentageAnimais([0,0,0,0]);
   }
 
   deslogar() {
