@@ -126,10 +126,11 @@ export class CadastroAdotanteMatchComponent implements OnInit {
               detail: 'cadastrado com sucesso!'
             }];
           // this.reiniciarForm();
-          this.router.navigate(["/login"])
           this.successToastr();
+          this.router.navigate(["/login"])
         },
           (e) => {
+            this.errorToastr();
             var msg: any[] = [];
             //Erro Principal
             msg.push({
@@ -155,7 +156,13 @@ export class CadastroAdotanteMatchComponent implements OnInit {
       // this.repository
       //   .postInstituicao(dados)
       //   .subscribe((resposta) => console.log(resposta));
-    });
+    },
+    (e) => {
+      console.log(e);
+      this.errorToastr();
+    }
+    
+    );
 
   }
 
@@ -163,6 +170,10 @@ export class CadastroAdotanteMatchComponent implements OnInit {
 
   public successToastr() {
     this.toastr.success("Foi enviado um e-mail para verificação", "Cadastro efetuado com sucesso!");
+  }
+
+  public errorToastr() {
+    this.toastr.error("Não foi possível completar o cadastro", "Verifique os campos e tente novamente");
   }
 }
 

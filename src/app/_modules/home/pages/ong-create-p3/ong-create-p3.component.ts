@@ -134,6 +134,7 @@ export class OngCreateP3Component implements OnInit {
           this.router.navigate(["/login"])
         },
           (e) => {
+            this.errorToastr();
             var msg: any[] = [];
             //Erro Principal
             msg.push({
@@ -159,12 +160,22 @@ export class OngCreateP3Component implements OnInit {
       // this.repository
       //   .postInstituicao(dados)
       //   .subscribe((resposta) => console.log(resposta));
-    });
+    },
+    (e) => {
+      console.log(e);
+      this.errorToastr();
+    }
+    
+    );
   }
   
   reiniciarForm() { }
 
   public successToastr() {
     this.toastr.success("Foi enviado um e-mail para verificação", "Cadastro efetuado com sucesso!");
+  }
+
+  public errorToastr() {
+    this.toastr.error("Não foi possível completar o cadastro", "Verifique os campos e tente novamente");
   }
 }
