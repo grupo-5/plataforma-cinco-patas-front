@@ -1,3 +1,4 @@
+import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
 import { AuthGuard } from './../home/pages/seguranca/auth.guard';
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
 import { CadastroDepoimentosComponent } from './pages/pessoa/cadastro-depoimentos/cadastro-depoimentos.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
             { path: 'solicitacoes/:id', component: ListagemSolicitacoesComponent,canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-depoimento', component: CadastroDepoimentosComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'cadastro-depoimento:id', component: CadastroDepoimentosComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
+            { path: 'confirmar-solicitacao', component: ConfimacaoSolicitacaoComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
                  ],
     },
 ];
