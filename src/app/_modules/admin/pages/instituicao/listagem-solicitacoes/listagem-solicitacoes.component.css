@@ -11,6 +11,10 @@
   color: var(--main-second-color);
 }
 
+.heightt{
+  margin-top: 100px;
+}
+
 ngb-pagination ::ng-deep ul>li:not(.active)>a {
   background-color: white !important;
   color: #000;

@@ -32,9 +32,8 @@ export class DashboardPessoaComponent implements OnInit {
   }
 
   carregaSolicitacoes() {
-    this.solicitacaoRepository.getAllSolicitacoes().subscribe((resposta) => {
+    this.solicitacaoRepository.getAllSolicitacoesPessoa().subscribe((resposta) => {
       this.addArray(resposta);
-      // this.verificarRecebimento(resposta.id);
     });
   }
 
@@ -53,11 +52,18 @@ export class DashboardPessoaComponent implements OnInit {
   
   nomeSituacao(idSolicitacao: number): string{
     let aux: string;
+    // console.log(this.situacaoSolicitacao)
     this.situacaoSolicitacao.forEach(element => {
       if (element.solicitacao.id == idSolicitacao){
         aux = element.situacao;
       }
     });
     return aux;
+  }
+
+  realizarSolicitacao(tipoSolicitacao) {
+    if(tipoSolicitacao == 1) {
+      
+    }
   }
 }

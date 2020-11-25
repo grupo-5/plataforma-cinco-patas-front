@@ -26,7 +26,7 @@ export class AnimalRepository {
 
     getAllAnimais(): Observable<AnimalModel> {
         return this.http
-            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal`)
+            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/instituicao`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
