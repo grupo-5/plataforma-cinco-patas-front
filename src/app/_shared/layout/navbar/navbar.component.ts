@@ -7,7 +7,7 @@ import { Component, Input, OnInit, NgModule } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  // @Input() options: any
+  // @Input() ambiente: any
 
   options = [
     { name: 'home', route: '', type: 'link' },
@@ -17,6 +17,15 @@ export class NavbarComponent implements OnInit {
     { name: 'Login', route: '/instituicao', type: 'button' },
 
   ];
+  
+  optionsLogadoOng = [
+    { name: 'Notificacoes', route: '/instituicoes-parceiras', type: 'link' },
+    { name: '', route: '/instituicoes-parceiras', type: 'dropdown' },
+
+    
+  ];
+
+
 
   constructor() {}
 

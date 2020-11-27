@@ -1,7 +1,16 @@
 button {
+
+    border-radius: 4px; 
     background-color: var(--main-color);
     border: none;
 }
 button:hover {
     background: #83DB12;
+}
+
+
+button .big{
+    height: 60px; 
+    width: 140px; 
+   
 }

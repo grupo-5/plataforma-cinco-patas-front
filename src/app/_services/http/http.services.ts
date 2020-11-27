@@ -54,7 +54,7 @@ export class HttpService {
     body: any = null
   ): Observable<DefaultResponse<T>> {
 
-    this.service.isAccessTokenInvalido();
+    // this.service.isAccessTokenInvalido();
 
     let headers: HttpHeaders = this.getDefaultHeader();
 
