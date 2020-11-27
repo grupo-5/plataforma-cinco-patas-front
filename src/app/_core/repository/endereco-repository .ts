@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { EstadoEntity } from './../entity/estado-entity';
 import { CidadeEntity } from './../entity/cidade-entity';
 import { EstadoModel } from './../model/estado-model';
@@ -22,7 +23,7 @@ export class EnderecoRepository {
     mapperEstado = new EstadoMapper();
     mapperCidade = new CidadeMapper();
 
-    constructor(public http: BaseHttpService) { }
+    constructor(public http: BaseHttpService, public httpCli: HttpClient) { }
 
     getEnderecoById(id: number): Observable<EnderecoModel> {
         return this.http
@@ -37,6 +38,13 @@ export class EnderecoRepository {
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
 
+    async getAllEstadosSemToken(): Promise<EstadoModel[]> {
+        const x = await this.httpCli
+            .get<EstadoEntity[]>(`${environment.URLSERVIDOR}estado`)
+            .toPromise();
+        return x.map(this.mapperEstado.mapFrom);
+    }
+
     getAllEstados(): Observable<EstadoModel> {
         return this.http
             .getAll<EstadoEntity[]>(`${environment.URLSERVIDOR}estado`)
@@ -44,6 +52,13 @@ export class EnderecoRepository {
             .pipe(map((x) => this.mapperEstado.mapFrom(x)));
     }
     
+    async getAllCidadesByEstadoSemToken(id: number): Promise<CidadeModel[]> {
+       const x = await this.httpCli
+            .get<CidadeEntity[]>(`${environment.URLSERVIDOR}estado/${id}/cidades`)
+            .toPromise();
+        return x.map(this.mapperCidade.mapFrom);
+    }
+
     getAllCidadesByEstado(id: number): Observable<CidadeModel> {
         return this.http
             .getAll<CidadeEntity[]>(`${environment.URLSERVIDOR}estado/${id}/cidades`)

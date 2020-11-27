@@ -17,7 +17,7 @@ export class AnimalCreateP2Component implements OnInit {
   id: number;
   formCadastro: FormGroup;
   disabled: boolean = false;
-  listaPassos = ['Dados Pessoais', 'Endereco', 'Upload Foto'];
+  listaPassos = ['Dados Pessoais', 'Endereço', 'Upload Foto'];
   selectedMessage: any;
   estados: any[] = [];
   cidades: any[] = [];

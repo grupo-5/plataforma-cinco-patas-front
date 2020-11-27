@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { InstituicaoModel } from './../model/instituicao-model';
 import { BaseHttpService } from './../../_services/http/base-http.service';
 import { environment } from './../../../environments/environment';
@@ -13,7 +14,7 @@ import { map, mergeMap } from 'rxjs/operators';
 export class InstituicaoRepository {
   mapper = new InstituicaoMapper();
 
-  constructor(public http: BaseHttpService) { }
+  constructor(public http: BaseHttpService, public httpCli: HttpClient) { }
 
   getInstituicaoById(id: number): Observable<InstituicaoModel> {
     return this.http
@@ -23,21 +24,42 @@ export class InstituicaoRepository {
 
   async getAllInstituicoes(): Promise<InstituicaoModel[]> {
     const x = await this.http
-      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao`)
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti`)
       .toPromise();
     return x.data.map(this.mapper.mapFrom);
   }
 
+  async getAllInstituicoesSemToken(): Promise<InstituicaoModel[]> {
+    const x = await this.httpCli
+      .get<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti`)
+      .toPromise();
+    return x.map(this.mapper.mapFrom);
+  }
+
+  async getInstituicoesCidadeSemToken(id: number): Promise<InstituicaoModel[]> {
+    const x = await this.httpCli
+      .get<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti/${id}/cidade`)
+      .toPromise();
+    return x.map(this.mapper.mapFrom);
+  }
+
+  async getInstituicoesEstadoSemToken(id: number): Promise<InstituicaoModel[]> {
+    const x = await this.httpCli
+      .get<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti/estado/${id}`)
+      .toPromise();
+    return x.map(this.mapper.mapFrom);
+  }
+
   async getInstituicoesCidade(id: number): Promise<InstituicaoModel[]> {
     const x = await this.http
-      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/${id}/cidade`)
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti/${id}/cidade`)
       .toPromise();
     return x.data.map(this.mapper.mapFrom);
   }
 
   async getInstituicoesEstado(id: number): Promise<InstituicaoModel[]> {
     const x = await this.http
-      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}instituicao/estado/${id}`)
+      .getAll<InstituicaoEntity[]>(`${environment.URLSERVIDOR}insti/estado/${id}`)
       .toPromise();
     return x.data.map(this.mapper.mapFrom);
   }

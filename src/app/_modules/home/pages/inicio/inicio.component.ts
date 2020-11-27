@@ -56,8 +56,10 @@ export class InicioComponent implements OnInit {
   listarEstados() {
     this.estados = [];
     this.estados[0] = '';
-    this.enderecoReposiyory.getAllEstados().subscribe((resposta) => {
-      this.estados.push({ label: resposta.nome, value: resposta.id });
+    this.enderecoReposiyory.getAllEstadosSemToken().then(resposta => {
+      resposta.forEach(element => {
+        this.estados.push({label: element.nome, value: element.id});
+      })
     });
   }
 
@@ -66,8 +68,10 @@ export class InicioComponent implements OnInit {
     this.cidades[0] = '';
     let id: number = this.formBuscaHome.value.estado;
     if (id > 0) {
-      this.enderecoReposiyory.getAllCidadesByEstado(id).subscribe((resposta) => {
-        this.cidades.push({ label: resposta.nome, value: resposta.id });
+      this.enderecoReposiyory.getAllCidadesByEstadoSemToken(id).then(resposta=> {
+        resposta.forEach(element => {
+          this.cidades.push({ label: element.nome, value: element.id });
+        })
       });
     }
   }
@@ -96,8 +100,8 @@ export class InicioComponent implements OnInit {
       busca = busca.concat("cidade=" + this.formBuscaHome.value.cidade);
     }
 
-    this.animalRepository.getAnimalByFiltro(busca).subscribe(resposta => {
-      this.listAnimais.push(resposta);
+    this.animalRepository.getAnimalByFiltro(busca).then(resposta => {
+      this.listAnimais = resposta;
     });
   }
 }

@@ -135,7 +135,7 @@ export class DashboardComponent implements OnInit {
     this.data.push(tutelado);
     this.data.push(disponivel);
     this.data.push(emAdocao);
-    this.calcPercentageAnimais([0,0,0,0]);
+    this.calcPercentageAnimais(this.data);
   }
 
   deslogar() {

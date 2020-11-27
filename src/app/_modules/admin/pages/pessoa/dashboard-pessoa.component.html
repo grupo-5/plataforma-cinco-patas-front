@@ -1,4 +1,4 @@
-<div class="container-fluid background pl-0">
+<!-- <div class="container-fluid background pl-0">
     <div class="row">
         <div class="col-md-11 dash mx-auto">
             <div class="m-2 ">
@@ -44,4 +44,28 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+<div *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+    <div class="marg-l">
+        <div class="col-md-11 box">
+            <h1 class="text-center mb-5">Acompanhamento de Solicitações</h1>
+            <app-card-adotante 
+            [caminhoImg]="solicitacao.animal.imagem.url" 
+            [active]="nomeSituacao(solicitacao.id)"
+            [tipoSolicitacao]="solicitacao.tipoSolicitacao"
+            [nome]="solicitacao.animal.nome"
+            [contato]="solicitacao.animal.contato"
+            [endereco]="solicitacao.animal.endereco.logradouro"
+            [nomeCidade]="solicitacao.pessoa.endereco.cidade.nome"
+            [nomeEstado]="solicitacao.pessoa.endereco.cidade.estado.nome"
+            [justificativa]="solicitacao.justificativa"
+            ></app-card-adotante>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-4">
+    <ngb-pagination [collectionSize]="solicitacoes.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
+        [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 </div>
