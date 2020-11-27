@@ -3,13 +3,19 @@
         <div class="row">
             <div class="col-6">
                 <div class="row">
-                    <div class="col-10 mx-auto mb-4">
-                        <app-card-timeline [listaPassos]="listaPassos" [active]="'Pedido'"></app-card-timeline>
+                    <div class="col-10 mx-auto">
+                        <app-card-timeline [listaPassos]="listaPassos" [active]="active"></app-card-timeline>
                     </div>
                 </div>
-                <div class="row justify-content-center ">
-                    <app-button-b [nomeBotao]="nomeBotao" class="mt-5"></app-button-b>
-                </div>
+                <div class="ml-3 ">
+                    <p class="text-center cor ">{{tipoSolicitacao}} - {{ nome}} </p>
+                    <p class="mb-1">Contato: {{ contato }}</p>
+                    <p class="mb-1">Endereço: {{ endereco}},
+                        {{ nomeCidade}} -
+                        {{ nomeEstado}}</p>
+                    <p class="mb-1">Justificativa: {{ justificativa }}</p>
+                    <!-- <app-button-b [nomeBotao]="nomeBotao" class="mt-5"></app-button-b> -->
+                </div> 
             </div>
             <div class="col-6">
                 <img [src]="caminhoImg" class="card-img-top p-4" alt="Imagem de animal">
