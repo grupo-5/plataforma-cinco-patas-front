@@ -4,13 +4,13 @@
   </div> -->
   <form>
     <div class="form-group form-inline float-left">
-      <img id="lupa" class="ml-2" src="assets/icons/search.svg" alt=""><input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search"/>
+      <i id="lupa" class="ml-2 fa fa-search"> <input [(ngModel)]="filter" class="form-control ml-2" type="text" placeholder="Procurar" name="search" /></i>
     </div>
     
   </form>
 
   <div class="float-right">
-    <label for="filtrar"><img src="assets/icons/filter.svg"></label>
+    <label for="filtrar"><i class="fa fa-filter mr-2"></i></label>
 
     <select id="filtrar" class="custom-select" [(ngModel)]="selectedBrand" (change)="valueSelected()">
       <option>Todos</option>
