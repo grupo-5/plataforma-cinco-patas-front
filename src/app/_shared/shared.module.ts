@@ -36,6 +36,7 @@ import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-
 import { ListagemComponent } from './components/listagem/listagem.component';
 import { CardInstituicaoComponent } from './components/card-instituicao/card-instituicao.component';
 import { CardAdotanteComponent } from './components/card-adotante/card-adotante.component';
+import { PhonePipe } from './phone-pipe/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     UploadDeImagensComponent,
     ListagemComponent,
     CardInstituicaoComponent,
-    CardAdotanteComponent
+    CardAdotanteComponent,
+    PhonePipe
   ],
   imports: [
     CommonModule,
@@ -103,7 +105,8 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     ListagemComponent,
     CardInstituicaoComponent,
     CardAdotanteComponent,
-    UploadDeImagensComponent
+    UploadDeImagensComponent,
+    PhonePipe
   ]
 })
 export class SharedModule { }
