@@ -91,7 +91,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
       if (solicitacao.id) {
         this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
           this.successToastr(2);
-          console.log("AtualizadaAceita " + dados.solicitacao.id + dados.situacao)
+          console.log("Aceita " + dados.solicitacao.id + dados.situacao)
         })
       }
     }

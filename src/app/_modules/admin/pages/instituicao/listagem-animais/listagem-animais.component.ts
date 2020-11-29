@@ -35,7 +35,7 @@ export class ListagemAnimaisComponent implements OnInit {
       'Nome': object.nome,
       'Situação': object.status.charAt(0).toUpperCase() + object.status.slice(1),
       'Local': object.localizacao,
-      'Contato Responsável': object.contato
+      'Contato Responsável': "(" + object.contato.slice(0, 2) + ") " + object.contato.slice(2)
     }
     this.animaisListados.push(newObject);
   }

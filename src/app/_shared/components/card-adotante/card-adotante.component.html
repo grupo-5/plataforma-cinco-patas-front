@@ -9,7 +9,8 @@
                 </div>
                 <div class="ml-3 ">
                     <p class="text-center cor ">{{tipoSolicitacao}} - {{ nome}} </p>
-                    <p class="mb-1">Contato: {{ contato }}</p>
+                    <p class="mb-1">Contato: {{ contato | phone}}</p>
+                    <!-- {{solicitacao.data| date: 'dd/MM/yyyy'}} -->
                     <p class="mb-1">Endereço: {{ endereco}},
                         {{ nomeCidade}} -
                         {{ nomeEstado}}</p>

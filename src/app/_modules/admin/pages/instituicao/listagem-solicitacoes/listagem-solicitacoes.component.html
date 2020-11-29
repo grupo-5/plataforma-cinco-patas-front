@@ -16,14 +16,16 @@
                         <tr
                             *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                             <td type="button" (click)="solicitacao.clicado = !solicitacao.clicado">
-                                <label for="" class="myColor">Solicitação {{ solicitacao.id }}</label>
+                                <i *ngIf="!solicitacao.clicado" class="fa fa-sort-desc btn colorIcons pt-0"></i>
+                                <i *ngIf="solicitacao.clicado" class="fa fa-sort-up btn colorIcons "></i>
+                                <label for="" class="myColor"> Solicitação {{ solicitacao.id }}</label>
 
                                 <div id="collapseExample" [ngbCollapse]="!solicitacao.clicado">
                                     <!-- <div class="card">
                                     <div class="card-body"> -->
                                     <label class="mt-1"><strong>Dados do Solicitante</strong></label>
                                     <p for="">Nome: {{ solicitacao.pessoa.nome }}</p>
-                                    <p for="">Contato: {{ solicitacao.pessoa.telefone }}</p>
+                                    <p for="">Contato: {{ solicitacao.pessoa.contato }}</p>
                                     <p for="">Email: {{ solicitacao.pessoa.email }}</p>
                                     <p for="">Endereço: {{ solicitacao.pessoa.endereco.logradouro}},
                                         {{ solicitacao.pessoa.endereco.cidade.nome}} -
@@ -49,7 +51,7 @@
                             </td>
 
                             <td>
-                                <label for="" class="myColor">{{solicitacao.data| date: 'dd/MM/yyyy'}}</label>
+                                <label for="" class="myColor ">{{solicitacao.data| date: 'dd/MM/yyyy'}}</label>
                             <td>
                                 <a class="mb-1 btn ">
                                     <i class="fa fa-download colorIcons"></i>
