@@ -1,3 +1,7 @@
+import { ConfimacaoSolicitacaoComponent } from './../../../_modules/admin/pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
+import { DashboardPessoaComponent } from './../../../_modules/admin/pages/pessoa/dashboard-pessoa.component';
+import { Router } from '@angular/router';
+import { AuthService } from './../../../_modules/home/pages/seguranca/auth.service';
 import { AnimalModel } from './../../../_core/model/animal-model';
 import { ModalService } from './../../../_services/modal.service';
 import { Observable } from 'rxjs';
@@ -14,7 +18,7 @@ export class ModalInfoComponent implements OnInit {
 
   @ViewChild('openModal') openModal: ElementRef;
 
-  constructor(private modalService: ModalService) {}
+  constructor(private modalService: ModalService, public auth: AuthService, public router: Router, public confirmarSolicitacao: ConfimacaoSolicitacaoComponent ) {}
 
   ngOnInit() {}
 
@@ -22,7 +26,7 @@ export class ModalInfoComponent implements OnInit {
 
   open(item) {
     this.item = item;
-
+    localStorage.setItem('idAnimal', this.item.id);
     this.openModal.nativeElement.click();
   }
 
@@ -33,4 +37,17 @@ export class ModalInfoComponent implements OnInit {
       ) / 365.25
     );
   }
+
+  verificaLogin(tipoSolicitacao){
+    let res = this.auth.isAccessTokenInvalido();
+    localStorage.setItem('tipoSolicitacao', tipoSolicitacao);
+    if (res){
+      console.log("deslogado")
+      this.router.navigate(['login']);
+    }else{
+      console.log("logado")
+      this.router.navigate(['confirmar-solicitacao']);
+    }
+  }
+
 }

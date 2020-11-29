@@ -1,10 +1,12 @@
-import { SituacaoSolicitacaoModel } from './../../../../../_core/model/situacao-solicitacao-model';
-import { SituacaoSolicitacaoRepository } from './../../../../../_core/repository/situacao-solicitacao-repository';
+import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { SolicitacaoModel } from './../../../../../_core/model/solicitacao-model';
 import { SolicitacaoRepository } from './../../../../../_core/repository/solicitacao-repository';
-import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import { SituacaoSolicitacaoModel } from './../../../../../_core/model/situacao-solicitacao-model';
+import { SituacaoSolicitacaoRepository } from './../../../../../_core/repository/situacao-solicitacao-repository';
 
 @Component({
   selector: 'app-listagem-solicitacoes',
@@ -14,54 +16,55 @@ import * as $ from 'jquery';
 export class ListagemSolicitacoesComponent implements OnInit {
 
   isCollapsed = true;
-
   solicitacoes: any = [];
   solicitacao: SolicitacaoModel;
   page = 1;
   pageSize = 5;
   aux: number;
-  disabled : boolean;
+  disabled: boolean;
+  situacaoSolicitacao: any = [];
+  justificativa: string;
+  soli: any; //Objeto solicitação
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
     public router: Router,
-    public route: ActivatedRoute,) { }
+    public route: ActivatedRoute,
+    private toastr: ToastrService,
+    public config: NgbModalConfig,
+    private modalService: NgbModal
+  ) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.carregaSolicitacoes();
-
-    var codigoSolicitacao = this.route.snapshot.params['id'];
-
-    // if (codigoSolicitacao) {
-    //   this.carregarSolicitacao(codigoSolicitacao);
-    // }
-  }
-
-
-  // carregaSolicitacoes() {
-  //   this.solicitacaoRepository.getAllSolicitacoes().subscribe({
-  //     next: solicitacoes => {
-  //       this.solicitacoes = solicitacoes,
-  //       console.log(solicitacoes)
-  //     }
-  //   });
-  // }
-
-  carregaSolicitacoes() {
-    this.solicitacaoRepository.getAllSolicitacoes().subscribe((resposta) => {
-      this.addArray(resposta);
-      // this.verificarRecebimento(resposta.id);
-    });
+    this.buscarSituacoesSolicitacoes();
   }
 
   addArray(object) {
     this.solicitacoes.push(object);
   }
 
+  addArrayS(object) {
+    this.situacaoSolicitacao.push(object);
+  }
+
+  carregaSolicitacoes() {
+    this.solicitacaoRepository.getAllSolicitacoes().subscribe((resposta) => {
+      this.addArray(resposta);
+    });
+  }
+
+  buscarSituacoesSolicitacoes() {
+    this.situacaoSolicitacaoRepository.getAllSituacaoSolicitacoes().subscribe((resposta) => {
+      this.addArrayS(resposta);
+    });
+  }
+
   adicionaSituacao(solicitacao, tipo) {
-    
-    console.log("aux"+this.aux)
-    let dados: any ;
+    let dados: any;
 
     if (tipo == 1) {
       dados = {
@@ -73,7 +76,8 @@ export class ListagemSolicitacoesComponent implements OnInit {
 
       if (solicitacao.id) {
         this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
-          console.log("AtualizadaRecebida " + dados.solicitacao.id + dados.situacao)
+          this.successToastr(1);
+          console.log("Recebida " + dados.solicitacao.id + dados.situacao)
         })
       }
     } else if (tipo == 2) {
@@ -86,118 +90,78 @@ export class ListagemSolicitacoesComponent implements OnInit {
 
       if (solicitacao.id) {
         this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
+          this.successToastr(2);
           console.log("AtualizadaAceita " + dados.solicitacao.id + dados.situacao)
         })
       }
-    } else {
-      dados = {
-        situacao: "Recusada",
-        solicitacao: {
-          id: solicitacao.id,
-        },
-      } as SituacaoSolicitacaoModel;
+    }
+  }
 
-      const dadosS = {
-      id: solicitacao.id,//5,//this.formulario.value.id,
+  solicitacaoNegada() {
+    console.log(this.soli)
+    let dados: any;
+    dados = {
+      situacao: "Recusada",
+      solicitacao: {
+        id: this.soli.id,
+      },
+    } as SituacaoSolicitacaoModel;
+
+    const dadosS = {
+      id: this.soli.id,
       situacao: "Finalizada",
-      tipoSolicitacao: "Adoção",
-      justificativa: "não cumpriu ",
-      data: solicitacao.data,
+      tipoSolicitacao: this.soli.tipoSolicitacao,
+      justificativa: this.justificativa,
+      data: this.soli.data,
       animal: {
-        id: 1
+        id: this.soli.animal.id
       },
       pessoa: {
-        id: 1
+        id: this.soli.pessoa.id
       }
     } as SolicitacaoModel;
 
-      if (solicitacao.id) {
-        this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
-          console.log("AtualizadaRecusada " + dados.solicitacao.id + dados.situacao)
-
-          this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dadosS).subscribe(() => {
-            console.log("Solicitação atualizada com sucesso" + dadosS.id)
-          })
-        })
-      }
-    }
-
-    this.router.navigate(["/solicitacoes"])
-  }
-
-  abrirModal(){
-    // $("#abrirModal").modal('show');
-    ($('#abrirModal') as any).modal('show');
-  }
-
-  // aceitarSolicitacao(solicitacao) {
-  //   const dados = {
-  //     id: solicitacao.id,//5,//this.formulario.value.id,
-  //     situacao: "Finalizada com Sucesso",
-  //     tipoSolicitacao: "Adoção",
-  //     justificativa: "Aprovada com sucesso",
-  //     data: solicitacao.data,
-  //     animal: {
-  //       id: 1
-  //     },
-  //     pessoa: {
-  //       id: 1
-  //     }
-  //   } as SolicitacaoModel;
-
-  //   if (dados.id) {
-  //     this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
-  //       console.log("Solicitação atualizada com sucesso" + dados.id)
-  //     })
-  //     // this.solicitacaoRepository.putSolicitacao(dados).subscribe(() => {
-  //     //   console.log("Solicitação atualizada com sucesso" + dados.id)
-  //     // })
-
-  //   }
-  //   this.router.navigate(["/solicitacoes"])
-  // }
-
-  confirmarRecebimento(solicitacao) {
-
-    const dados = {
-      situacao: "Recebida",
-      solicitacao: {
-        id: solicitacao.id,
-      },
-    } as SituacaoSolicitacaoModel;
-
-    if (dados.solicitacao.id) {
+    if (this.soli.id) {
       this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
-        console.log("Atualizada " + dados.solicitacao.id)
+        console.log("Solicitacao recusada " + dados.solicitacao.id)
+
+        this.solicitacaoRepository.putSolicitacao(dadosS).subscribe(() => {
+          this.successToastr(3);
+          console.log("Solicitação atualizada com sucesso" + dadosS.id)
+        })
       })
     }
   }
 
-  verificarRecebimento(solicitacao): boolean {
-
-    const dados = {
-      solicitacao: {
-        id: solicitacao.id,
-      },
-    } as SituacaoSolicitacaoModel;
-
-    // if (dados.solicitacao.id) {
-    //   this.situacaoSolicitacaoRepository.getAllSolicitacoes(dados).subscribe((res) => {
-    //     console.log("Atualizada " + dados.solicitacao.id)
-    //     console.log("Resposta " + res)
-    //   })
-    // }
-    if (dados.solicitacao.id) {
-      let resultado = this.situacaoSolicitacaoRepository.contSolicitacoesRecebidas(dados.solicitacao.id).subscribe((res) => {
-        // console.log("Atualizada " + dados.solicitacao.id)
-        // console.log("Resposta " + res) 
-      })
-      if (resultado) {
-        console.log("resultado---------------")
-        return true;
+  nomeSituacao(idSolicitacao: number): string {
+    let aux: string;
+    this.situacaoSolicitacao.forEach(element => {
+      if (element.solicitacao.id == idSolicitacao) {
+        aux = element.situacao;
       }
+    });
+    return aux;
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  public successToastr(parametro) {
+    if (parametro == 1) {
+      this.toastr.success("Confirmado o recebimento da solicitação");
+    } else if (parametro == 2) {
+      this.toastr.success("Confirmado a aprovação da solicitação");
+    } else if (parametro == 3) {
+      this.toastr.success("Confirmado a negação da solicitação");
     }
-    return false;
+    this.refresh();
+  }
+
+  openModal(solicitacao, content) {
+    this.modalService.open(content, { centered: true });
+    this.soli = solicitacao;
+    console.log(this.soli)
   }
 
 }

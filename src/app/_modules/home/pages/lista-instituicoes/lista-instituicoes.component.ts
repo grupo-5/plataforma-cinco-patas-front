@@ -1,4 +1,3 @@
-import { InstituicaoModel } from './../../../../_core/model/instituicao-model';
 import { EnderecoRepository } from './../../../../_core/repository/endereco-repository ';
 import { InstituicaoRepository } from './../../../../_core/repository/instituicao-repository';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -31,22 +30,46 @@ export class ListaInstituicoesComponent implements OnInit {
     this.carregaInstituicoes();
   }
 
+  // listarEstados() {
+  //   this.estados = [];
+  //   this.estados[0] = '';
+  //   this.enderecoReposiyory.getAllEstados().subscribe((resposta) => {
+  //     this.estados.push({ label: resposta.nome, value: resposta.id });
+  //   });
+  // }
+
+  // listarCidades() {
+  //   this.cidades = [];
+  //   this.cidades[0] =  '';
+  //   let id: number = this.formPesquisa.value.estado;
+  //   if(id > 0 ){
+  //     this.enderecoReposiyory.getAllCidadesByEstado(id).subscribe((resposta) => {
+  //       this.cidades.push({ label: resposta.nome, value: resposta.id });
+  //       console.log(this.cidades);
+  //     });
+  //   }
+  // }
+
   listarEstados() {
     this.estados = [];
     this.estados[0] = '';
-    this.enderecoReposiyory.getAllEstados().subscribe((resposta) => {
-      this.estados.push({ label: resposta.nome, value: resposta.id });
+    this.enderecoReposiyory.getAllEstadosSemToken().then(resposta => {
+
+      resposta.forEach(element => {
+        this.estados.push({ label: element.nome, value: element.id })
+      })
     });
   }
 
   listarCidades() {
     this.cidades = [];
-    this.cidades[0] =  '';
+    this.cidades[0] = '';
     let id: number = this.formPesquisa.value.estado;
-    if(id > 0 ){
-      this.enderecoReposiyory.getAllCidadesByEstado(id).subscribe((resposta) => {
-        this.cidades.push({ label: resposta.nome, value: resposta.id });
-        console.log(this.cidades);
+    if (id > 0) {
+      this.enderecoReposiyory.getAllCidadesByEstadoSemToken(id).then(resposta => {
+        resposta.forEach(element => {
+          this.cidades.push({ label: element.nome, value: element.id })
+        })
       });
     }
   }
@@ -58,19 +81,17 @@ export class ListaInstituicoesComponent implements OnInit {
     let idEstado: number = this.formPesquisa.value.estado;
     console.log(id);
     if(idEstado <= 0){
-      this.instituicaoReposiyory.getAllInstituicoes().then((resposta) => {
+      this.instituicaoReposiyory.getAllInstituicoesSemToken().then((resposta) => {
         this.listaInstituicoes = resposta;
         console.log(this.listaInstituicoes);
       });
     } else if (id <= 0) {
-      this.instituicaoReposiyory.getInstituicoesEstado(idEstado).then((resposta) => {
+      this.instituicaoReposiyory.getInstituicoesEstadoSemToken(idEstado).then((resposta) => {
         this.listaInstituicoes = resposta;
-        console.log("entrei aqui  -- "+this.listaInstituicoes);
       });
     } else{
-      this.instituicaoReposiyory.getInstituicoesCidade(id).then((resposta) => {
+      this.instituicaoReposiyory.getInstituicoesCidadeSemToken(id).then((resposta) => {
         this.listaInstituicoes = resposta;
-        // console.log(this.listaInstituicoes);
       });
     }
   }

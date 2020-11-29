@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem-animais.component.css']
 })
 export class ListagemAnimaisComponent implements OnInit {
+  
+  animaisListados: any[] = [];
 
   constructor(public animalRepository: AnimalRepository) { }
 
@@ -20,8 +22,6 @@ export class ListagemAnimaisComponent implements OnInit {
   ngOnInit(): void {
     this.carregaAnimais();
   }
-
-  animaisListados: any[] = [];
 
   carregaAnimais() {
     this.animalRepository.getAllAnimais().subscribe((resposta) => {
@@ -39,6 +39,4 @@ export class ListagemAnimaisComponent implements OnInit {
     }
     this.animaisListados.push(newObject);
   }
-
-
 }

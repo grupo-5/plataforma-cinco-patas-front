@@ -82,10 +82,10 @@ export class HttpService {
 
   private getDefaultHeader() {
     const token: string = localStorage.getItem('token');
-    if (token) {
+    if (token){
       const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
       return headers;
-    }
+    } 
   }
 
   private oncatch<T>(e) {

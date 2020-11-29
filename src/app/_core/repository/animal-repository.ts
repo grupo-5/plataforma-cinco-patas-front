@@ -16,7 +16,7 @@ export class AnimalRepository {
     mapper = new AnimalMapper();
 
 
-    constructor(public http: BaseHttpService) { }
+    constructor(public http: BaseHttpService, private httpCli: HttpClient) { }
 
     getAnimalById(id: number): Observable<AnimalModel> {
         return this.http
@@ -26,7 +26,7 @@ export class AnimalRepository {
 
     getAllAnimais(): Observable<AnimalModel> {
         return this.http
-            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal`)
+            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/instituicao`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
@@ -38,13 +38,21 @@ export class AnimalRepository {
         return x.data.map(this.mapper.mapFrom);
     }
 
-    getAnimalByFiltro(busca: String): Observable<AnimalModel> {
-        return this.http
-            .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/filtrado?${busca}`)
-            .pipe(mergeMap((x) => x.data))
-            .pipe(map((x) => this.mapper.mapFrom(x)));
+    // getAnimalByFiltro(busca: String): Observable<AnimalModel> {
+    //     return this.http
+    //         .getAll<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/filtrado?${busca}`)
+    //         .pipe(mergeMap((x) => x.data))
+    //         .pipe(map((x) => this.mapper.mapFrom(x)));
+    // }
+
+    async getAnimalByFiltro(busca: String): Promise<AnimalModel[]> {
+        const x = await this.httpCli
+            .get<AnimalEntity[]>(`${environment.URLSERVIDOR}animal/filtrado?${busca}`)
+            .toPromise();
+        return x.map(this.mapper.mapFrom);
     }
 
+    
     postAnimal(param: AnimalModel) {
         return this.http
             .post<AnimalEntity>(`${environment.URLSERVIDOR}animal`, this.mapper.mapTo(param))

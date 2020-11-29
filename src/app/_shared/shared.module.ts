@@ -37,6 +37,7 @@ import { UploadDeImagensComponent } from './components/upload-de-imagens/upload-
 import { ListagemComponent } from './components/listagem/listagem.component';
 import { CardInstituicaoComponent } from './components/card-instituicao/card-instituicao.component';
 import { CardAdotanteComponent } from './components/card-adotante/card-adotante.component';
+import { PhonePipe } from './phone-pipe/phone.pipe';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -67,7 +68,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     UploadDeImagensComponent,
     ListagemComponent,
     CardInstituicaoComponent,
-    CardAdotanteComponent
+    CardAdotanteComponent,
+    PhonePipe
   ],
   imports: [
     CommonModule,
@@ -108,7 +110,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     ListagemComponent,
     CardInstituicaoComponent,
     CardAdotanteComponent,
-    UploadDeImagensComponent
+    UploadDeImagensComponent,
+    PhonePipe
   ]
 })
 export class SharedModule { }

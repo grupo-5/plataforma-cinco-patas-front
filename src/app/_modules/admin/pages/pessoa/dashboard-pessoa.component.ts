@@ -18,8 +18,10 @@ export class DashboardPessoaComponent implements OnInit {
   solicitacoes: any = [];
   solicitacao: SolicitacaoModel;
   page = 1;
-  pageSize = 5;
-  situacaoSolicitacao: any =[];
+  pageSize = 1;
+  situacaoSolicitacao: any = [];
+  caminhoImg: string;
+  status: string;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
@@ -32,9 +34,8 @@ export class DashboardPessoaComponent implements OnInit {
   }
 
   carregaSolicitacoes() {
-    this.solicitacaoRepository.getAllSolicitacoes().subscribe((resposta) => {
+    this.solicitacaoRepository.getAllSolicitacoesPessoa().subscribe((resposta) => {
       this.addArray(resposta);
-      // this.verificarRecebimento(resposta.id);
     });
   }
 
@@ -45,19 +46,31 @@ export class DashboardPessoaComponent implements OnInit {
     this.situacaoSolicitacao.push(object);
   }
 
-  buscarSituacoesSolicitacoes( ){
+  buscarSituacoesSolicitacoes() {
     this.situacaoSolicitacaoRepository.getAllSituacaoSolicitacoes().subscribe((resposta) => {
-        this.addArrayS(resposta);
+      this.addArrayS(resposta);
     });
   }
-  
-  nomeSituacao(idSolicitacao: number): string{
+
+  nomeSituacao(idSolicitacao: number): string {
     let aux: string;
     this.situacaoSolicitacao.forEach(element => {
-      if (element.solicitacao.id == idSolicitacao){
-        aux = element.situacao;
+      if (element.solicitacao.id == idSolicitacao) {
+        if(element.situacao == "Enviada"){
+          aux = "Pedido";
+        } else if (element.situacao == "Recebida") {
+          aux = "Análise";
+        } else if (element.situacao == "Aceita" || element.situacao == "Recusada") {
+          aux = "Decisão";
+        }
       }
     });
     return aux;
+  }
+
+  realizarSolicitacao(tipoSolicitacao) {
+    if (tipoSolicitacao == 1) {
+
+    }
   }
 }

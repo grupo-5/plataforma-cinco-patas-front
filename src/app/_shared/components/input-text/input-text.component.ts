@@ -15,7 +15,11 @@ export class InputTextComponent {
   @Input() idInput: string;
   @Input() formGroup: FormGroup; 
   @Input() controlName: string;
+<<<<<<< HEAD
   @Input() inputMask: string;
+=======
+  @Input() readonly: boolean;
+>>>>>>> origin/tathine-sp8
 
   constructor(public validacaoInputsService: ValidarInputsService) { }
 

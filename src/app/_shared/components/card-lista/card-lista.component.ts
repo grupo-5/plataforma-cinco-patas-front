@@ -10,7 +10,11 @@ export class CardListaComponent implements OnInit {
   @Input() listElement: string[]; 
   @Input() numberAnimals: Array<any>;
   @Input() percentage: Array<any>;
-  bulletColor: string[] = ["#189CA1", "#FFB800", "#FF4C61", "#77CE32"];
+  bulletColor: string[] = 
+    ['rgba(255, 76, 97, 1)',
+    'rgba(255, 184, 0, 1)',
+    'rgba(119, 206, 50, 1)',
+    'rgba(24, 156, 161, 1)'];
 
   constructor() { }
 

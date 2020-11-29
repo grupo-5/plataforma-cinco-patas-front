@@ -25,7 +25,14 @@ export class SolicitacaoRepository {
 
     getAllSolicitacoes(): Observable<SolicitacaoModel> {
         return this.http
-            .getAll<SolicitacaoEntity[]>(`${environment.URLSERVIDOR}solicitacao`)
+            .getAll<SolicitacaoEntity[]>(`${environment.URLSERVIDOR}solicitacao/instituicao`)
+            .pipe(mergeMap((x) => x.data))
+            .pipe(map((x) => this.mapper.mapFrom(x)));
+    }
+
+    getAllSolicitacoesPessoa(): Observable<SolicitacaoModel> {
+        return this.http
+            .getAll<SolicitacaoEntity[]>(`${environment.URLSERVIDOR}solicitacao/pessoa`)
             .pipe(mergeMap((x) => x.data))
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }

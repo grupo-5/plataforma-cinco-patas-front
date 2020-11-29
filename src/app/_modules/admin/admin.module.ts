@@ -18,6 +18,7 @@ import { ListagemUsuariosComponent } from './pages/instituicao/listagem-usuarios
 import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/animal-create-p3.component';
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
+import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-soli
     ListagemUsuariosComponent,
     DashboardPessoaComponent,
     ListagemSolicitacoesComponent,
+    ConfimacaoSolicitacaoComponent,
 
   ],
 
@@ -52,7 +54,8 @@ import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-soli
     ListagemUsuariosComponent,
     AnimalCreateP3Component,
     DashboardPessoaComponent,
-    ListagemSolicitacoesComponent
+    ListagemSolicitacoesComponent,
+    ConfimacaoSolicitacaoComponent
   ],
 })
 export class AdminModule {}
