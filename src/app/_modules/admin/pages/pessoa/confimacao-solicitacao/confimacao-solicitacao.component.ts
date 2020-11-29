@@ -56,6 +56,9 @@ export class ConfimacaoSolicitacaoComponent implements OnInit {
       animal: {
         id: parseInt(idAnimal)
       },
+      pessoa: {
+        id: null
+      }
     } as SolicitacaoModel;
     console.log(dadosS)
     

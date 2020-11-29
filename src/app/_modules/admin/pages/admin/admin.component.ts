@@ -1,3 +1,6 @@
+import { UsuarioRepository } from './../../../../_core/repository/usuario-repository';
+import { InstituicaoRepository } from './../../../../_core/repository/instituicao-repository';
+import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  nome: string = ""
+  imagem: string = "./assets/images/pessoa.jpg"
+
+  constructor(public pessoaRepository: PessoaRepository, 
+              public instituicaoRepository: InstituicaoRepository,
+              public UsuarioRepository: UsuarioRepository) { }
 
   ngOnInit(): void {
   }
+
 
 }

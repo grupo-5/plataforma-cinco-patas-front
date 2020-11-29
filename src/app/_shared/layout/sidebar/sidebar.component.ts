@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Input() user=true;
   @Input() nomeFuncionario: string;
+  @Input() imagem: string;
 
   constructor() { }
 

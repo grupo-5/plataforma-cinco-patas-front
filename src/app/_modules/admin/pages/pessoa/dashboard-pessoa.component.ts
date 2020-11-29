@@ -36,6 +36,7 @@ export class DashboardPessoaComponent implements OnInit {
   carregaSolicitacoes() {
     this.solicitacaoRepository.getAllSolicitacoesPessoa().subscribe((resposta) => {
       this.addArray(resposta);
+      console.log(resposta)
     });
   }
 
@@ -68,9 +69,9 @@ export class DashboardPessoaComponent implements OnInit {
     return aux;
   }
 
-  realizarSolicitacao(tipoSolicitacao) {
-    if (tipoSolicitacao == 1) {
+  // realizarSolicitacao(tipoSolicitacao) {
+  //   if (tipoSolicitacao == 1) {
 
-    }
-  }
+  //   }
+  // }
 }
