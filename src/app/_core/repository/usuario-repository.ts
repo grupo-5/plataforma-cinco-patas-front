@@ -24,6 +24,12 @@ export class UsuarioRepository {
             .pipe(map((x) => this.mapper.mapFrom(x.data)));
     }
 
+    getUsuarioByEmail(email: string): Observable<UsuarioModel> {
+        return this.http
+            .getAll<UsuarioModel>(`${environment.URLSERVIDOR}usuario/${email}`)
+            .pipe(map((x) => this.mapper.mapFrom(x.data)));
+    }
+
     getAllUsuarios(): Observable<UsuarioModel> {
         return this.http
             .getAll<UsuarioEntity[]>(`${environment.URLSERVIDOR}Usuario`)

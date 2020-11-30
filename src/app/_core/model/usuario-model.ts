@@ -3,5 +3,5 @@ export interface UsuarioModel {
     nome?: string;
     email?: string;
     pass?:string;
-
+    tipo?: number;
 }

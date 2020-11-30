@@ -1,6 +1,6 @@
 .img-user {
   
-  width: 30px;
+  width: 40px;
   border-radius: 50%;
 }
 
@@ -23,8 +23,12 @@ a:hover {
   /* fill: #da2a7c; */
 
 }
+.color-name-user{
+  display: none;
+}
 
-.color-name-user {
+#sidebar:hover .color-name-user {
+  display: block;
   color: #192A3E;
 }
 
@@ -54,7 +58,7 @@ h3 {
 }
 
 #sidebar:hover.img-user {
-  width: 60px;
+  width: 40px;
   border-radius: 50%;
 }
 #sidebar:hover span{

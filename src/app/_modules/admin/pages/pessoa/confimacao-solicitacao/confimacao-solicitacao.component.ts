@@ -50,7 +50,7 @@ export class ConfimacaoSolicitacaoComponent implements OnInit {
     const tipoSolicitacao: string = localStorage.getItem('tipoSolicitacao');
 
     const dadosS = {
-      situacao: "Enviada",
+      situacao: "Gerada",
       tipoSolicitacao: tipoSolicitacao,
       justificativa: "",
       animal: {

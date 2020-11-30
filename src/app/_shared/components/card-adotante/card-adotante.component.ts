@@ -18,6 +18,8 @@ export class CardAdotanteComponent implements OnInit {
   @Input() nomeEstado: string; 
   @Input() justificativa: string; 
   @Input() tipoSolicitacao: string; 
+  @Input() situacao: string; 
+  @Input() estado: boolean; 
 
   constructor() { }
 

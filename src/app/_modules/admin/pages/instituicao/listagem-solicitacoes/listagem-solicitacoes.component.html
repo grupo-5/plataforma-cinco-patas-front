@@ -25,14 +25,14 @@
                                     <div class="card-body"> -->
                                     <label class="mt-1"><strong>Dados do Solicitante</strong></label>
                                     <p for="">Nome: {{ solicitacao.pessoa.nome }}</p>
-                                    <p for="">Contato: {{ solicitacao.pessoa.contato }}</p>
+                                    <p for="">Contato: {{ solicitacao.pessoa.contato | phone }}</p>
                                     <p for="">Email: {{ solicitacao.pessoa.email }}</p>
                                     <p for="">Endereço: {{ solicitacao.pessoa.endereco.logradouro}},
                                         {{ solicitacao.pessoa.endereco.cidade.nome}} -
                                         {{ solicitacao.pessoa.endereco.cidade.estado.nome}}</p>
                                     <label class="mt-1 "><strong>Dados do Animal</strong></label>
                                     <p for="">Nome: {{ solicitacao.animal.nome }}</p>
-                                    <p for="">Contato: {{ solicitacao.animal.contato }}</p>
+                                    <p for="">Contato: {{ solicitacao.animal.contato | phone }}</p>
                                     <p for="">Endereço: {{ solicitacao.animal.endereco.logradouro}},
                                         {{ solicitacao.pessoa.endereco.cidade.nome}} -
                                         {{ solicitacao.pessoa.endereco.cidade.estado.nome}}</p>

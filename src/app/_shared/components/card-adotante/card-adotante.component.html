@@ -14,7 +14,8 @@
                     <p class="mb-1">Endereço: {{ endereco}},
                         {{ nomeCidade}} -
                         {{ nomeEstado}}</p>
-                    <p class="mb-1">Justificativa: {{ justificativa }}</p>
+                    <p class="text-center font-weight-bold mt-3">{{situacao}}</p>                        
+                    <p *ngIf="estado" class=" text-center mb-1"> {{ justificativa }}</p>
                     <!-- <app-button-b [nomeBotao]="nomeBotao" class="mt-5"></app-button-b> -->
                 </div> 
             </div>

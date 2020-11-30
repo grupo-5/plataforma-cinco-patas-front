@@ -6,11 +6,15 @@
         <div class="col-md-11 box">
             <h1 class="text-center mb-4">Acompanhamento de Solicitações</h1>
             <app-card-adotante [caminhoImg]="solicitacao.animal.imagem.url" [active]="nomeSituacao(solicitacao.id)"
-                [tipoSolicitacao]="solicitacao.tipoSolicitacao" [nome]="solicitacao.animal.nome"
-                [contato]="solicitacao.animal.contato" [endereco]="solicitacao.animal.endereco.logradouro"
+                [tipoSolicitacao]="solicitacao.tipoSolicitacao" 
+                [nome]="solicitacao.animal.nome"
+                [contato]="solicitacao.animal.contato" 
+                [endereco]="solicitacao.animal.endereco.logradouro"
                 [nomeCidade]="solicitacao.pessoa.endereco.cidade.nome"
                 [nomeEstado]="solicitacao.pessoa.endereco.cidade.estado.nome"
-                [justificativa]="solicitacao.justificativa"></app-card-adotante>
+                [justificativa]="solicitacao.justificativa"
+                [situacao]="situacaoAtual(solicitacao.id)"
+                [estado]="estadoJustificativa"></app-card-adotante>
         </div>
     </div>
 </div>

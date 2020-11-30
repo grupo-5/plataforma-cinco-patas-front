@@ -21,7 +21,7 @@ export class DashboardPessoaComponent implements OnInit {
   pageSize = 1;
   situacaoSolicitacao: any = [];
   caminhoImg: string;
-  status: string;
+  estadoJustificativa: boolean;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
@@ -53,11 +53,30 @@ export class DashboardPessoaComponent implements OnInit {
     });
   }
 
+  // Preenche a situaçãoo no card
+  situacaoAtual(idSolicitacao: number): string {
+    let aux: string;
+    this.situacaoSolicitacao.forEach(element => {
+      if (element.solicitacao.id == idSolicitacao) {
+        if (element.situacao == "Recusada" || element.situacao == "Aceita") {
+          aux = element.situacao;
+          if (element.situacao == "Recusada") {
+            this.estadoJustificativa = true;
+          }else{
+            this.estadoJustificativa = false;
+          }
+        }
+      }
+    });
+    return aux;
+  }
+
+  // Preenche o timeline
   nomeSituacao(idSolicitacao: number): string {
     let aux: string;
     this.situacaoSolicitacao.forEach(element => {
       if (element.solicitacao.id == idSolicitacao) {
-        if(element.situacao == "Enviada"){
+        if (element.situacao == "Enviada") {
           aux = "Pedido";
         } else if (element.situacao == "Recebida") {
           aux = "Análise";
@@ -69,9 +88,4 @@ export class DashboardPessoaComponent implements OnInit {
     return aux;
   }
 
-  // realizarSolicitacao(tipoSolicitacao) {
-  //   if (tipoSolicitacao == 1) {
-
-  //   }
-  // }
 }

@@ -68,8 +68,8 @@ export class DashboardComponent implements OnInit {
     this.elements2 = ['Livre', 'Gatos', 'Cachorros', 'Lar Temporário'];
     this.calcPercentageCapacity(this.data2);
 
-    this.resgatados = [65, 59, 80, 81, 56, 65, 59, 80, 81, 56, 33, 24];
-    this.adotados = [28, 48, 40, 19, 86, 65, 59, 80, 81, 56, 65, 59];
+    this.resgatados = [5, 6, 8, 8, 6, 5, 7, 5, 5, 6, 8, 8];
+    this.adotados =   [6, 5, 6, 5, 6, 5, 5, 4, 4, 6, 5, 5];
     this.myBarChartLabels = [
       'Jan', 'Feb', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez',];
     this.myBarChartData = [
