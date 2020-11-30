@@ -28,16 +28,16 @@ export class CadastroAdotanteMatchComponent implements OnInit {
     private toastr: ToastrService,
     public pessoaDataService: PessoaDataService,
     public repository: PessoaRepository,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.criaFormulario();
     this.id = this.activatedRoute.snapshot.params['id'];
     this.pessoaDataService.currentMessagePessoa.subscribe((message) => {
-      if(message!=''){
+      if (message != '') {
         this.selectedMessagePessoa = message;
         console.log(this.selectedMessagePessoa);
-      }else{
+      } else {
         this.router.navigate(['cadastro-adotante-2'])
       }
     });
@@ -73,7 +73,7 @@ export class CadastroAdotanteMatchComponent implements OnInit {
     }
   }
 
-  editar(pessoa) {}
+  editar(pessoa) { }
 
   receiveImage(image) {
     this.image = image;
@@ -84,35 +84,34 @@ export class CadastroAdotanteMatchComponent implements OnInit {
       //@ts-ignore
       let imageId = resposta.data.id;
       console.log(resposta);
-      console.log("id imagem " + imageId);
 
-    const dados: PessoaModel = {
-      nome: pessoa.name,
-      sexo: pessoa.sexo,
-      rg:pessoa.rg,
-      cpf:pessoa.cpf,
-      dataNasc: pessoa.dataNasc,
-      contato:pessoa.contato,
-      tipo:'ADOTANTE',
-      email: pessoa.email,
-      senha: pessoa.senha,
-      endereco: {
-        cep: pessoa.cep,
-        logradouro: pessoa.logradouro,
-        numero: pessoa.numero,
-        complemento: pessoa.complemento,
-        bairro: pessoa.bairro,
-        cidade: {
-          nome: pessoa.cidade,
-          estado: {
-            nome: pessoa.estado,
+      const dados: PessoaModel = {
+        nome: pessoa.name,
+        sexo: pessoa.sexo,
+        rg: pessoa.rg,
+        cpf: pessoa.cpf,
+        dataNasc: pessoa.dataNasc,
+        contato: pessoa.contato,
+        tipo: "Comum",
+        email: pessoa.email,
+        senha: pessoa.senha,
+        endereco: {
+          cep: pessoa.cep,
+          logradouro: pessoa.logradouro,
+          numero: pessoa.numero,
+          complemento: pessoa.complemento,
+          bairro: pessoa.bairro,
+          cidade: {
+            id: pessoa.cidade,
+            estado: {
+              id: pessoa.estado,
+            },
           },
         },
-      },
-      imagem: {
-        id: imageId,
-      },
-    } as PessoaModel;
+        imagem: {
+          id: imageId,
+        },
+      } as PessoaModel;
 
       if (dados.id) {
         this.repository.putPessoa(dados).subscribe(resposta => {
@@ -160,10 +159,10 @@ export class CadastroAdotanteMatchComponent implements OnInit {
 
   }
 
-  resetForm() {}
+  resetForm() { }
 
   public successToastr() {
-    this.toastr.success("Foi enviado um e-mail para verificação", "Cadastro efetuado com sucesso!");
+    this.toastr.success("Cadastro efetuado com sucesso!", "Foi enviado um e-mail com a confirmação!");
   }
 }
 
