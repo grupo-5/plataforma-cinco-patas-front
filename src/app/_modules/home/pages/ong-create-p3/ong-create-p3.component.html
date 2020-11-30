@@ -1,31 +1,28 @@
-<div>
-    <div class="row">
-        <div class="col-md-4 ">
-            <img class="d-block w-75" src="../../../../assets/images/dog-2.jpg" id="imgpos">
-            <img class="d-block w-75" src="../../../../assets/images/dog-1.jpg" id="imgpos">
-            <img class="d-block w-75" src="../../../../assets/images/dog-2.jpg" id="imgpos">
-            <br>
-            <br>
-            <br>
-        </div>
-        <div class="col-sm-8 pt-5 mb-5">
-            <h1 class="text-center pt-5">Cadastro Instituicao</h1>
-            <div class="row">
-                <div class="col-10 mx-auto">
-                    <app-card-timeline [listaPassos]="listaPassos" [active]="'Upload de Imagem'"></app-card-timeline>
-                </div>
-            </div>
-            <div class=" mt-4 mr-5 ">
-                <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()">
-                    <app-upload-de-imagens (image)="receiveImage($event)" justify-content-center>
-                    </app-upload-de-imagens>
-                    <div class="d-flex justify-content-between">
-                        <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled">
-                        </app-button-g>
-                        <app-button-g nomeBotao="Salvar" [disabled]="disabled" type="submit"></app-button-g>
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="row">
+    <app-header-com-carrossel></app-header-com-carrossel>
+</div>
+<div class="row mt-4">
+    <div class="col-10 mx-auto text-center">
+        <h1>Cadastro Instituição</h1>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-10 mx-auto">
+        <app-card-timeline [listaPassos]="listaPassos" [active]="'Upload de Imagem'"></app-card-timeline>
+    </div>
+</div>
+
+<div class="row ">
+    <form [formGroup]="formCadastro" (ngSubmit)="submit()" (ngReset)="reiniciarForm()" class="col-10 mx-auto">
+        <app-upload-de-imagens (image)="receiveImage($event)" justify-content-center>
+        </app-upload-de-imagens>
+        <div class="row mb-5 mt-5">
+            <div class="col-12 mx-auto d-flex justify-content-between">
+                <app-button-g nomeBotao="Voltar" (onClick)="trocaRota($event)" [disabled]="disabled">
+                </app-button-g>
+                <app-button-g nomeBotao="Salvar" [disabled]="disabled" type="submit"></app-button-g>
+            </div>
+        </div>
+    </form>
 </div>

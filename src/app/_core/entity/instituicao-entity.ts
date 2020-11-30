@@ -11,7 +11,7 @@ export interface InstituicaoEntity {
   banco?: string;
   agencia?: string;
   conta?: string;
-  inscricaoEstadual?: String;
+  inscricaoEstadual?: string;
   endereco?: EnderecoEntity;
   contato?: string;
   imagem?: any;

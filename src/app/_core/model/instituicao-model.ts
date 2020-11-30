@@ -12,7 +12,7 @@ export interface InstituicaoModel {
     banco?: string;
     agencia?: string;
     conta?: string;
-    inscricaoEstadual?: String;
+    inscricaoEstadual?: string;
     endereco?: EnderecoModel;
     contato?: string;
     imagem?: any;
