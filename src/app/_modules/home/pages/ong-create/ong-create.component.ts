@@ -19,16 +19,16 @@ export class OngCreateComponent implements OnInit {
 
   id: number;
   formCadastro: FormGroup;
-  razaoSocial: String;
-  nome: String;
-  tipodeDocumento: Array<String>;
-  numerodoDocumento: Array<String>;
-  inscricaoEstadual: Array<String>;
-  capacidade: Array<number>;
-  cidades: Array<String>;
-  banco: Array<String>;
-  agencia: Array<String>;
-  conta: Array<String>;
+  razaoSocial: string;
+  nome: string;
+  tipodeDocumento: Array<string>;
+  numerodoDocumento: string;
+  inscricaoEstadual: string;
+  capacidade: number;
+  cidades: string;
+  banco: string;
+  agencia: string;
+  conta: string;
  
   constructor(public ongService: InstituicaoRepository,
     private fb: FormBuilder,
@@ -47,12 +47,9 @@ export class OngCreateComponent implements OnInit {
       this.criarFormulario(this.criarOngEmBranco());
     }
     this.id = this.activatedRoute.snapshot.params['id'];
-    this.cidades = ['','São Paulo', 'Rio de Janeiro', 'Goias'];
     this.tipodeDocumento = ['CNPJ', 'RG', 'CPF'];
     
   }
-
-
 
   private criarFormulario(ong: InstituicaoModel): void {
     this.formCadastro = this.fb.group({

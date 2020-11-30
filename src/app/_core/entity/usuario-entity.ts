@@ -3,5 +3,5 @@ export interface UsuarioEntity {
     nome?: string;
     email?: string;
     pass?: string;
-   
+    tipo?: number;
 }

@@ -33,7 +33,7 @@ export class ListagemUsuariosComponent implements OnInit {
       'Nome': object.nome,
       'Tipo de Usuário': object.tipo.charAt(0) + object.tipo.slice(1).toLowerCase(),
       'E-mail': object.email,
-      'Contato': object.contato
+      'Contato': "(" + object.contato.slice(0, 2) + ") " + object.contato.slice(2)
     }
     this.usuariosListados.push(newObject);
   }

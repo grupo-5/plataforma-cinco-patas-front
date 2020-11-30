@@ -74,11 +74,9 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
 
   private salvar = (adotante: PessoaModel) => {
 
-      console.log(this.selectedMessagePessoa);
       console.log(adotante);
       if (this.selectedMessagePessoa != '') {
         Object.assign(adotante, JSON.parse(this.selectedMessagePessoa));
-        console.log(adotante);
       }
   
       this.pessoaDataService.changeMessage(JSON.stringify(adotante));
@@ -103,7 +101,6 @@ export class CadastroAdotanteEnderecoComponent implements OnInit {
   listarEstados() {
     this.repository.getAllEstados().subscribe((resposta) => {
       this.estados.push({ label: resposta.nome, value: resposta.id });
-      console.log(this.estados);
     });
   }
 

@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
     //fazer a chamada
     const user = this.formLogin.value.user;
     const password = this.formLogin.value.password;
-
+    
+    localStorage.setItem('email', user);
     this.service.login(user, password);
+
   }
 }

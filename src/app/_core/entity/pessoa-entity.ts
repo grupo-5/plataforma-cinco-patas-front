@@ -13,6 +13,7 @@ export interface PessoaEntity {
     contato?: string;
     senha?: any;
     endereco?: EnderecoEntity;
+    imagem?: any;
 }
 
 

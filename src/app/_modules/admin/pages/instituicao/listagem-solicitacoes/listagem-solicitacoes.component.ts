@@ -34,6 +34,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
     public config: NgbModalConfig,
     private modalService: NgbModal
   ) {
+    //Referente ao modal
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -91,7 +92,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
       if (solicitacao.id) {
         this.situacaoSolicitacaoRepository.postSituacaoSolicitacao(dados).subscribe(() => {
           this.successToastr(2);
-          console.log("AtualizadaAceita " + dados.solicitacao.id + dados.situacao)
+          console.log("Aceita " + dados.solicitacao.id + dados.situacao)
         })
       }
     }
@@ -109,7 +110,7 @@ export class ListagemSolicitacoesComponent implements OnInit {
 
     const dadosS = {
       id: this.soli.id,
-      situacao: "Finalizada",
+      situacao: this.soli.situacao,
       tipoSolicitacao: this.soli.tipoSolicitacao,
       justificativa: this.justificativa,
       data: this.soli.data,
@@ -144,16 +145,17 @@ export class ListagemSolicitacoesComponent implements OnInit {
   }
 
   refresh(): void {
-    window.location.reload();
+    // window.location.reload();
+    setTimeout(function () { window.location.reload(); }, 2500);
   }
 
   public successToastr(parametro) {
     if (parametro == 1) {
-      this.toastr.success("Confirmado o recebimento da solicitação");
+      this.toastr.success("Confirmado o recebimento da solicitação!");
     } else if (parametro == 2) {
-      this.toastr.success("Confirmado a aprovação da solicitação");
+      this.toastr.success("Solicitação aprovada!");
     } else if (parametro == 3) {
-      this.toastr.success("Confirmado a negação da solicitação");
+      this.toastr.success("Solicitação negada!");
     }
     this.refresh();
   }

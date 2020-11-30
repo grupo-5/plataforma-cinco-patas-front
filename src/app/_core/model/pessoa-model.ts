@@ -12,5 +12,6 @@ export interface PessoaModel {
   contato?: string;
   senha?: any;
   endereco?: EnderecoModel;
+  imagem?: any;
 }
  

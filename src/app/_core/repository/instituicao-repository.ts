@@ -18,7 +18,13 @@ export class InstituicaoRepository {
 
   getInstituicaoById(id: number): Observable<InstituicaoModel> {
     return this.http
-      .getAll<InstituicaoModel>(`${environment.URLSERVIDOR}instituicao/${id}`)
+      .getAll<InstituicaoEntity>(`${environment.URLSERVIDOR}instituicao/${id}`)
+      .pipe(map((x) => this.mapper.mapFrom(x.data)));
+  }
+
+  getInstituicaoByCodigo(): Observable<InstituicaoModel> {
+    return this.http
+      .getAll<InstituicaoEntity>(`${environment.URLSERVIDOR}instituicao/codigo`)
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 

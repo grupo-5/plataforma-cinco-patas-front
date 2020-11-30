@@ -15,7 +15,8 @@ export class PessoaMapper extends Mapper<PessoaEntity, PessoaModel> {
       email: param.email,
       senha: param.senha,
       endereco:param.endereco,
-      tipo:param.tipo
+      tipo:param.tipo,
+      imagem: param.imagem
     };
   }
 
@@ -31,7 +32,8 @@ export class PessoaMapper extends Mapper<PessoaEntity, PessoaModel> {
       email: param.email,
       senha: param.senha,
       endereco:param.endereco,
-      tipo:param.tipo
+      tipo:param.tipo,
+      imagem: param.imagem
     };
   }
 }

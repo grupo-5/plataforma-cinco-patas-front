@@ -22,6 +22,11 @@
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.082);
     border-radius: 20px;
 }
+
+h1 {
+	font-size: 2.2rem;
+}
+
 /* 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,

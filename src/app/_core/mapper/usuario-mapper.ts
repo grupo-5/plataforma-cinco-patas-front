@@ -9,8 +9,8 @@ export class UsuarioMapper extends Mapper<UsuarioEntity, UsuarioModel> {
             id: param.id,
             nome:param.nome,
             email: param.email,
-            pass:param.pass
-           
+            pass:param.pass,
+            tipo: param.tipo
         };
     }
 
@@ -19,7 +19,8 @@ export class UsuarioMapper extends Mapper<UsuarioEntity, UsuarioModel> {
             id: param.id,
             nome: param.nome,
             email: param.email,
-            pass: param.pass
+            pass: param.pass,
+            tipo: param.tipo
         };
     }
 }

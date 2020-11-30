@@ -52,6 +52,7 @@ export class CadastroAdotanteDadosComponent implements OnInit {
   };
 
   private salvar = (adotante: PessoaModel) => {
+    console.log(adotante);
     this.pessoaDataService.changeMessage(JSON.stringify(adotante));
     this.trocaRota();
   };

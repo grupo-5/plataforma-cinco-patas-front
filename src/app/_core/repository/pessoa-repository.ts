@@ -37,6 +37,12 @@ export class PessoaRepository {
         return x.data.map(this.mapper.mapFrom);
     }
 
+    getPessoaByCodigo(): Observable<PessoaModel> {
+        return this.http
+            .getAll<PessoaEntity>(`${environment.URLSERVIDOR}pessoa/codigo`)
+            .pipe(map((x) => this.mapper.mapFrom(x.data)));
+    }
+
     postPessoa(param: PessoaModel) {
         return this.http
             .post<PessoaEntity>(`${environment.URLSERVIDOR}pessoa`, this.mapper.mapTo(param))

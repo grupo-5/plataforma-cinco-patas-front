@@ -113,7 +113,6 @@ export class OngCreateP2Component implements OnInit {
   listarEstados() {
     this.repository.getAllEstados().subscribe((resposta) => {
       this.estados.push({ label: resposta.nome, value: resposta.id });
-      console.log(this.estados);
     });
   }
 
