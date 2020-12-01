@@ -90,7 +90,7 @@ export class AnimalCreateComponent implements OnInit {
   reiniciarForm(): void {
     this.formCadastro.reset();
   }
-
+  
   private criarFormulario(animal: AnimalModel): void {
 
     this.formCadastro = this.fb.group({
