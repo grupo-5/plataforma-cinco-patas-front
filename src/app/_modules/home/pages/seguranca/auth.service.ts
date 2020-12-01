@@ -21,13 +21,12 @@ export class AuthService {
       this.armazenarToken(json['access_token']);
 
       console.log('Novo access token criado!' + JSON.stringify(this.jwtPayload));
-      //precisar testar
-      if (this.jwtPayload['authorities'].includes('DH01')) {
+
+      if (this.jwtPayload['authorities'].includes('CP02')) {
         this.router.navigate(['/instituicao']);
 
       } else {
         this.router.navigate(['/pessoa']);
-
       }
 
     },

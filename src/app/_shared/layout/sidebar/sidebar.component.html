@@ -12,16 +12,22 @@
         </div>
 
         <li class="mb-3">
-            <a [routerLink]="['/instituicao']" ><i class="fa fa-home mr-2 color-icon-gray" aria-hidden="true"></i><span>Dashboard</span></a>
+            <a [routerLink]="['/instituicao']" *ngIf="service.temPermissao('CP02')" ><i class="fa fa-home mr-2 color-icon-gray" aria-hidden="true"></i><span>Dashboard</span></a>
         </li>
         <li class=" mb-3">
-            <a [routerLink]="['/animais']"><i class="fa fa-paw mr-2 color-icon-gray" aria-hidden="true" ></i><span>Animais</span></a>
+            <a [routerLink]="['/animais']" *ngIf="service.temPermissao('CP02')" ><i class="fa fa-paw mr-2 color-icon-gray" aria-hidden="true" ></i><span>Animais</span></a>
         </li>
         <li class="mb-3">
-            <a [routerLink]="['/pessoas']"><i class="fa fa-users mr-2 color-icon-gray" aria-hidden="true"></i><span>Nossos Amigos</span></a>
+            <a [routerLink]="['/pessoas']" *ngIf="service.temPermissao('CP02')" ><i class="fa fa-users mr-2 color-icon-gray" aria-hidden="true"></i><span>Nossos Amigos</span></a>
         </li>
         <li class="mb-3">
-            <a routerLink="/solicitacoes"><i class="fa fa-list-alt mr-2 color-icon-gray" aria-hidden="true"></i><span>Solicitações</span></a>
+            <a routerLink="/solicitacoes" *ngIf="service.temPermissao('CP02')" ><i class="fa fa-list-alt mr-2 color-icon-gray" aria-hidden="true"></i><span>Solicitações</span></a>
+        </li>
+        <li class="mb-3">
+            <a [routerLink]="['/pessoa']" *ngIf="service.temPermissao('CP01')" ><i class="fa fa-list-alt mr-2 color-icon-gray" aria-hidden="true"></i><span>Solicitações</span></a>
+        </li>
+        <li class="mb-3">
+            <a [routerLink]="['/cadastro-depoimento']" *ngIf="service.temPermissao('CP01')" ><i class="fa fa-comments-o mr-2 color-icon-gray" aria-hidden="true"></i><span>Depoimentos</span></a>
         </li>
     </ul>
 </nav>

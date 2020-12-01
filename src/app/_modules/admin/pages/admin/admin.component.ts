@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   nome: string ;//= ""
-  imagem: string ;//= "./assets/images/pessoa.jpg"
+  imagem: string = "./assets/images/sem-img.png"
 
   constructor(public pessoaRepository: PessoaRepository, 
               public instituicaoRepository: InstituicaoRepository,

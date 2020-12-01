@@ -1,3 +1,4 @@
+import { AuthService } from './../../../_modules/home/pages/seguranca/auth.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class SidebarComponent implements OnInit {
   @Input() nomeFuncionario: string;
   @Input() imagem: string;
 
-  constructor() { }
+  constructor(public service: AuthService) { }
 
   ngOnInit(): void {
   }

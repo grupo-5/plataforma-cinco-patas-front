@@ -3,17 +3,23 @@ p {
     font-size: 15px;
 }
 
-@media only screen and (min-width: 800px) {
+ .img {
+    background-image: url(../../../../../../assets/images/login.jpg);
+   height: 100vh;
+ }
+
+@media only screen and (max-width: 767px) {
     .img {
+        background-image: url(../../../../../../assets/images/login3.jpg);
         height: 100vh;
     }
 }
 
-.img {
-    background-image: url(../../../../../../assets/images/login.png);
-    height: calc(100vh - 139px);
+/* .img {
+    background-image: url(../../../../../../assets/images/login.jpg);
+    height: calc(100vh - 150px);
     background-size: 100%;
     background-repeat: no-repeat;
-}
+} */
 
 
