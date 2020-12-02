@@ -1,32 +1,15 @@
 <!-- Button trigger modal -->
-<button
-  #openModal
-  data-toggle="modal"
-  data-target="#modal"
-  class="hidden"
-></button>
+<button #openModal data-toggle="modal" data-target="#modal" class="hidden"></button>
 
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="modal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
-  #modal
-  *ngIf="item.porte"
->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal
+  *ngIf="item.porte">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="container">
         <div class="row">
           <div class="col-12 mt-2">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -34,14 +17,11 @@
 
         <div class="row mb-5">
           <div class="col-5">
-            <img
-              class="img-thumbnail"
-              [src]="
+            <img class="img-thumbnail" [src]="
                 item.imagem.url != null
                   ? item.imagem.url
                   : '../../../../assets/images/sem-img.png'
-              "
-            />
+              " />
           </div>
           <div class="col-7">
             <span class="d-block text-center">
@@ -65,9 +45,8 @@
               Porte
               <strong>{{ item.porte }}</strong>
             </span>
-            <div class="row">
-
-              <div class="col-6">
+            <div class="row pr-2">
+              <div class="col-6 ">
                 <span>Personalidade</span>
                 <ul>
                   <li *ngFor="let personalidade of item.personalidades">
@@ -76,7 +55,7 @@
                 </ul>
               </div>
               <div class="col-6">
-                <span>Cuidados Veterinarios</span>
+                <span>Cuidados Veterinários</span>
                 <ul>
                   <li *ngFor="let cuidado of item.cuidadosVet">
                     {{ cuidado.descricao }}
@@ -88,17 +67,9 @@
         </div>
         <div class="row mb-2">
           <div class="col-12 d-flex justify-content-between">
-            <app-button-b
-              data-dismiss="modal"
-              nomeBotao="Adotar"
-              (click)="verificaLogin('Adoção')"
-            ></app-button-b>
-            <app-button-b
-              data-dismiss="modal"
-              nomeBotao="Oferecer Abrigo"
-              (click)="verificaLogin('Lar Temporário')"
-              size="big"
-            ></app-button-b>
+            <app-button-b data-dismiss="modal" nomeBotao="Adotar" (click)="verificaLogin('Adoção')"></app-button-b>
+            <app-button-b data-dismiss="modal" nomeBotao="Oferecer Abrigo" (click)="verificaLogin('Lar Temporário')"
+              size="big"></app-button-b>
           </div>
         </div>
       </div>
