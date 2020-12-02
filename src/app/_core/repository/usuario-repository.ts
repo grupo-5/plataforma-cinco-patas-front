@@ -1,9 +1,9 @@
 
 import { BaseHttpService } from './../../_services/http/base-http.service';
 import { environment } from '../../../environments/environment';
-import { UsuarioMapper } from './../mapper/Usuario-mapper';
-import { UsuarioEntity } from './../entity/Usuario-entity';
-import { UsuarioModel} from './../model/Usuario-model';
+import { UsuarioMapper } from './../mapper/usuario-mapper';
+import { UsuarioEntity } from './../entity/usuario-entity';
+import { UsuarioModel} from './../model/usuario-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
