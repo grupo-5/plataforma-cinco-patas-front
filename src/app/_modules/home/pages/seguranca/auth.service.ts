@@ -23,7 +23,7 @@ export class AuthService {
         console.log('Novo access token criado!'+JSON.stringify(this.jwtPayload));
         //precisar testar
         if (this.jwtPayload['authorities'].includes('DH01')) {
-          this.router.navigate(['/instituicao']);
+          this.router.navigate(['/admin']);
 
         }else{
           this.router.navigate(['/pessoa']);

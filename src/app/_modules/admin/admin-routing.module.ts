@@ -18,6 +18,7 @@ import { DashboardComponent } from './pages/instituicao/dashboard/dashboard.comp
 const routes: Routes = [
     {   path: '', component: AdminComponent,
         children :[
+          { path: '', component: DashboardComponent },
           { path: 'animais', component: ListagemAnimaisComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'instituicao', component: DashboardComponent, canActivate:[AuthGuard], data: { roles: ['DH01'] }},
             { path: 'pessoa', component: DashboardPessoaComponent,canActivate:[AuthGuard], data: { roles: ['DH05'] }},

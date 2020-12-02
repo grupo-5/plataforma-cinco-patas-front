@@ -34,30 +34,30 @@
             <span>{{ op.name }}</span>
             <img [src]="op.url" />
           </ng-container>
-  
-          <ng-container *ngIf="op.type == 'dropdown'">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="dropdownId"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              >Dropdown</a
-            >
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-              <a class="dropdown-item" href="#">Action 1</a>
-              <a class="dropdown-item" href="#">Action 2</a>
-            </div>
-          </ng-container>
-  
+
       </li>
              
       </ul>
     </div>
     <ng-container *ngFor="let op of options">
   
-      <!--aguardando componente de botao-->
+     
+      <ng-container *ngIf="op.type == 'dropdown'">
+        <a
+          class="nav-link dropdown-toggle "
+          href="#"
+          id="dropdownId"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Dropdown</a
+        >
+        <div class="dropdown-menu p" aria-labelledby="dropdownId">
+          <a class="dropdown-item" ll="#">Meus Dados</a>
+          <a class="dropdown-item" href="#"> Sair</a>
+        </div>
+      </ng-container>
+
       <form class="form-inline">
     <button
       *ngIf="op.type == 'button'"

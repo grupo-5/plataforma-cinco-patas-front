@@ -103,7 +103,8 @@ import { CardAdotanteComponent } from './components/card-adotante/card-adotante.
     ListagemComponent,
     CardInstituicaoComponent,
     CardAdotanteComponent,
-    UploadDeImagensComponent
+    UploadDeImagensComponent,
+    CardIncentivoComponent
   ]
 })
 export class SharedModule { }
