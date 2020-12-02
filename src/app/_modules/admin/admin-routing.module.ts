@@ -1,3 +1,4 @@
+import { MeusDepoimentosComponent } from './pages/pessoa/meus-depoimentos/meus-depoimentos.component';
 import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
 import { AuthGuard } from './../home/pages/seguranca/auth.guard';
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
             { path: 'cadastro-depoimento', component: CadastroDepoimentosComponent, canActivate:[AuthGuard], data: { roles: ['CP01'] }},
             { path: 'cadastro-depoimento:id', component: CadastroDepoimentosComponent, canActivate:[AuthGuard], data: { roles: ['CP01'] }},
             { path: 'confirmar-solicitacao', component: ConfimacaoSolicitacaoComponent, canActivate:[AuthGuard], data: { roles: ['CP01'] }},
+            { path: 'meus-depoimentos', component: MeusDepoimentosComponent, canActivate:[AuthGuard], data: { roles: ['CP01'] }},
         ],
     },
 ];

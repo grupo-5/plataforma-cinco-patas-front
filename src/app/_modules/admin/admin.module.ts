@@ -19,6 +19,7 @@ import { AnimalCreateP3Component } from './pages/instituicao/animal-create-p3/an
 import { DashboardPessoaComponent } from './pages/pessoa/dashboard-pessoa.component';
 import { ListagemSolicitacoesComponent } from './pages/instituicao/listagem-solicitacoes/listagem-solicitacoes.component';
 import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solicitacao/confimacao-solicitacao.component';
+import { MeusDepoimentosComponent } from './pages/pessoa/meus-depoimentos/meus-depoimentos.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solici
     DashboardPessoaComponent,
     ListagemSolicitacoesComponent,
     ConfimacaoSolicitacaoComponent,
+    MeusDepoimentosComponent,
 
   ],
 
@@ -55,7 +57,8 @@ import { ConfimacaoSolicitacaoComponent } from './pages/pessoa/confimacao-solici
     AnimalCreateP3Component,
     DashboardPessoaComponent,
     ListagemSolicitacoesComponent,
-    ConfimacaoSolicitacaoComponent
+    ConfimacaoSolicitacaoComponent,
+    MeusDepoimentosComponent,
   ],
 })
 export class AdminModule {}
