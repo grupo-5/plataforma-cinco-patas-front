@@ -1,38 +1,37 @@
-
 <div class="row">
-    <div class="col-lg-12 p-5 m-0">
-      <section class="results">
-        <h1 class="text-center pt-4">Depoimentos</h1>
-      </section>
+    <div class="col-lg-12  m-0">
+        <section class="results">
+            <h1 class="text-center pt-4">Meus Depoimentos</h1>
+        </section>
     </div>
 </div>
 
-<form (ngSubmit)="submit()">
-<div class="row">
+<div [hidden]="exibirOcultar()">
+    <form [formGroup]="formDepoimento" (ngSubmit)="submit()">
+        <!-- <div class="row">
 
     <div class="col-sm-12">
         <app-input-combobox idSelect="idTipo" titulo="tipo" [formGroup]="formDepoimento"
             controlName="tipo" [lista]="tipo" >
         </app-input-combobox>
     </div>
-</div>
-<div class="row" >
-    
-    <div class="col-md-12">
-        <app-form-textarea  [formGroup]="formDepoimento" controlName="depoimentos"></app-form-textarea>
-            <div class="text-right">
-                <app-button-g [nomeBotao]="nomeBotao" routerLink="/cadastro-animal-2"></app-button-g>
+</div> -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <app-form-textarea [formGroup]="formDepoimento" controlName="texto"></app-form-textarea>
+                <div class="text-right">
+                    <app-button-g [nomeBotao]="nomeBotao" routerLink="/cadastro-depoimento"></app-button-g>
+                </div>
             </div>
-    </div>
+        </div>
+    </form>
+
+
 </div>
-</form>
-
-
-<div id= "externa" >
+<div id="externa">
     <div id="interna">
-        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
-        <br>
-        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi" nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
+        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi"
+            nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
     </div>
 </div>
-

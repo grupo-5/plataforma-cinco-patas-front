@@ -19,7 +19,8 @@ export class CardAdotanteComponent implements OnInit {
   @Input() justificativa: string; 
   @Input() tipoSolicitacao: string; 
   @Input() situacao: string; 
-  @Input() estado: boolean; 
+  @Input() exibirJustificativa: boolean; // Implicará se o texto de justificativa será exiido ou não
+  @Input() exibirBotao: boolean; 
 
   constructor() { }
 

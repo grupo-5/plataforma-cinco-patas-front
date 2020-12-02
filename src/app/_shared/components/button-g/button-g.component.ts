@@ -8,6 +8,7 @@ import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ButtonGComponent implements OnInit {
   @Input() nomeBotao: string;
   @Input() disabled: boolean;
+  @Input() exibir: boolean;
   @Input() type: string;
   @Input() size: string;
   

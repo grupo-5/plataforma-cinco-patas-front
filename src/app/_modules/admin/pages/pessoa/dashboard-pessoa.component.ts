@@ -22,6 +22,7 @@ export class DashboardPessoaComponent implements OnInit {
   situacaoSolicitacao: any = [];
   caminhoImg: string;
   estadoJustificativa: boolean;
+  habilitaBotao: boolean = true;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
@@ -62,8 +63,10 @@ export class DashboardPessoaComponent implements OnInit {
           aux = element.situacao;
           if (element.situacao == "Recusada") {
             this.estadoJustificativa = true;
-          }else{
+            this.habilitaBotao = true;
+          } else {
             this.estadoJustificativa = false;
+            this.habilitaBotao = false;
           }
         }
       }
@@ -88,4 +91,8 @@ export class DashboardPessoaComponent implements OnInit {
     return aux;
   }
 
+  trocaRota = (evento?) => {
+    localStorage.setItem('depoimento','true');
+    this.router.navigate(['cadastro-depoimento']);
+  }
 }

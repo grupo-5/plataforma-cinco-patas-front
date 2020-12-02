@@ -13,14 +13,15 @@ import { ValidarInputsService } from './../../../../../_services/validar-inputs.
 })
 export class CadastroDepoimentosComponent implements OnInit {
   // Depoimentos
+  formDepoimento: FormGroup;
+  controlName: string;
   caminhoImg: string;
   nome: string;
   depoi: string;
   nomeBotao: string;
-  formDepoimento: FormGroup;
   texto: string;
   id: number;
-  tipo=['plataforma','ong']
+  tipo=['Plataforma','Ong']
 
   constructor(
     public validarInputsService: ValidarInputsService,
@@ -31,9 +32,9 @@ export class CadastroDepoimentosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.caminhoImg = '../../../../../assets/images/pessoa.jpg';
-    this.nome = 'aninha';
-    this.depoi = 'deposgvdfd eposgvdfd eposgvdfd eposgvdfd eposgvdfd ';
+    this.caminhoImg = '../../../../../assets/images/t.jpg';
+    this.nome = 'Tathiane';
+    this.depoi = 'A ong que cuidou do processo de adoção do tob, foi muito atenciosa.';
     this.nomeBotao = 'Salvar';
 
     this.id = this.activatedRoute.snapshot.params['id'];
@@ -90,6 +91,19 @@ export class CadastroDepoimentosComponent implements OnInit {
     } else {
       console.log('salvar *** ' + depoimento.id);
       this.salvar(depoimento);
+    }
+  }
+
+  exibirOcultar(): boolean{
+    const depo = localStorage.getItem('depoimento');
+    // localStorage.removeItem('depoimento');
+    if(depo == "true"){
+      localStorage.setItem('depoimento', 'false');
+      return true;
+    }else if(depo == "false"){
+      localStorage.setItem('depoimento', 'true');
+      
+      return false;
     }
   }
 }

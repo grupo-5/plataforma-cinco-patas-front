@@ -15,12 +15,17 @@
                         {{ nomeCidade}} -
                         {{ nomeEstado}}</p>
                     <p class="text-center font-weight-bold mt-3">{{situacao}}</p>                        
-                    <p *ngIf="estado" class=" text-center mb-1"> {{ justificativa }}</p>
+                    <p *ngIf="exibirJustificativa" class=" text-center mb-1"> {{ justificativa }}</p>
                     <!-- <app-button-b [nomeBotao]="nomeBotao" class="mt-5"></app-button-b> -->
                 </div> 
             </div>
-            <div class="col-6">
-                <img [src]="caminhoImg" class="card-img-top p-4" alt="Imagem de animal">
+            <div class="col-6 ">
+               <div class="row d-flex justify-content-center">
+                    <img [src]="caminhoImg" class="card-img p-4" alt="Imagem de animal">
+               </div>
+               <div class="row d-flex justify-content-center">
+                <app-button-b [exibir]="exibirBotao" [nomeBotao]="nomeBotao" class=""></app-button-b>
+               </div>
             </div>
         </div>
     </div>

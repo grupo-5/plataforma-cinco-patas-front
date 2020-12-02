@@ -1,6 +1,7 @@
 <h1 class="mt-5 text-center" *ngIf="solicitacoes.length == 0">
     Você não possui solicitações!!!
 </h1>
+
 <div *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
     <div class="marg-l">
         <div class="col-md-11 box">
@@ -14,7 +15,11 @@
                 [nomeEstado]="solicitacao.pessoa.endereco.cidade.estado.nome"
                 [justificativa]="solicitacao.justificativa"
                 [situacao]="situacaoAtual(solicitacao.id)"
-                [estado]="estadoJustificativa"></app-card-adotante>
+                [exibirJustificativa]="estadoJustificativa"
+                [exibirBotao]="habilitaBotao"
+                nomeBotao="Deixar um depoimento"
+                (click)="trocaRota($event)">
+            </app-card-adotante>
         </div>
     </div>
 </div>

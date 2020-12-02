@@ -15,28 +15,37 @@ import { Input, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class ModalInfoComponent implements OnInit {
   @Input() urlModal: string;
   item: any = {};
+  idade: any;
 
   @ViewChild('openModal') openModal: ElementRef;
 
-  constructor(private modalService: ModalService, public auth: AuthService, public router: Router, public confirmarSolicitacao: ConfimacaoSolicitacaoComponent ) {}
+  constructor(private modalService: ModalService, public auth: AuthService, public router: Router, public confirmarSolicitacao: ConfimacaoSolicitacaoComponent) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   open(item) {
     this.item = item;
     localStorage.setItem('idAnimal', this.item.id);
     this.openModal.nativeElement.click();
+
+    console.log(this.item.dataNasc)
+    this.idade = this.calcIdade(this.item.dataNasc);
   }
 
-  verificaLogin(tipoSolicitacao){
+  calcIdade(dataString) {
+    var data = +new Date(dataString);
+    return ~~((Date.now() - data) / (31557600000));
+  }
+
+  verificaLogin(tipoSolicitacao) {
     let res = this.auth.isAccessTokenInvalido();
     localStorage.setItem('tipoSolicitacao', tipoSolicitacao);
-    if (res){
+    if (res) {
       console.log("deslogado")
       this.router.navigate(['login']);
-    }else{
+    } else {
       console.log("logado")
       this.router.navigate(['confirmar-solicitacao']);
     }
