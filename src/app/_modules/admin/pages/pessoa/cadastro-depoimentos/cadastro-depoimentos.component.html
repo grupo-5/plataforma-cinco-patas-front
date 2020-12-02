@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-lg-12  m-0">
         <section class="results">
-            <h1 class="text-center pt-4">Meus Depoimentos</h1>
+            <h1 class="text-center pt-4">Escreva abaixo seu depoimento</h1>
         </section>
     </div>
 </div>
 
-<div [hidden]="exibirOcultar()">
+<div class="col-sm-11">
     <form [formGroup]="formDepoimento" (ngSubmit)="submit()">
         <!-- <div class="row">
 
@@ -26,12 +26,4 @@
             </div>
         </div>
     </form>
-
-
-</div>
-<div id="externa">
-    <div id="interna">
-        <app-card-depoimento [caminhoImgCard]="caminhoImg" [nome]="nome" [depoimento]="depoi"
-            nomeIcon1="fa fa-pencil-square-o" nomeIcon2="fa fa-trash-o"></app-card-depoimento>
-    </div>
 </div>

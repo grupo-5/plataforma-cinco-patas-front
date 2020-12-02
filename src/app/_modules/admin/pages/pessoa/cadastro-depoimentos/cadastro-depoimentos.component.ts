@@ -94,16 +94,16 @@ export class CadastroDepoimentosComponent implements OnInit {
     }
   }
 
-  exibirOcultar(): boolean{
-    const depo = localStorage.getItem('depoimento');
-    // localStorage.removeItem('depoimento');
-    if(depo == "true"){
-      localStorage.setItem('depoimento', 'false');
-      return true;
-    }else if(depo == "false"){
-      localStorage.setItem('depoimento', 'true');
+  // exibirOcultar(): boolean{
+  //   const depo = localStorage.getItem('depoimento');
+  //   // localStorage.removeItem('depoimento');
+  //   if(depo == "true"){
+  //     localStorage.setItem('depoimento', 'false');
+  //     return true;
+  //   }else if(depo == "false"){
+  //     localStorage.setItem('depoimento', 'true');
       
-      return false;
-    }
-  }
+  //     return false;
+  //   }
+  // }
 }

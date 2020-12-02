@@ -1,5 +1,6 @@
-<h1 class="mt-5 text-center" *ngIf="solicitacoes.length == 0">
+<h1 class="mt-5 text-center" *ngIf="semDados">
     Você não possui solicitações!!!
+
 </h1>
 
 <div *ngFor="let solicitacao of solicitacoes| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
@@ -7,23 +8,18 @@
         <div class="col-md-11 box">
             <h1 class="text-center mb-4">Acompanhamento de Solicitações</h1>
             <app-card-adotante [caminhoImg]="solicitacao.animal.imagem.url" [active]="nomeSituacao(solicitacao.id)"
-                [tipoSolicitacao]="solicitacao.tipoSolicitacao" 
-                [nome]="solicitacao.animal.nome"
-                [contato]="solicitacao.animal.contato" 
-                [endereco]="solicitacao.animal.endereco.logradouro"
+                [tipoSolicitacao]="solicitacao.tipoSolicitacao" [nome]="solicitacao.animal.nome"
+                [contato]="solicitacao.animal.contato" [endereco]="solicitacao.animal.endereco.logradouro"
                 [nomeCidade]="solicitacao.pessoa.endereco.cidade.nome"
                 [nomeEstado]="solicitacao.pessoa.endereco.cidade.estado.nome"
-                [justificativa]="solicitacao.justificativa"
-                [situacao]="situacaoAtual(solicitacao.id)"
-                [exibirJustificativa]="estadoJustificativa"
-                [exibirBotao]="habilitaBotao"
-                nomeBotao="Deixar um depoimento"
-                (click)="trocaRota($event)">
+                [justificativa]="solicitacao.justificativa" [situacao]="situacaoAtual(solicitacao.id)"
+                [exibirJustificativa]="estadoJustificativa" [exibirBotao]="habilitaBotao"
+                nomeBotao="Deixar um depoimento" (click)="trocaRota($event)">
             </app-card-adotante>
         </div>
     </div>
-</div>
-<div class="d-flex justify-content-center mt-4">
-    <ngb-pagination [collectionSize]="solicitacoes.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
-        [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+    <div class="d-flex justify-content-center mt-4">
+        <ngb-pagination [collectionSize]="solicitacoes.length" [(page)]="page" [pageSize]="pageSize" [maxSize]="3"
+            [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+    </div>
 </div>

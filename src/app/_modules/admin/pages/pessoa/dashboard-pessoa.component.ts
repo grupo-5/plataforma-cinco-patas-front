@@ -23,6 +23,7 @@ export class DashboardPessoaComponent implements OnInit {
   caminhoImg: string;
   estadoJustificativa: boolean;
   habilitaBotao: boolean = true;
+  semDados: boolean = false;
 
   constructor(public solicitacaoRepository: SolicitacaoRepository,
     public situacaoSolicitacaoRepository: SituacaoSolicitacaoRepository,
@@ -32,18 +33,18 @@ export class DashboardPessoaComponent implements OnInit {
   ngOnInit(): void {
     this.carregaSolicitacoes();
     this.buscarSituacoesSolicitacoes();
+  
   }
 
   carregaSolicitacoes() {
-    this.solicitacaoRepository.getAllSolicitacoesPessoa().subscribe((resposta) => {
-      this.addArray(resposta);
-      console.log(resposta)
+    this.solicitacaoRepository.getAllSolicitacoesPessoaPromise().then((resposta) => {
+      this.solicitacoes = resposta;
+      if(this.solicitacoes <= 0){
+        this.semDados = true;
+      }
     });
   }
 
-  addArray(object) {
-    this.solicitacoes.push(object);
-  }
   addArrayS(object) {
     this.situacaoSolicitacao.push(object);
   }

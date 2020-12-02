@@ -61,15 +61,16 @@ h3 {
   width: 40px;
   border-radius: 50%;
 }
+
 #sidebar:hover span{
   display: inline-block;
 }
 
 #sidebar span{
-  display: none;
+  display: none
 }
-.width-title {
 
+.width-title {
   width: 150px;
   display: none;
 }
@@ -77,6 +78,7 @@ h3 {
 #sidebar:hover  .width-title {
 display: block;
 }
+
 #sidebar.user{
   /* background-color: var(--main-second-color); */
 }

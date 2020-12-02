@@ -14,9 +14,9 @@ export class SobreNosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.texto2="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum ducimus mollitia atque labore omnis nostrum asperiores odit vitae accusamus natus! Pariatur est iusto repellendus hic eligendi quae vero molestias quos!"
-    this.texto1="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum ducimus mollitia atque labore omnis nostrum asperiores odit vitae accusamus natus! Pariatur est iusto repellendus hic eligendi quae vero molestias quos!"
-    this.caminho = "./../../../../../assets/images/dog-2.jpg";
+    this.texto2 ="A história da Cinco Patas começa inspirada pelas vidas de animais e pessoas transformadas após a realização de adoções, trazendo para o processo uma revolução digital, que facilita a integração de ambas as partes, e corrobora para que mais patinhas encontrem seus lares!"
+    this.texto1 ="Somos uma equipe multidisciplinar, com membros distribuídos em três estados. Nosso objetivo foi desenvolver uma plataforma que gerasse valor na vida das pessoas!"
+    this.caminho = "./../../../../../assets/images/logo.png";
   }
 
 }

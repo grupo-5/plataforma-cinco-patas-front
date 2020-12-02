@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit {
         tutelado += 1;
       } else if (element.status == "Disponível") {
         disponivel += 1;
-      } else if (element.status == "EmAdocao") {
+      } else if (element.status == "Em Adoção") {
         emAdocao += 1;
       } 
     });
@@ -138,7 +138,4 @@ export class DashboardComponent implements OnInit {
     this.calcPercentageAnimais(this.data);
   }
 
-  deslogar() {
-    this.logoutRepository.logout()
-  }
 }

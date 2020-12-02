@@ -26,8 +26,12 @@ export class AuthService {
           this.router.navigate(['/admin']);
 
         }else{
+          const idAnimal: string = localStorage.getItem('idAnimal');
+          if(idAnimal){
+            this.router.navigate(['/confirmar-solicitacao']);
+          }else{
           this.router.navigate(['/pessoa']);
-
+          }
         }
         
       },

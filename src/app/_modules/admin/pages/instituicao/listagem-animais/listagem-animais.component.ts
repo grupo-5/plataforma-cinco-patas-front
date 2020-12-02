@@ -15,7 +15,7 @@ export class ListagemAnimaisComponent implements OnInit {
   statusLabels: any = {
     "Adotado": "#FF4C61",
     "Disponível": "#83DB12",
-    "Adoção em Andamento": "#009EA3",
+    "Em Adoção": "#009EA3",
     "Tutelado": "#E6A400"
   };
   

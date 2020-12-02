@@ -37,7 +37,13 @@ export class SolicitacaoRepository {
             .pipe(map((x) => this.mapper.mapFrom(x)));
     }
 
-   
+    async getAllSolicitacoesPessoaPromise(): Promise<SolicitacaoModel[]> {
+        const x = await this.http
+            .getAll<SolicitacaoEntity[]>(`${environment.URLSERVIDOR}solicitacao/pessoa`)    
+            .toPromise();
+        return x.data.map(this.mapper.mapFrom);
+    }
+  
     postSolicitacao(param: SolicitacaoModel) {
         return this.http
             .post<SolicitacaoEntity>(`${environment.URLSERVIDOR}solicitacao`, this.mapper.mapTo(param))
