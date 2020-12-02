@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsuarioRepository } from './../../../../_core/repository/usuario-repository';
 import { InstituicaoRepository } from './../../../../_core/repository/instituicao-repository';
 import { PessoaRepository } from './../../../../_core/repository/pessoa-repository';
+import { AuthService } from './../../../home/pages/seguranca/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,16 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  nome: string ;//= ""
+  nome: string;//= ""
   imagem: string = "./assets/images/sem-img.png"
+  exibindoMenu: Boolean = false;
+  usuario: string = 'Usuário Desconhecido';
+  permissoes: any[] = [];
+  ambiente = ''
 
-  constructor(public pessoaRepository: PessoaRepository, 
-              public instituicaoRepository: InstituicaoRepository,
-              public UsuarioRepository: UsuarioRepository,
-              private activatedRoute: ActivatedRoute) { }
+  constructor(public pessoaRepository: PessoaRepository,
+    public instituicaoRepository: InstituicaoRepository,
+    public UsuarioRepository: UsuarioRepository,
+    private activatedRoute: ActivatedRoute,
+    public auth: AuthService
+  ) { this.usuario = auth.jwtPayload ? auth.jwtPayload.user_name : '' }
 
   ngOnInit(): void {
     this.carregaDadosUsuario();
+    if (this.auth.temPermissao('CP02')) {
+      this.ambiente = "logadoOng"
+
+    } else {
+      this.ambiente = "logadoUser"
+    }
   }
 
   carregaDadosUsuario() {
@@ -42,5 +55,5 @@ export class AdminComponent implements OnInit {
       }
     });
   }
-   
+
 }

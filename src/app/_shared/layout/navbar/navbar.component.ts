@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, NgModule } from '@angular/core';
+import { Component, Input, OnInit, NgModule, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -7,9 +7,10 @@ import { Component, Input, OnInit, NgModule } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  // @Input() ambiente: any
+  @Input() ambiente: any
+  public options=[]
 
-  options = [
+  optionsOpen = [
     { name: 'home', route: '', type: 'link' },
     { name: 'Sobre Nos', route: '/sobre-nos', type: 'link' },
     { name: 'Depoimentos', route: '/depoimentos', type: 'link' },
@@ -24,10 +25,36 @@ export class NavbarComponent implements OnInit {
 
     
   ];
+  optionsLogadoUser= [
+    { name: 'Notificacoes', route: '/instituicoes-parceiras', type: 'link' },
+    { name: '', route: '/instituicoes-parceiras', type: 'dropdown' },
+
+    
+  ];
 
 
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+ 
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    if(!changes.isFirstChange)
+{
+
+  console.log(this.ambiente)
+  if (this.ambiente=="logadoOng"){
+    this.options=this.optionsLogadoOng
+  }
+  else if(this.ambiente=="logadoUser"){
+    this.options=this.optionsLogadoOng
+  }
+  else{
+    this.options=this.optionsOpen
+  }
+}
+    
+  }
 }

@@ -16,23 +16,24 @@ export class AuthService {
   login(login: string, senha: string) {
 
     return this.repository.postLogin(login, senha).subscribe(resposta => {
+        
+        const json: JSON = JSON.parse(JSON.stringify(resposta));
+        this.armazenarToken(json['access_token']);
+        
+        console.log('Novo access token criado!'+JSON.stringify(this.jwtPayload));
+        //precisar testar
+        if (this.jwtPayload['authorities'].includes('CP02')) {
+          this.router.navigate(['/admin']);
 
-      const json: JSON = JSON.parse(JSON.stringify(resposta));
-      this.armazenarToken(json['access_token']);
+        }else{
+          this.router.navigate(['/pessoa']);
 
-      console.log('Novo access token criado!' + JSON.stringify(this.jwtPayload));
-
-      if (this.jwtPayload['authorities'].includes('CP02')) {
-        this.router.navigate(['/instituicao']);
-
-      } else {
-        this.router.navigate(['/pessoa']);
-      }
-
-    },
-      (e) => {
-        console.log(e.error.error_description);
-      });
+        }
+        
+      },
+        (e) => {
+          console.log(e.error.error_description);      
+        });    
   }
 
   private armazenarToken(token: string) {

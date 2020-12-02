@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
 
   trocaRota = (evento) => {
-   this.route.navigate(['instituicao'])
+   this.route.navigate(['admin'])
   };
 
   logar() {

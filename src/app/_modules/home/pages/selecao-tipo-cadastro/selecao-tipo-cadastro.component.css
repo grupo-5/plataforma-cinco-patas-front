@@ -8,20 +8,20 @@ h1 {
     border-radius: 14px;
     background-color: var(--main-second-color);
 }
-
+/*
  .img {
    background-image: url(../../../../../assets/images/login.jpg);
    height: 100vh;
  }
 
- @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 767px) {
    .img {
      background-image: url(../../../../../assets/images/login3.jpg);
      height: 100vh;
    }
- }
+ } */
 
- /* 
+
 @media only screen and (min-width: 800px) {
     .img {
         height: 100vh;
@@ -33,4 +33,5 @@ h1 {
     height: calc(100vh - 139px);
     background-size: 100%;
     background-repeat: no-repeat;
-} */
+    background-size: cover;
+}

@@ -12,14 +12,14 @@ p {
     .img {
         background-image: url(../../../../../../assets/images/login3.jpg);
         height: 100vh;
+      
     }
 }
 
-/* .img {
+.img {
     background-image: url(../../../../../../assets/images/login.jpg);
-    height: calc(100vh - 150px);
+    /* height: calc(100vh - 150px); */
     background-size: 100%;
     background-repeat: no-repeat;
-} */
-
-
+    background-size: cover;
+}
